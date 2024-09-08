@@ -1,6 +1,6 @@
 :root {
-  --vp-c-brand-1: #daa04a;
-  --vp-c-brand-2: #df3259;
+  --vp-c-brand-1: rgb(95, 175, 100);
+  --vp-c-brand-2: rgb(133, 228, 200);
   --vp-c-brand-3: #a0213e;
 
   --vp-button-brand-active-bg: var(--vp-c-brand-3);
@@ -44,11 +44,11 @@ img[center] {
 }
 
 h1 {
-  color:#daa04a
+  color:var(--vp-c-brand-1);
 }
 
 h2 {
-  color:#b49566
+  color:rgba(95, 175, 100, 0.7);
 }
 
 h3 {
