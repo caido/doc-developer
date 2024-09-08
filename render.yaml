@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: documentation
+    name: developer.caido.io
     runtime: static
     repo: https://github.com/caido/developer.caido.io.git
     branch: main
