@@ -1,8 +1,8 @@
 services:
   - type: web
-    name: developer.caido.io
+    name: doc-developer
     runtime: static
-    repo: https://github.com/caido/developer.caido.io.git
+    repo: https://github.com/caido/doc-developer.git
     branch: main
     buildCommand: make build-release
     staticPublishPath: ./.vitepress/dist
