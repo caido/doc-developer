@@ -22,5 +22,9 @@ hero:
     - theme: alt
       text: Concepts
       link: /concepts/
----
 
+features:
+  - icon: 👤
+    title: Looking for the user documentation? Click here
+    link: https://docs.caido.io
+---
