@@ -11,8 +11,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC-BY-4.0",
   "devDependencies": {
-    "vitepress": "^1.2.2"
+    "vitepress": "1.2.2"
   }
 }
