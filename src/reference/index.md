@@ -9,4 +9,4 @@
 ## SDKs
 
 - **[Backend SDK](./sdks/backend_sdk.md)** - Backend Software Development Kit.
-- **[Frontend SDK (WIP)](./sdks/frontend_sdk.md)** - Frontend Software Development Kit.
+- **[Frontend SDK](./sdks/frontend_sdk.md)** - Frontend Software Development Kit.

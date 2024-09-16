@@ -22,7 +22,7 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
             link: "/concepts/essentials/plugins/frontend",
           },
           {
-            text: "(WIP) Backend",
+            text: "Backend",
             link: "/concepts/essentials/plugins/backend",
           },
         ],
