@@ -7,7 +7,8 @@ Don't hesitate to join our [Discord](https://links.caido.io/www-discord) if you 
 ## Requirements
 
 - [Git](https://git-scm.com/)
-- [mdBook](https://rust-lang.github.io/mdBook/)
+- [NodeJS](https://nodejs.org/)
+- [Pnpm](https://pnpm.io/)
 - [Github Account](https://github.com)
 
 ## Steps
@@ -18,15 +19,16 @@ Don't hesitate to join our [Discord](https://links.caido.io/www-discord) if you 
 2. [Fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 3. Clone your fork: `git clone https://github.com/[USERNAME]/doc-developer`.
 4. Move into the directory: `cd doc-developer`.
-5. Create a new branch: `git branch -b [BRANCH NAME]`.
+5. Install dependencies: `pnpm i`
+6. Create a new branch: `git branch -b [BRANCH NAME]`.
 
 You are now ready to edit files. 🚀
 
 ### Edits
 
 - Pages are primarily markdown files, but HTML can be used too.
-- **Always** link pages in the `SUMMARY.md` file otherwise they won't show up.
-- To render the website we suggest using: `mdbook serve`.
+- **Always** link pages in the `index.md` file otherwise they won't show up.
+- To render the website we suggest using: `pnpm dev`.
 
 ### Publish
 

@@ -1,4 +1,4 @@
-# Submitting a Plugin
+# Store
 
 If you want to share your plugin package with the Caido community, the best way is to submit it to the official list of plugin packages. Once we've reviewed and published your plugin package, users will be able to install it directly from within Caido.
 

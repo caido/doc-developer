@@ -15,7 +15,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Notebook",
-        link: "/guides/plugins/notebook"
+        link: "/guides/plugins/notebook",
       },
     ],
   },
@@ -23,14 +23,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Distribution",
     items: [
       {
-        text: "Submitting a Plugin",
-        link: "/guides/distribution/submitting_a_plugin",
+        text: "Store",
+        link: "/guides/distribution/store",
       },
-      {
-        text: "Developer Policy",
-        link: "/guides/distribution/developer_policy",
-      }
-    ]
+    ],
   },
   {
     text: "Contributions",
