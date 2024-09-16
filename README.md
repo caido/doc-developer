@@ -18,7 +18,7 @@
 
 ## 👋 Welcome
 
-Welcome to the Caido documentation repository!
+Welcome to the Caido developer documentation repository!
 
 To contribute to our documentation, please see the contribution section below.
 
