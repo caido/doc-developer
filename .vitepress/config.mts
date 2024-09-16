@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress";
 
-import { referenceSidebar, guidesSidebar, conceptsSidebar } from "./sidebars";
+import { conceptsSidebar, guidesSidebar, referenceSidebar } from "./sidebars";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
