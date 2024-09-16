@@ -35,7 +35,7 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
         link: "/reference/sdks/backend_sdk",
       },
       {
-        text: "Frontend (WIP)",
+        text: "Frontend",
         link: "/reference/sdks/frontend_sdk",
       },
     ],
