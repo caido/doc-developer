@@ -8,21 +8,29 @@ You only need to submit your plugin packge once. Once it has been accept, users 
 
 - A [GitHub](https://github.com/signup) account.
 
-## Step 1: Preparation
+## Step 1: Create a repository
+
+All Caido plugin packages **must** have their source code on GitHub. If you're unfamiliar with GitHub, refer to the GitHub docs for how to [Create a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository).
+
+- Your repository can live under your account, like [`github.com/bebiksior/EvenBetter`](https://github.com/bebiksior/EvenBetter)
+- You can [request our team](https://links.caido.io/www-discord) for a repository under caido-community, like [`github.com/caido-community/authmatrix`](https://github.com/caido-community/authmatrix)
+
+### Using a template
+
+If you are not familiar with the plugin system of Caido and/or the release process. We **highly** recommend that you start with one of our templates.
+
+1. Visit [`github.com/caido/starterkit-plugin`](https://github.com/caido/starterkit-plugin)
+1. Select `Use this template` -> `Create a new repository`
+1. Give it a name
+1. Select `Create repository`
+
+## Step 2: Preparation
 
 At the root of your repository please ensure that you have:
 
 - Have a `manifest.json` file that follows the standard Caido manifest format.
 - Have a `LICENSE` file to describe the licensing of your plugin package.
 - Have a `README.md` file to describe the goal and usage of your plugin packge.
-
-## Step 2: Publish to Github
-
-::: info
-If you created your plugin package from one of our starter kit repositories, you may skip this step.
-:::
-
-All Caido plugin packages must have their source code on GitHub. If you're unfamiliar with GitHub, refer to the GitHub docs for how to [Create a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository).
 
 ## Step 3: Generate a key-pair
 
@@ -86,7 +94,9 @@ If you want to simplify your life, we have created a [Github Workflow](https://g
 
 In this step, we will submit your plugin to the Caido [store](https://github.com/caido/store) for review.
 
-1. In [plugin_packages.json](https://github.com/caido/store/edit/main/plugin_packages.json), add a new entry at the end of the JSON array.
+1. Go to the repository [`github.com/caido/store`](https://github.com/caido/store).
+1. In [plugin_packages.json](https://github.com/caido/store/edit/main/plugin_packages.json), selct `Edit this file` in the in the upper-right corner.
+1. Add a new entry at the end of the JSON array.
 
    ```json
    {
