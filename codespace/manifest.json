@@ -1,0 +1,30 @@
+{
+  "id": "otp-generator-plugin",
+  "name": "OTP Generator Plugin",
+  "version": "0.1.0",
+  "description": "A simple OTP generator plugin for Caido",
+  "author": {
+    "name": "Tur24Tur",
+    "email": "Admin@NoBugEscapes.com",
+    "url": "https://github.com/BugBountyZip"
+  },
+  "plugins": [
+    {
+      "kind": "frontend",
+      "id": "otp-generator-frontend",
+      "name": "OTP Generator Frontend",
+      "entrypoint": "frontend/script.js",
+      "style": "frontend/style.css",
+      "backend": {
+        "id": "otp-generator-backend"
+      }
+    },
+    {
+      "kind": "backend",
+      "id": "otp-generator-backend",
+      "name": "OTP Generator Backend",
+      "runtime": "javascript",
+      "entrypoint": "backend/script.js"
+    }
+  ]
+}
