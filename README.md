@@ -22,7 +22,7 @@ Welcome to the Caido developer documentation repository!
 
 To contribute to our documentation, please see the contribution section below.
 
-Please note that you'll also have to sign a [contributor license agreement](https://cla-assistant.io/caido/documentation) when submitting a PR.
+Please note that you'll also have to sign a [contributor license agreement](https://cla-assistant.io/caido/doc-developer) when submitting a PR.
 
 Thanks in advance for your contributions!
 
