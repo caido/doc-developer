@@ -9,7 +9,7 @@
     "preview": "vitepress preview",
     "lint": "pnpm lint:js && pnpm lint:md",
     "lint:js": "ESLINT_ENV=production eslint ./.vitepress -c ./eslint.config.mjs --max-warnings 0",
-    "lint:md": "markdownlint-cli2 'src/**/*.md'",
+    "lint:md": "markdownlint-cli2 'src/**/*.md' '!src/reference/sdks/**/*.md'",
     "generate:sdk": "./scripts/sdk.sh"
   },
   "author": "Caido Labs Inc. <dev@caido.io>",
