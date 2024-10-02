@@ -51,6 +51,10 @@ export default defineConfig({
       "/concepts/": conceptsSidebar,
     },
 
+    outline: {
+      level: [2, 5],
+    },
+
     socialLinks: [
       { icon: "discord", link: "https://links.caido.io/discord" },
       { icon: "twitter", link: "https://twitter.com/caidoio" },
