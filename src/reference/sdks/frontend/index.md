@@ -1,33 +1,15 @@
 # @caido/sdk-frontend
 
 This is the reference for the frontend SDK used by frontend plugins.
-[Caido](#caidot-e) is the main interface that provides access to various services and functionalities.
+[Caido](#caido-t-e) is the main interface that provides access to various services and functionalities.
 
-## Type Aliases
-
-### BackendEndpoints
-
-> **BackendEndpoints**: `object`
-
-#### Index Signature
-
- \[`key`: `string`\]: (...`args`: `any`[]) => `any`
-
-***
-
-### BackendEvents
-
-> **BackendEvents**: `object`
-
-#### Index Signature
-
- \[`key`: `string`\]: (...`args`: `any`[]) => `void`
-
-***
+## SDK
 
 ### Caido\<T, E\>
 
 > **Caido**\<`T`, `E`\>: `object`
+
+Utilities for frontend plugins.
 
 #### Type Parameters
 
@@ -40,349 +22,167 @@ This is the reference for the frontend SDK used by frontend plugins.
 
 ##### backend
 
-> **backend**: [`ToBackendRPC`](index.md#tobackendrpct-e)\<`T`, `E`\>
+> **backend**: [`BackendSDK`](index.md#backendsdkt-e)\<`T`, `E`\>
+
+Utilities to interact with the backend plugin.
 
 ##### commandPalette
 
-> **commandPalette**: `object`
+> **commandPalette**: [`CommandPaletteSDK`](index.md#commandpalettesdk)
 
 Utilities to interact with the command palette.
 
-##### commandPalette.register()
-
-> **register**: (`commandId`: `string`) => `void`
-
-Register a command.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `commandId` | `string` | The id of the command to register. |
-
-###### Returns
-
-`void`
-
 ##### commands
 
-> **commands**: `object`
+> **commands**: [`CommandsSDK`](index.md#commandssdk)
 
 Utilities to interact with commands
 
-##### commands.register()
-
-> **register**: (`id`: `string`, `options`: `object`) => `void`
-
-Register a command.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `id` | `string` | The id of the command. |
-| `options` | `object` | Options for the command. |
-| `options.group`? | `string` | The group this command belongs to. |
-| `options.name` | `string` | The name of the command. |
-| `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `void` | The function to run when the command is executed. |
-| `options.when`? | (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean` | A function to determine if the command is available. |
-
-###### Returns
-
-`void`
-
 ##### findings
 
-> **findings**: `object`
+> **findings**: [`FindingsSDK`](index.md#findingssdk)
 
 Utilities to interact with findings
 
-##### findings.createFinding()
-
-> **createFinding**: (`requestId`: `string`, `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
-
-Create a finding.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `requestId` | `string` | The id of the request the finding is associated with. |
-| `options` | `object` | Options for the finding. |
-| `options.dedupeKey`? | `string` | The dedupe key of the finding. |
-| `options.description`? | `string` | The description of the finding. |
-| `options.reporter` | `string` | The reporter of the finding. |
-| `options.title` | `string` | The title of the finding. |
-
-###### Returns
-
-`Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
-
-The created finding.
-
 ##### graphql
 
-> **graphql**: `Sdk`
+> **graphql**: `GraphqlSDK`
+
+Utilities to interact with the GraphQL API.
 
 ##### menu
 
-> **menu**: `object`
+> **menu**: [`MenuSDK`](index.md#menusdk)
 
 Utilities to insert menu items and context-menus throughout the UI.
 
-##### menu.registerItem()
-
-> **registerItem**: (`item`: [`MenuItem`](index.md#menuitem)) => `void`
-
-Register a menu item.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `item` | [`MenuItem`](index.md#menuitem) | The menu item to register. |
-
-###### Returns
-
-`void`
-
 ##### navigation
 
-> **navigation**: `object`
+> **navigation**: [`NavigationSDK`](index.md#navigationsdk)
 
 Utilities to interact with navigation.
 
-##### navigation.addPage()
-
-> **addPage**: (`path`: `string`, `options`: `object`) => `void`
-
-Add a page to the navigation.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | The path of the page. |
-| `options` | `object` | Options for the page. |
-| `options.body` | `HTMLElement` | The body of the page. |
-| `options.topbar`? | `HTMLElement` | The topbar of the page. |
-
-###### Returns
-
-`void`
-
-##### navigation.goTo()
-
-> **goTo**: (`path`: `string`) => `void`
-
-Navigate to a path.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | The path to navigate to. |
-
-###### Returns
-
-`void`
-
 ##### scopes
 
-> **scopes**: `object`
+> **scopes**: [`ScopesSDK`](index.md#scopessdk)
 
 Utilities to interact with scopes
 
-##### scopes.createScope()
-
-> **createScope**: (`options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
-
-Create a scope.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `options` | `object` | Options for the scope. |
-| `options.allowlist` | `string`[] | The list of included items in the scope. |
-| `options.denylist` | `string`[] | The list of excluded items in the scope. |
-| `options.name` | `string` | The name of the scope. |
-
-###### Returns
-
-`Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
-
-The created scope.
-
-##### scopes.deleteScope()
-
-> **deleteScope**: (`id`: `string`) => `Promise`\<`boolean`\>
-
-Delete a scope.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `id` | `string` | The id of the scope to delete. |
-
-###### Returns
-
-`Promise`\<`boolean`\>
-
-Whether the scope was deleted.
-
-##### scopes.getScopes()
-
-> **getScopes**: () => [`Scope`](index.md#scope)[]
-
-Get all scopes.
-
-###### Returns
-
-[`Scope`](index.md#scope)[]
-
-A list of scopes.
-
-##### scopes.updateScope()
-
-> **updateScope**: (`id`: `string`, `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
-
-Update a scope.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `id` | `string` | The id of the scope to update. |
-| `options` | `object` | Options for the scope. |
-| `options.allowlist`? | `string`[] | The list of included items in the scope. |
-| `options.denylist`? | `string`[] | The list of excluded items in the scope. |
-| `options.name`? | `string` | The name of the scope. |
-
-###### Returns
-
-`Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
-
-The updated scope.
-
 ##### shortcuts
 
-> **shortcuts**: `object`
+> **shortcuts**: [`ShortcutsSDK`](index.md#shortcutssdk)
 
 Utilities to interact with shortcuts.
 
-##### shortcuts.register()
-
-> **register**: (`commandId`: `string`, `keys`: `string`[]) => `void`
-
-Register a shortcut.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `commandId` | `string` | The id of the command to run when the shortcut is triggered. |
-| `keys` | `string`[] | The keys of the shortcut. |
-
-###### Returns
-
-`void`
-
 ##### sidebar
 
-> **sidebar**: `object`
+> **sidebar**: [`SidebarSDK`](index.md#sidebarsdk)
 
 Utilities to interact with the sidebar.
 
-##### sidebar.registerItem()
-
-> **registerItem**: (`name`: `string`, `path`: `string`, `options`?: `object`) => [`SidebarItem`](index.md#sidebaritem)
-
-Register a sidebar item.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `name` | `string` | The name of the sidebar item. |
-| `path` | `string` | The path that the user will be navigated to when the sidebar item is clicked. |
-| `options`? | `object` | Options for the sidebar item. |
-| `options.group`? | `string` | The group the sidebar item belongs to. |
-| `options.icon`? | `string` | The icon of the sidebar item. |
-| `options.isExternal`? | `boolean` | Whether the path points to an external URL. |
-
-###### Returns
-
-[`SidebarItem`](index.md#sidebaritem)
-
-The created sidebar item.
-
 ##### storage
 
-> **storage**: `object`
+> **storage**: [`StorageSDK`](index.md#storagesdk)
 
 Utilities to interact with frontend-plugin storage.
 
-##### storage.get()
+##### ui
 
-> **get**: () => [`JSONValue`](index.md#jsonvalue)
+> **ui**: [`UISDK`](index.md#uisdk)
 
-Get the storage.
+Utilities to create UI components.
 
-###### Returns
+##### window
 
-[`JSONValue`](index.md#jsonvalue)
+> **window**: [`WindowSDK`](index.md#windowsdk)
 
-The storage.
+Utilities to interact with the active page.
 
-##### storage.onChange()
+## Backend
 
-> **onChange**: (`callback`: (`value`: [`JSONValue`](index.md#jsonvalue)) => `void`) => `void`
+### BackendEndpoints
 
-Subscribe to storage changes.
+> **BackendEndpoints**: `object`
 
-###### Parameters
+Endpoints provided by the backend plugin.
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `callback` | (`value`: [`JSONValue`](index.md#jsonvalue)) => `void` | The callback to call when the storage changes. |
+#### Index Signature
 
-###### Returns
+ \[`key`: `string`\]: (...`args`: `any`[]) => `any`
 
-`void`
+***
 
-##### storage.set()
+### BackendEvents
 
-> **set**: \<`T`\>(`value`: [`JSONCompatible`](index.md#jsoncompatiblet)\<`T`\>) => `Promise`\<`void`\>
+> **BackendEvents**: `object`
 
-Set the storage.
+Events emitted by the backend plugin.
+
+#### Index Signature
+
+ \[`key`: `string`\]: (...`args`: `any`[]) => `void`
+
+***
+
+### BackendSDK\<T, E\>
+
+> **BackendSDK**\<`T`, `E`\>: `{ [K in keyof T]: Function }` & `object`
+
+Utilities to interact with the backend plugin.
+
+#### Type declaration
+
+##### onEvent()
+
+> **onEvent**: \<`K`\>(`event`: `K`, `callback`: `E`\[`K`\]) => `object`
+
+Subscribe to a backend event.
 
 ###### Type Parameters
 
 | Type Parameter |
 | ------ |
-| `T` |
+| `K` *extends* keyof `E` |
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `value` | [`JSONCompatible`](index.md#jsoncompatiblet)\<`T`\> | The value to set the storage to |
+| `event` | `K` | The event to subscribe to. |
+| `callback` | `E`\[`K`\] | The callback to call when the event is emitted. |
 
 ###### Returns
 
-`Promise`\<`void`\>
+`object`
 
-A promise that resolves when the storage has been set.
+An object with a `stop` method that can be called to stop listening to the event.
 
-##### ui
+###### stop()
 
-> **ui**: `object`
+> **stop**: () => `void`
+
+###### Returns
+
+`void`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* [`BackendEndpoints`](index.md#backendendpoints) |
+| `E` *extends* [`BackendEvents`](index.md#backendevents) |
+
+## UI
+
+### UISDK
+
+> **UISDK**: `object`
 
 Utilities to create UI components.
 
-##### ui.button()
+#### Type declaration
+
+##### button()
 
 > **button**: (`options`?: `object`) => `HTMLElement`
 
@@ -394,9 +194,9 @@ Create a button.
 | ------ | ------ | ------ |
 | `options`? | `object` | Options for the button. |
 | `options.label`? | `string` | The label of the button. |
-| `options.leadingIcon`? | `string` | The leading icon of the button. |
+| `options.leadingIcon`? | [`Icon`](index.md#icon) | The leading icon of the button. |
 | `options.size`? | `"small"` \| `"medium"` \| `"large"` | The size of the button. |
-| `options.trailingIcon`? | `string` | The trailing icon of the button. |
+| `options.trailingIcon`? | [`Icon`](index.md#icon) | The trailing icon of the button. |
 | `options.variant`? | `"primary"` \| `"secondary"` \| `"tertiary"` | The variant of the button. |
 
 ###### Returns
@@ -405,7 +205,18 @@ Create a button.
 
 The button element.
 
-##### ui.card()
+###### Example
+
+```ts
+const deleteButton = sdk.ui.button({
+  variant: "primary",
+  label: "Delete",
+  trailingIcon: "fas fa-trash-can",
+  size: "small",
+});
+```
+
+##### card()
 
 > **card**: (`options`?: `object`) => `HTMLElement`
 
@@ -426,31 +237,31 @@ Create a card.
 
 The card element.
 
-##### ui.httpRequestEditor()
+##### httpRequestEditor()
 
-> **httpRequestEditor**: () => [`HTTPRequestEditor`](index.md#httprequesteditor-1)
+> **httpRequestEditor**: () => [`HTTPRequestEditor`](index.md#httprequesteditor)
 
 Create an HTTP request editor
 
 ###### Returns
 
-[`HTTPRequestEditor`](index.md#httprequesteditor-1)
+[`HTTPRequestEditor`](index.md#httprequesteditor)
 
 The HTTP request editor.
 
-##### ui.httpResponseEditor()
+##### httpResponseEditor()
 
-> **httpResponseEditor**: () => [`HTTPResponseEditor`](index.md#httpresponseeditor-1)
+> **httpResponseEditor**: () => [`HTTPResponseEditor`](index.md#httpresponseeditor)
 
 Create an HTTP response editor
 
 ###### Returns
 
-[`HTTPResponseEditor`](index.md#httpresponseeditor-1)
+[`HTTPResponseEditor`](index.md#httpresponseeditor)
 
 The HTTP response editor.
 
-##### ui.well()
+##### well()
 
 > **well**: (`options`?: `object`) => `HTMLElement`
 
@@ -471,48 +282,219 @@ Create a well.
 
 The well element.
 
-##### window
+## Scopes
 
-> **window**: `object`
+### Scope
 
-Utilities to interact with the active page.
+> **Scope**: `object`
 
-##### window.getActiveEditor()
+Represents a scope.
 
-> **getActiveEditor**: () => [`Editor`](index.md#editor) \| `undefined`
+#### Type declaration
 
-Get the active editor.
+##### allowlist
 
-###### Returns
+> **allowlist**: `string`[]
 
-[`Editor`](index.md#editor) \| `undefined`
+The list of included items.
 
-The active editor.
+##### denylist
 
-##### window.showToast()
+> **denylist**: `string`[]
 
-> **showToast**: (`message`: `string`, `options`?: `object`) => `void`
+The list of excluded items.
 
-Show a toast message.
+##### id
+
+> **id**: [`ID`](index.md#id-3)
+
+The unique ID of the scope.
+
+##### name
+
+> **name**: `string`
+
+The name of the scope.
+
+***
+
+### ScopesSDK
+
+> **ScopesSDK**: `object`
+
+Utilities to interact with scopes
+
+#### Type declaration
+
+##### createScope()
+
+> **createScope**: (`options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+
+Create a scope.
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `message` | `string` | The message to show. |
-| `options`? | `object` | Options for the toast message. |
-| `options.duration`? | `number` | The duration of the toast message in milliseconds. |
-| `options.variant`? | `"success"` \| `"error"` \| `"warning"` \| `"info"` | The variant of the toast message. |
+| `options` | `object` | Options for the scope. |
+| `options.allowlist` | `string`[] | The list of included items in the scope. |
+| `options.denylist` | `string`[] | The list of excluded items in the scope. |
+| `options.name` | `string` | The name of the scope. |
 
 ###### Returns
 
-`void`
+`Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+
+The created scope.
+
+###### Example
+
+```ts
+const newScope = await sdk.scopes.createScope({
+  name: "Example",
+  allowlist: ["*example.com", "*github.com"],
+  denylist: ["*caido.io"],
+});
+```
+
+##### deleteScope()
+
+> **deleteScope**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
+
+Delete a scope.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The id of the scope to delete. |
+
+###### Returns
+
+`Promise`\<`boolean`\>
+
+Whether the scope was deleted.
+
+##### getScopes()
+
+> **getScopes**: () => [`Scope`](index.md#scope)[]
+
+Get all scopes.
+
+###### Returns
+
+[`Scope`](index.md#scope)[]
+
+A list of scopes.
+
+##### updateScope()
+
+> **updateScope**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+
+Update a scope.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The id of the scope to update. |
+| `options` | `object` | Options for the scope. |
+| `options.allowlist`? | `string`[] | The list of included items in the scope. |
+| `options.denylist`? | `string`[] | The list of excluded items in the scope. |
+| `options.name`? | `string` | The name of the scope. |
+
+###### Returns
+
+`Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+
+The updated scope.
+
+## Findings
+
+### Finding
+
+> **Finding**: `object`
+
+Represents a [https://docs.caido.io/reference/features/logging/findings|Finding](https://docs.caido.io/reference/features/logging/findings|Finding).
+
+#### Type declaration
+
+##### description?
+
+> `optional` **description**: `string`
+
+The description of the finding.
+
+##### host
+
+> **host**: `string`
+
+The host of the request attached to this finding
+
+##### id
+
+> **id**: [`ID`](index.md#id-3)
+
+The ID of the finding.
+
+##### path
+
+> **path**: `string`
+
+The path of the request attached to this finding
+
+##### reporter
+
+> **reporter**: `string`
+
+The reporter of the finding.
+
+##### title
+
+> **title**: `string`
+
+The title of the finding.
 
 ***
+
+### FindingsSDK
+
+> **FindingsSDK**: `object`
+
+Utilities to interact with findings
+
+#### Type declaration
+
+##### createFinding()
+
+> **createFinding**: (`requestId`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
+
+Create a [Finding](index.md#finding).
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `requestId` | [`ID`](index.md#id-3) | The id of the request the finding is associated with. |
+| `options` | `object` | Options for the finding. |
+| `options.dedupeKey`? | `string` | If a finding with the same deduplication key already exists, it will not create a new finding. |
+| `options.description`? | `string` | The description of the finding. |
+| `options.reporter` | `string` | The reporter of the finding. |
+| `options.title` | `string` | The title of the finding. |
+
+###### Returns
+
+`Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
+
+The created finding.
+
+## Commands
 
 ### CommandContext
 
 > **CommandContext**: [`CommandContextBase`](index.md#commandcontextbase) \| [`CommandContextRequestRow`](index.md#commandcontextrequestrow) \| [`CommandContextRequest`](index.md#commandcontextrequest) \| [`CommandContextResponse`](index.md#commandcontextresponse)
+
+Represents the context in which a command is executed.
 
 ***
 
@@ -621,7 +603,7 @@ The request that is associated with the response.
 
 ##### request.id
 
-> **id**: `string`
+> **id**: [`ID`](index.md#id-3)
 
 ##### request.isTls
 
@@ -647,7 +629,7 @@ The response that is currently open in the response pane.
 
 ##### response.id
 
-> **id**: `string`
+> **id**: [`ID`](index.md#id-3)
 
 ##### response.raw
 
@@ -670,6 +652,495 @@ The currently selected text in the response pane.
 ##### type
 
 > **type**: `"ResponseContext"`
+
+***
+
+### CommandsSDK
+
+> **CommandsSDK**: `object`
+
+Utilities to interact with commands
+
+#### Type declaration
+
+##### register()
+
+> **register**: (`id`: [`CommandID`](index.md#commandid), `options`: `object`) => `void`
+
+Register a command.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`CommandID`](index.md#commandid) | The id of the command. |
+| `options` | `object` | Options for the command. |
+| `options.group`? | `string` | The group this command belongs to. |
+| `options.name` | `string` | The name of the command. |
+| `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `void` | The function to run when the command is executed. |
+| `options.when`? | (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean` | A function to determine if the command is available. |
+
+###### Returns
+
+`void`
+
+###### Example
+
+```ts
+sdk.commands.register("hello", {
+  name: "Print to console.",
+  run: () => console.log("Hello world!"),
+  group: "Custom Commands",
+});
+```
+
+## Menu
+
+### MenuItem
+
+> **MenuItem**: [`RequestRowMenuItem`](index.md#requestrowmenuitem) \| [`SettingsMenuItem`](index.md#settingsmenuitem) \| [`RequestMenuItem`](index.md#requestmenuitem) \| [`ResponseMenuItem`](index.md#responsemenuitem)
+
+A content-menu item.
+
+***
+
+### MenuSDK
+
+> **MenuSDK**: `object`
+
+Utilities to insert menu items and context-menus throughout the UI.
+
+#### Type declaration
+
+##### registerItem()
+
+> **registerItem**: (`item`: [`MenuItem`](index.md#menuitem)) => `void`
+
+Register a menu item.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `item` | [`MenuItem`](index.md#menuitem) | The menu item to register. |
+
+###### Returns
+
+`void`
+
+###### Example
+
+```ts
+sdk.menu.registerItem({
+  type: "Request",
+  commandId: "hello",
+  leadingIcon: "fas fa-hand",
+});
+```
+
+***
+
+### RequestMenuItem
+
+> **RequestMenuItem**: `object`
+
+A context-menu item that appears when right-clicking a request pane.
+
+#### Type declaration
+
+##### commandId
+
+> **commandId**: [`CommandID`](index.md#commandid)
+
+The command ID to execute when the menu item is clicked.
+
+##### leadingIcon?
+
+> `optional` **leadingIcon**: `string`
+
+The icon to display to the left of the menu item.
+
+##### type
+
+> **type**: `"Request"`
+
+***
+
+### RequestRowMenuItem
+
+> **RequestRowMenuItem**: `object`
+
+A context-menu item that appears when right-clicking a request row.
+
+#### Type declaration
+
+##### commandId
+
+> **commandId**: [`CommandID`](index.md#commandid)
+
+The command ID to execute when the menu item is clicked.
+
+##### leadingIcon?
+
+> `optional` **leadingIcon**: `string`
+
+The icon to display to the left of the menu item.
+
+##### type
+
+> **type**: `"RequestRow"`
+
+***
+
+### ResponseMenuItem
+
+> **ResponseMenuItem**: `object`
+
+A context-menu item that appears when right-clicking a response pane.
+
+#### Type declaration
+
+##### commandId
+
+> **commandId**: [`CommandID`](index.md#commandid)
+
+The command ID to execute when the menu item is
+
+##### leadingIcon?
+
+> `optional` **leadingIcon**: `string`
+
+The icon to display to the left of the menu item.
+
+##### type
+
+> **type**: `"Response"`
+
+***
+
+### SettingsMenuItem
+
+> **SettingsMenuItem**: `object`
+
+A menu item that appears in the settings menu.
+
+#### Type declaration
+
+##### label
+
+> **label**: `string`
+
+The label of the menu item.
+
+##### leadingIcon?
+
+> `optional` **leadingIcon**: [`Icon`](index.md#icon)
+
+The [Icon](index.md#icon) to display to the left of the menu item.
+
+##### path
+
+> **path**: `string`
+
+The path that the user will be navigated to when the menu item is clicked
+
+##### type
+
+> **type**: `"Settings"`
+
+## Navigation
+
+### NavigationSDK
+
+> **NavigationSDK**: `object`
+
+Utilities to interact with navigation.
+
+#### Type declaration
+
+##### addPage()
+
+> **addPage**: (`path`: `string`, `options`: `object`) => `void`
+
+Add a page to the navigation.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | The path of the page. |
+| `options` | `object` | Options for the page. |
+| `options.body` | `HTMLElement` | The body of the page. |
+| `options.topbar`? | `HTMLElement` | The topbar of the page. |
+
+###### Returns
+
+`void`
+
+##### goTo()
+
+> **goTo**: (`path`: `string`) => `void`
+
+Navigate to a path.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `path` | `string` | The path to navigate to. |
+
+###### Returns
+
+`void`
+
+###### Example
+
+```ts
+sdk.navigation.goTo("/my-plugin-page");
+```
+
+## Window
+
+### WindowSDK
+
+> **WindowSDK**: `object`
+
+Utilities to interact with the active page.
+
+#### Type declaration
+
+##### getActiveEditor()
+
+> **getActiveEditor**: () => [`Editor`](index.md#editor) \| `undefined`
+
+Get the active editor.
+
+###### Returns
+
+[`Editor`](index.md#editor) \| `undefined`
+
+The active editor.
+
+##### showToast()
+
+> **showToast**: (`message`: `string`, `options`?: `object`) => `void`
+
+Show a toast message.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `message` | `string` | The message to show. |
+| `options`? | `object` | Options for the toast message. |
+| `options.duration`? | `number` | The duration of the toast message in milliseconds. |
+| `options.variant`? | `"success"` \| `"error"` \| `"warning"` \| `"info"` | The variant of the toast message. |
+
+###### Returns
+
+`void`
+
+## Storage
+
+### StorageSDK
+
+> **StorageSDK**: `object`
+
+Utilities to interact with frontend-plugin storage.
+
+#### Type declaration
+
+##### get()
+
+> **get**: () => [`JSONValue`](index.md#jsonvalue)
+
+Get the storage.
+
+###### Returns
+
+[`JSONValue`](index.md#jsonvalue)
+
+The storage.
+
+##### onChange()
+
+> **onChange**: (`callback`: (`value`: [`JSONValue`](index.md#jsonvalue)) => `void`) => `void`
+
+Subscribe to storage changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`value`: [`JSONValue`](index.md#jsonvalue)) => `void` | The callback to call when the storage changes. |
+
+###### Returns
+
+`void`
+
+##### set()
+
+> **set**: \<`T`\>(`value`: [`JSONCompatible`](index.md#jsoncompatiblet)\<`T`\>) => `Promise`\<`void`\>
+
+Set the storage.
+
+###### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | [`JSONCompatible`](index.md#jsoncompatiblet)\<`T`\> | The value to set the storage to |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+A promise that resolves when the storage has been set.
+
+## Shortcuts
+
+### ShortcutsSDK
+
+> **ShortcutsSDK**: `object`
+
+Utilities to interact with shortcuts.
+
+#### Type declaration
+
+##### register()
+
+> **register**: (`commandId`: [`CommandID`](index.md#commandid), `keys`: `string`[]) => `void`
+
+Register a shortcut.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `commandId` | [`CommandID`](index.md#commandid) | The id of the command to run when the shortcut is triggered. |
+| `keys` | `string`[] | The keys of the shortcut. |
+
+###### Returns
+
+`void`
+
+## Command Palette
+
+### CommandPaletteSDK
+
+> **CommandPaletteSDK**: `object`
+
+Utilities to interact with the command palette.
+
+#### Type declaration
+
+##### register()
+
+> **register**: (`commandId`: `string`) => `void`
+
+Register a command.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `commandId` | `string` | The id of the command to register. |
+
+###### Returns
+
+`void`
+
+## Sidebar
+
+### SidebarItem
+
+> **SidebarItem**: `object`
+
+Represents a sidebar item.
+
+#### Type declaration
+
+##### setCount()
+
+> **setCount**: (`count`: `number`) => `void`
+
+Set the value of a notification badge next to the sidebar item.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `count` | `number` | The number to display in the badge. A value of 0 will hide the badge. |
+
+###### Returns
+
+`void`
+
+***
+
+### SidebarSDK
+
+> **SidebarSDK**: `object`
+
+Utilities to interact with the sidebar.
+
+#### Type declaration
+
+##### registerItem()
+
+> **registerItem**: (`name`: `string`, `path`: `string`, `options`?: `object`) => [`SidebarItem`](index.md#sidebaritem)
+
+Register a sidebar item.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The name of the sidebar item. |
+| `path` | `string` | The path that the user will be navigated to when the sidebar item is clicked. |
+| `options`? | `object` | Options for the sidebar item. |
+| `options.group`? | `string` | The group the sidebar item belongs to. |
+| `options.icon`? | [`Icon`](index.md#icon) | The [Icon](index.md#icon) of the sidebar item. |
+| `options.isExternal`? | `boolean` | Whether the path points to an external URL. |
+
+###### Returns
+
+[`SidebarItem`](index.md#sidebaritem)
+
+The created sidebar item.
+
+###### Example
+
+```ts
+sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
+  icon: "fas fa-rocket",
+});
+```
+
+## Other
+
+### CommandID
+
+> **CommandID**: `string` & `object`
+
+A unique command identifier.
+
+#### Type declaration
+
+##### \_\_commandId
+
+> **\_\_commandId**: `never`
+
+#### Example
+
+```ts
+"my-super-command"
+```
 
 ***
 
@@ -731,52 +1202,6 @@ Replace the currently selected text of the editor.
 
 ***
 
-### Finding
-
-> **Finding**: `object`
-
-Represents a finding.
-
-#### Type declaration
-
-##### description?
-
-> `optional` **description**: `string`
-
-The description of the finding.
-
-##### host
-
-> **host**: `string`
-
-The host of the request attached to this finding
-
-##### id
-
-> **id**: `string`
-
-The ID of the finding.
-
-##### path
-
-> **path**: `string`
-
-The path of the request attached to this finding
-
-##### reporter
-
-> **reporter**: `string`
-
-The reporter of the finding.
-
-##### title
-
-> **title**: `string`
-
-The title of the finding.
-
-***
-
 ### HTTPRequestEditor
 
 > **HTTPRequestEditor**: `object`
@@ -825,6 +1250,40 @@ The title of the finding.
 
 ***
 
+### Icon
+
+> **Icon**: `string` & `object`
+
+A [https://fontawesome.com/icons|FontAwesome](https://fontawesome.com/icons|FontAwesome) icon class.
+
+#### Type declaration
+
+##### \_\_icon
+
+> **\_\_icon**: `never`
+
+#### Example
+
+```ts
+"fas fa-rocket"
+```
+
+***
+
+### ID
+
+> **ID**: `string` & `object`
+
+A unique Caido identifier per type.
+
+#### Type declaration
+
+##### \_\_id
+
+> **\_\_id**: `never`
+
+***
+
 ### JSONCompatible\<T\>
 
 > **JSONCompatible**\<`T`\>: `unknown` *extends* `T` ? `never` : `{ [P in keyof T]: T[P] extends JSONValue ? T[P] : T[P] extends NotAssignableToJson ? never : JSONCompatible<T[P]> }`
@@ -849,12 +1308,6 @@ The title of the finding.
 
 ***
 
-### MenuItem
-
-> **MenuItem**: [`RequestRowMenuItem`](index.md#requestrowmenuitem) \| [`SettingsMenuItem`](index.md#settingsmenuitem) \| [`RequestMenuItem`](index.md#requestmenuitem) \| [`ResponseMenuItem`](index.md#responsemenuitem)
-
-***
-
 ### NotAssignableToJson
 
 > **NotAssignableToJson**: `bigint` \| `symbol` \| `Function`
@@ -870,221 +1323,3 @@ The title of the finding.
 | Type Parameter |
 | ------ |
 | `T` *extends* (...`args`: `unknown`[]) => `unknown` |
-
-***
-
-### RequestMenuItem
-
-> **RequestMenuItem**: `object`
-
-A context-menu item that appears when right-clicking a request pane.
-
-#### Type declaration
-
-##### commandId
-
-> **commandId**: `string`
-
-The command ID to execute when the menu item is clicked.
-
-##### leadingIcon?
-
-> `optional` **leadingIcon**: `string`
-
-The icon to display to the left of the menu item.
-
-##### type
-
-> **type**: `"Request"`
-
-***
-
-### RequestRowMenuItem
-
-> **RequestRowMenuItem**: `object`
-
-A context-menu item that appears when right-clicking a request row.
-
-#### Type declaration
-
-##### commandId
-
-> **commandId**: `string`
-
-The command ID to execute when the menu item is clicked.
-
-##### leadingIcon?
-
-> `optional` **leadingIcon**: `string`
-
-The icon to display to the left of the menu item.
-
-##### type
-
-> **type**: `"RequestRow"`
-
-***
-
-### ResponseMenuItem
-
-> **ResponseMenuItem**: `object`
-
-A context-menu item that appears when right-clicking a response pane.
-
-#### Type declaration
-
-##### commandId
-
-> **commandId**: `string`
-
-The command ID to execute when the menu item is
-
-##### leadingIcon?
-
-> `optional` **leadingIcon**: `string`
-
-The icon to display to the left of the menu item.
-
-##### type
-
-> **type**: `"Response"`
-
-***
-
-### Scope
-
-> **Scope**: `object`
-
-Represents a scope.
-
-#### Type declaration
-
-##### allowlist
-
-> **allowlist**: `string`[]
-
-The list of included items.
-
-##### denylist
-
-> **denylist**: `string`[]
-
-The list of excluded items.
-
-##### id
-
-> **id**: `string`
-
-The unique ID of the scope.
-
-##### name
-
-> **name**: `string`
-
-The name of the scope.
-
-***
-
-### SettingsMenuItem
-
-> **SettingsMenuItem**: `object`
-
-A menu item that appears in the settings menu.
-
-#### Type declaration
-
-##### label
-
-> **label**: `string`
-
-The label of the menu item.
-
-##### leadingIcon?
-
-> `optional` **leadingIcon**: `string`
-
-The icon to display to the left of the menu item.
-
-##### path
-
-> **path**: `string`
-
-The path that the user will be navigated to when the menu item is clicked
-
-##### type
-
-> **type**: `"Settings"`
-
-***
-
-### SidebarItem
-
-> **SidebarItem**: `object`
-
-Represents a sidebar item.
-
-#### Type declaration
-
-##### setCount()
-
-> **setCount**: (`count`: `number`) => `void`
-
-Set the value of a notification badge next to the sidebar item.
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `count` | `number` | The number to display in the badge. A value of 0 will hide the badge. |
-
-###### Returns
-
-`void`
-
-***
-
-### ToBackendRPC\<T, E\>
-
-> **ToBackendRPC**\<`T`, `E`\>: `{ [K in keyof T]: Function }` & `object`
-
-#### Type declaration
-
-##### onEvent()
-
-> **onEvent**: \<`K`\>(`event`: `K`, `callback`: `E`\[`K`\]) => `object`
-
-Subscribe to a backend event.
-
-###### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `K` *extends* keyof `E` |
-
-###### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `event` | `K` | The event to subscribe to. |
-| `callback` | `E`\[`K`\] | The callback to call when the event is emitted. |
-
-###### Returns
-
-`object`
-
-An object with a `stop` method that can be called to stop listening to the event.
-
-###### stop()
-
-> **stop**: () => `void`
-
-###### Returns
-
-`void`
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` *extends* [`BackendEndpoints`](index.md#backendendpoints) |
-| `E` *extends* [`BackendEvents`](index.md#backendevents) |

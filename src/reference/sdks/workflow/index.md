@@ -17,7 +17,7 @@ The SDK object available to all scripts.
 
 > **console**: [`Console`](index.md#console)
 
-The console.
+The console for logging.
 
 This is currently the same as the global `console`.
 
@@ -54,6 +54,16 @@ Unprintable characters will be replaced with `�`.
 ###### Returns
 
 `string`
+
+###### Example
+
+```js
+export function run(input, sdk) {
+  let parsed = sdk.asString(input);
+  sdk.console.log(parsed);
+  return parsed;
+}
+```
 
 ## Data
 
@@ -117,11 +127,11 @@ The input for the HTTP Javascript Nodes
 
 Use HttpInput instead.
 
-## RequestsSDK
+## Requests
 
 ### Body
 
-The body of a Request or Response.
+The body of a [Request](index.md#request-3) or [Response](index.md#response-4).
 
 Calling `to<FORMAT>` will try to convert the body to the desired format.
 
@@ -183,13 +193,21 @@ Unprintable characters will be replaced with `�`.
 
 ### RequestSpec
 
-A mutable Request not yet sent.
+A mutable Request that has not yet been sent.
 
 #### Constructors
 
 ##### new RequestSpec()
 
 > **new RequestSpec**(`url`: `string`): [`RequestSpec`](index.md#requestspec)
+
+Build a new [RequestSpec](index.md#requestspec) from a URL string. Only the host, port and scheme will be parsed.
+
+You can convert a saved immutable [Request](index.md#request-3) object into a [RequestSpec](index.md#requestspec) object by using the `toSpec()` method.
+
+By default:
+- Method is `GET`.
+- Path is `/`.
 
 ###### Parameters
 
@@ -201,11 +219,19 @@ A mutable Request not yet sent.
 
 [`RequestSpec`](index.md#requestspec)
 
+###### Example
+
+```js
+const spec = new RequestSpec("https://example.com");
+```
+
 #### Methods
 
 ##### getBody()
 
 > **getBody**(): `undefined` \| [`Body`](index.md#body)
+
+The body of the request.
 
 ###### Returns
 
@@ -214,6 +240,11 @@ A mutable Request not yet sent.
 ##### getHeader()
 
 > **getHeader**(`name`: `string`): `undefined` \| `string`[]
+
+Get a header value.
+
+Header name is case-insensitive.
+The header might have multiple values.
 
 ###### Parameters
 
@@ -229,13 +260,30 @@ A mutable Request not yet sent.
 
 > **getHeaders**(): `Record`\<`string`, `string`[]\>
 
+The headers of the request.
+
+Header names are case-insensitive.
+Each header might have multiple values.
+
 ###### Returns
 
 `Record`\<`string`, `string`[]\>
 
+###### Example
+
+```json
+{
+  "Host": ["caido.io"],
+  "Connection": ["keep-alive"],
+  "Content-Length": ["95"]
+}
+```
+
 ##### getHost()
 
 > **getHost**(): `string`
+
+Get the host of the request.
 
 ###### Returns
 
@@ -245,6 +293,8 @@ A mutable Request not yet sent.
 
 > **getMethod**(): `string`
 
+Get the HTTP method of the request.
+
 ###### Returns
 
 `string`
@@ -252,6 +302,8 @@ A mutable Request not yet sent.
 ##### getPath()
 
 > **getPath**(): `string`
+
+Get the path of the request.
 
 ###### Returns
 
@@ -261,6 +313,8 @@ A mutable Request not yet sent.
 
 > **getPort**(): `number`
 
+Get the port of the request.
+
 ###### Returns
 
 `number`
@@ -268,6 +322,10 @@ A mutable Request not yet sent.
 ##### getQuery()
 
 > **getQuery**(): `string`
+
+Get the unparsed query of the request.
+
+Excludes the leading `?`.
 
 ###### Returns
 
@@ -277,6 +335,8 @@ A mutable Request not yet sent.
 
 > **getTls**(): `boolean`
 
+Get if the request uses TLS (HTTPS).
+
 ###### Returns
 
 `boolean`
@@ -284,6 +344,8 @@ A mutable Request not yet sent.
 ##### removeHeader()
 
 > **removeHeader**(`name`: `string`): `void`
+
+Removes a header.
 
 ###### Parameters
 
@@ -299,6 +361,10 @@ A mutable Request not yet sent.
 
 > **setBody**(`body`: [`Bytes`](index.md#bytes) \| [`Body`](index.md#body), `options`?: [`SetBodyOptions`](index.md#setbodyoptions)): `void`
 
+Set the body of the request.
+
+The body can either be a [Body](index.md#body) or any type that can be converted to [Bytes](index.md#bytes).
+
 ###### Parameters
 
 | Parameter | Type |
@@ -310,9 +376,21 @@ A mutable Request not yet sent.
 
 `void`
 
+###### Example
+
+```js
+const body = new Body("Hello world.");
+const options = { updateContentLength: true };
+request.setBody(body, options);
+```
+
 ##### setHeader()
 
 > **setHeader**(`name`: `string`, `value`: `string`): `void`
+
+Set a header value.
+
+This will overwrite any existing values.
 
 ###### Parameters
 
@@ -329,6 +407,10 @@ A mutable Request not yet sent.
 
 > **setHost**(`host`: `string`): `void`
 
+Set the host of the request.
+
+It will also update the `Host` header.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -342,6 +424,10 @@ A mutable Request not yet sent.
 ##### setMethod()
 
 > **setMethod**(`method`: `string`): `void`
+
+Set the HTTP method of the request.
+
+All strings are accepted.
 
 ###### Parameters
 
@@ -357,6 +443,8 @@ A mutable Request not yet sent.
 
 > **setPath**(`path`: `string`): `void`
 
+Set the path of the request.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -370,6 +458,10 @@ A mutable Request not yet sent.
 ##### setPort()
 
 > **setPort**(`port`: `number`): `void`
+
+Set the port of the request.
+
+The port number must be between 1 and 65535.
 
 ###### Parameters
 
@@ -385,6 +477,10 @@ A mutable Request not yet sent.
 
 > **setQuery**(`query`: `string`): `void`
 
+Set the unparsed query of the request.
+
+The query string should not include the leading `?`.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -395,9 +491,19 @@ A mutable Request not yet sent.
 
 `void`
 
+###### Example
+
+```js
+spec.setQuery("q=hello");
+```
+
 ##### setRaw()
 
 > **setRaw**(`raw`: [`Bytes`](index.md#bytes)): [`RequestSpecRaw`](index.md#requestspecraw)
+
+This method sets the raw [Bytes](index.md#bytes) of the request and converts it to a [RequestSpecRaw](index.md#requestspecraw).
+
+This is useful when you have a prepared [RequestSpec](index.md#requestspec) and you just want to modify the raw data.
 
 ###### Parameters
 
@@ -409,9 +515,19 @@ A mutable Request not yet sent.
 
 [`RequestSpecRaw`](index.md#requestspecraw)
 
+###### Example
+
+```js
+const rawBytes = []; // RAW BYTES HERE
+const request = new RequestSpec("https://example.com");
+const rawRequest = request.setRaw(rawBytes);
+```
+
 ##### setTls()
 
 > **setTls**(`tls`: `boolean`): `void`
+
+Set if the request uses TLS (HTTPS).
 
 ###### Parameters
 
@@ -427,13 +543,19 @@ A mutable Request not yet sent.
 
 ### RequestSpecRaw
 
-A mutable raw Request not yet sent.
+A mutable raw Request that has not yet been sent.
 
 #### Constructors
 
 ##### new RequestSpecRaw()
 
 > **new RequestSpecRaw**(`url`: `string`): [`RequestSpecRaw`](index.md#requestspecraw)
+
+Build a new [RequestSpecRaw](index.md#requestspecraw) from a URL string. Only the host, port and scheme will be parsed.
+
+You can convert a saved immutable [Request](index.md#request-3) object into a [RequestSpecRaw](index.md#requestspecraw) object by using the `toSpecRaw()` method.
+
+You MUST use `setRaw` to set the raw bytes of the request.
 
 ###### Parameters
 
@@ -445,11 +567,19 @@ A mutable raw Request not yet sent.
 
 [`RequestSpecRaw`](index.md#requestspecraw)
 
+###### Example
+
+```js
+const spec = new RequestSpecRaw("https://example.com");
+```
+
 #### Methods
 
 ##### getHost()
 
 > **getHost**(): `string`
+
+Get the host of the request.
 
 ###### Returns
 
@@ -459,6 +589,8 @@ A mutable raw Request not yet sent.
 
 > **getPort**(): `number`
 
+Get the port of the request.
+
 ###### Returns
 
 `number`
@@ -466,6 +598,8 @@ A mutable raw Request not yet sent.
 ##### getRaw()
 
 > **getRaw**(): `Uint8Array`
+
+Get the raw bytes of the request.
 
 ###### Returns
 
@@ -475,6 +609,8 @@ A mutable raw Request not yet sent.
 
 > **getTls**(): `boolean`
 
+Get if the request uses TLS (HTTPS).
+
 ###### Returns
 
 `boolean`
@@ -482,6 +618,10 @@ A mutable raw Request not yet sent.
 ##### setHost()
 
 > **setHost**(`host`: `string`): `void`
+
+Set the host of the request.
+
+It will NOT update the `Host` header.
 
 ###### Parameters
 
@@ -497,6 +637,10 @@ A mutable raw Request not yet sent.
 
 > **setPort**(`port`: `number`): `void`
 
+Set the port of the request.
+
+The port number must be between 1 and 65535.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -511,6 +655,8 @@ A mutable raw Request not yet sent.
 
 > **setRaw**(`raw`: [`Bytes`](index.md#bytes)): `void`
 
+Set the raw [Bytes](index.md#bytes) of the request.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -524,6 +670,8 @@ A mutable raw Request not yet sent.
 ##### setTls()
 
 > **setTls**(`tls`: `boolean`): `void`
+
+Set if the request uses TLS (HTTPS).
 
 ###### Parameters
 
@@ -549,17 +697,26 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### getBody()
 
+The body of the request.
+
 ###### Returns
 
 `undefined` \| [`Body`](index.md#body)
 
 ##### getCreatedAt()
 
+The datetime the request was recorded by the proxy.
+
 ###### Returns
 
 `Date`
 
 ##### getHeader()
+
+Get a header value.
+
+Header name is case-insensitive.
+The header might have multiple values.
 
 ###### Parameters
 
@@ -573,11 +730,28 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### getHeaders()
 
+The headers of the request.
+
+Header names are case-insensitive.
+Each header might have multiple values.
+
 ###### Returns
 
 `Record`\<`string`, `string`[]\>
 
+###### Example
+
+```json
+{
+  "Host": ["caido.io"],
+  "Connection": ["keep-alive"],
+  "Content-Length": ["95"]
+}
+```
+
 ##### getHost()
+
+The target host of the request.
 
 ###### Returns
 
@@ -585,11 +759,15 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### getId()
 
+The unique Caido [ID](index.md#id) of the request.
+
 ###### Returns
 
 [`ID`](index.md#id)
 
 ##### getMethod()
+
+The HTTP method of the request.
 
 ###### Returns
 
@@ -597,11 +775,15 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### getPath()
 
+The path of the request.
+
 ###### Returns
 
 `string`
 
 ##### getPort()
+
+The target port of the request.
 
 ###### Returns
 
@@ -609,11 +791,19 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### getQuery()
 
+The unparsed query of the request.
+
+Excludes the leading `?`.
+
 ###### Returns
 
 `string`
 
 ##### getRaw()
+
+The raw version of the request.
+
+Used to access the bytes directly.
 
 ###### Returns
 
@@ -621,11 +811,15 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### getTls()
 
+If the request uses TLS (HTTPS).
+
 ###### Returns
 
 `boolean`
 
 ##### getUrl()
+
+The full URL of the request.
 
 ###### Returns
 
@@ -633,11 +827,17 @@ To modify, use `toSpec` to get a `RequestSpec` object.
 
 ##### toSpec()
 
+Copied the request to a mutable un-saved [RequestSpec](index.md#requestspec).
+This enables you to make modify a request before re-sending it.
+
 ###### Returns
 
 [`RequestSpec`](index.md#requestspec)
 
 ##### toSpecRaw()
+
+Copied the request to a mutable un-saved [RequestSpecRaw](index.md#requestspecraw).
+The raw requests are not parsed and can be used to send invalid HTTP Requests.
 
 ###### Returns
 
@@ -745,7 +945,7 @@ An item in a connection of requests.
 
 ##### cursor
 
-> **cursor**: `string`
+> **cursor**: [`Cursor`](index.md#cursor)
 
 ##### request
 
@@ -773,7 +973,7 @@ Requests after a given cursor.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `cursor` | `string` | Cursor of the request |
+| `cursor` | [`Cursor`](index.md#cursor) | [Cursor](index.md#cursor) of the request |
 
 ###### Returns
 
@@ -817,7 +1017,7 @@ Requests before a given cursor.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `cursor` | `string` | Cursor of the request |
+| `cursor` | [`Cursor`](index.md#cursor) | [Cursor](index.md#cursor) of the request |
 
 ###### Returns
 
@@ -933,7 +1133,7 @@ Get a request by its unique [ID](index.md#id).
 
 ###### Example
 
-```ts
+```js
 await sdk.requests.get("1");
 ```
 
@@ -953,7 +1153,7 @@ Checks if a request is in scope.
 
 ###### Example
 
-```ts
+```js
 if (sdk.requests.inScope(request)) {
  sdk.console.log("In scope");
 }
@@ -969,14 +1169,14 @@ Query requests of the current project.
 
 ###### Example
 
-```ts
+```js
 const page = await sqk.requests.query().first(2).execute();
 sdk.console.log(`ID: ${page.items[1].request.getId()}`);
 ```
 
 ##### send()
 
-Sends a request.
+Sends an HTTP request, either a [RequestSpec](index.md#requestspec) or [RequestSpecRaw](index.md#requestspecraw).
 
 This respects the upstream proxy settings.
 
@@ -996,7 +1196,7 @@ If the request cannot be sent.
 
 ###### Example
 
-```ts
+```js
 const spec = new RequestSpec("https://example.com");
 try {
   const res = await sdk.requests.send(request)
@@ -1019,11 +1219,15 @@ An immutable saved Response.
 
 ##### getBody()
 
+The body of the response
+
 ###### Returns
 
 `undefined` \| [`Body`](index.md#body)
 
 ##### getCode()
+
+The status code of the response.
 
 ###### Returns
 
@@ -1031,11 +1235,18 @@ An immutable saved Response.
 
 ##### getCreatedAt()
 
+The datetime the response was recorded by the proxy.
+
 ###### Returns
 
 `Date`
 
 ##### getHeader()
+
+Get a header value.
+
+Header name is case-insensitive.
+The header might have multiple values.
 
 ###### Parameters
 
@@ -1049,11 +1260,27 @@ An immutable saved Response.
 
 ##### getHeaders()
 
+The headers of the response.
+
+Header names are case-insensitive.
+Each header might have multiple values.
+
 ###### Returns
 
 `Record`\<`string`, `string`[]\>
 
+###### Example
+
+```json
+{
+  "Date": ["Sun, 26 May 2024 10:59:21 GMT"],
+  "Content-Type": ["text/html"]
+}
+```
+
 ##### getId()
+
+The unique Caido [ID](index.md#id) of the response.
 
 ###### Returns
 
@@ -1061,11 +1288,17 @@ An immutable saved Response.
 
 ##### getRaw()
 
+The raw version of the response.
+
+Used to access the bytes directly.
+
 ###### Returns
 
 [`ResponseRaw`](index.md#responseraw)
 
 ##### getRoundtripTime()
+
+The time it took to send the request and receive the response in milliseconds.
 
 ###### Returns
 
@@ -1129,7 +1362,7 @@ Should update the Content-export type header.
 true
 ```
 
-## FindingsSDK
+## Findings
 
 ### Finding
 
@@ -1243,7 +1476,7 @@ If the request cannot be saved.
 
 ###### Example
 
-```ts
+```js
 await sdk.findings.create({
   title: "Title",
   description: "Description",
@@ -1271,7 +1504,7 @@ You can also filter by reporter to get a specific finding.
 
 ###### Example
 
-```ts
+```js
 await sdk.findings.get({
  reporter: "Reporter",
  request,
@@ -1300,7 +1533,7 @@ The name of the reporter.
 
 The associated [Request](index.md#request-3).
 
-## ReplaySDK
+## Replay
 
 ### ReplayCollection
 
@@ -1391,6 +1624,20 @@ Types that can be converted to bytes in inputs.
 
 ***
 
+### Cursor
+
+> **Cursor**: `string` & `object`
+
+A cursor for pagination.
+
+#### Type declaration
+
+##### \_\_cursor?
+
+> `optional` **\_\_cursor**: `never`
+
+***
+
 ### ID
 
 > **ID**: `string` & `object`
@@ -1426,6 +1673,10 @@ See https://docs.caido.io/report_bug.html#1-backend-logs
 
 ##### debug()
 
+Log a message with the debug level.
+
+Usually used for troubleshooting purposes.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -1437,6 +1688,10 @@ See https://docs.caido.io/report_bug.html#1-backend-logs
 `void`
 
 ##### error()
+
+Log a message with the error level.
+
+Usually used for critical errors.
 
 ###### Parameters
 
@@ -1450,6 +1705,10 @@ See https://docs.caido.io/report_bug.html#1-backend-logs
 
 ##### log()
 
+Log a message with the info level.
+
+Usually used for general information.
+
 ###### Parameters
 
 | Parameter | Type |
@@ -1461,6 +1720,10 @@ See https://docs.caido.io/report_bug.html#1-backend-logs
 `void`
 
 ##### warn()
+
+Log a message with the warn level.
+
+Usually used for unexpected behaviors.
 
 ###### Parameters
 
@@ -1484,7 +1747,7 @@ Information on the current page of paginated data.
 
 ##### endCursor
 
-> **endCursor**: `string`
+> **endCursor**: [`Cursor`](index.md#cursor)
 
 ##### hasNextPage
 
@@ -1496,4 +1759,4 @@ Information on the current page of paginated data.
 
 ##### startCursor
 
-> **startCursor**: `string`
+> **startCursor**: [`Cursor`](index.md#cursor)
