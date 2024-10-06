@@ -187,36 +187,30 @@ If you prefer not to use a workflow, follow these steps to create a release manu
 
 In this step, we will submit your plugin to the Caido [store](https://github.com/caido/store) for review.
 
-1. Go to the repository [`github.com/caido/store`](https://github.com/caido/store).
-1. In [plugin_packages.json](https://github.com/caido/store/edit/main/plugin_packages.json), selct `Edit this file` in the in the upper-right corner.
-1. Add a new entry at the end of the JSON array.
+1. In [plugin_packages.json](https://github.com/caido/store/edit/main/plugin_packages.json), add a new entry at the end of the JSON array.
 
-   ```json
-   {
-     "id": "my-unique-plugin",
-     "name": "My Unique Plugin",
-     "license": "CC0-1.0",
-     "description": "This my super cool new Caido plugin",
-     "author": {
-       "name": "John Doe",
-       "email": "john@example.com",
-       "url": "https://example.com"
-     },
-     "public_key": "MCowBQYDK2VwAyEA0zDx1tIO7S/d+AYFjLLmTA6pvuEyf+70KfcgVi1DNhc=",
-     "repository": "john/my-unique-plugin"
-   }
-   ```
+    ```json
+    {
+      "id": "my-unique-plugin",
+      "name": "My Unique Plugin",
+      "license": "CC0-1.0",
+      "description": "This my super cool new Caido plugin",
+      "author": {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "url": "https://example.com"
+      },
+      "public_key": "MCowBQYDK2VwAyEA0zDx1tIO7S/d+AYFjLLmTA6pvuEyf+70KfcgVi1DNhc=",
+      "repository": "john/my-unique-plugin"
+    }
+    ```
 
-   A few things to be aware of:
+      - `id` is unique to your plugin. Search `plugin_packages.json` to confirm that there's no existing plugin with the same id.
+      - `name`, `license`, `description` and `author` determine how your plugin appear to the user in Caido.
+      - `public_key` is the base64 part of the public key generated in [Step 3](#step-3-generate-a-key-pair). **Don't** include the header/footer (`BEGIN/END PUBLIC KEY`).
+      - `repository` is the path to your GitHub repository. For example, if your GitHub repo is <https://github.com/username/repo-name>, the path is `username/repo-name`.
 
-   - `id`,`name`, `author`, `license`, and `description` determine how your plugin appear to the user in Caido.
-   - `id` is unique to your plugin. Search `plugin_packages.json` to confirm that there's no existing plugin with the same id.
-   - `public_key` is the base64 part of the public key generated in [Step 3](#step-3-generate-a-key-pair). **Don't** include the header/footer (`BEGIN/END PUBLIC KEY`).
-   - `repository` is the path to your GitHub repository. For example, if your GitHub repo is <https://github.com/username/repo-name>, the path is `username/repo-name`.
-
-   ::: warning
-   Remember to add a comma after the closing brace (`}`) of the previous entry otherwise the json will not be valid!
-   :::
+    **Remember to add a comma after the closing brace `}` of the previous entry otherwise the json will not be valid!**
 
 1. Select `Commit changes...` in the upper-right corner.
 1. Select `Propose changes`.
@@ -224,7 +218,7 @@ In this step, we will submit your plugin to the Caido [store](https://github.com
 1. Fill in the details in the description for the pull request. For the checkboxes, insert an x between the brackets, [x], to mark them as done.
 1. Click `Create pull request`.
 
-You've now submitted your plugin package to the Caido store. Our bot will verify that that format is correct and you will have to sign the [Contributor License Agreement](https://cla-assistant.io/caido/store).
+You've now submitted your plugin package to the Caido store. Our bot will verify that the format is correct and you will have to sign the [Contributor License Agreement](https://cla-assistant.io/caido/store).
 Once your submission is ready for review, you can sit back and wait for the Caido team to review it.
 
 ## Step 6: Address review comments
