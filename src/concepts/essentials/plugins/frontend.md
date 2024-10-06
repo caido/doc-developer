@@ -10,7 +10,7 @@ Frontend development allows you to:
 - Provide additional features and customization options.
 - Handle user interactions, render data and communicate with the backend server via Caido's API.
 
-_For advanced documentation on this topic - click [here](/reference/sdks/frontend_sdk.md)._
+_For advanced documentation on this topic - click [here](/reference/sdks/frontend/index.md)._
 
 `sdk.navigation` - Used to create pages in the application and navigate to them.
 

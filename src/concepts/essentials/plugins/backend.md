@@ -8,7 +8,7 @@ Backend development allows you to:
 - Interact with the application's data, databases and infrastructure.
 - Handle authentication, authorization and data calls.
 
-For advanced documentation on this topic - click [here](/reference/sdks/backend_sdk.md).
+For advanced documentation on this topic - click [here](/reference/sdks/backend/index.md).
 
 ### `APISDK`
 

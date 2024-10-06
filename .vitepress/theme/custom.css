@@ -59,6 +59,14 @@ h4 {
   color: var(--vp-c-brand-3);
 }
 
+h5 {
+  color: #A599B5;
+}
+
+h6 {
+  color: var(--vp-c-text-2)
+}
+
 .videos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

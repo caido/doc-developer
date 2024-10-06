@@ -8,5 +8,6 @@
 
 ## SDKs
 
-- **[Backend SDK](./sdks/backend_sdk.md)** - Backend Software Development Kit.
-- **[Frontend SDK](./sdks/frontend_sdk.md)** - Frontend Software Development Kit.
+- **[Backend SDK](./sdks/backend/index.md)** - Backend Software Development Kit.
+- **[Frontend SDK](./sdks/frontend/index.md)** - Frontend Software Development Kit.
+- **[Workflow SDK](./sdks/workflow/index.md)** - Workflow Software Development Kit.
