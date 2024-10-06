@@ -1,6 +1,6 @@
 # Submitting your plugin
 
-If you want to share your plugin package with the Caido community, the best way is to submit it to the official list of plugin packages. 
+If you want to share your plugin package with the Caido community, the best way is to submit it to the official list of plugin packages.
 
 Once we've reviewed and published your plugin package, users will be able to install it directly from within Caido.
 
@@ -12,9 +12,10 @@ You only need to submit your plugin packge once. Once it has been accept, users 
 
 ## Step 1: Create a repository
 
-All Caido plugin packages **must** have their source code on GitHub. 
+All Caido plugin packages **must** have their source code on GitHub.
 
 Repositories can be hosted:
+
 - Under your own account, like [`github.com/bebiksior/EvenBetter`](https://github.com/bebiksior/EvenBetter)
 - Under the `caido-community` organization, like [`github.com/caido-community/authmatrix`](https://github.com/caido-community/authmatrix)
 
@@ -41,9 +42,9 @@ At the root of your repository please ensure that you have:
 
 ## Step 3: Generate a key-pair
 
-Plugin package releases **must** be digitally signed to be installable in Caido. 
+Plugin packages **must** be digitally signed to be installable in Caido.
 
-In order to sign your plugin package, you need to generate a public/private key-pair.
+To sign your plugin package, you need to generate a public/private key-pair.
 
 ::: info
   Plugin package signing is done using `Ed25519` public-key signatures. [Learn more](https://cendyne.dev/posts/2022-03-06-ed25519-signatures.html).
@@ -51,8 +52,8 @@ In order to sign your plugin package, you need to generate a public/private key-
 
 ### 1. Generate the private key
 
-
 Run the following command to generate a private key:
+
 ```bash
 openssl genpkey -algorithm ed25519 -out private.pem
 ```
@@ -74,6 +75,7 @@ The file `private.pem` will contain the following format:
 ### 2. Generate the public key
 
 Run the following command to generate a public key:
+
 ```bash
 openssl pkey -in private.pem -pubout --out public.pem
 ```
@@ -88,15 +90,14 @@ The file `public.pem` will contain the following format:
 -----END PUBLIC KEY-----
 ```
 
-
-
 ## Step 4: Create a release
 
-In order to submit your plugin package to the store, you need to create a release. 
+To submit your plugin package to the store, you need to create a release.
 
 Releases are hosted on GitHub and contain the plugin package zip archive and its signature.
 
 1. [Create a workflow](https://docs.github.com/en/actions/writing-workflows/quickstart#creating-your-first-workflow) with the following content:
+
     ```yaml
     name: 🚀 Release
 
@@ -157,7 +158,8 @@ Releases are hosted on GitHub and contain the plugin package zip archive and its
               body: 'Release ${{ steps.meta.outputs.version }}'
               artifacts: 'dist/plugin_package.zip,dist/plugin_package.zip.sig'
     ```
-1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [Step 3](#_1-generate-the-private-key).
+
+1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [Step 3](#step-3-generate-a-key-pair).
 1. Go to the `Actions` tab of your repository and trigger the `Release` workflow.
 
 <img width="800" alt="Store release Github Workflow" src="/_images/store_release.png" center/>
@@ -167,10 +169,12 @@ Releases are hosted on GitHub and contain the plugin package zip archive and its
 If you prefer not to use a workflow, follow these steps to create a release manually:
 
 1. Build the plugin package zip archive. If you use the starterkit, this will be `pnpm build` and it will create `dist/plugin_package.zip`.
-1. Generate the signature: 
+1. Generate the signature:
+
    ```bash
    openssl pkeyutl -sign -inkey private.pem -out dist/plugin_package.zip.sig -rawin -in dist/plugin_package.zip
    ```
+
 1. [Create a GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release). The `Tag version` of the release must match the version in your `manifest.json`, it **must not** include a `v` prefix.
 1. Enter a name for the release, and describe it in the description field. Caido doesn't use the release name for anything, but we recommend also using the version for simplicity.
 1. Upload the following assets to the release as binary attachments:
@@ -178,7 +182,6 @@ If you prefer not to use a workflow, follow these steps to create a release manu
    - `plugin_package.zip.sig`
 
 :::
-
 
 ## Step 5: Submit your plugin for review
 
