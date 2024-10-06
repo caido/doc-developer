@@ -92,73 +92,11 @@ The file `public.pem` will contain the following format:
 
 ## Step 4: Create a release
 
-To submit your plugin package to the store, you need to create a release.
+To submit your plugin package to the store, you need to create a Github release.
 
-Releases are hosted on GitHub and contain the plugin package zip archive and its signature.
+We use GitHub Actions to simplify the release process by automatically creating a release and its associated signature.
 
-1. In the root directory of your plugin, create a file called `release.yml` under `.github/workflows` with the following content:
-
-    ```yaml
-    name: 🚀 Release
-
-    on:
-      workflow_dispatch:
-
-    env:
-      NODE_VERSION: 20
-      PNPM_VERSION: 9
-
-    jobs:
-      release:
-        name: Release
-        runs-on: ubuntu-latest
-        permissions:
-          contents: write
-
-        steps:
-          - name: Checkout project
-            uses: actions/checkout@v4
-
-          - name: Check version
-            id: meta
-            run: |
-              VERSION=$(jq -r .version manifest.json)
-              echo "version=${VERSION}" >> $GITHUB_OUTPUT
-
-          - name: Setup Node.js
-            uses: actions/setup-node@v4
-            with:
-              node-version: ${{ env.NODE_VERSION }}
-
-          - name: Setup pnpm
-            uses: pnpm/action-setup@v4
-            with:
-              version: ${{ env.PNPM_VERSION }}
-              run_install: true
-
-          - name: Build package
-            run: pnpm build
-
-          - name: Sign package
-            working-directory: dist
-            run: |
-              if [[ -z "${{ secrets.PRIVATE_KEY }}" ]]; then
-                echo "Set an ed25519 key as PRIVATE_KEY in GitHub Action secret to sign."
-              else
-                echo "${{ secrets.PRIVATE_KEY }}" > private_key.pem
-                openssl pkeyutl -sign -inkey private_key.pem -out plugin_package.zip.sig -rawin -in plugin_package.zip
-                rm private_key.pem
-              fi
-
-          - name: Create release
-            uses: ncipollo/release-action@v1
-            with:
-              tag: ${{ steps.meta.outputs.version }}
-              commit: ${{ github.sha }}
-              body: 'Release ${{ steps.meta.outputs.version }}'
-              artifacts: 'dist/plugin_package.zip,dist/plugin_package.zip.sig'
-    ```
-
+1. Download the [release.yml](https://raw.githubusercontent.com/caido/starterkit-plugin/refs/heads/main/.github/workflows/release.yml) workflow file and save it in the `.github/workflows` directory of your repository.
 1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [Step 3](#step-3-generate-a-key-pair).
 1. Go to the `Actions` tab of your repository and trigger the `Release` workflow.
 
