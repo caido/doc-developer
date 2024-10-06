@@ -1132,9 +1132,9 @@ A unique command identifier.
 
 #### Type declaration
 
-##### \_\_commandId
+##### \_\_commandId?
 
-> **\_\_commandId**: `never`
+> `optional` **\_\_commandId**: `never`
 
 #### Example
 
@@ -1258,9 +1258,9 @@ A [https://fontawesome.com/icons|FontAwesome](https://fontawesome.com/icons|Font
 
 #### Type declaration
 
-##### \_\_icon
+##### \_\_icon?
 
-> **\_\_icon**: `never`
+> `optional` **\_\_icon**: `never`
 
 #### Example
 
@@ -1278,9 +1278,9 @@ A unique Caido identifier per type.
 
 #### Type declaration
 
-##### \_\_id
+##### \_\_id?
 
-> **\_\_id**: `never`
+> `optional` **\_\_id**: `never`
 
 ***
 
