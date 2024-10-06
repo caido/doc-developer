@@ -96,7 +96,7 @@ To submit your plugin package to the store, you need to create a release.
 
 Releases are hosted on GitHub and contain the plugin package zip archive and its signature.
 
-1. [Create a workflow](https://docs.github.com/en/actions/writing-workflows/quickstart#creating-your-first-workflow) with the following content:
+1. In the root directory of your plugin, create a file called `release.yml` under `.github/workflows` with the following content:
 
     ```yaml
     name: 🚀 Release
