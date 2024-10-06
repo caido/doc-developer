@@ -1,6 +1,8 @@
-# Store
+# Submitting your plugin
 
-If you want to share your plugin package with the Caido community, the best way is to submit it to the official list of plugin packages. Once we've reviewed and published your plugin package, users will be able to install it directly from within Caido.
+If you want to share your plugin package with the Caido community, the best way is to submit it to the official list of plugin packages.
+
+Once we've reviewed and published your plugin package, users will be able to install it directly from within Caido.
 
 You only need to submit your plugin packge once. Once it has been accept, users will be able to download new releases from GitHub directly.
 
@@ -10,12 +12,16 @@ You only need to submit your plugin packge once. Once it has been accept, users 
 
 ## Step 1: Create a repository
 
-All Caido plugin packages **must** have their source code on GitHub. If you're unfamiliar with GitHub, refer to the GitHub docs for how to [Create a new repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository).
+All Caido plugin packages **must** have their source code on GitHub.
 
-- Your repository can live under your account, like [`github.com/bebiksior/EvenBetter`](https://github.com/bebiksior/EvenBetter)
-- You can [request our team](https://links.caido.io/www-discord) for a repository under caido-community, like [`github.com/caido-community/authmatrix`](https://github.com/caido-community/authmatrix)
+Repositories can be hosted:
 
-### Using a template
+- Under your own account, like [`github.com/bebiksior/EvenBetter`](https://github.com/bebiksior/EvenBetter)
+- Under the `caido-community` organization, like [`github.com/caido-community/authmatrix`](https://github.com/caido-community/authmatrix)
+
+You can request a repository under the `caido-community` organization on our [Discord server](https://links.caido.io/www-discord).
+
+::: info Don't have a repository yet?
 
 If you are not familiar with the plugin system of Caido and/or the release process. We **highly** recommend that you start with one of our templates.
 
@@ -23,21 +29,40 @@ If you are not familiar with the plugin system of Caido and/or the release proce
 1. Select `Use this template` -> `Create a new repository`
 1. Give it a name
 1. Select `Create repository`
+:::
 
-## Step 2: Preparation
+## Step 2: Add required files
 
 At the root of your repository please ensure that you have:
 
-- Have a `manifest.json` file that follows the standard Caido manifest format.
-- Have a `LICENSE` file to describe the licensing of your plugin package.
-- Have a `README.md` file to describe the goal and usage of your plugin packge.
+- A `manifest.json` file that follows the standard Caido manifest format.
+  - Set the version field for your plugin using [Semantic Versioning](https://semver.org/), like `0.1.0`. **Only use numbers and periods.**
+- A `LICENSE` file to describe the licensing of your plugin package.
+- A `README.md` file to describe the goal and usage of your plugin packge.
 
 ## Step 3: Generate a key-pair
 
-All plugin packages **must** releases be signed to be installable in Caido.
-We use public-key signature using `ed25519` keys for that purpose. [Learn more](https://cendyne.dev/posts/2022-03-06-ed25519-signatures.html).
+Plugin packages **must** be digitally signed to be installable in Caido.
 
-### 1. Generate the private key: `openssl genpkey -algorithm ed25519 -out private.pem`.
+To sign your plugin package, you need to generate a public/private key-pair.
+
+::: info
+  Plugin package signing is done using `Ed25519` public-key signatures. [Learn more](https://cendyne.dev/posts/2022-03-06-ed25519-signatures.html).
+:::
+
+### 1. Generate the private key
+
+Run the following command to generate a private key:
+
+```bash
+openssl genpkey -algorithm ed25519 -out private.pem
+```
+
+This will create a file `private.pem` with the private key. We will use this key to sign our plugin package when we create a release.
+
+::: warning
+**Keep this key private!** Ideally, you should encrypt it or store it in [Github Action Secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
+:::
 
 The file `private.pem` will contain the following format:
 
@@ -47,11 +72,15 @@ The file `private.pem` will contain the following format:
 -----END PRIVATE KEY-----
 ```
 
-::: warning
-**Keep this key very private!** Ideally, you should encrypt it or store it in [Github Action Secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
-:::
+### 2. Generate the public key
 
-### 2. Generate the public key: `openssl pkey -in private.pem -pubout --out public.pem`
+Run the following command to generate a public key:
+
+```bash
+openssl pkey -in private.pem -pubout --out public.pem
+```
+
+This will create a file `public.pem` with the public key. We will use this key when submitting the plugin package to the store.
 
 The file `public.pem` will contain the following format:
 
@@ -61,69 +90,65 @@ The file `public.pem` will contain the following format:
 -----END PUBLIC KEY-----
 ```
 
-::: info
-This is safe to share with other people, in fact it will be used later in the store.
-:::
-
 ## Step 4: Create a release
 
-There are two ways to create a release, either manually or using the Github Workflow from our [starterkit](https://github.com/caido/starterkit-plugin).
+To submit your plugin package to the store, you need to create a Github release.
 
-### Manually
+We use GitHub Actions to simplify the release process by automatically creating a release and its associated signature.
 
-1. In `manifest.json`, update the `version` field to a new version that follows the [Semantic Versioning](https://semver.org/) specification, for example `0.1.0` for your initial release. **Only use numbers and dots**.
+1. Download the [release.yml](https://raw.githubusercontent.com/caido/starterkit-plugin/refs/heads/main/.github/workflows/release.yml) workflow file and save it in the `.github/workflows` directory of your repository.
+1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [Step 3](#step-3-generate-a-key-pair).
+1. Go to the `Actions` tab of your repository and trigger the `Release` workflow.
+
+<img width="800" alt="Store release Github Workflow" src="/_images/store_release.png" center/>
+
+::: info Don't want to use a workflow?
+
+If you prefer not to use a workflow, follow these steps to create a release manually:
+
 1. Build the plugin package zip archive. If you use the starterkit, this will be `pnpm build` and it will create `dist/plugin_package.zip`.
-1. Generate the signature: `openssl pkeyutl -sign -inkey private.pem -out dist/plugin_package.zip.sig -rawin -in dist/plugin_package.zip`
+1. Generate the signature:
+
+   ```bash
+   openssl pkeyutl -sign -inkey private.pem -out dist/plugin_package.zip.sig -rawin -in dist/plugin_package.zip
+   ```
+
 1. [Create a GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release). The `Tag version` of the release must match the version in your `manifest.json`, it **must not** include a `v` prefix.
 1. Enter a name for the release, and describe it in the description field. Caido doesn't use the release name for anything, but we recommend also using the version for simplicity.
 1. Upload the following assets to the release as binary attachments:
    - `plugin_package.zip`
    - `plugin_package.zip.sig`
 
-### Github Workflow
-
-If you want to simplify your life, we have created a [Github Workflow](https://github.com/caido/starterkit-plugin/blob/main/.github/workflows/release.yml) to automate all the steps from above.
-
-1. Add your private key in a [Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) called `PRIVATE_KEY`.
-1. In `manifest.json`, update the `version` field to a new version that follows the [Semantic Versioning](https://semver.org/) specification, for example `0.1.0` for your initial release. **Only use numbers and dots**.
-1. In `Actions`, trigger the `Release` workflow.
-
-<img width="800" alt="Store release Github Workflow" src="/_images/store_release.png" center/>
+:::
 
 ## Step 5: Submit your plugin for review
 
 In this step, we will submit your plugin to the Caido [store](https://github.com/caido/store) for review.
 
-1. Go to the repository [`github.com/caido/store`](https://github.com/caido/store).
-1. In [plugin_packages.json](https://github.com/caido/store/edit/main/plugin_packages.json), selct `Edit this file` in the in the upper-right corner.
-1. Add a new entry at the end of the JSON array.
+1. In [plugin_packages.json](https://github.com/caido/store/edit/main/plugin_packages.json), add a new entry at the end of the JSON array.
 
-   ```json
-   {
-     "id": "my-unique-plugin",
-     "name": "My Unique Plugin",
-     "license": "CC0-1.0",
-     "description": "This my super cool new Caido plugin",
-     "author": {
-       "name": "John Doe",
-       "email": "john@example.com",
-       "url": "https://example.com"
-     },
-     "public_key": "MCowBQYDK2VwAyEA0zDx1tIO7S/d+AYFjLLmTA6pvuEyf+70KfcgVi1DNhc=",
-     "repository": "john/my-unique-plugin"
-   }
-   ```
+    ```json
+    {
+      "id": "my-unique-plugin",
+      "name": "My Unique Plugin",
+      "license": "CC0-1.0",
+      "description": "This my super cool new Caido plugin",
+      "author": {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "url": "https://example.com"
+      },
+      "public_key": "MCowBQYDK2VwAyEA0zDx1tIO7S/d+AYFjLLmTA6pvuEyf+70KfcgVi1DNhc=",
+      "repository": "john/my-unique-plugin"
+    }
+    ```
 
-   A few things to be aware of:
+      - `id` is unique to your plugin. Search `plugin_packages.json` to confirm that there's no existing plugin with the same id.
+      - `name`, `license`, `description` and `author` determine how your plugin appear to the user in Caido.
+      - `public_key` is the base64 part of the public key generated in [Step 3](#step-3-generate-a-key-pair). **Don't** include the header/footer (`BEGIN/END PUBLIC KEY`).
+      - `repository` is the path to your GitHub repository. For example, if your GitHub repo is <https://github.com/username/repo-name>, the path is `username/repo-name`.
 
-   - `id`,`name`, `author`, `license`, and `description` determine how your plugin appear to the user in Caido.
-   - `id` is unique to your plugin. Search `plugin_packages.json` to confirm that there's no existing plugin with the same id.
-   - `public_key` is the base64 part of the public key generated in [Step 3](#step-3-generate-a-key-pair). **Don't** include the header/footer (`BEGIN/END PUBLIC KEY`).
-   - `repository` is the path to your GitHub repository. For example, if your GitHub repo is <https://github.com/username/repo-name>, the path is `username/repo-name`.
-
-   ::: warning
-   Remember to add a comma after the closing brace (`}`) of the previous entry otherwise the json will not be valid!
-   :::
+    **Remember to add a comma after the closing brace `}` of the previous entry otherwise the json will not be valid!**
 
 1. Select `Commit changes...` in the upper-right corner.
 1. Select `Propose changes`.
@@ -131,7 +156,7 @@ In this step, we will submit your plugin to the Caido [store](https://github.com
 1. Fill in the details in the description for the pull request. For the checkboxes, insert an x between the brackets, [x], to mark them as done.
 1. Click `Create pull request`.
 
-You've now submitted your plugin package to the Caido store. Our bot will verify that that format is correct and you will have to sign the [Contributor License Agreement](https://cla-assistant.io/caido/store).
+You've now submitted your plugin package to the Caido store. Our bot will verify that the format is correct and you will have to sign the [Contributor License Agreement](https://cla-assistant.io/caido/store).
 Once your submission is ready for review, you can sit back and wait for the Caido team to review it.
 
 ## Step 6: Address review comments
