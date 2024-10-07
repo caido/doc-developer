@@ -1,10 +1,10 @@
 # Spawning a subprocess
 
-In this guide, we will explore how to use child processes in Node.js. Child processes allow you to run external commands or scripts from within your Node.js application. This can be useful for tasks such as running shell commands, executing other scripts, or interacting with other programs.
+In this guide, we will explore how to use child processes in a backend plugin. Child processes allow you to run external commands or scripts from within your backend plugin. This can be useful for tasks such as running shell commands, executing other scripts, or interacting with other programs.
 
 ## Spawning a Child Process
 
-The `child_process` module in Node.js provides the `spawn` function, which allows you to create a new child process. The `spawn` function takes the command to run and an array of arguments as its parameters.
+The `child_process` module provides the `spawn` function, which allows you to create a new child process. The `spawn` function takes the command to run and an array of arguments as its parameters.
 
 ```js
 import { spawn } from "child_process";
@@ -44,7 +44,7 @@ In this example, we listen to the `close` event and log the exit code of the chi
 
 ## Complete Example
 
-Here is a complete example that demonstrates how to use child processes in Node.js:
+Here is a complete example that demonstrates how to use child processes in a backend plugin:
 
 ```js
 import { spawn } from "child_process";
