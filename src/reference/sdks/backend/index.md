@@ -308,6 +308,10 @@ By default:
 
 [`RequestSpec`](index.md#requestspec)
 
+###### Throws
+
+If the URL is invalid.
+
 ###### Example
 
 ```js
@@ -419,6 +423,26 @@ Excludes the leading `?`.
 ###### Returns
 
 `string`
+
+##### getRaw()
+
+> **getRaw**(): [`RequestSpecRaw`](index.md#requestspecraw)
+
+This methods converts the [RequestSpec](index.md#requestspec) to a [RequestSpecRaw](index.md#requestspecraw).
+
+This is useful to retrieve the raw bytes of the request.
+
+###### Returns
+
+[`RequestSpecRaw`](index.md#requestspecraw)
+
+###### Example
+
+```js
+const spec = new RequestSpec("https://example.com");
+const specRaw = spec.getRaw();
+const bytes = specRaw.getRaw(); // GET / HTTP/1.1\r\nHost: example.com\r\n\r\n
+```
 
 ##### getTls()
 
@@ -627,6 +651,36 @@ Set if the request uses TLS (HTTPS).
 ###### Returns
 
 `void`
+
+##### parse()
+
+> `static` **parse**(`bytes`: [`Bytes`](index.md#bytes)): [`RequestSpec`](index.md#requestspec)
+
+Parses raw bytes into a [RequestSpec](index.md#requestspec).
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `bytes` | [`Bytes`](index.md#bytes) |
+
+###### Returns
+
+[`RequestSpec`](index.md#requestspec)
+
+###### Throws
+
+If the bytes are not a valid HTTP request.
+
+###### Example
+
+```js
+const rawInput = 'GET / HTTP/1.1\r\nHost: example.com\r\n\r\n';
+const spec = RequestSpec.parse(rawInput);
+spec.setHeader('x-caido', 'test');
+const specRaw = spec.getRaw();
+const rawOutput = specRaw.getRaw(); // Will contain the new header
+```
 
 ***
 
