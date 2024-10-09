@@ -15,7 +15,7 @@ sdk.navigation.addPage("/my-plugin-page", {
 });
 ```
 
-This creates a page of which the contents are the [card](#to-create-a-card) you will learn how to create below.
+This creates a page of which the contents are the [card](#creating-a-card) you will learn how to create below.
 
 The `topbar` property is optional and appears to the right of the Caido logo in the top-left corner.
 
