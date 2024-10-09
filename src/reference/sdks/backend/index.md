@@ -2069,7 +2069,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 Console interface for logging.
 
 Currently logs are only available in the backend logs.
-For further documentation, [click here](https://docs.caido.io/report_bug.html#1-backend-logs).
+See https://docs.caido.io/report_bug.html#1-backend-logs
 
 #### Type declaration
 
