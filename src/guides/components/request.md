@@ -1,4 +1,4 @@
-# Sending HTTP Requests in Plugins
+# Sending HTTP Requests
 
 Requests can be interacted with and sent in both Workflows and plugins.
 
@@ -25,7 +25,7 @@ Although, Caido will automatically create a valid request based on the URL suppl
 - `setRaw()` - Sets the request to raw bytes.
 - `setTls()` - Specifies/overwrites if HTTPS is to be used or not.
 
-### To create and send a request in a plugin:
+### Creating and Sending a Request
 
 In the backend index.ts file, you will first need to import the `RequestSpec`, `SDK` and `DefineAPI` type aliases.
 

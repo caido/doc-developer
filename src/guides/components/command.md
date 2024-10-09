@@ -1,8 +1,8 @@
-# Creating a Command & Shortcut
+# Creating a Command
 
 Commands are used to register actions to expose functionality, bind actions to the user-interface and implement business logic.
 
-### To register a command:
+### Registering a Command
 
 ```ts
 sdk.commands.register("hello", {
@@ -24,7 +24,7 @@ The optional `when` property defines a conditional that must be met for the comm
 _For example, to explicity set the command to be available at all times, `when: () => true` can be used._
 :::
 
-### To add a command to the commandPalette:
+### Adding a command to the command palette
 
 ```ts
 sdk.commandPalette.register("hello");

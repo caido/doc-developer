@@ -1,4 +1,4 @@
-# Creating a Plugin Page
+# Creating a Page
 
 Plugin pages provide a graphical user interface in the Caido application. There are multiple SDK objects and methods available to assist you in customization.
 
@@ -6,7 +6,7 @@ Plugin pages provide a graphical user interface in the Caido application. There 
 
 Used to create pages in the application and navigate to them.
 
-### To add a page:
+### Adding a page
 
 ```ts
 sdk.navigation.addPage("/my-plugin-page", {
@@ -23,7 +23,7 @@ The `topbar` property is optional and appears to the right of the Caido logo in 
 The inclusion of a topbar will remove the Browser button, >\_Commands button, Forwarding/Queuing button, Project Dropdown Menu and Account Menu from the top-right corner of the Caido UI in your plugin page.
 :::
 
-### To navigate to a page:
+### Navigating to a Page
 
 ```ts
 sdk.navigation.goTo("/my-plugin-page");
@@ -51,7 +51,7 @@ The `icon` property is optional and adds a [FontAwesome](https://fontawesome.com
 
 Used to create visual elements. Content options for each element are also provided. These elements provide a way to sectionalize the user-interface of your plugin.
 
-### To create a button:
+### Creating a Button
 
 ```ts
 const deleteButton = sdk.ui.button({
@@ -70,7 +70,7 @@ All button properties are optional and include:
 - `trailingIcon` - Addsan icon at the trailing side of the button.
 - `size` - Specifies the button size and can have a value of `"small"`, `"medium"` or `"large"`.
 
-### To create a card:
+### Creating a Card
 
 ```ts
 const card = sdk.ui.card({
@@ -146,7 +146,7 @@ The `init` function contains the `createPage(sdk)` function to register the page
 
 <img alt="Add page SKD." src="/_images/add_page_sdk.png" center/>
 
-### To create a well:
+### Creating a Well
 
 ```ts
 const well = sdk.ui.well({
@@ -160,14 +160,14 @@ A **well** is a layout component. Wells are similar to cards in that they consis
 
 All properties are optional. The value of each property is a defined HTML element.
 
-### To create a request editor:
+### Creating a Request Editor
 
 ```ts
 const reqEditor = sdk.ui.httpRequestEditor();
 const reqEditorPane = reqEditor.getElement();
 ```
 
-### To create a response editor:
+### Creating a Response Editor
 
 ```ts
 const respEditor = sdk.ui.httpResponseEditor();
@@ -210,7 +210,7 @@ const createPage = (sdk: CaidoSDK) => {
 
   const bodyContainer = document.createElement("div");
   bodyContainer.appendChild(bodyText);
-  
+
   const editorsContainer = document.createElement("div");
   editorsContainer.classList.add("editors-container");
 
@@ -219,7 +219,7 @@ const createPage = (sdk: CaidoSDK) => {
 
   editorsContainer.appendChild(reqEditorPane);
   editorsContainer.appendChild(respEditorPane);
-  
+
   bodyContainer.appendChild(editorsContainer);
 
   const bar = document.createElement("p");
@@ -286,7 +286,7 @@ To view the CSS rules of the editors shown below, expand the following:
 
 Used to interact with text within the application environment, allowing text selection, replacement, read permission designations, focusing and editor related messaging.
 
-### To interact with text within the Caido user-interface:
+### Interacting with Text Within Editors
 
 ```ts
 let currentSelection = sdk.window.getActiveEditor()?.getSelectedText();
@@ -302,7 +302,7 @@ sdk.window
 
 This takes the value of the current highlight-selected text and replaces it with the arguement value.
 
-### To display a Toast message:
+### Displaying a Toast Message
 
 ```ts
 sdk.window.showToast("Message to display.", {

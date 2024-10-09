@@ -23,15 +23,15 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Frontend",
     items: [
       {
-        text: "Plugin Page",
+        text: "Creating a Page",
         link: "/guides/components/page",
       },
       {
-        text: "Plugin Commands",
+        text: "Creating a Command",
         link: "/guides/components/command",
       },
       {
-        text: "Plugin Context Menus",
+        text: "Customizing Context Menus",
         link: "/guides/components/menu",
       },
     ],
@@ -40,7 +40,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Backend",
     items: [
       {
-        text: "Send a Request",
+        text: "Sending HTTP Requests",
         link: "/guides/components/request",
       },
     ],
