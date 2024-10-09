@@ -11,7 +11,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    text: "Example plugins",
+    text: "Example Plugins",
     items: [
       {
         text: "Notebook",
@@ -20,7 +20,33 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    text: "Community store",
+    text: "Frontend",
+    items: [
+      {
+        text: "Creating a Page",
+        link: "/guides/components/page",
+      },
+      {
+        text: "Creating a Command",
+        link: "/guides/components/command",
+      },
+      {
+        text: "Customizing Context Menus",
+        link: "/guides/components/menu",
+      },
+    ],
+  },
+  {
+    text: "Backend",
+    items: [
+      {
+        text: "Sending HTTP Requests",
+        link: "/guides/components/request",
+      },
+    ],
+  },
+  {
+    text: "Community Store",
     items: [
       {
         text: "Submitting your plugin",
