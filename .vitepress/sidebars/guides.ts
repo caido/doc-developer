@@ -5,7 +5,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Introduction",
     items: [
       {
-        text: "Directory",
+        text: "Getting Started",
         link: "/guides/",
       },
     ],
