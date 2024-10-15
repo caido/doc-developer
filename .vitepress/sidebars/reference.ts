@@ -2,28 +2,11 @@ import type { DefaultTheme } from "vitepress";
 
 export const referenceSidebar: DefaultTheme.SidebarItem[] = [
   {
-    text: "Introduction",
+    text: "Reference",
     items: [
       {
-        text: "Directory",
+        text: "Introduction",
         link: "/reference/",
-      },
-    ],
-  },
-  {
-    text: "Plugins",
-    items: [
-      {
-        text: "Custom CSS",
-        link: "/reference/plugins/custom_css",
-      },
-      {
-        text: "(WIP) Custom JS",
-        link: "/reference/plugins/custom_js",
-      },
-      {
-        text: "(WIP) Custom Workflow Nodes",
-        link: "/reference/plugins/custom_workflow_nodes",
       },
     ],
   },
@@ -32,15 +15,24 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Backend",
-        link: "/reference/sdks/backend",
+        link: "/reference/sdks/backend/",
       },
       {
         text: "Frontend",
-        link: "/reference/sdks/frontend",
+        link: "/reference/sdks/frontend/",
       },
       {
         text: "Workflow",
-        link: "/reference/sdks/workflow",
+        link: "/reference/sdks/workflow/",
+      },
+    ],
+  },
+  {
+    text: "Files",
+    items: [
+      {
+        text: "manifest.json",
+        link: "/reference/manifest.md",
       },
     ],
   },
