@@ -14,6 +14,15 @@ services:
       - type: rewrite
         source: /stats/event
         destination: https://plausible.io/api/event
+      - type: redirect
+        source: /concepts/essentials/plugins/
+        destination: /guides/
+      - type: redirect
+        source: /concepts/essentials/plugins/frontend.html
+        destination: /guides/
+      - type: redirect
+        source: /concepts/essentials/plugins/backend.html
+        destination: /guides/
     domains:
       - developer.caido.io
     envVars:
