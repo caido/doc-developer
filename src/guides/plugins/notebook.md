@@ -1,14 +1,10 @@
-# Notebook Plugin Development Guide
+# Notebook
 
-_For general documentation on Plugins - click [here](/concepts/essentials/plugins/index.md)._
-
-_For advanced documentation on Frontend Plugins - click [here](/concepts/essentials/plugins/frontend.md)._
-
-**Notebook** is a note taking plugin. The repository for Notebook can be found [here](https://github.com/caido-community/notebook).
+This guide provides a walkthrough for **Notebook**, a note taking plugin. You can find the repository for Notebook [here](https://github.com/caido-community/notebook).
 
 ## manifest.json
 
-For a full breakdown on the properties of the manifest file - view the [Plugin Basics](/concepts/essentials/plugins/index.md#manifest) page.
+For a full breakdown on the properties of the manifest file - view the [manifest.json reference](/reference/manifest.md) page.
 
 ```json
 {

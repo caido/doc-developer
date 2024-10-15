@@ -1,4 +1,4 @@
-# Manifest.json
+# manifest.json
 
 The `manifest.json` file is the first file that is read by the Caido application when a plugin is installed. It defines the plugin's structure and contains metadata used by the Caido installer.
 
