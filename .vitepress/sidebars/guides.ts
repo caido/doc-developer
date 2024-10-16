@@ -34,6 +34,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Sending HTTP Requests",
         link: "/guides/components/request",
       },
+      {
+        text: "Spawning a Process",
+        link: "/guides/components/spawning_process",
+      },
     ],
   },
   {

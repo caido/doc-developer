@@ -10,4 +10,4 @@ Here you will find explanations of the core concepts that underpin Caido plugins
 
 ## Modules
 
-- **[Child Process](./modules/child_process.md)** - spawn processes using the `child_process` module.
+- [Child Process](./modules/child_process.md) - Caido's implementation of NodeJS's `child_process` module.
