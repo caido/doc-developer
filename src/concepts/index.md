@@ -7,4 +7,4 @@
 
 ## Modules
 
-- **[Child Process](./backend/subprocess.md)** - spawn processes using the `child_process` module.
+- **[Child Process](./modules/child_process.md)** - spawn processes using the `child_process` module.
