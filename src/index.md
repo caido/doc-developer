@@ -16,6 +16,10 @@ hero:
       link: /guides/
 
     - theme: alt
+      text: Tutorials
+      link: /tutorials/
+
+    - theme: alt
       text: Reference
       link: /reference/
 

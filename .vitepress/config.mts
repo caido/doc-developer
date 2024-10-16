@@ -1,6 +1,11 @@
 import { defineConfig } from "vitepress";
 
-import { conceptsSidebar, guidesSidebar, referenceSidebar } from "./sidebars";
+import {
+  conceptsSidebar,
+  guidesSidebar,
+  referenceSidebar,
+  tutorialsSidebar,
+} from "./sidebars";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -40,6 +45,7 @@ export default defineConfig({
 
     nav: [
       { text: "Guides", link: "/guides/" },
+      { text: "Tutorials", link: "/tutorials/" },
       { text: "Reference", link: "/reference/" },
       { text: "Concepts", link: "/concepts/" },
       { text: "Policy", link: "/policy.md" },
@@ -49,6 +55,7 @@ export default defineConfig({
       "/reference/": referenceSidebar,
       "/guides/": guidesSidebar,
       "/concepts/": conceptsSidebar,
+      "/tutorials/": tutorialsSidebar,
     },
 
     outline: {
