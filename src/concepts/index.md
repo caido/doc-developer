@@ -1,9 +1,12 @@
-# Directory
+# Concepts
+
+Here you will find explanations of the core concepts that underpin Caido plugins.
 
 ## Essentials
 
-- **[Runtime](./essentials/runtime.md)** - javascript runtime used by Plugins.
-- **[Tooling](./essentials/tooling.md)** - tools for the ease of Plugin development.
+- [Plugin Architecture](./essentials/package.md) - The structure of a plugin package.
+- [Runtime](./essentials/runtime.md) - Javascript runtimes used by plugins.
+- [Tooling](./essentials/tooling.md) - Tools for the ease of plugin development.
 
 ## Modules
 

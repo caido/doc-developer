@@ -23,6 +23,9 @@ services:
       - type: redirect
         source: /concepts/essentials/plugins/backend.html
         destination: /guides/
+      - type: redirect
+        source: /guides/plugins/notebook.html
+        destination: /tutorials/notebook.html
     domains:
       - developer.caido.io
     envVars:
