@@ -38,6 +38,12 @@ Utilities to interact with the command palette.
 
 Utilities to interact with commands
 
+##### files
+
+> **files**: [`FilesSDK`](index.md#filessdk)
+
+Utilities to interact with files.
+
 ##### findings
 
 > **findings**: [`FindingsSDK`](index.md#findingssdk)
@@ -324,7 +330,7 @@ The list of excluded items.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-4)
 
 The unique ID of the scope.
 
@@ -377,7 +383,7 @@ const newScope = await sdk.scopes.createScope({
 
 ##### deleteScope()
 
-> **deleteScope**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
+> **deleteScope**: (`id`: [`ID`](index.md#id-4)) => `Promise`\<`boolean`\>
 
 Delete a scope.
 
@@ -385,7 +391,7 @@ Delete a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-3) | The id of the scope to delete. |
+| `id` | [`ID`](index.md#id-4) | The id of the scope to delete. |
 
 ###### Returns
 
@@ -407,7 +413,7 @@ A list of scopes.
 
 ##### updateScope()
 
-> **updateScope**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+> **updateScope**: (`id`: [`ID`](index.md#id-4), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
 
 Update a scope.
 
@@ -415,7 +421,7 @@ Update a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-3) | The id of the scope to update. |
+| `id` | [`ID`](index.md#id-4) | The id of the scope to update. |
 | `options` | `object` | Options for the scope. |
 | `options.allowlist`? | `string`[] | The list of included items in the scope. |
 | `options.denylist`? | `string`[] | The list of excluded items in the scope. |
@@ -451,7 +457,7 @@ The host of the request attached to this finding
 
 ##### id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-4)
 
 The ID of the finding.
 
@@ -485,7 +491,7 @@ Utilities to interact with findings
 
 ##### createFinding()
 
-> **createFinding**: (`requestId`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
+> **createFinding**: (`requestId`: [`ID`](index.md#id-4), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
 
 Create a [Finding](index.md#finding).
 
@@ -493,7 +499,7 @@ Create a [Finding](index.md#finding).
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `requestId` | [`ID`](index.md#id-3) | The id of the request the finding is associated with. |
+| `requestId` | [`ID`](index.md#id-4) | The id of the request the finding is associated with. |
 | `options` | `object` | Options for the finding. |
 | `options.dedupeKey`? | `string` | If a finding with the same deduplication key already exists, it will not create a new finding. |
 | `options.description`? | `string` | The description of the finding. |
@@ -621,7 +627,7 @@ The request that is associated with the response.
 
 ##### request.id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-4)
 
 ##### request.isTls
 
@@ -647,7 +653,7 @@ The response that is currently open in the response pane.
 
 ##### response.id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-4)
 
 ##### response.raw
 
@@ -1385,6 +1391,129 @@ Set the HTTPQL query that will be applied on the search table results.
 ###### Returns
 
 `void`
+
+## Files
+
+### FilesSDK
+
+> **FilesSDK**: `object`
+
+SDK for interacting with the Files page.
+
+#### Type declaration
+
+##### create()
+
+> **create**: (`file`: `File`) => `Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+Uploads a file to the host.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `file` | `File` | The file to upload. |
+
+###### Returns
+
+`Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+The uploaded file.
+
+##### delete()
+
+> **delete**: (`id`: `string`) => `Promise`\<`void`\>
+
+Deletes a file from the host.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The ID of the file to delete. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+The deleted file.
+
+##### getAll()
+
+> **getAll**: () => [`HostedFile`](index.md#hostedfile)[]
+
+Gets all hosted files.
+
+###### Returns
+
+[`HostedFile`](index.md#hostedfile)[]
+
+The files.
+
+##### rename()
+
+> **rename**: (`id`: `string`, `name`: `string`) => `Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+Renames a file on the host.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The ID of the file to rename. |
+| `name` | `string` | The new name of the file. |
+
+###### Returns
+
+`Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+The renamed file.
+
+***
+
+### HostedFile
+
+> **HostedFile**: `object`
+
+A hosted file.
+
+#### Type declaration
+
+##### createdAt
+
+> **createdAt**: `Date`
+
+The date the file was created.
+
+##### id
+
+> **id**: `string`
+
+The ID of the file.
+
+##### name
+
+> **name**: `string`
+
+The name of the file.
+
+##### path
+
+> **path**: `string`
+
+The path of the file.
+
+##### size
+
+> **size**: `number`
+
+The size of the file in bytes.
+
+##### updatedAt
+
+> **updatedAt**: `Date`
+
+The date the file was updated.
 
 ## Other
 
