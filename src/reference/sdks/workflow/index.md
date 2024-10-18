@@ -27,6 +27,12 @@ This is currently the same as the global `console`.
 
 The SDK for the Findings service.
 
+##### projects
+
+> **projects**: [`ProjectsSDK`](index.md#projectssdk)
+
+The SDK for the Projects service.
+
 ##### replay
 
 > **replay**: [`ReplaySDK`](index.md#replaysdk)
@@ -1667,6 +1673,81 @@ The name of the replay session.
 ###### Returns
 
 `string`
+
+## Projects
+
+### Project
+
+> **Project**: `object`
+
+A saved immutable Project.
+
+#### Type declaration
+
+##### getId()
+
+The unique Caido [ID](index.md#id) of the project.
+
+###### Returns
+
+[`ID`](index.md#id)
+
+##### getName()
+
+The name of the project.
+
+###### Returns
+
+`string`
+
+##### getStatus()
+
+The status of the project.
+
+###### Returns
+
+[`ProjectStatus`](index.md#projectstatus)
+
+##### getVersion()
+
+The version of the project.
+The format is `MAJOR.MINOR.PATCH`.
+
+###### Returns
+
+`string`
+
+***
+
+### ProjectsSDK
+
+> **ProjectsSDK**: `object`
+
+The SDK for the Projects service.
+
+#### Type declaration
+
+##### getCurrent()
+
+Get the currently selected [Project](index.md#project) if any.
+
+###### Returns
+
+`Promise`\<`undefined` \| [`Project`](index.md#project)\>
+
+###### Example
+
+```js
+await sdk.projects.getCurrent();
+```
+
+***
+
+### ProjectStatus
+
+> **ProjectStatus**: `"ready"` \| `"restoring"` \| `"error"`
+
+A [Project](index.md#project) status.
 
 ## Shared
 
