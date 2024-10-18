@@ -50,6 +50,12 @@ Utilities to interact with findings
 
 Utilities to interact with the GraphQL API.
 
+##### httpHistory
+
+> **httpHistory**: [`HTTPHistorySDK`](index.md#httphistorysdk)
+
+Utilities to interact with the HTTP History page.
+
 ##### menu
 
 > **menu**: [`MenuSDK`](index.md#menusdk)
@@ -62,11 +68,23 @@ Utilities to insert menu items and context-menus throughout the UI.
 
 Utilities to interact with navigation.
 
+##### replay
+
+> **replay**: [`ReplaySDK`](index.md#replaysdk)
+
+Utilities to interact with the Replay page.
+
 ##### scopes
 
 > **scopes**: [`ScopesSDK`](index.md#scopessdk)
 
 Utilities to interact with scopes
+
+##### search
+
+> **search**: [`SearchSDK`](index.md#searchsdk)
+
+Utilities to interact with the Search page.
 
 ##### shortcuts
 
@@ -843,6 +861,7 @@ The [Icon](index.md#icon) to display to the left of the menu item.
 > **path**: `string`
 
 The path that the user will be navigated to when the menu item is clicked
+The path must start with "/settings/".
 
 ##### type
 
@@ -1023,7 +1042,7 @@ Register a shortcut.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `commandId` | [`CommandID`](index.md#commandid) | The id of the command to run when the shortcut is triggered. |
-| `keys` | `string`[] | The keys of the shortcut. |
+| `keys` | `string`[] | The keys of the shortcut. Check out [hotkeys-js](https://github.com/jaywcjlove/hotkeys-js?tab=readme-ov-file#supported-keys) for the list of supported keys. |
 
 ###### Returns
 
@@ -1122,6 +1141,251 @@ sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
 });
 ```
 
+## Replay
+
+### ReplayCollection
+
+> **ReplayCollection**: `object`
+
+A collection in Replay.
+
+#### Type declaration
+
+##### id
+
+> **id**: `string`
+
+The ID of the collection.
+
+##### name
+
+> **name**: `string`
+
+The name of the collection.
+
+##### sessionIds
+
+> **sessionIds**: `string`[]
+
+The sessions in the collection.
+
+***
+
+### ReplaySDK
+
+> **ReplaySDK**: `object`
+
+Utilities to interact with Replay.
+
+#### Type declaration
+
+##### closeTab()
+
+> **closeTab**: (`sessionId`: `string`) => `void`
+
+Close a replay tab for the given session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | The ID of the session to close. |
+
+###### Returns
+
+`void`
+
+##### getCollections()
+
+> **getCollections**: () => [`ReplayCollection`](index.md#replaycollection)[]
+
+Get the list of all replay collections.
+
+###### Returns
+
+[`ReplayCollection`](index.md#replaycollection)[]
+
+The list of all replay collections.
+
+##### getSessions()
+
+> **getSessions**: () => [`ReplaySession`](index.md#replaysession)[]
+
+Get the list of all replay sessions.
+
+###### Returns
+
+[`ReplaySession`](index.md#replaysession)[]
+
+The list of all replay sessions.
+
+##### getTabs()
+
+> **getTabs**: () => [`ReplayTab`](index.md#replaytab)[]
+
+Get the list of all open replay tabs.
+
+###### Returns
+
+[`ReplayTab`](index.md#replaytab)[]
+
+The list of all open replay tabs.
+
+##### openTab()
+
+> **openTab**: (`sessionId`: `string`) => `void`
+
+Open a replay tab for the given session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | `string` | The ID of the session to open. |
+
+###### Returns
+
+`void`
+
+##### renameSession()
+
+> **renameSession**: (`id`: `string`, `name`: `string`) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+Rename a session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The ID of the session to rename. |
+| `name` | `string` | The new name of the session. |
+
+###### Returns
+
+`Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+The updated session.
+
+***
+
+### ReplaySession
+
+> **ReplaySession**: `object`
+
+A session in Replay.
+
+#### Type declaration
+
+##### collectionId
+
+> **collectionId**: `string`
+
+The ID of the collection the session belongs to.
+
+##### id
+
+> **id**: `string`
+
+The ID of the session.
+
+##### name
+
+> **name**: `string`
+
+The name of the session.
+
+***
+
+### ReplayTab
+
+> **ReplayTab**: `object`
+
+A replay tab.
+
+#### Type declaration
+
+##### sessionId
+
+> **sessionId**: `string`
+
+The ID of the session associated with this tab.
+
+## HTTP History
+
+### HTTPHistorySDK
+
+> **HTTPHistorySDK**: `object`
+
+Utilities to interact with the HTTP History page.
+
+#### Type declaration
+
+##### getQuery()
+
+> **getQuery**: () => `string`
+
+Get the current HTTPQL query.
+
+###### Returns
+
+`string`
+
+The current HTTPQL query.
+
+##### setQuery()
+
+> **setQuery**: (`query`: `string`) => `void`
+
+Set the HTTPQL query that will be applied on the HTTP History table results.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `query` | `string` | The HTTPQL query. |
+
+###### Returns
+
+`void`
+
+## Search
+
+### SearchSDK
+
+> **SearchSDK**: `object`
+
+Utilities to interact with the Search page.
+
+#### Type declaration
+
+##### getQuery()
+
+> **getQuery**: () => `string`
+
+Get the current HTTPQL query.
+
+###### Returns
+
+`string`
+
+The current HTTPQL query.
+
+##### setQuery()
+
+> **setQuery**: (`query`: `string`) => `void`
+
+Set the HTTPQL query that will be applied on the search table results.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `query` | `string` | The HTTPQL query. |
+
+###### Returns
+
+`void`
+
 ## Other
 
 ### CommandID
@@ -1161,6 +1425,18 @@ Focus the editor.
 ###### Returns
 
 `void`
+
+##### getEditorView()
+
+> **getEditorView**: () => `EditorView`
+
+Get the editor view.
+
+###### Returns
+
+`EditorView`
+
+The CodeMirror [EditorView](https://codemirror.net/docs/ref/#view.EditorView).
 
 ##### getSelectedText()
 
@@ -1212,17 +1488,26 @@ Replace the currently selected text of the editor.
 
 > **getEditorView**: () => `EditorView`
 
+Get the editor view.
+
 ###### Returns
 
 `EditorView`
+
+The CodeMirror [EditorView](https://codemirror.net/docs/ref/#view.EditorView).
 
 ##### getElement()
 
 > **getElement**: () => `HTMLElement`
 
+Get the editor element.
+Append this to your DOM to display the editor.
+
 ###### Returns
 
 `HTMLElement`
+
+The editor element.
 
 ***
 
@@ -1236,17 +1521,26 @@ Replace the currently selected text of the editor.
 
 > **getEditorView**: () => `EditorView`
 
+Get the editor view.
+
 ###### Returns
 
 `EditorView`
+
+The CodeMirror [EditorView](https://codemirror.net/docs/ref/#view.EditorView).
 
 ##### getElement()
 
 > **getElement**: () => `HTMLElement`
 
+Get the editor element.
+Append this to your DOM to display the editor.
+
 ###### Returns
 
 `HTMLElement`
+
+The editor element.
 
 ***
 
