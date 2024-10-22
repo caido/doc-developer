@@ -38,6 +38,18 @@ Utilities to interact with the command palette.
 
 Utilities to interact with commands
 
+##### files
+
+> **files**: [`FilesSDK`](index.md#filessdk)
+
+Utilities to interact with the Files page.
+
+##### filters
+
+> **filters**: [`FiltersSDK`](index.md#filterssdk)
+
+Utilities to interact with Filters page.
+
 ##### findings
 
 > **findings**: [`FindingsSDK`](index.md#findingssdk)
@@ -55,6 +67,12 @@ Utilities to interact with the GraphQL API.
 > **httpHistory**: [`HTTPHistorySDK`](index.md#httphistorysdk)
 
 Utilities to interact with the HTTP History page.
+
+##### matchReplace
+
+> **matchReplace**: [`MatchReplaceSDK`](index.md#matchreplacesdk)
+
+Utilities to interact with Match and Replace page.
 
 ##### menu
 
@@ -324,7 +342,7 @@ The list of excluded items.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-5)
 
 The unique ID of the scope.
 
@@ -377,7 +395,7 @@ const newScope = await sdk.scopes.createScope({
 
 ##### deleteScope()
 
-> **deleteScope**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
+> **deleteScope**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`boolean`\>
 
 Delete a scope.
 
@@ -385,7 +403,7 @@ Delete a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-3) | The id of the scope to delete. |
+| `id` | [`ID`](index.md#id-5) | The id of the scope to delete. |
 
 ###### Returns
 
@@ -407,7 +425,7 @@ A list of scopes.
 
 ##### updateScope()
 
-> **updateScope**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+> **updateScope**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
 
 Update a scope.
 
@@ -415,7 +433,7 @@ Update a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-3) | The id of the scope to update. |
+| `id` | [`ID`](index.md#id-5) | The id of the scope to update. |
 | `options` | `object` | Options for the scope. |
 | `options.allowlist`? | `string`[] | The list of included items in the scope. |
 | `options.denylist`? | `string`[] | The list of excluded items in the scope. |
@@ -451,7 +469,7 @@ The host of the request attached to this finding
 
 ##### id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-5)
 
 The ID of the finding.
 
@@ -485,7 +503,7 @@ Utilities to interact with findings
 
 ##### createFinding()
 
-> **createFinding**: (`requestId`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
+> **createFinding**: (`requestId`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
 
 Create a [Finding](index.md#finding).
 
@@ -493,7 +511,7 @@ Create a [Finding](index.md#finding).
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `requestId` | [`ID`](index.md#id-3) | The id of the request the finding is associated with. |
+| `requestId` | [`ID`](index.md#id-5) | The id of the request the finding is associated with. |
 | `options` | `object` | Options for the finding. |
 | `options.dedupeKey`? | `string` | If a finding with the same deduplication key already exists, it will not create a new finding. |
 | `options.description`? | `string` | The description of the finding. |
@@ -621,7 +639,7 @@ The request that is associated with the response.
 
 ##### request.id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-5)
 
 ##### request.isTls
 
@@ -647,7 +665,7 @@ The response that is currently open in the response pane.
 
 ##### response.id
 
-> **id**: [`ID`](index.md#id-3)
+> **id**: [`ID`](index.md#id-5)
 
 ##### response.raw
 
@@ -1153,7 +1171,7 @@ A collection in Replay.
 
 ##### id
 
-> **id**: `string`
+> **id**: [`ID`](index.md#id-5)
 
 The ID of the collection.
 
@@ -1165,7 +1183,7 @@ The name of the collection.
 
 ##### sessionIds
 
-> **sessionIds**: `string`[]
+> **sessionIds**: [`ID`](index.md#id-5)[]
 
 The sessions in the collection.
 
@@ -1181,7 +1199,7 @@ Utilities to interact with Replay.
 
 ##### closeTab()
 
-> **closeTab**: (`sessionId`: `string`) => `void`
+> **closeTab**: (`sessionId`: [`ID`](index.md#id-5)) => `void`
 
 Close a replay tab for the given session.
 
@@ -1189,7 +1207,7 @@ Close a replay tab for the given session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sessionId` | `string` | The ID of the session to close. |
+| `sessionId` | [`ID`](index.md#id-5) | The ID of the session to close. |
 
 ###### Returns
 
@@ -1233,7 +1251,7 @@ The list of all open replay tabs.
 
 ##### openTab()
 
-> **openTab**: (`sessionId`: `string`) => `void`
+> **openTab**: (`sessionId`: [`ID`](index.md#id-5)) => `void`
 
 Open a replay tab for the given session.
 
@@ -1241,7 +1259,7 @@ Open a replay tab for the given session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sessionId` | `string` | The ID of the session to open. |
+| `sessionId` | [`ID`](index.md#id-5) | The ID of the session to open. |
 
 ###### Returns
 
@@ -1249,7 +1267,7 @@ Open a replay tab for the given session.
 
 ##### renameSession()
 
-> **renameSession**: (`id`: `string`, `name`: `string`) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
+> **renameSession**: (`id`: [`ID`](index.md#id-5), `name`: `string`) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
 
 Rename a session.
 
@@ -1257,7 +1275,7 @@ Rename a session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | `string` | The ID of the session to rename. |
+| `id` | [`ID`](index.md#id-5) | The ID of the session to rename. |
 | `name` | `string` | The new name of the session. |
 
 ###### Returns
@@ -1278,13 +1296,13 @@ A session in Replay.
 
 ##### collectionId
 
-> **collectionId**: `string`
+> **collectionId**: [`ID`](index.md#id-5)
 
 The ID of the collection the session belongs to.
 
 ##### id
 
-> **id**: `string`
+> **id**: [`ID`](index.md#id-5)
 
 The ID of the session.
 
@@ -1306,7 +1324,7 @@ A replay tab.
 
 ##### sessionId
 
-> **sessionId**: `string`
+> **sessionId**: [`ID`](index.md#id-5)
 
 The ID of the session associated with this tab.
 
@@ -1322,19 +1340,19 @@ Utilities to interact with the HTTP History page.
 
 ##### getQuery()
 
-> **getQuery**: () => `string`
+> **getQuery**: () => [`HTTPQL`](index.md#httpql)
 
 Get the current HTTPQL query.
 
 ###### Returns
 
-`string`
+[`HTTPQL`](index.md#httpql)
 
 The current HTTPQL query.
 
 ##### setQuery()
 
-> **setQuery**: (`query`: `string`) => `void`
+> **setQuery**: (`query`: [`HTTPQL`](index.md#httpql)) => `void`
 
 Set the HTTPQL query that will be applied on the HTTP History table results.
 
@@ -1342,7 +1360,7 @@ Set the HTTPQL query that will be applied on the HTTP History table results.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `query` | `string` | The HTTPQL query. |
+| `query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query. |
 
 ###### Returns
 
@@ -1360,19 +1378,19 @@ Utilities to interact with the Search page.
 
 ##### getQuery()
 
-> **getQuery**: () => `string`
+> **getQuery**: () => [`HTTPQL`](index.md#httpql)
 
 Get the current HTTPQL query.
 
 ###### Returns
 
-`string`
+[`HTTPQL`](index.md#httpql)
 
 The current HTTPQL query.
 
 ##### setQuery()
 
-> **setQuery**: (`query`: `string`) => `void`
+> **setQuery**: (`query`: [`HTTPQL`](index.md#httpql)) => `void`
 
 Set the HTTPQL query that will be applied on the search table results.
 
@@ -1380,11 +1398,513 @@ Set the HTTPQL query that will be applied on the search table results.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `query` | `string` | The HTTPQL query. |
+| `query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query. |
 
 ###### Returns
 
 `void`
+
+## Files
+
+### FilesSDK
+
+> **FilesSDK**: `object`
+
+SDK for interacting with the Files page.
+
+#### Type declaration
+
+##### create()
+
+> **create**: (`file`: `File`) => `Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+Uploads a file to the host.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `file` | `File` | The file to upload. |
+
+###### Returns
+
+`Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+The uploaded file.
+
+##### delete()
+
+> **delete**: (`id`: `string`) => `Promise`\<`void`\>
+
+Deletes a file from the host.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The ID of the file to delete. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+The deleted file.
+
+##### getAll()
+
+> **getAll**: () => [`HostedFile`](index.md#hostedfile)[]
+
+Gets all hosted files.
+
+###### Returns
+
+[`HostedFile`](index.md#hostedfile)[]
+
+The files.
+
+##### rename()
+
+> **rename**: (`id`: `string`, `name`: `string`) => `Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+Renames a file on the host.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The ID of the file to rename. |
+| `name` | `string` | The new name of the file. |
+
+###### Returns
+
+`Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+The renamed file.
+
+***
+
+### HostedFile
+
+> **HostedFile**: `object`
+
+A hosted file.
+
+#### Type declaration
+
+##### createdAt
+
+> **createdAt**: `Date`
+
+The date the file was created.
+
+##### id
+
+> **id**: `string`
+
+The ID of the file.
+
+##### name
+
+> **name**: `string`
+
+The name of the file.
+
+##### path
+
+> **path**: `string`
+
+The path of the file.
+
+##### size
+
+> **size**: `number`
+
+The size of the file in bytes.
+
+##### updatedAt
+
+> **updatedAt**: `Date`
+
+The date the file was updated.
+
+## Filters
+
+### Filter
+
+> **Filter**: `object`
+
+Represents a filter.
+
+#### Type declaration
+
+##### alias
+
+> **alias**: `string`
+
+The alias of the filter.
+This alias is used when referencing the filter in an HTTPQL query (e.g. `preset:my-alias`).
+
+##### id
+
+> **id**: [`ID`](index.md#id-5)
+
+The ID of the filter.
+
+##### name
+
+> **name**: `string`
+
+The name of the filter.
+
+##### query
+
+> **query**: [`HTTPQL`](index.md#httpql)
+
+The HTTPQL expression of the filter.
+
+***
+
+### FiltersSDK
+
+> **FiltersSDK**: `object`
+
+SDK for interacting with the Filters page.
+
+#### Type declaration
+
+##### create()
+
+> **create**: (`options`: `object`) => `Promise`\<[`Filter`](index.md#filter)\>
+
+Creates a filter.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | `object` | Options for the filter. |
+| `options.alias` | `string` | The alias of the filter. Used when referencing the filter in an HTTPQL query (e.g. `preset:my-alias`). Should be unique and follow the format `[a-zA-Z0-9_-]+`. |
+| `options.name` | `string` | The name of the filter. Should be unique. |
+| `options.query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query of the filter. |
+
+###### Returns
+
+`Promise`\<[`Filter`](index.md#filter)\>
+
+The created filter.
+
+##### delete()
+
+> **delete**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`void`\>
+
+Deletes a filter.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) | The ID of the filter to delete. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+##### getAll()
+
+> **getAll**: () => [`Filter`](index.md#filter)[]
+
+Gets all filters.
+
+###### Returns
+
+[`Filter`](index.md#filter)[]
+
+The filters.
+
+##### update()
+
+> **update**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`Filter`](index.md#filter)\>
+
+Updates a filter.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) | The ID of the filter to update. |
+| `options` | `object` | Options for the filter. |
+| `options.alias` | `string` | The alias of the filter. |
+| `options.name` | `string` | The name of the filter. |
+| `options.query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query of the filter. |
+
+###### Returns
+
+`Promise`\<[`Filter`](index.md#filter)\>
+
+The updated filter.
+
+## Match and Replace
+
+### MatchReplaceCollection
+
+> **MatchReplaceCollection**: `object`
+
+A collection in Match and Replace.
+
+#### Type declaration
+
+##### id
+
+> **id**: [`ID`](index.md#id-5)
+
+##### name
+
+> **name**: `string`
+
+##### ruleIds
+
+> **ruleIds**: [`ID`](index.md#id-5)[]
+
+***
+
+### MatchReplaceRule
+
+> **MatchReplaceRule**: `object`
+
+A rule in Match and Replace.
+
+#### Type declaration
+
+##### collectionId
+
+> **collectionId**: [`ID`](index.md#id-5)
+
+The ID of the collection the rule belongs to.
+
+##### id
+
+> **id**: [`ID`](index.md#id-5)
+
+The ID of the rule.
+
+##### isEnabled
+
+> **isEnabled**: `boolean`
+
+Whether the rule is enabled.
+
+##### isRegex
+
+> **isRegex**: `boolean`
+
+Whether the match term is a regex.
+
+##### matchTerm
+
+> **matchTerm**: `string`
+
+The match term of the rule.
+
+##### name
+
+> **name**: `string`
+
+The name of the rule.
+
+##### query
+
+> **query**: [`HTTPQL`](index.md#httpql)
+
+The HTTPQL query to match the rule against.
+Only requests that match the query will be affected by the rule.
+
+##### replaceTerm
+
+> **replaceTerm**: `string`
+
+The replace term of the rule.
+
+##### strategy
+
+> **strategy**: [`MatchReplaceStrategy`](index.md#matchreplacestrategy)
+
+The strategy of the rule.
+
+***
+
+### MatchReplaceSDK
+
+> **MatchReplaceSDK**: `object`
+
+Utilities to interact with the Match and Replace page.
+
+#### Type declaration
+
+##### createCollection()
+
+> **createCollection**: (`options`: `object`) => `Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
+
+Create a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | `object` | The options for the collection. |
+| `options.name` | `string` | The name of the collection. |
+
+###### Returns
+
+`Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
+
+##### createRule()
+
+> **createRule**: (`options`: `object`) => `Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
+
+Create a rule.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | `object` | The options for the rule. |
+| `options.collectionId` | [`ID`](index.md#id-5) | The ID of the collection the rule belongs to. |
+| `options.isEnabled` | `boolean` | Whether the rule is enabled. |
+| `options.isRegex` | `boolean` | Whether the match term is a regex. |
+| `options.matchTerm` | `string` | The match term of the rule. |
+| `options.name` | `string` | The name of the rule. |
+| `options.query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query to match the rule against. |
+| `options.replaceTerm` | `string` | The replace term of the rule. |
+| `options.strategy` | [`MatchReplaceStrategy`](index.md#matchreplacestrategy) | The strategy of the rule. |
+
+###### Returns
+
+`Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
+
+##### deleteCollection()
+
+> **deleteCollection**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`void`\>
+
+Delete a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) | The ID of the collection. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+##### deleteRule()
+
+> **deleteRule**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`void`\>
+
+Delete a rule.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) | The ID of the rule. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+##### getActiveRules()
+
+> **getActiveRules**: () => [`MatchReplaceRule`](index.md#matchreplacerule)[]
+
+Get all active rules.
+Rules are ordered in priority from highest to lowest.
+
+###### Returns
+
+[`MatchReplaceRule`](index.md#matchreplacerule)[]
+
+All active rules.
+
+##### getCollections()
+
+> **getCollections**: () => [`MatchReplaceCollection`](index.md#matchreplacecollection)[]
+
+Get all collections.
+
+###### Returns
+
+[`MatchReplaceCollection`](index.md#matchreplacecollection)[]
+
+##### getRules()
+
+> **getRules**: () => [`MatchReplaceRule`](index.md#matchreplacerule)[]
+
+Get all rules.
+
+###### Returns
+
+[`MatchReplaceRule`](index.md#matchreplacerule)[]
+
+All rules.
+
+##### selectRule()
+
+> **selectRule**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `void`
+
+Select a rule to be displayed in the UI.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the rule, or undefined to clear the selection. |
+
+###### Returns
+
+`void`
+
+##### updateCollection()
+
+> **updateCollection**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
+
+Update a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) | The ID of the collection. |
+| `options` | `object` | The new values for the collection. |
+| `options.name` | `string` | The new name of the collection. |
+
+###### Returns
+
+`Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
+
+##### updateRule()
+
+> **updateRule**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
+
+Update a rule.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) | The ID of the rule. |
+| `options` | `object` | The new values for the rule. |
+| `options.isEnabled` | `boolean` | Whether the rule is enabled. |
+| `options.isRegex` | `boolean` | Whether the match term is a regex. |
+| `options.matchTerm` | `string` | The new match term of the rule. |
+| `options.name` | `string` | The new name of the rule. |
+| `options.query` | [`HTTPQL`](index.md#httpql) | The new HTTPQL query of the rule. |
+| `options.replaceTerm` | `string` | The new replace term of the rule. |
+| `options.strategy` | [`MatchReplaceStrategy`](index.md#matchreplacestrategy) | The new strategy of the rule. |
+
+###### Returns
+
+`Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
 
 ## Other
 
@@ -1475,6 +1995,26 @@ Replace the currently selected text of the editor.
 ###### Returns
 
 `void`
+
+***
+
+### HTTPQL
+
+> **HTTPQL**: `string` & `object`
+
+An HTTPQL expression.
+
+#### Type declaration
+
+##### \_\_httpql?
+
+> `optional` **\_\_httpql**: `never`
+
+#### Example
+
+```ts
+`req.method.eq:"POST"`
+```
 
 ***
 
@@ -1599,6 +2139,12 @@ A unique Caido identifier per type.
 ### JSONValue
 
 > **JSONValue**: [`JSONPrimitive`](index.md#jsonprimitive) \| [`JSONValue`](index.md#jsonvalue)[] \| `object`
+
+***
+
+### MatchReplaceStrategy
+
+> **MatchReplaceStrategy**: `"REQUEST_FIRST_LINE"` \| `"REQUEST_HEADER"` \| `"REQUEST_BODY"` \| `"RESPONSE_FIRST_LINE"` \| `"RESPONSE_HEADER"` \| `"RESPONSE_BODY"`
 
 ***
 
