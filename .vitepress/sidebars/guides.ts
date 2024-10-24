@@ -44,6 +44,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Community Store",
     items: [
       {
+        text: "Setting Up Your Repository",
+        link: "/guides/distribution/repository",
+      },
+      {
         text: "Submitting your plugin",
         link: "/guides/distribution/store",
       },
