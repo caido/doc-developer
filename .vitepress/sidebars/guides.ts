@@ -48,7 +48,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/distribution/repository",
       },
       {
-        text: "Submitting your plugin",
+        text: "Submitting to the Store",
         link: "/guides/distribution/store",
       },
     ],
