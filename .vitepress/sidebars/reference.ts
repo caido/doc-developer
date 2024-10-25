@@ -34,6 +34,10 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
         text: "manifest.json",
         link: "/reference/manifest.md",
       },
+      {
+        text: "plugin_packages.json",
+        link: "/reference/plugin_packages.md",
+      },
     ],
   },
 ];
