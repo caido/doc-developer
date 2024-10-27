@@ -31,8 +31,10 @@ Now we'll create a repository on Github. This repository will host your plugin c
 
   ```bash
   git init
-  git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-  git branch -m main
+  git add .
+  git commit -m "init"
+  git branch -M main
+  git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO_NAME.git
   git push -u origin main
   ```
 
