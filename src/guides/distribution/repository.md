@@ -30,6 +30,7 @@ Now we'll create a repository on Github. This repository will host your plugin c
 5. Connect your local project to your Github repository
 
   ```bash
+  git init
   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
   git branch -m main
   git push -u origin main
