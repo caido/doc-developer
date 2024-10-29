@@ -222,6 +222,34 @@ sdk.events.onInterceptResponse((sdk, request, response) => {
 });
 ```
 
+##### onProjectChange()
+
+Registers an callback on project change.
+
+This callback is called asynchronously and cannot modify the project.
+
+It can happen that the project is null if the user deleted the currently selected one.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `callback` | (`sdk`: [`SDK`](index.md#sdkapi-events)\<`API`, `Events`\>, `project`: `null` \| [`Project`](index.md#project)) => [`MaybePromise`](index.md#maybepromiset-1)\<`void`\> |
+
+###### Returns
+
+`void`
+
+###### Example
+
+```ts
+sdk.events.onProjectChange((sdk, project) => {
+  if (project !== null) {
+    // Do something with the project
+  }
+});
+```
+
 ## Requests
 
 ### Body
@@ -1307,6 +1335,22 @@ if (sdk.requests.inScope(request)) {
  sdk.console.log("In scope");
 }
 ```
+
+##### matches()
+
+Checks if a request/response matches an HTTPQL filter.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `string` | HTTPQL filter |
+| `request` | [`Request`](index.md#request-2) | The [Request](index.md#request-2) to match against |
+| `response`? | [`Response`](index.md#response-3) | The [Response](index.md#response-3) to match against |
+
+###### Returns
+
+`boolean`
 
 ##### query()
 
