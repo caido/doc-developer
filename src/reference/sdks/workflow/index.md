@@ -1219,6 +1219,22 @@ if (sdk.requests.inScope(request)) {
 }
 ```
 
+##### matches()
+
+Checks if a request/response matches an HTTPQL filter.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `string` | HTTPQL filter |
+| `request` | [`Request`](index.md#request-3) | The [Request](index.md#request-3) to match against |
+| `response`? | [`Response`](index.md#response-4) | The [Response](index.md#response-4) to match against |
+
+###### Returns
+
+`boolean`
+
 ##### query()
 
 Query requests of the current project.
