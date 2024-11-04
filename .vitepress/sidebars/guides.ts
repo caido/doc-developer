@@ -31,6 +31,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Backend",
     items: [
       {
+        text: "Creating a Custom Endpoint",
+        link: "/guides/components/endpoint",
+      },
+      {
         text: "Sending HTTP Requests",
         link: "/guides/components/request",
       },
