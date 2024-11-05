@@ -10,6 +10,10 @@ For additional documentation on the differences between a frontend and backend p
 
 ## Registering an API Endpoint
 
+Let's start by creating an API endpoint called `multiply` in our backend plugin. 
+
+`multiply` will take two numbers, output the result in the backend logs, as well as return the result. This endpoint will used by the frontend later on.
+
 ### /packages/backend/src/index.ts
 
 ``` ts
@@ -65,6 +69,8 @@ export function init(sdk: SDK<API>) {
 ```
 
 ## Calling the API Endpoint
+
+Now that we've created our endpoint in the backend plugin, we can call `multiply` from our frontend plugin.
 
 ### /packages/frontend/src/index.ts
 
