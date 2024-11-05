@@ -27,7 +27,7 @@ Although, Caido will automatically create a valid request based on the URL suppl
 
 ### Creating and Sending a Request
 
-In the backend index.ts file, you will first need to import the `RequestSpec`, `SDK` and `DefineAPI` type aliases.
+In the `/packages/backend/src/index.ts` file, you will first need to import the `RequestSpec`, `SDK` and `DefineAPI` type aliases.
 
 ``` ts
 import { RequestSpec, Response } from "caido:utils";
@@ -70,7 +70,7 @@ The entry in the backend log file will resemble:
 2024-10-09T19:10:34.825319Z  INFO plugin:d69424f6-a091-4660-8193-2ec624b54c5e js|sdk: REQ 4110: example.com:443/?query=test received a status code of 200
 ```
 
-In order to use this new API call, the API itself must be defined and exported for use in the frontend file. By using `typeof sendRequest`, you tie the function to a method named `sendRequest`.
+In order to use this new API call, the API itself must be defined and exported for use in the `/packages/frontend/src/index.ts` file. By using `typeof sendRequest`, you tie the function to a method named `sendRequest`.
 
 ``` ts
 export type API = DefineAPI<{
