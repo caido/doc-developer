@@ -10,7 +10,7 @@ For additional documentation on the differences between a frontend and backend p
 
 ## Registering an API Endpoint
 
-Let's start by creating an API endpoint called `multiply` in our backend plugin. 
+Let's start by creating an API endpoint called `multiply` in our backend plugin.
 
 `multiply` will take two numbers, output the result in the backend logs, as well as return the result. This endpoint will used by the frontend later on.
 
