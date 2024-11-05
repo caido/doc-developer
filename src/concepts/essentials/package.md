@@ -6,9 +6,15 @@ As Caido utilizes a **client/server architecture** - inherently, this means plug
 - A frontend plugin
 - A backend plugin
 
+You can conceptualize the difference between these parts in the context of operating a car.
+
+The frontend includes all the buttons, dials, pedals, and other controls available to you as the driver. Some components, such as sun visors and the rear-view mirror, are purely frontend. However, most frontend components communicate with the "under-the-hood" backend. This relationship is what allows actions like pressing the gas pedal to accelerate the engine - or, in the context of Caido; clicking a button to send a request.
+
+The manifest.json file acts as the blueprint of the car, defining how all the components fit together.
+
 These parts are packaged together in a single entity known as a **plugin package**.
 
-### Manifest.json
+### manifest.json
 
 The `manifest.json` configuration file defines the plugin package structure and also contains metadata used by the Caido installer.
 
@@ -53,7 +59,13 @@ For more information on the `manifest.json` file, refer to the [manifest.json re
 
 ### Frontend Plugin
 
-Frontend plugins allow you to customize the UI of the Caido application:
+A "_page_" in Caido simply refers to a user interface. For example, the [Replay](https://docs.caido.io/reference/features/testing/replay.html) and [Automate](https://docs.caido.io/reference/features/testing/automate.html) side menu tabs each produce their own page.
+
+Within these pages are components and elements specific to the feature, such as option menus and buttons. It is through these components and elements that the appearance is customized or communication with the backend occurs.
+
+Think of the Caido application as a browser window with multiple open tabs, each corresponding to a specific page.
+
+Frontend plugins allow you to:
 
 - Add new pages, components and elements.
 - Modify the appearance, behavior and functionality of the user-interface.
@@ -65,7 +77,9 @@ You can find the full list of available frontend SDK functions in the [frontend 
 
 ### Backend Plugin
 
-Backend plugins allow you to extend the server-side functionality of the Caido application:
+The backend refers to what is available server-side, what is "_under-the-hood_" or "_out-of-sight_". By incorporating a backend aspect to your plugin, you can extend upon the server-side functionality.
+
+Backend plugins allow you to:
 
 - Interact with the application's data and databases.
 - Perform HTTP requests to external APIs.
