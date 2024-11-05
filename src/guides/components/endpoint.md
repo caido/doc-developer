@@ -251,4 +251,3 @@ The entry to your Caido log file should resemble:
 ``` txt
 2024-11-05T13:26:13.528023Z  INFO plugin:5a758b74-e176-473f-a545-bdb452015b9a js|sdk: The product of the multiply call is: 15
 ```
-
