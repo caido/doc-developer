@@ -30,7 +30,8 @@ export function init(sdk: SDK<API>) {
 }
 ```
 
-::: tip Script Breakdown
+### Script Breakdown
+
 First, the necessary type aliases are imported. `SDK` is the interface used to interact with Caido. `DefineAPI` is used to structure the API: definining what methods or endpoints are available, the parameters those methods accept and what types of values they return.
 
 ``` ts
@@ -62,8 +63,6 @@ export function init(sdk: SDK<API>) {
     sdk.api.register("multiply", multiply);
 }
 ```
-
-:::
 
 ## Calling the API Endpoint
 
@@ -126,7 +125,8 @@ export function init(sdk: CaidoSDK) {
 }
 ```
 
-::: tip Script Breakdown
+### Script Breakdown
+
 Again, we need to import the necessary type aliases: the base `SDK` and the `API` we just defined in the backend.
 
 ``` ts
@@ -142,7 +142,9 @@ export type CaidoSDK = Caido<API>;
 
 The page will include two input fields, one for each expected number parameter and a `<p></p>` tag that will be used to display the result.
 
-_For additional documentation on creating a page - click [here](/guides/components/page.md)._
+::: tip
+For additional documentation on creating a page - click [here](/guides/components/page.md).
+:::
 
 ``` ts
 const createPage = (sdk: CaidoSDK) => {
@@ -207,8 +209,6 @@ export function init(sdk: CaidoSDK) {
     });
 }
 ```
-
-:::
 
 ## The Result
 
