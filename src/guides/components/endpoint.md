@@ -2,30 +2,35 @@
 
 When developing a plugin, there are two components to consider: the **frontend** and the **backend**.
 
-You can conceptualize the difference between these two components in the context of operating a car.
+In this guide, we'll cover how to create a custom API endpoint in a backend plugin, and call it from a frontend plugin.
 
-The frontend includes all the buttons, dials, pedals, and other controls available to you as the driver. Some components, such as sun visors and the rear-view mirror, are purely frontend. However, most frontend components communicate with the "under-the-hood" backend. This relationship is what allows actions like pressing the gas pedal to accelerate the engine - or, in the context of Caido; clicking a button to send a request.
+::: tip
+For additional documentation on the differences between a frontend and backend plugin - click [here](/concepts/essentials/package.md).
+:::
 
-## Frontend
+## Registering an API Endpoint
 
-A "_page_" in Caido simply refers to a user interface. For example, the [Replay](https://docs.caido.io/reference/features/testing/replay.html) and [Automate](https://docs.caido.io/reference/features/testing/automate.html) side menu tabs each produce their own page.
+### /packages/backend/src/index.ts
 
-Within these pages are components and elements specific to the feature, such as option menus and buttons. It is through these components and elements that the appearance is customized or communication with the backend occurs.
+``` ts
+import { SDK, DefineAPI } from "caido:plugin";
 
-Think of the Caido application as a browser window with multiple open tabs, each corresponding to a specific page.
+function multiply(sdk: SDK, a: number, b: number) {
+    const result = a * b;
+    sdk.console.log(`The product of the multiply call is: ${result}`);
+    return result;
+}
 
-## Backend
+export type API = DefineAPI<{
+    multiply: typeof multiply;
+}>;
 
-The backend refers to what is available server-side, what is "_under-the-hood_" or "_out-of-sight_". By incorporating a backend aspect to your plugin, you can extend upon the server-side functionality. This includes storing the data produced by your plugin, sending HTTP requests, or processing user-supplied data.
+export function init(sdk: SDK<API>) {
+    sdk.api.register("multiply", multiply);
+}
+```
 
-## sdk.api.register()
-
-This method allows you to register functions that can be called from the frontend. Meaning you can link a frontend action, like a button click, to the execution of some code.
-
-### Registering an API Endpoint
-
-For example, the following could be the contents of your plugin's `/packages/backend/src/index.ts` file:
-
+::: tip Script Breakdown
 First, the necessary type aliases are imported. `SDK` is the interface used to interact with Caido. `DefineAPI` is used to structure the API: definining what methods or endpoints are available, the parameters those methods accept and what types of values they return.
 
 ``` ts
@@ -58,45 +63,70 @@ export function init(sdk: SDK<API>) {
 }
 ```
 
-::: tip
-To view the entire backend script, expand the following:
+:::
 
-<details>
-<summary>Example</summary>
+## Calling the API Endpoint
+
+### /packages/frontend/src/index.ts
 
 ``` ts
-import { SDK, DefineAPI } from "caido:plugin";
+import type { Caido } from "@caido/sdk-frontend";
+import type { API } from "../../backend/src/index.ts";
 
-function multiply(sdk: SDK, a: number, b: number) {
-    const result = a * b;
-    sdk.console.log(`The product of the multiply call is: ${result}`);
-    return result;
+export type CaidoSDK = Caido<API>;
+
+const createPage = (sdk: CaidoSDK) => {
+
+    const resultText = document.createElement("p");
+    resultText.textContent = "Result will appear here.";
+
+    const inputA = document.createElement("input");
+    inputA.type = "number";
+    inputA.value = "0";
+    inputA.style.color = "black";
+    
+    const inputB = document.createElement("input");
+    inputB.type = "number";
+    inputB.value = "0";
+    inputB.style.color = "black";
+
+    const calculateButton = sdk.ui.button({
+        variant: "primary",
+        label: "Calculate",
+    });
+
+    calculateButton.addEventListener("click", async () => {
+        const a = Number(inputA.value);
+        const b = Number(inputB.value);
+        const result = await sdk.backend.multiply(a, b);
+        resultText.textContent = `Result: ${result}`;
+    });
+
+    const container = document.createElement("div");
+    container.appendChild(inputA);
+    container.appendChild(inputB);
+    container.appendChild(calculateButton);
+    container.appendChild(resultText);
+
+    const card = sdk.ui.card({
+        body: container
+    });
+
+    sdk.navigation.addPage("/multiply-page", {
+        body: card
+    });
 }
 
-export type API = DefineAPI<{
-    multiply: typeof multiply;
-}>;
-
-export function init(sdk: SDK<API>) {
-    sdk.api.register("multiply", multiply);
+export function init(sdk: CaidoSDK) {
+    createPage(sdk);
+    
+    sdk.sidebar.registerItem("Multiply", "/multiply-page", {
+        icon: "fas fa-calculator"
+    });
 }
 ```
 
-</details>
-:::
-
-## sdk.backend.multiply()
-
-This method allows you to call the functions that have been registered and defined in your API. The given name of the function is appended to `sdk.backend.`.
-
-### Calling the API Endpoint
-
----
-
-<img alt="Calling the API." src="/_images/api_register_function.png" center/>
-
-Add the following to your `/packages/frontend/src/index.ts` file:
-
+::: tip Script Breakdown
 Again, we need to import the necessary type aliases: the base `SDK` and the `API` we just defined in the backend.
 
 ``` ts
@@ -112,9 +142,7 @@ export type CaidoSDK = Caido<API>;
 
 The page will include two input fields, one for each expected number parameter and a `<p></p>` tag that will be used to display the result.
 
-::: tip
-For additional documentation on creating a page - click [here](/guides/components/page.md).
-:::
+_For additional documentation on creating a page - click [here](/guides/components/page.md)._
 
 ``` ts
 const createPage = (sdk: CaidoSDK) => {
@@ -180,71 +208,11 @@ export function init(sdk: CaidoSDK) {
 }
 ```
 
-::: tip
-To view the entire backend script, expand the following:
-
-<details>
-<summary>Example</summary>
-
-``` ts
-import type { Caido } from "@caido/sdk-frontend";
-import type { API } from "../../backend/src/index.ts";
-
-export type CaidoSDK = Caido<API>;
-
-const createPage = (sdk: CaidoSDK) => {
-
-    const resultText = document.createElement("p");
-    resultText.textContent = "Result will appear here.";
-
-    const inputA = document.createElement("input");
-    inputA.type = "number";
-    inputA.value = "0";
-    inputA.style.color = "black";
-    
-    const inputB = document.createElement("input");
-    inputB.type = "number";
-    inputB.value = "0";
-    inputB.style.color = "black";
-
-    const calculateButton = sdk.ui.button({
-        variant: "primary",
-        label: "Calculate",
-    });
-
-    calculateButton.addEventListener("click", async () => {
-        const a = Number(inputA.value);
-        const b = Number(inputB.value);
-        const result = await sdk.backend.multiply(a, b);
-        resultText.textContent = `Result: ${result}`;
-    });
-
-    const container = document.createElement("div");
-    container.appendChild(inputA);
-    container.appendChild(inputB);
-    container.appendChild(calculateButton);
-    container.appendChild(resultText);
-
-    const card = sdk.ui.card({
-        body: container
-    });
-
-    sdk.navigation.addPage("/multiply-page", {
-        body: card
-    });
-}
-
-export function init(sdk: CaidoSDK) {
-    createPage(sdk);
-    
-    sdk.sidebar.registerItem("Multiply", "/multiply-page", {
-        icon: "fas fa-calculator"
-    });
-}
-```
-
-</details>
 :::
+
+## The Result
+
+<img alt="Calling the API." src="/_images/api_register_function.png" center/>
 
 The entry to your Caido log file should resemble:
 
