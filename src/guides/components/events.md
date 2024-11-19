@@ -161,4 +161,4 @@ export const init = (sdk: CaidoSDK) => {
 
 ## The Result
 
-<img alt="Event output." src="/_images/event_handler_frontend.png" center/>
+<img alt="Event output." src="/_images/event_handler_response_data.png" center/>
