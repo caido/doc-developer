@@ -25,6 +25,10 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
         text: "Runtime",
         link: "/concepts/essentials/runtime",
       },
+      {
+        text: "Dealing with Binary Data",
+        link: "/concepts/essentials/binary",
+      },
     ],
   },
   {
