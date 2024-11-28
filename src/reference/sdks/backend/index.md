@@ -32,6 +32,12 @@ The console.
 
 This is currently the same as the global `console`.
 
+##### env
+
+> **env**: [`EnvironmentSDK`](index.md#environmentsdk)
+
+The SDK for the Environment service.
+
 ##### events
 
 > **events**: [`EventsSDK`](index.md#eventssdkapi-events)\<`API`, `Events`\>
@@ -418,23 +424,59 @@ Get the host of the request.
 
 ##### getMethod()
 
+###### getMethod()
+
 > **getMethod**(): `string`
 
 Get the HTTP method of the request.
+
+Get the raw version by passing `{ raw: true }` in the options.
 
 ###### Returns
 
 `string`
 
+###### getMethod(options)
+
+> **getMethod**(`options`: [`RawOption`](index.md#rawoption)): `Uint8Array`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `options` | [`RawOption`](index.md#rawoption) |
+
+###### Returns
+
+`Uint8Array`
+
 ##### getPath()
+
+###### getPath()
 
 > **getPath**(): `string`
 
 Get the path of the request.
 
+Get the raw version by passing `{ raw: true }` in the options.
+
 ###### Returns
 
 `string`
+
+###### getPath(options)
+
+> **getPath**(`options`: [`RawOption`](index.md#rawoption)): `Uint8Array`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `options` | [`RawOption`](index.md#rawoption) |
+
+###### Returns
+
+`Uint8Array`
 
 ##### getPort()
 
@@ -448,15 +490,33 @@ Get the port of the request.
 
 ##### getQuery()
 
+###### getQuery()
+
 > **getQuery**(): `string`
 
 Get the unparsed query of the request.
+
+Get the raw version by passing `{ raw: true }` in the options.
 
 Excludes the leading `?`.
 
 ###### Returns
 
 `string`
+
+###### getQuery(options)
+
+> **getQuery**(`options`: [`RawOption`](index.md#rawoption)): `Uint8Array`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `options` | [`RawOption`](index.md#rawoption) |
+
+###### Returns
+
+`Uint8Array`
 
 ##### getRaw()
 
@@ -570,7 +630,7 @@ It will also update the `Host` header.
 
 ##### setMethod()
 
-> **setMethod**(`method`: `string`): `void`
+> **setMethod**(`method`: [`Bytes`](index.md#bytes)): `void`
 
 Set the HTTP method of the request.
 
@@ -580,7 +640,7 @@ All strings are accepted.
 
 | Parameter | Type |
 | ------ | ------ |
-| `method` | `string` |
+| `method` | [`Bytes`](index.md#bytes) |
 
 ###### Returns
 
@@ -588,7 +648,7 @@ All strings are accepted.
 
 ##### setPath()
 
-> **setPath**(`path`: `string`): `void`
+> **setPath**(`path`: [`Bytes`](index.md#bytes)): `void`
 
 Set the path of the request.
 
@@ -596,7 +656,7 @@ Set the path of the request.
 
 | Parameter | Type |
 | ------ | ------ |
-| `path` | `string` |
+| `path` | [`Bytes`](index.md#bytes) |
 
 ###### Returns
 
@@ -622,7 +682,7 @@ The port number must be between 1 and 65535.
 
 ##### setQuery()
 
-> **setQuery**(`query`: `string`): `void`
+> **setQuery**(`query`: [`Bytes`](index.md#bytes)): `void`
 
 Set the unparsed query of the request.
 
@@ -632,7 +692,7 @@ The query string should not include the leading `?`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `query` | `string` |
+| `query` | [`Bytes`](index.md#bytes) |
 
 ###### Returns
 
@@ -2034,11 +2094,51 @@ Promise or value.
 
 ***
 
+### RawOption
+
+> **RawOption**: `object`
+
+Option to return raw value
+
+#### Type declaration
+
+##### raw
+
+> **raw**: `true`
+
+***
+
 ### RequestSource
 
 > **RequestSource**: [`ID`](index.md#id) \| [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) \| [`RequestSpecRaw`](index.md#requestspecraw)
 
 The source of a request.
+
+## Environment
+
+### EnvironmentSDK
+
+> **EnvironmentSDK**: `object`
+
+The SDK for the Environment service.
+
+#### Type declaration
+
+##### getVar()
+
+Get the value of an environment variable.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The name of the environment variable. |
+
+###### Returns
+
+`undefined` \| `string`
+
+The value of the environment variable.
 
 ## Other
 
@@ -2055,7 +2155,6 @@ Each connection will be spawned in a worker thread.
 const db = await open({ filename: "path/to/database.sqlite" });
 await db.exec("CREATE TABLE test (id INTEGER PRIMARY KEY, name TEXT);");
 await db.exec("INSERT INTO test (name) VALUES ('foo');");
-```
 
 #### Constructors
 
@@ -2087,7 +2186,7 @@ This method allows one or more SQL statements to be executed without returning a
 
 ##### prepare()
 
-> **prepare**(`sql`: `string`): `Promise`\<[`Statement`](index.md#statement)\>
+> **prepare**(`sql`: `string`): [`Statement`](index.md#statement)
 
 Compiles a SQL statement into a [prepared statement](https://www.sqlite.org/c3ref/stmt.html).
 
@@ -2099,7 +2198,7 @@ Compiles a SQL statement into a [prepared statement](https://www.sqlite.org/c3re
 
 ###### Returns
 
-`Promise`\<[`Statement`](index.md#statement)\>
+[`Statement`](index.md#statement)
 
 ***
 
