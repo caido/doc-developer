@@ -41,7 +41,7 @@ Here's a summary of each field (**required** fields are marked with an asterisk 
 
 Field|Description
 ---|---
-id*|Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z]+(?:[_-][a-z0-9]+)*$`_).
+id*|Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)*$`_).
 version*|The version of your plugin package. Follows the `MAJOR.MINOR.PATCH` syntax.
 name|The name of your plugin package. If not supplied, the `id` will be used as the `name`.
 description|A description of the plugin.
@@ -71,7 +71,7 @@ You can define multiple plugins of the same type. For example, you can define 3 
 Field|Description
 ---|---
 kind*| Must be of type `frontend`
-id*|Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z]+(?:[_-][a-z0-9]+)*$`).
+id*|Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)*$`).
 entrypoint*|Specifies the location of the primary script to be executed when the plugin is launched.
 name|The cosmetic plugin package name displayed in the [Plugins](https://docs.caido.io/reference/features/workspace/plugins.html) table. If not supplied, the `id` will be used as the `name`.
 style|Specifies the location of the CSS file to be used to stylize elements of your plugin.
@@ -82,7 +82,7 @@ backend|This object contains the `id` of the associated backend plugin. Specifyi
 Field|Description
 ---|---
 kind*| Must be of type `backend`
-id*|Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z]+(?:[_-][a-z0-9]+)*$`).
+id*|Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)*$`).
 entrypoint*|Specifies the location of the primary script to be executed when the plugin is launched.
 runtime*|Specifies that JavaScript code will be executed.
 name|The name of your plugin. If not supplied, the `id` will be used as the `name`.
