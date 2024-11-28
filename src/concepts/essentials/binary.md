@@ -1,5 +1,6 @@
 # Dealing with Binary Data
 
+
 ``` ts
 import { RequestSpecRaw } from "caido:utils";
 import { SDK, DefineAPI } from "caido:plugin";
