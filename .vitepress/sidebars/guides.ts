@@ -46,6 +46,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Spawning a Process",
         link: "/guides/components/spawning_process",
       },
+      {
+        text: "Using Invalid UTF-8",
+        link: "/guides/components/utf",
+      },
     ],
   },
   {
