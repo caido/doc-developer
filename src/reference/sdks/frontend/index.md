@@ -38,6 +38,12 @@ Utilities to interact with the command palette.
 
 Utilities to interact with commands
 
+##### env
+
+> **env**: [`EnvironmentSDK`](index.md#environmentsdk)
+
+Utilities to interact with the environment.
+
 ##### files
 
 > **files**: [`FilesSDK`](index.md#filessdk)
@@ -908,6 +914,7 @@ Add a page to the navigation.
 | `path` | `string` | The path of the page. |
 | `options` | `object` | Options for the page. |
 | `options.body` | `HTMLElement` | The body of the page. |
+| `options.onEnter`? | () => `void` | The callback to execute when the page is entered. |
 | `options.topbar`? | `HTMLElement` | The topbar of the page. |
 
 ###### Returns
@@ -1526,6 +1533,34 @@ The size of the file in bytes.
 > **updatedAt**: `Date`
 
 The date the file was updated.
+
+## Environment
+
+### EnvironmentSDK
+
+> **EnvironmentSDK**: `object`
+
+Utilities to interact with the environment.
+
+#### Type declaration
+
+##### getVar()
+
+> **getVar**: (`name`: `string`) => `string` \| `undefined`
+
+Get the value of an environment variable.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The name of the environment variable. |
+
+###### Returns
+
+`string` \| `undefined`
+
+The value of the environment variable.
 
 ## Filters
 
