@@ -55,7 +55,7 @@ Now, `C2` will not be prefixed:
 
 `ncat -lvnp 5555 | xxd -g1`
 
-<img alt="C2 85" src="/_images/raw_byte.png" center/>
+<img alt="Just \x85." src="/_images/raw_byte_example.png" center/>
 :::
 
 ## What's next?

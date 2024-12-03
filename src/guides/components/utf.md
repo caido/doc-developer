@@ -4,9 +4,34 @@
 For conceptual information regarding this guide - click [here](/concepts/backend/binary.md).
 :::
 
+## Using a Mutable Proxied Request
+
+To use invalid UTF-8 in the path of a request that passes through Caido, follow these steps:
+
+### /packages/backend/src/index.ts
+
+First import the `SDK`, the interface used to interact with Caido.
+
+``` ts
+import { SDK } from "caido:plugin";
+```
+
+Then create a function that takes proxied requests using `onInterceptRequest` and converts them into mutable, un-saved `RequestSpec` objects using the `.toSpec()` method. Next, store the path as a byte array using the spread operator `...`, and append the desired raw byte using `[...spec.getPath({raw: true}), 0x85];`. Update the request with the modified path using `.setPath()` and send the request.
+
+``` ts
+export function init(sdk: SDK) {
+  sdk.events.onInterceptRequest(async (sdk, request) => {
+    const spec = request.toSpec();
+    let path = [...spec.getPath({raw: true}), 0x85];
+    spec.setPath(path);
+    await sdk.requests.send(spec);
+  });
+}
+```
+
 ## Using a Newly Created Request
 
-When testing for potential bypasses, to use invalid UTF-8 in the path of a `new RequestSpecRaw()` request, follow these steps:
+To use invalid UTF-8 in the path of a `new RequestSpecRaw()` request, follow these steps:
 
 ### /packages/backend/src/index.ts
 
