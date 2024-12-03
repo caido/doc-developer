@@ -2,12 +2,15 @@
 
 Here you will find explanations of the core concepts that underpin Caido plugins.
 
+## Backend
+
+- [Dealing with Binary Data](./backend/binary.md) - Using invalid UTF-8 in Caido.
+
 ## Essentials
 
 - [Plugin Architecture](./essentials/package.md) - The structure of a plugin package.
 - [Tooling](./essentials/tooling.md) - Tools for the ease of plugin development.
 - [Runtime](./essentials/runtime.md) - Javascript runtimes used by plugins.
-- [Dealing with Binary Data](./essentials/binary.md) - Binary and Unicode interpretation.
 
 ## Modules
 

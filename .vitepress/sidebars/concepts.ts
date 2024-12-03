@@ -11,6 +11,15 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Backend",
+    items: [
+      {
+        text: "Dealing with Binary",
+        link: "/concepts/backend/binary",
+      },
+    ],
+  },
+  {
     text: "Essentials",
     items: [
       {
@@ -24,10 +33,6 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Runtime",
         link: "/concepts/essentials/runtime",
-      },
-      {
-        text: "Dealing with Binary Data",
-        link: "/concepts/essentials/binary",
       },
     ],
   },
