@@ -55,7 +55,7 @@ Address any required changes and update the GitHub release with the new changes.
 
 We will publish the plugin as soon we have verified that all required changes have been addressed.
 
-## Next steps
+## What's next?
 
 Once your plugin is published, it is time to announce it to the community ✨
 

@@ -11,6 +11,15 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Backend",
+    items: [
+      {
+        text: "Dealing with Binary",
+        link: "/concepts/backend/binary",
+      },
+    ],
+  },
+  {
     text: "Essentials",
     items: [
       {

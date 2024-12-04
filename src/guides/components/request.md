@@ -138,7 +138,9 @@ By registering a command in the frontend, defining the command to make a backend
 
 ``` ts
 import type { Caido } from "@caido/sdk-frontend";
-import type { API } from "starterkit-plugin-backend";
+import type { API } from "../../backend/src/index";
+
+import "./styles/index.css";
 
 export type CaidoSDK = Caido<API>;
 

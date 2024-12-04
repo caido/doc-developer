@@ -27,4 +27,4 @@ Once the package is developed, the code is processed by the [Vite](https://vitej
 
 The file related to the Vite build tool within the starterkit repository is:
 
-- `vite.config.ts`: This file is a configuration file for customizing the build process. _View the [vite.config.js](https://v2.vitejs.dev/config/) documentation for more information.
+- `vite.config.ts`: This file is a configuration file for customizing the build process. _View the [vite.config.js](https://v2.vitejs.dev/config/) documentation for more information._

@@ -44,7 +44,7 @@ The steps above will create a repository under your own account.
 If you would like to host your repository under the [caido-community](https://github.com/caido-community) organization instead, you can request a repository on our [Discord server](https://links.caido.io/www-discord).
 :::
 
-## 3. Generate a key-pair
+## 3. Generate a Key-Pair
 
 Plugin packages **must** be digitally signed to be installable in Caido.
 
@@ -76,7 +76,7 @@ The file `private.pem` will contain the following format:
 -----END PRIVATE KEY-----
 ```
 
-### Generate the public key
+### Generate the Public Key
 
 Run the following command to generate a public key:
 
@@ -94,7 +94,7 @@ The file `public.pem` will contain the following format:
 -----END PUBLIC KEY-----
 ```
 
-## 4. Create a release
+## 4. Create a Release
 
 Now that your repository and key-pair are ready, it’s time to create a release!
 
