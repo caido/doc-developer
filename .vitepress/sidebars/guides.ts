@@ -25,26 +25,38 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Customizing Context Menus",
         link: "/guides/components/menu",
       },
+      {
+        text: "Handling Backend Events",
+        link: "/guides/components/backend_events",
+      },
+      {
+        text: "Using the Component Library",
+        link: "/guides/components/styling",
+      },
     ],
   },
   {
     text: "Backend",
     items: [
       {
-        text: "Creating a Custom Endpoint",
-        link: "/guides/components/endpoint",
+        text: "Creating a RPC",
+        link: "/guides/components/rpc",
       },
       {
         text: "Sending HTTP Requests",
         link: "/guides/components/request",
       },
       {
-        text: "Sending Events",
+        text: "Sending Events to the Frontend",
         link: "/guides/components/events",
       },
       {
         text: "Spawning a Process",
         link: "/guides/components/spawning_process",
+      },
+      {
+        text: "Storing Data in SQLite",
+        link: "/guides/components/sqlite",
       },
       {
         text: "Using Invalid UTF-8",

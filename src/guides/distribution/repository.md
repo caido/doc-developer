@@ -1,4 +1,4 @@
-# Setting up Your Repository
+# Setting Up Your Repository
 
 Caido uses [GitHub](https://github.com) to download and distribute plugin packages. To share your plugin with the community, you’ll first need to set up a Github repository that meets Caido’s requirements.
 
@@ -54,7 +54,7 @@ To sign your plugin package, you need to generate a public/private key-pair.
   Plugin package signing is done using [Ed25519 public-key signatures](https://cendyne.dev/posts/2022-03-06-ed25519-signatures.html).
 :::
 
-### Generate the private key
+### Generate the Private Key
 
 Run the following command to generate a private key:
 
