@@ -1,7 +1,7 @@
 # @caido/sdk-backend
 
 This is the reference for the backend SDK used by backend plugins.
-[SDK](#sdk-api-events) is the main interface that provides access to various services and functionalities.
+[SDK](#events) is the main interface that provides access to various services and functionalities.
 
 ## SDK
 
@@ -335,6 +335,7 @@ Build a new [RequestSpec](index.md#requestspec) from a URL string. Only the host
 You can convert a saved immutable [Request](index.md#request-2) object into a [RequestSpec](index.md#requestspec) object by using the `toSpec()` method.
 
 By default:
+
 - Method is `GET`.
 - Path is `/`.
 
@@ -2155,6 +2156,7 @@ Each connection will be spawned in a worker thread.
 const db = await open({ filename: "path/to/database.sqlite" });
 await db.exec("CREATE TABLE test (id INTEGER PRIMARY KEY, name TEXT);");
 await db.exec("INSERT INTO test (name) VALUES ('foo');");
+```
 
 #### Constructors
 
@@ -2293,7 +2295,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 Console interface for logging.
 
 Currently logs are only available in the backend logs.
-See https://docs.caido.io/report_bug.html#1-backend-logs
+See [https://docs.caido.io/report_bug.html#1-backend-logs](https://docs.caido.io/report_bug.html#1-backend-logs)
 
 #### Type declaration
 
