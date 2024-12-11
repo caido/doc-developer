@@ -2,6 +2,10 @@
 
 Here you will find explanations of the core concepts that underpin Caido plugins.
 
+## Frontend
+
+- [UI Styling](./frontend/ui.md) - The Caido user-interface.
+
 ## Backend
 
 - [Dealing with Binary Data](./backend/binary.md) - Using invalid UTF-8 in Caido.

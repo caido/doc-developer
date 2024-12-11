@@ -1,10 +1,10 @@
-# Creating a Custom Endpoint
+# Creating a Remote Procedure Call
 
 When developing a plugin, there are two components to consider: the **frontend** and the **backend**.
 
 In this guide, we'll cover how to create a custom API endpoint in a backend plugin, and call it from a frontend plugin.
 
-::: tip
+::: info
 For additional documentation on the differences between a frontend and backend plugin - click [here](/concepts/essentials/package.md).
 :::
 
