@@ -18,4 +18,4 @@ By leveraging these technologies and creating relationships between them, we are
 
 ## What's next?
 
-To view how to use the PrimeVue library to build a plugin frontend, click [here](/guides/components/styling.md).
+[Learn how to use the PrimeVue library to build a plugin frontend.](/guides/components/styling.md)
