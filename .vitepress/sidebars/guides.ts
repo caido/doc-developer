@@ -39,7 +39,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Backend",
     items: [
       {
-        text: "Creating a RPC",
+        text: "Creating and Calling a Custom Function",
         link: "/guides/components/rpc",
       },
       {

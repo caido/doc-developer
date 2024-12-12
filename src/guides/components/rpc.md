@@ -1,16 +1,16 @@
-# Creating a Remote Procedure Call
+# Creating and Calling a Custom Function
 
 When developing a plugin, there are two components to consider: the **frontend** and the **backend**.
 
-In this guide, we'll cover how to create a custom API endpoint in a backend plugin, and call it from a frontend plugin.
+In this guide, we'll cover how to create a custom endpoint in a backend plugin, and call it from a frontend plugin.
 
 ::: info
 For additional documentation on the differences between a frontend and backend plugin - click [here](/concepts/essentials/package.md).
 :::
 
-## Registering an API Endpoint
+## Registering an Endpoint
 
-Let's start by creating an API endpoint called `multiply` in our backend plugin.
+Let's start by creating an endpoint called `multiply` in our backend plugin.
 
 `multiply` will take two numbers, output the result in the backend logs, as well as return the result. This endpoint will used by the frontend later on.
 
@@ -68,7 +68,7 @@ export function init(sdk: SDK<API>) {
 }
 ```
 
-## Calling the API Endpoint
+## Calling the Endpoint
 
 Now that we've created our endpoint in the backend plugin, we can call `multiply` from our frontend plugin.
 
