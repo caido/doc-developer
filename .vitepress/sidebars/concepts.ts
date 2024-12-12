@@ -11,6 +11,15 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Frontend",
+    items: [
+      {
+        text: "UI Styling",
+        link: "/concepts/frontend/ui",
+      },
+    ],
+  },
+  {
     text: "Backend",
     items: [
       {

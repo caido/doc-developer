@@ -8,7 +8,7 @@ To do this, you can use the `spawn` function from the `child_process` module.
 This module is similar to NodeJS's `child_process` module, but with some differences. You can find more information in the [child_process](/concepts/modules/child_process.md) documentation.
 :::
 
-## Launching a process
+## Launching a Process
 
 The code below spawns a process that echoes "Hello, world!" to the console.
 
@@ -34,7 +34,7 @@ child.stderr.on("data", (data) => {
 });
 ```
 
-## Waiting for exit
+## Waiting for Exit
 
 To wait for the child process to close and check the exit code, you can use the `close` event of the child process.
 
@@ -48,7 +48,7 @@ if (exitCode) {
 }
 ```
 
-## Driving a process to completion
+## Driving a Process to Completion
 
 Combining the two methods, we can drive any child process to completion and get its output.
 
@@ -82,7 +82,7 @@ export async function test() {
 }
 ```
 
-## Executing within in a shell
+## Executing Within a Shell
 
 You can use the `shell: true` or `shell: '/shell/path'` options to execute the command in a shell.
 

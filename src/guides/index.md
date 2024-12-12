@@ -44,7 +44,7 @@ pnpm build
 
 You can then install this plugin package directly from the Caido application.
 
-## What's Next?
+## What's next?
 
 Now that you've created your first package, you can start building out your own frontend and backend plugins.
 

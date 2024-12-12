@@ -57,6 +57,6 @@ We will publish the plugin as soon we have verified that all required changes ha
 
 ## What's next?
 
-Once your plugin is published, it is time to announce it to the community ✨
+Once your plugin is published, it is time to announce it to the community! ✨
 
 - Announce it in the Plugin `#discussion` channel on [Discord](https://links.caido.io/www-discord).

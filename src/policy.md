@@ -1,4 +1,4 @@
-# Developer policy
+# Developer Policy
 
 Last Update: 02/09/2024
 
@@ -17,7 +17,7 @@ Plugin Packages are community driven by Caido users. Since development and distr
 
 This policy complements our [Terms & Conditions](https://caido.io/terms). In case of conflict between this policy and our `Terms & Conditions`, the `Terms & Conditions` prevail.
 
-### Not allowed
+### Not Allowed
 
 Plugin packages must not:
 
@@ -39,7 +39,7 @@ The following are only allowed if clearly indicated in your README:
 - Server-side telemetry. Link to a privacy policy that explains how the data is handled must be included.
 - Closed source code. Please contact us to include closed source plugin packages.
 
-### Copyright and licensing
+### Copyright and Licensing
 
 All community plugins and themes must follow these requirements:
 
@@ -47,13 +47,13 @@ All community plugins and themes must follow these requirements:
 - Comply with the original licenses of any code your plugin or theme makes use of, including attribution in the README if required.
 - Respect Caido Copyright. Don't use Caido Copyright in a way that could confuse users into thinking your plugin package is a first-party creation.
 
-## Reporting violations
+## Reporting Violations
 
 If you encounter a plugin package that violates the policy, please let the developer know by opening a GitHub issue on their repository.
 
 If the developer doesn’t respond after 7 days, [contact the Caido team](mailto:info@caido.io). For serious violations, please contact us immediately!
 
-## Removing plugin packages
+## Removing Plugin Packages
 
 In case of a policy violation, we may attempt to contact the developer and provide a reasonable timeframe for them to resolve the problem.
 
