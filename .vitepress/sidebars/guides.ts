@@ -59,6 +59,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/components/sqlite",
       },
       {
+        text: "Using Findings",
+        link: "/guides/components/findings",
+      },
+      {
         text: "Using Invalid UTF-8",
         link: "/guides/components/utf",
       },
