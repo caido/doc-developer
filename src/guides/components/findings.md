@@ -17,11 +17,11 @@ await sdk.findings.create({
 ```
 
 ::: tip
-The `dedupeKey` can use any [request](https://developer.caido.io/reference/sdks/backend/#request) or [response](https://developer.caido.io/reference/sdks/backend/#response-3) object properties.
+The `dedupeKey` can be any value, including [request](https://developer.caido.io/reference/sdks/backend/#request) or [response](https://developer.caido.io/reference/sdks/backend/#response-3) object properties (_besides the body element_). If the value is detected a second time, the Finding will be considered a duplicate and an alert will not be generated.
 
 ``` ts
-// Dedupe based on request body data.
-dedupeKey: request.getBody()
+// Dedupe based on a string.
+dedupeKey: "Hello world!"
 // Dedupe based on request path and method.
 dedupeKey: `${request.getPath()}-${request.getMethod()}`
 // Dedupe based on request path, response code and response header.
