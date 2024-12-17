@@ -69,6 +69,15 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Shared",
+    items: [
+      {
+        text: "Using Environment Variables",
+        link: "/guides/components/env",
+      },
+    ],
+  },
+  {
     text: "Community Store",
     items: [
       {

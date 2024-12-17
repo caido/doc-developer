@@ -6,7 +6,7 @@ Plugin pages provide a graphical user interface in the Caido application. There 
 
 Used to create pages in the application and navigate to them.
 
-### Adding a page
+### Adding a Page
 
 ```ts
 sdk.navigation.addPage("/my-plugin-page", {

@@ -24,7 +24,7 @@ The optional `when` property defines a conditional that must be met for the comm
 _For example, to explicity set the command to be available at all times, `when: () => true` can be used._
 :::
 
-### Adding a command to the command palette
+### Adding a Command to the Command Palette
 
 ```ts
 sdk.commandPalette.register("hello");

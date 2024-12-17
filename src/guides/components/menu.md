@@ -6,7 +6,7 @@ The context menu is the list of actions/options that appears when right-clicking
 
 Used to register right-click context menu actions/options and create a plugin specific settings page, allowing quick access to your plugin functionality.
 
-### Registering an entry to the context menu
+### Registering an Entry to the Context Menu
 
 ```ts
 sdk.menu.registerItem({
