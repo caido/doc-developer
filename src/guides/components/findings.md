@@ -11,10 +11,24 @@ await sdk.findings.create({
   title: "Title", // Label your Finding.
   description: "Description", // Add a description (optional).
   reporter: "Reporter", // Specify which plugin discovered the Finding.
-  dedupe: `${request.getHost()}-${request.getPath()}`, // Prevents multiple alerts for request with matching characteristics (optional).
+  dedupeKey: `${request.getHost()}-${request.getPath()}`, // Prevents multiple alerts for request with matching characteristics (optional).
   request, // The associated request.
 });
 ```
+
+::: tip
+The `dedupeKey` can use any [request](https://developer.caido.io/reference/sdks/backend/#request) or [response](https://developer.caido.io/reference/sdks/backend/#response-3) object properties.
+
+``` ts
+// Dedupe based on request body data.
+dedupeKey: request.getBody()
+// Dedupe based on request path and method.
+dedupeKey: `${request.getPath()}-${request.getMethod()}`
+// Dedupe based on request path, response code and response header.
+dedupeKey: `${request.getPath()}-${response.getCode()}-${response.getHeader("Content-Length")}`
+```
+
+:::
 
 ## Conditional Findings
 
@@ -55,10 +69,6 @@ export function init(sdk: SDK<API>) {
   });
 }
  ```
-
-::: tip
-View all of the properties that can be accessed for [request](https://developer.caido.io/reference/sdks/backend/#request) and [response](https://developer.caido.io/reference/sdks/backend/#response-3) objects.
-:::
 
 ## The Result
 
