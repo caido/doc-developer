@@ -37,7 +37,7 @@ The `manifest.json` file is the first file that is read by the Caido application
 
 Here's a summary of each field (**required** fields are marked with an asterisk `*`)
 
-## Main fields
+## Main Fields
 
 Field|Description
 ---|---
@@ -46,7 +46,7 @@ version*|The version of your plugin package. Follows the `MAJOR.MINOR.PATCH` syn
 name|The name of your plugin package. If not supplied, the `id` will be used as the `name`.
 description|A description of the plugin.
 
-## Author fields
+## Author Fields
 
 The `author` field is optional and may be used for crediting purposes.
 
@@ -56,7 +56,7 @@ name|The name of the author.
 email|The email address of the author.
 url|A URL to the author's website.
 
-## Plugins fields
+## Plugins Fields
 
 The `plugins` field is required and must contain an array of plugins.
 
@@ -66,7 +66,7 @@ Plugins can be of type `frontend` or `backend`.
 You can define multiple plugins of the same type. For example, you can define 3 different frontend plugins that will interact with the same backend plugin.
 :::
 
-### Frontend plugins
+### Frontend Plugins
 
 Field|Description
 ---|---
@@ -77,7 +77,7 @@ name|The cosmetic plugin package name displayed in the [Plugins](https://docs.ca
 style|Specifies the location of the CSS file to be used to stylize elements of your plugin.
 backend|This object contains the `id` of the associated backend plugin. Specifying this field will allow the frontend plugin to communicate with the backend plugin via [sdk.backend](/reference/sdks/frontend/#backend).
 
-### Backend plugins
+### Backend Plugins
 
 Field|Description
 ---|---
