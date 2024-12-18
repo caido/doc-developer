@@ -43,6 +43,10 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
         text: "Runtime",
         link: "/concepts/essentials/runtime",
       },
+      {
+        text: "Signing",
+        link: "/concepts/essentials/signing",
+      },
     ],
   },
   {
