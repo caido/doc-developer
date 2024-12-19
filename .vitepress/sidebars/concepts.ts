@@ -26,6 +26,10 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
         text: "Dealing with Binary",
         link: "/concepts/backend/binary",
       },
+      {
+        text: "Difference with workflows",
+        link: "/concepts/backend/workflow",
+      },
     ],
   },
   {
@@ -42,6 +46,10 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Runtime",
         link: "/concepts/essentials/runtime",
+      },
+      {
+        text: "Signing",
+        link: "/concepts/essentials/signing",
       },
     ],
   },
