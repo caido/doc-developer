@@ -26,6 +26,10 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
         text: "Dealing with Binary",
         link: "/concepts/backend/binary",
       },
+      {
+        text: "Difference with workflows",
+        link: "/concepts/backend/workflow",
+      },
     ],
   },
   {
