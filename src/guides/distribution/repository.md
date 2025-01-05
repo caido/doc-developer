@@ -101,7 +101,7 @@ Now that your repository and key-pair are ready, it’s time to create a release
 1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [step 3](#3-generate-a-key-pair).
 1. Go to the `Actions` tab of your repository and trigger the `Release` workflow.
 
-This will create a release with the version specified in your project's [manifest.json](/reference/manifest) file.
+This will create a release with the version specified in your project's [caido.config.ts](/guides/config#version) file.
 
 <img width="800" alt="Store release Github Workflow" src="/_images/store_release.png" center/>
 

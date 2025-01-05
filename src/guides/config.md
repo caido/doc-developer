@@ -25,6 +25,7 @@ export default defineConfig({
       kind: "frontend",
       id: "my-frontend",
       name: "My Frontend",
+      root: "packages/my-frontend",
       backend: {
         id: "my-backend"
       }
@@ -33,10 +34,13 @@ export default defineConfig({
       kind: "backend",
       id: "my-backend",
       name: "My Backend",
+      root: "packages/my-backend",
     }
   ]
 });
 ```
+
+You can find more information about the `caido.config.ts` file in the [Config Reference](/reference/config) page.
 
 ## Updating Package Details
 

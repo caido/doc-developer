@@ -31,12 +31,16 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
     text: "Files",
     items: [
       {
-        text: "manifest.json",
-        link: "/reference/manifest.md",
+        text: "caido.config.ts",
+        link: "/reference/config.md",
       },
       {
         text: "plugin_packages.json",
         link: "/reference/plugin_packages.md",
+      },
+      {
+        text: "manifest.json",
+        link: "/reference/manifest.md",
       },
     ],
   },

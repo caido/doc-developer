@@ -9,7 +9,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/",
       },
       {
-        text: "Configuring your Plugin",
+        text: "Configuring your Package",
         link: "/guides/config",
       },
     ],
