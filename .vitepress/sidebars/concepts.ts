@@ -27,7 +27,7 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
         link: "/concepts/backend/binary",
       },
       {
-        text: "Difference with workflows",
+        text: "Difference with Workflows",
         link: "/concepts/backend/workflow",
       },
     ],
@@ -59,6 +59,15 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Child Process",
         link: "/concepts/modules/child_process",
+      },
+    ],
+  },
+  {
+    text: "Workflows",
+    items: [
+      {
+        text: "Workflow Execution and Data Flow",
+        link: "/concepts/workflows/flow",
       },
     ],
   },

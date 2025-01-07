@@ -15,3 +15,7 @@ If you need a refresher on how a function works, or whether a certain feature is
 - **[caido.config.ts](./config.md)** - caido.config.ts field definitions
 - **[plugin_packages.json](./plugin_packages.md)** - plugin_packages.json field definitions
 - **[manifest.json](./manifest.md)** - Manifest.json field definitions
+
+## Types
+
+- **[Workflow Data Types](./workflow_types.md)** - Workflow input/output data types.

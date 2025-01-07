@@ -20,3 +20,7 @@ Here you will find explanations of the core concepts that underpin Caido plugins
 ## Modules
 
 - [Child Process](./modules/child_process.md) - Caido's implementation of NodeJS's `child_process` module.
+
+## Workflows
+
+- [Workflow Execution and Data Flow](./workflows/flow.md) - Workflow operation.

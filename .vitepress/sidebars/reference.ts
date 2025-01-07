@@ -44,4 +44,13 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+  {
+    text: "Types",
+    items: [
+      {
+        text: "Workflow Data Types",
+        link: "/reference/workflow_types.md",
+      },
+    ],
+  },
 ];
