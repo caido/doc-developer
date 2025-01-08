@@ -74,6 +74,12 @@ Utilities to interact with the GraphQL API.
 
 Utilities to interact with the HTTP History page.
 
+##### intercept
+
+> **intercept**: [`InterceptSDK`](index.md#interceptsdk)
+
+Utilities to interact with the Intercept page.
+
 ##### matchReplace
 
 > **matchReplace**: [`MatchReplaceSDK`](index.md#matchreplacesdk)
@@ -121,6 +127,12 @@ Utilities to interact with shortcuts.
 > **sidebar**: [`SidebarSDK`](index.md#sidebarsdk)
 
 Utilities to interact with the sidebar.
+
+##### sitemap
+
+> **sitemap**: [`SitemapSDK`](index.md#sitemapsdk)
+
+Utilities to interact with the Sitemap page.
 
 ##### storage
 
@@ -1357,6 +1369,18 @@ Get the current HTTPQL query.
 
 The current HTTPQL query.
 
+##### getScopeId()
+
+> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+
+Get the current scope ID.
+
+###### Returns
+
+[`ID`](index.md#id-5) \| `undefined`
+
+The current scope ID.
+
 ##### setQuery()
 
 > **setQuery**: (`query`: [`HTTPQL`](index.md#httpql)) => `void`
@@ -1372,6 +1396,22 @@ Set the HTTPQL query that will be applied on the HTTP History table results.
 ###### Returns
 
 `void`
+
+##### setScope()
+
+> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `Promise`\<`void`\>
+
+Set the current scope.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the scope to set. |
+
+###### Returns
+
+`Promise`\<`void`\>
 
 ## Search
 
@@ -1395,6 +1435,18 @@ Get the current HTTPQL query.
 
 The current HTTPQL query.
 
+##### getScopeId()
+
+> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+
+Get the current scope ID.
+
+###### Returns
+
+[`ID`](index.md#id-5) \| `undefined`
+
+The current scope ID.
+
 ##### setQuery()
 
 > **setQuery**: (`query`: [`HTTPQL`](index.md#httpql)) => `void`
@@ -1410,6 +1462,22 @@ Set the HTTPQL query that will be applied on the search table results.
 ###### Returns
 
 `void`
+
+##### setScope()
+
+> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `Promise`\<`void`\>
+
+Set the current scope.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the scope to set. |
+
+###### Returns
+
+`Promise`\<`void`\>
 
 ## Files
 
@@ -1562,6 +1630,18 @@ Get the value of an environment variable.
 
 The value of the environment variable.
 
+##### getVars()
+
+> **getVars**: () => [`EnvironmentVariable`](index.md#environmentvariable)[]
+
+Get all environment variables available in the global environment and the selected environment.
+
+###### Returns
+
+[`EnvironmentVariable`](index.md#environmentvariable)[]
+
+All environment variables.
+
 ## Filters
 
 ### Filter
@@ -1677,6 +1757,44 @@ Updates a filter.
 `Promise`\<[`Filter`](index.md#filter)\>
 
 The updated filter.
+
+## Intercept
+
+### InterceptSDK
+
+> **InterceptSDK**: `object`
+
+Utilities to interact with the Intercept page.
+
+#### Type declaration
+
+##### getScopeId()
+
+> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+
+Get the current scope ID.
+
+###### Returns
+
+[`ID`](index.md#id-5) \| `undefined`
+
+The current scope ID.
+
+##### setScope()
+
+> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `void`
+
+Set the current scope.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `id` | [`ID`](index.md#id-5) \| `undefined` |
+
+###### Returns
+
+`void`
 
 ## Match and Replace
 
@@ -2033,6 +2151,32 @@ Replace the currently selected text of the editor.
 
 ***
 
+### EnvironmentVariable
+
+> **EnvironmentVariable**: `object`
+
+#### Type declaration
+
+##### isSecret
+
+> **isSecret**: `boolean`
+
+Whether the environment variable is a secret.
+
+##### name
+
+> **name**: `string`
+
+The name of the environment variable.
+
+##### value
+
+> **value**: `string`
+
+The value of the environment variable.
+
+***
+
 ### HTTPQL
 
 > **HTTPQL**: `string` & `object`
@@ -2198,3 +2342,41 @@ A unique Caido identifier per type.
 | Type Parameter |
 | ------ |
 | `T` *extends* (...`args`: `unknown`[]) => `unknown` |
+
+## Sitemap
+
+### SitemapSDK
+
+> **SitemapSDK**: `object`
+
+Utilities to interact with the Sitemap page.
+
+#### Type declaration
+
+##### getScopeId()
+
+> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+
+Get the current scope ID.
+
+###### Returns
+
+[`ID`](index.md#id-5) \| `undefined`
+
+The current scope ID.
+
+##### setScope()
+
+> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `void`
+
+Set the current scope.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the scope to set. |
+
+###### Returns
+
+`void`
