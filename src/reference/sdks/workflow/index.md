@@ -123,7 +123,7 @@ The input for the HTTP Javascript Nodes
 
 ##### request
 
-> **request**: [`Request`](index.md#request-3) \| `undefined`
+> **request**: [`Request`](index.md#request-2) \| `undefined`
 
 ##### response
 
@@ -143,7 +143,7 @@ Use HttpInput instead.
 
 ### Body
 
-The body of a [Request](index.md#request-3) or [Response](index.md#response-4).
+The body of a [Request](index.md#request-2) or [Response](index.md#response-4).
 
 Calling `to<FORMAT>` will try to convert the body to the desired format.
 
@@ -213,11 +213,13 @@ A mutable Request that has not yet been sent.
 
 > **new RequestSpec**(`url`: `string`): [`RequestSpec`](index.md#requestspec)
 
-Build a new [RequestSpec](index.md#requestspec) from a URL string. Only the host, port and scheme will be parsed.
+Build a new [RequestSpec](index.md#requestspec) from a URL string.
+We try to infer as much information as possible from the URL, including the scheme, host, path and query.
 
-You can convert a saved immutable [Request](index.md#request-3) object into a [RequestSpec](index.md#requestspec) object by using the `toSpec()` method.
+You can convert a saved immutable [Request](index.md#request-2) object into a [RequestSpec](index.md#requestspec) object by using the `toSpec()` method.
 
 By default:
+
 - Method is `GET`.
 - Path is `/`.
 
@@ -673,7 +675,7 @@ A mutable raw Request that has not yet been sent.
 
 Build a new [RequestSpecRaw](index.md#requestspecraw) from a URL string. Only the host, port and scheme will be parsed.
 
-You can convert a saved immutable [Request](index.md#request-3) object into a [RequestSpecRaw](index.md#requestspecraw) object by using the `toSpecRaw()` method.
+You can convert a saved immutable [Request](index.md#request-2) object into a [RequestSpecRaw](index.md#requestspecraw) object by using the `toSpecRaw()` method.
 
 You MUST use `setRaw` to set the raw bytes of the request.
 
@@ -1011,7 +1013,7 @@ An immutable saved Request and Response pair.
 
 ##### request
 
-> **request**: [`Request`](index.md#request-3)
+> **request**: [`Request`](index.md#request-2)
 
 ##### response
 
@@ -1029,7 +1031,7 @@ An immutable saved Request and optional Response pair.
 
 ##### request
 
-> **request**: [`Request`](index.md#request-3)
+> **request**: [`Request`](index.md#request-2)
 
 ##### response?
 
@@ -1069,7 +1071,7 @@ An item in a connection of requests.
 
 ##### request
 
-> **request**: [`Request`](index.md#request-3)
+> **request**: [`Request`](index.md#request-2)
 
 ##### response?
 
@@ -1265,7 +1267,7 @@ Checks if a request is in scope.
 
 | Parameter | Type |
 | ------ | ------ |
-| `request` | [`Request`](index.md#request-3) \| [`RequestSpec`](index.md#requestspec) |
+| `request` | [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) |
 
 ###### Returns
 
@@ -1288,7 +1290,7 @@ Checks if a request/response matches an HTTPQL filter.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `filter` | `string` | HTTPQL filter |
-| `request` | [`Request`](index.md#request-3) | The [Request](index.md#request-3) to match against |
+| `request` | [`Request`](index.md#request-2) | The [Request](index.md#request-2) to match against |
 | `response`? | [`Response`](index.md#response-4) | The [Response](index.md#response-4) to match against |
 
 ###### Returns
@@ -1500,6 +1502,20 @@ true
 
 ## Findings
 
+### DedupeKey
+
+> **DedupeKey**: `string` & `object`
+
+A deduplication key.
+
+#### Type declaration
+
+##### \_\_dedupeKey?
+
+> `optional` **\_\_dedupeKey**: `never`
+
+***
+
 ### Finding
 
 > **Finding**: `object`
@@ -1507,6 +1523,14 @@ true
 A saved immutable Finding.
 
 #### Type declaration
+
+##### getDedupeKey()
+
+The deduplication key of the finding.
+
+###### Returns
+
+`undefined` \| [`DedupeKey`](index.md#dedupekey)
 
 ##### getDescription()
 
@@ -1552,7 +1576,7 @@ A mutable Finding not yet created.
 
 ##### dedupeKey?
 
-> `optional` **dedupeKey**: `string`
+> `optional` **dedupeKey**: [`DedupeKey`](index.md#dedupekey)
 
 Deduplication key for findings.
 If a finding with the same dedupe key already exists, it will not be created.
@@ -1572,9 +1596,9 @@ It will be used to group findings.
 
 ##### request
 
-> **request**: [`Request`](index.md#request-3)
+> **request**: [`Request`](index.md#request-2)
 
-The associated [Request](index.md#request-3).
+The associated [Request](index.md#request-2).
 
 ##### title
 
@@ -1617,16 +1641,40 @@ await sdk.findings.create({
   title: "Title",
   description: "Description",
   reporter: "Reporter",
-  dedupe: `${request.getHost()}-${request.getPath()}`,
+  dedupeKey: `${request.getHost()}-${request.getPath()}`,
   request,
 });
+```
+
+##### exists()
+
+Check if a [Finding](index.md#finding) exists.
+Similar to `get`, but returns a boolean.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `input` | [`GetFindingInput`](index.md#getfindinginput) |
+
+###### Returns
+
+`Promise`\<`boolean`\>
+
+###### Example
+
+```js
+await sdk.findings.exists("my-dedupe-key");
 ```
 
 ##### get()
 
 Try to get a [Finding](index.md#finding) for a request.
+
 Since a request can have multiple findings, this will return the first one found.
 You can also filter by reporter to get a specific finding.
+
+Finally, you can use a deduplication key to get a specific finding.
 
 ###### Parameters
 
@@ -1651,23 +1699,9 @@ await sdk.findings.get({
 
 ### GetFindingInput
 
-> **GetFindingInput**: `object`
+> **GetFindingInput**: [`DedupeKey`](index.md#dedupekey) \| `object`
 
 Input to get a [Finding](index.md#finding).
-
-#### Type declaration
-
-##### reporter?
-
-> `optional` **reporter**: `string`
-
-The name of the reporter.
-
-##### request
-
-> **request**: [`Request`](index.md#request-3)
-
-The associated [Request](index.md#request-3).
 
 ## Replay
 
@@ -1879,7 +1913,7 @@ Option to return raw value
 
 ### RequestSource
 
-> **RequestSource**: [`ID`](index.md#id) \| [`Request`](index.md#request-3) \| [`RequestSpec`](index.md#requestspec) \| [`RequestSpecRaw`](index.md#requestspecraw)
+> **RequestSource**: [`ID`](index.md#id) \| [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) \| [`RequestSpecRaw`](index.md#requestspecraw)
 
 The source of a request.
 
@@ -1909,6 +1943,131 @@ Get the value of an environment variable.
 
 The value of the environment variable.
 
+##### getVars()
+
+Get all the environment variables.
+It includes the global environment and the selected environment.
+Those variables can change over time so avoid caching them.
+
+###### Returns
+
+[`EnvironmentVariable`](index.md#environmentvariable)[]
+
+An array of [EnvironmentVariable](index.md#environmentvariable)
+
+##### setVar()
+
+Sets an environment variable to a given value.
+This will override any existing value.
+The environment variable can be set either on the currently
+selected environment or the global environment.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `input` | [`SetVarInput`](index.md#setvarinput) |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+###### Throws
+
+If trying to set when a project is not selected.
+
+###### Throws
+
+If trying to set when an environment is not selected (with `global: false`).
+
+###### Example
+
+```js
+await sdk.env.setVar({
+  name: "USER_SECRET",
+  value: "my secret value",
+  secret: true,
+  global: false
+});
+```
+
+***
+
+### EnvironmentVariable
+
+> **EnvironmentVariable**: `object`
+
+A saved immutable Finding.
+
+#### Type declaration
+
+##### isSecret
+
+> `readonly` **isSecret**: `boolean`
+
+If the environment variable is a secret
+
+##### name
+
+> `readonly` **name**: `string`
+
+The name of the environment variable
+
+##### value
+
+> `readonly` **value**: `string`
+
+The value of the environment variable
+
+***
+
+### SetVarInput
+
+> **SetVarInput**: `object`
+
+Input for the `setVar` of [EnvironmentSDK](index.md#environmentsdk).
+
+#### Type declaration
+
+##### global
+
+> **global**: `boolean`
+
+If the environment variable should be set on the global
+environment or the currently selected environment.
+By default, it will be set globally.
+
+###### Default
+
+```ts
+true
+```
+
+##### name
+
+> **name**: `string`
+
+Name of the environment variable
+
+##### secret
+
+> **secret**: `boolean`
+
+If the environment variable should be treated as secret.
+Secrets are encrypted on the disk.
+
+###### Default
+
+```ts
+false
+```
+
+##### value
+
+> **value**: `string`
+
+Value of the environment variable
+
 ## Other
 
 ### Console
@@ -1918,7 +2077,7 @@ The value of the environment variable.
 Console interface for logging.
 
 Currently logs are only available in the backend logs.
-See https://docs.caido.io/report_bug.html#1-backend-logs
+See the [documentation](https://docs.caido.io/report_bug.html#1-backend-logs) on how to retrieve them.
 
 #### Type declaration
 
