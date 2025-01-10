@@ -20,6 +20,12 @@ Utilities for frontend plugins.
 
 #### Type declaration
 
+##### assets
+
+> **assets**: [`AssetsSDK`](index.md#assetssdk)
+
+Utilities to interact with the plugin's static assets.
+
 ##### backend
 
 > **backend**: [`BackendSDK`](index.md#backendsdkt-e)\<`T`, `E`\>
@@ -1480,6 +1486,82 @@ Set the current scope.
 `Promise`\<`void`\>
 
 ## Files
+
+### Asset
+
+> **Asset**: `object`
+
+A static asset.
+
+#### Type declaration
+
+##### asArrayBuffer()
+
+> **asArrayBuffer**: () => `Promise`\<`ArrayBuffer`\>
+
+###### Returns
+
+`Promise`\<`ArrayBuffer`\>
+
+##### asJson()
+
+> **asJson**: \<`T`\>() => `Promise`\<`T`\>
+
+###### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
+
+###### Returns
+
+`Promise`\<`T`\>
+
+##### asReadableStream()
+
+> **asReadableStream**: () => `ReadableStream`
+
+###### Returns
+
+`ReadableStream`
+
+##### asString()
+
+> **asString**: () => `Promise`\<`string`\>
+
+###### Returns
+
+`Promise`\<`string`\>
+
+***
+
+### AssetsSDK
+
+> **AssetsSDK**: `object`
+
+Utilities to interact with the plugin's static assets.
+
+#### Type declaration
+
+##### get()
+
+> **get**: (`path`: `string`) => `Promise`\<[`Asset`](index.md#asset)\>
+
+Get a file from the assets folder.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+
+###### Returns
+
+`Promise`\<[`Asset`](index.md#asset)\>
+
+The asset file.
+
+***
 
 ### FilesSDK
 
