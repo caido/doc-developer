@@ -27,7 +27,7 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
         link: "/concepts/backend/binary",
       },
       {
-        text: "Difference with workflows",
+        text: "Plugins vs Workflows",
         link: "/concepts/backend/workflow",
       },
     ],
