@@ -4,7 +4,7 @@ Caido allows users to develop custom features in the form of plugins.
 
 Plugin development is done in JavaScript and consists of many parts:
 
-- A `manifest.json` file
+- A `caido.config.ts`/`manifest.json` file
 - A frontend plugin
 - A backend plugin
 

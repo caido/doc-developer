@@ -1,6 +1,7 @@
 # caido.config.ts
 
 The `caido.config.ts` file is used to configure your package.
+It will used to generate the [`manifest.json`](./manifest.md) automatically.
 
 ```ts
 import { defineConfig } from "@caido-community/dev";
