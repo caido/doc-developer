@@ -162,7 +162,7 @@ Endpoints provided by the backend plugin.
 
 #### Index Signature
 
- \[`key`: `string`\]: (...`args`: `any`[]) => `any`
+\[`key`: `string`\]: (...`args`: `any`[]) => `any`
 
 ***
 
@@ -174,13 +174,13 @@ Events emitted by the backend plugin.
 
 #### Index Signature
 
- \[`key`: `string`\]: (...`args`: `any`[]) => `void`
+\[`key`: `string`\]: (...`args`: `any`[]) => `void`
 
 ***
 
 ### BackendSDK\<T, E\>
 
-> **BackendSDK**\<`T`, `E`\>: `{ [K in keyof T]: Function }` & `object`
+> **BackendSDK**\<`T`, `E`\>: `{ [K in keyof T]: (args: Parameters<T[K]>) => PromisifiedReturnType<T[K]> }` & `object`
 
 Utilities to interact with the backend plugin.
 
@@ -246,7 +246,7 @@ Create a button.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options`? | `object` | Options for the button. |
+| `options`? | \{ `label`: `string`; `leadingIcon`: [`Icon`](index.md#icon); `size`: `"small"` \| `"medium"` \| `"large"`; `trailingIcon`: [`Icon`](index.md#icon); `variant`: `"primary"` \| `"secondary"` \| `"tertiary"`; \} | Options for the button. |
 | `options.label`? | `string` | The label of the button. |
 | `options.leadingIcon`? | [`Icon`](index.md#icon) | The leading icon of the button. |
 | `options.size`? | `"small"` \| `"medium"` \| `"large"` | The size of the button. |
@@ -280,7 +280,7 @@ Create a card.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options`? | `object` | Options for the card. |
+| `options`? | \{ `body`: `HTMLElement`; `footer`: `HTMLElement`; `header`: `HTMLElement`; \} | Options for the card. |
 | `options.body`? | `HTMLElement` | The body of the card. |
 | `options.footer`? | `HTMLElement` | The footer of the card. |
 | `options.header`? | `HTMLElement` | The header of the card. |
@@ -325,7 +325,7 @@ Create a well.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options`? | `object` | Options for the well. |
+| `options`? | \{ `body`: `HTMLElement`; `footer`: `HTMLElement`; `header`: `HTMLElement`; \} | Options for the well. |
 | `options.body`? | `HTMLElement` | The body of the well. |
 | `options.footer`? | `HTMLElement` | The footer of the well. |
 | `options.header`? | `HTMLElement` | The header of the well. |
@@ -360,7 +360,7 @@ The list of excluded items.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 The unique ID of the scope.
 
@@ -390,7 +390,7 @@ Create a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | `object` | Options for the scope. |
+| `options` | \{ `allowlist`: `string`[]; `denylist`: `string`[]; `name`: `string`; \} | Options for the scope. |
 | `options.allowlist` | `string`[] | The list of included items in the scope. |
 | `options.denylist` | `string`[] | The list of excluded items in the scope. |
 | `options.name` | `string` | The name of the scope. |
@@ -413,7 +413,7 @@ const newScope = await sdk.scopes.createScope({
 
 ##### deleteScope()
 
-> **deleteScope**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`boolean`\>
+> **deleteScope**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
 
 Delete a scope.
 
@@ -421,7 +421,7 @@ Delete a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The id of the scope to delete. |
+| `id` | [`ID`](index.md#id-3) | The id of the scope to delete. |
 
 ###### Returns
 
@@ -443,7 +443,7 @@ A list of scopes.
 
 ##### updateScope()
 
-> **updateScope**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
+> **updateScope**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Scope`](index.md#scope) \| `undefined`\>
 
 Update a scope.
 
@@ -451,8 +451,8 @@ Update a scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The id of the scope to update. |
-| `options` | `object` | Options for the scope. |
+| `id` | [`ID`](index.md#id-3) | The id of the scope to update. |
+| `options` | \{ `allowlist`: `string`[]; `denylist`: `string`[]; `name`: `string`; \} | Options for the scope. |
 | `options.allowlist`? | `string`[] | The list of included items in the scope. |
 | `options.denylist`? | `string`[] | The list of excluded items in the scope. |
 | `options.name`? | `string` | The name of the scope. |
@@ -469,7 +469,7 @@ The updated scope.
 
 > **Finding**: `object`
 
-Represents a [https://docs.caido.io/reference/features/logging/findings|Finding](https://docs.caido.io/reference/features/logging/findings|Finding).
+Represents a [https://docs.caido.io/reference/features/logging/findings\|Finding](https://docs.caido.io/reference/features/logging/findings|Finding).
 
 #### Type declaration
 
@@ -487,7 +487,7 @@ The host of the request attached to this finding
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 The ID of the finding.
 
@@ -521,7 +521,7 @@ Utilities to interact with findings
 
 ##### createFinding()
 
-> **createFinding**: (`requestId`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
+> **createFinding**: (`requestId`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
 
 Create a [Finding](index.md#finding).
 
@@ -529,8 +529,8 @@ Create a [Finding](index.md#finding).
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `requestId` | [`ID`](index.md#id-5) | The id of the request the finding is associated with. |
-| `options` | `object` | Options for the finding. |
+| `requestId` | [`ID`](index.md#id-3) | The id of the request the finding is associated with. |
+| `options` | \{ `dedupeKey`: `string`; `description`: `string`; `reporter`: `string`; `title`: `string`; \} | Options for the finding. |
 | `options.dedupeKey`? | `string` | If a finding with the same deduplication key already exists, it will not create a new finding. |
 | `options.description`? | `string` | The description of the finding. |
 | `options.reporter` | `string` | The reporter of the finding. |
@@ -581,27 +581,27 @@ The context for a command that is executed on a request pane.
 
 The request that is currently open in the request pane.
 
-##### request.host
+###### request.host
 
 > **host**: `string`
 
-##### request.isTls
+###### request.isTls
 
 > **isTls**: `boolean`
 
-##### request.path
+###### request.path
 
 > **path**: `string`
 
-##### request.port
+###### request.port
 
 > **port**: `number`
 
-##### request.query
+###### request.query
 
 > **query**: `string`
 
-##### request.raw
+###### request.raw
 
 > **raw**: `string`
 
@@ -651,27 +651,27 @@ The context for a command that is executed on a response pane.
 
 The request that is associated with the response.
 
-##### request.host
+###### request.host
 
 > **host**: `string`
 
-##### request.id
+###### request.id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
-##### request.isTls
+###### request.isTls
 
 > **isTls**: `boolean`
 
-##### request.path
+###### request.path
 
 > **path**: `string`
 
-##### request.port
+###### request.port
 
 > **port**: `number`
 
-##### request.query
+###### request.query
 
 > **query**: `string`
 
@@ -681,19 +681,19 @@ The request that is associated with the response.
 
 The response that is currently open in the response pane.
 
-##### response.id
+###### response.id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
-##### response.raw
+###### response.raw
 
 > **raw**: `string`
 
-##### response.roundtripTime
+###### response.roundtripTime
 
 > **roundtripTime**: `number`
 
-##### response.statusCode
+###### response.statusCode
 
 > **statusCode**: `number`
 
@@ -728,7 +728,7 @@ Register a command.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | [`CommandID`](index.md#commandid) | The id of the command. |
-| `options` | `object` | Options for the command. |
+| `options` | \{ `group`: `string`; `name`: `string`; `run`: (`context`: [`CommandContext`](index.md#commandcontext)) => `void`; `when`: (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean`; \} | Options for the command. |
 | `options.group`? | `string` | The group this command belongs to. |
 | `options.name` | `string` | The name of the command. |
 | `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `void` | The function to run when the command is executed. |
@@ -924,7 +924,7 @@ Add a page to the navigation.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | The path of the page. |
-| `options` | `object` | Options for the page. |
+| `options` | \{ `body`: `HTMLElement`; `onEnter`: () => `void`; `topbar`: `HTMLElement`; \} | Options for the page. |
 | `options.body` | `HTMLElement` | The body of the page. |
 | `options.onEnter`? | () => `void` | The callback to execute when the page is entered. |
 | `options.topbar`? | `HTMLElement` | The topbar of the page. |
@@ -988,7 +988,7 @@ Show a toast message.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `message` | `string` | The message to show. |
-| `options`? | `object` | Options for the toast message. |
+| `options`? | \{ `duration`: `number`; `variant`: `"success"` \| `"error"` \| `"warning"` \| `"info"`; \} | Options for the toast message. |
 | `options.duration`? | `number` | The duration of the toast message in milliseconds. |
 | `options.variant`? | `"success"` \| `"error"` \| `"warning"` \| `"info"` | The variant of the toast message. |
 
@@ -1159,7 +1159,7 @@ Register a sidebar item.
 | ------ | ------ | ------ |
 | `name` | `string` | The name of the sidebar item. |
 | `path` | `string` | The path that the user will be navigated to when the sidebar item is clicked. |
-| `options`? | `object` | Options for the sidebar item. |
+| `options`? | \{ `group`: `string`; `icon`: [`Icon`](index.md#icon); `isExternal`: `boolean`; \} | Options for the sidebar item. |
 | `options.group`? | `string` | The group the sidebar item belongs to. |
 | `options.icon`? | [`Icon`](index.md#icon) | The [Icon](index.md#icon) of the sidebar item. |
 | `options.isExternal`? | `boolean` | Whether the path points to an external URL. |
@@ -1190,7 +1190,7 @@ A collection in Replay.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 The ID of the collection.
 
@@ -1202,7 +1202,7 @@ The name of the collection.
 
 ##### sessionIds
 
-> **sessionIds**: [`ID`](index.md#id-5)[]
+> **sessionIds**: [`ID`](index.md#id-3)[]
 
 The sessions in the collection.
 
@@ -1218,7 +1218,7 @@ Utilities to interact with Replay.
 
 ##### closeTab()
 
-> **closeTab**: (`sessionId`: [`ID`](index.md#id-5)) => `void`
+> **closeTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
 
 Close a replay tab for the given session.
 
@@ -1226,7 +1226,7 @@ Close a replay tab for the given session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sessionId` | [`ID`](index.md#id-5) | The ID of the session to close. |
+| `sessionId` | [`ID`](index.md#id-3) | The ID of the session to close. |
 
 ###### Returns
 
@@ -1270,7 +1270,7 @@ The list of all open replay tabs.
 
 ##### openTab()
 
-> **openTab**: (`sessionId`: [`ID`](index.md#id-5)) => `void`
+> **openTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
 
 Open a replay tab for the given session.
 
@@ -1278,7 +1278,7 @@ Open a replay tab for the given session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sessionId` | [`ID`](index.md#id-5) | The ID of the session to open. |
+| `sessionId` | [`ID`](index.md#id-3) | The ID of the session to open. |
 
 ###### Returns
 
@@ -1286,7 +1286,7 @@ Open a replay tab for the given session.
 
 ##### renameSession()
 
-> **renameSession**: (`id`: [`ID`](index.md#id-5), `name`: `string`) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
+> **renameSession**: (`id`: [`ID`](index.md#id-3), `name`: `string`) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
 
 Rename a session.
 
@@ -1294,7 +1294,7 @@ Rename a session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the session to rename. |
+| `id` | [`ID`](index.md#id-3) | The ID of the session to rename. |
 | `name` | `string` | The new name of the session. |
 
 ###### Returns
@@ -1315,13 +1315,13 @@ A session in Replay.
 
 ##### collectionId
 
-> **collectionId**: [`ID`](index.md#id-5)
+> **collectionId**: [`ID`](index.md#id-3)
 
 The ID of the collection the session belongs to.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 The ID of the session.
 
@@ -1343,7 +1343,7 @@ A replay tab.
 
 ##### sessionId
 
-> **sessionId**: [`ID`](index.md#id-5)
+> **sessionId**: [`ID`](index.md#id-3)
 
 The ID of the session associated with this tab.
 
@@ -1371,13 +1371,13 @@ The current HTTPQL query.
 
 ##### getScopeId()
 
-> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+> **getScopeId**: () => [`ID`](index.md#id-3) \| `undefined`
 
 Get the current scope ID.
 
 ###### Returns
 
-[`ID`](index.md#id-5) \| `undefined`
+[`ID`](index.md#id-3) \| `undefined`
 
 The current scope ID.
 
@@ -1399,7 +1399,7 @@ Set the HTTPQL query that will be applied on the HTTP History table results.
 
 ##### setScope()
 
-> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `Promise`\<`void`\>
+> **setScope**: (`id`: [`ID`](index.md#id-3) \| `undefined`) => `Promise`\<`void`\>
 
 Set the current scope.
 
@@ -1407,7 +1407,7 @@ Set the current scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the scope to set. |
+| `id` | [`ID`](index.md#id-3) \| `undefined` | The ID of the scope to set. |
 
 ###### Returns
 
@@ -1437,13 +1437,13 @@ The current HTTPQL query.
 
 ##### getScopeId()
 
-> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+> **getScopeId**: () => [`ID`](index.md#id-3) \| `undefined`
 
 Get the current scope ID.
 
 ###### Returns
 
-[`ID`](index.md#id-5) \| `undefined`
+[`ID`](index.md#id-3) \| `undefined`
 
 The current scope ID.
 
@@ -1465,7 +1465,7 @@ Set the HTTPQL query that will be applied on the search table results.
 
 ##### setScope()
 
-> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `Promise`\<`void`\>
+> **setScope**: (`id`: [`ID`](index.md#id-3) \| `undefined`) => `Promise`\<`void`\>
 
 Set the current scope.
 
@@ -1473,7 +1473,7 @@ Set the current scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the scope to set. |
+| `id` | [`ID`](index.md#id-3) \| `undefined` | The ID of the scope to set. |
 
 ###### Returns
 
@@ -1661,7 +1661,7 @@ This alias is used when referencing the filter in an HTTPQL query (e.g. `preset:
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 The ID of the filter.
 
@@ -1697,7 +1697,7 @@ Creates a filter.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | `object` | Options for the filter. |
+| `options` | \{ `alias`: `string`; `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); \} | Options for the filter. |
 | `options.alias` | `string` | The alias of the filter. Used when referencing the filter in an HTTPQL query (e.g. `preset:my-alias`). Should be unique and follow the format `[a-zA-Z0-9_-]+`. |
 | `options.name` | `string` | The name of the filter. Should be unique. |
 | `options.query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query of the filter. |
@@ -1710,7 +1710,7 @@ The created filter.
 
 ##### delete()
 
-> **delete**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`void`\>
+> **delete**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`void`\>
 
 Deletes a filter.
 
@@ -1718,7 +1718,7 @@ Deletes a filter.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the filter to delete. |
+| `id` | [`ID`](index.md#id-3) | The ID of the filter to delete. |
 
 ###### Returns
 
@@ -1738,7 +1738,7 @@ The filters.
 
 ##### update()
 
-> **update**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`Filter`](index.md#filter)\>
+> **update**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Filter`](index.md#filter)\>
 
 Updates a filter.
 
@@ -1746,8 +1746,8 @@ Updates a filter.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the filter to update. |
-| `options` | `object` | Options for the filter. |
+| `id` | [`ID`](index.md#id-3) | The ID of the filter to update. |
+| `options` | \{ `alias`: `string`; `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); \} | Options for the filter. |
 | `options.alias` | `string` | The alias of the filter. |
 | `options.name` | `string` | The name of the filter. |
 | `options.query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query of the filter. |
@@ -1770,19 +1770,19 @@ Utilities to interact with the Intercept page.
 
 ##### getScopeId()
 
-> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+> **getScopeId**: () => [`ID`](index.md#id-3) \| `undefined`
 
 Get the current scope ID.
 
 ###### Returns
 
-[`ID`](index.md#id-5) \| `undefined`
+[`ID`](index.md#id-3) \| `undefined`
 
 The current scope ID.
 
 ##### setScope()
 
-> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `void`
+> **setScope**: (`id`: [`ID`](index.md#id-3) \| `undefined`) => `void`
 
 Set the current scope.
 
@@ -1790,7 +1790,7 @@ Set the current scope.
 
 | Parameter | Type |
 | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) \| `undefined` |
+| `id` | [`ID`](index.md#id-3) \| `undefined` |
 
 ###### Returns
 
@@ -1808,7 +1808,7 @@ A collection in Match and Replace.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 ##### name
 
@@ -1816,7 +1816,7 @@ A collection in Match and Replace.
 
 ##### ruleIds
 
-> **ruleIds**: [`ID`](index.md#id-5)[]
+> **ruleIds**: [`ID`](index.md#id-3)[]
 
 ***
 
@@ -1830,13 +1830,13 @@ A rule in Match and Replace.
 
 ##### collectionId
 
-> **collectionId**: [`ID`](index.md#id-5)
+> **collectionId**: [`ID`](index.md#id-3)
 
 The ID of the collection the rule belongs to.
 
 ##### id
 
-> **id**: [`ID`](index.md#id-5)
+> **id**: [`ID`](index.md#id-3)
 
 The ID of the rule.
 
@@ -1903,7 +1903,7 @@ Create a collection.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | `object` | The options for the collection. |
+| `options` | \{ `name`: `string`; \} | The options for the collection. |
 | `options.name` | `string` | The name of the collection. |
 
 ###### Returns
@@ -1920,8 +1920,8 @@ Create a rule.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | `object` | The options for the rule. |
-| `options.collectionId` | [`ID`](index.md#id-5) | The ID of the collection the rule belongs to. |
+| `options` | \{ `collectionId`: [`ID`](index.md#id-3); `isEnabled`: `boolean`; `isRegex`: `boolean`; `matchTerm`: `string`; `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); `replaceTerm`: `string`; `strategy`: [`MatchReplaceStrategy`](index.md#matchreplacestrategy); \} | The options for the rule. |
+| `options.collectionId` | [`ID`](index.md#id-3) | The ID of the collection the rule belongs to. |
 | `options.isEnabled` | `boolean` | Whether the rule is enabled. |
 | `options.isRegex` | `boolean` | Whether the match term is a regex. |
 | `options.matchTerm` | `string` | The match term of the rule. |
@@ -1936,7 +1936,7 @@ Create a rule.
 
 ##### deleteCollection()
 
-> **deleteCollection**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`void`\>
+> **deleteCollection**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`void`\>
 
 Delete a collection.
 
@@ -1944,7 +1944,7 @@ Delete a collection.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the collection. |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection. |
 
 ###### Returns
 
@@ -1952,7 +1952,7 @@ Delete a collection.
 
 ##### deleteRule()
 
-> **deleteRule**: (`id`: [`ID`](index.md#id-5)) => `Promise`\<`void`\>
+> **deleteRule**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`void`\>
 
 Delete a rule.
 
@@ -1960,7 +1960,7 @@ Delete a rule.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the rule. |
+| `id` | [`ID`](index.md#id-3) | The ID of the rule. |
 
 ###### Returns
 
@@ -2003,7 +2003,7 @@ All rules.
 
 ##### selectRule()
 
-> **selectRule**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `void`
+> **selectRule**: (`id`: [`ID`](index.md#id-3) \| `undefined`) => `void`
 
 Select a rule to be displayed in the UI.
 
@@ -2011,7 +2011,7 @@ Select a rule to be displayed in the UI.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the rule, or undefined to clear the selection. |
+| `id` | [`ID`](index.md#id-3) \| `undefined` | The ID of the rule, or undefined to clear the selection. |
 
 ###### Returns
 
@@ -2019,7 +2019,7 @@ Select a rule to be displayed in the UI.
 
 ##### updateCollection()
 
-> **updateCollection**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
+> **updateCollection**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
 
 Update a collection.
 
@@ -2027,8 +2027,8 @@ Update a collection.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the collection. |
-| `options` | `object` | The new values for the collection. |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection. |
+| `options` | \{ `name`: `string`; \} | The new values for the collection. |
 | `options.name` | `string` | The new name of the collection. |
 
 ###### Returns
@@ -2037,7 +2037,7 @@ Update a collection.
 
 ##### updateRule()
 
-> **updateRule**: (`id`: [`ID`](index.md#id-5), `options`: `object`) => `Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
+> **updateRule**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
 
 Update a rule.
 
@@ -2045,8 +2045,8 @@ Update a rule.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) | The ID of the rule. |
-| `options` | `object` | The new values for the rule. |
+| `id` | [`ID`](index.md#id-3) | The ID of the rule. |
+| `options` | \{ `isEnabled`: `boolean`; `isRegex`: `boolean`; `matchTerm`: `string`; `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); `replaceTerm`: `string`; `strategy`: [`MatchReplaceStrategy`](index.md#matchreplacestrategy); \} | The new values for the rule. |
 | `options.isEnabled` | `boolean` | Whether the rule is enabled. |
 | `options.isRegex` | `boolean` | Whether the match term is a regex. |
 | `options.matchTerm` | `string` | The new match term of the rule. |
@@ -2267,7 +2267,7 @@ The editor element.
 
 > **Icon**: `string` & `object`
 
-A [https://fontawesome.com/icons|FontAwesome](https://fontawesome.com/icons|FontAwesome) icon class.
+A [https://fontawesome.com/icons\|FontAwesome](https://fontawesome.com/icons|FontAwesome) icon class.
 
 #### Type declaration
 
@@ -2317,7 +2317,7 @@ A unique Caido identifier per type.
 
 ### JSONValue
 
-> **JSONValue**: [`JSONPrimitive`](index.md#jsonprimitive) \| [`JSONValue`](index.md#jsonvalue)[] \| `object`
+> **JSONValue**: [`JSONPrimitive`](index.md#jsonprimitive) \| [`JSONValue`](index.md#jsonvalue)[] \| \{\}
 
 ***
 
@@ -2355,19 +2355,19 @@ Utilities to interact with the Sitemap page.
 
 ##### getScopeId()
 
-> **getScopeId**: () => [`ID`](index.md#id-5) \| `undefined`
+> **getScopeId**: () => [`ID`](index.md#id-3) \| `undefined`
 
 Get the current scope ID.
 
 ###### Returns
 
-[`ID`](index.md#id-5) \| `undefined`
+[`ID`](index.md#id-3) \| `undefined`
 
 The current scope ID.
 
 ##### setScope()
 
-> **setScope**: (`id`: [`ID`](index.md#id-5) \| `undefined`) => `void`
+> **setScope**: (`id`: [`ID`](index.md#id-3) \| `undefined`) => `void`
 
 Set the current scope.
 
@@ -2375,7 +2375,7 @@ Set the current scope.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `id` | [`ID`](index.md#id-5) \| `undefined` | The ID of the scope to set. |
+| `id` | [`ID`](index.md#id-3) \| `undefined` | The ID of the scope to set. |
 
 ###### Returns
 

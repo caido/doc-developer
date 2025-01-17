@@ -149,7 +149,7 @@ Registers a new backend function for the RPC.
 | Parameter | Type |
 | ------ | ------ |
 | `name` | keyof `API` |
-| `callback` | (`sdk`: [`SDK`](index.md#sdkapi-events)\<`object`, `object`\>, ...`args`: `any`[]) => `any` |
+| `callback` | (`sdk`: [`SDK`](index.md#sdkapi-events), ...`args`: `any`[]) => `any` |
 
 ###### Returns
 
@@ -447,7 +447,7 @@ Get the host of the request.
 
 ##### getMethod()
 
-###### getMethod()
+###### Call Signature
 
 > **getMethod**(): `string`
 
@@ -459,9 +459,13 @@ Get the raw version by passing `{ raw: true }` in the options.
 
 `string`
 
-###### getMethod(options)
+###### Call Signature
 
 > **getMethod**(`options`: [`RawOption`](index.md#rawoption)): `Uint8Array`
+
+Get the HTTP method of the request.
+
+Get the raw version by passing `{ raw: true }` in the options.
 
 ###### Parameters
 
@@ -475,7 +479,7 @@ Get the raw version by passing `{ raw: true }` in the options.
 
 ##### getPath()
 
-###### getPath()
+###### Call Signature
 
 > **getPath**(): `string`
 
@@ -487,9 +491,13 @@ Get the raw version by passing `{ raw: true }` in the options.
 
 `string`
 
-###### getPath(options)
+###### Call Signature
 
 > **getPath**(`options`: [`RawOption`](index.md#rawoption)): `Uint8Array`
+
+Get the path of the request.
+
+Get the raw version by passing `{ raw: true }` in the options.
 
 ###### Parameters
 
@@ -513,7 +521,7 @@ Get the port of the request.
 
 ##### getQuery()
 
-###### getQuery()
+###### Call Signature
 
 > **getQuery**(): `string`
 
@@ -527,9 +535,15 @@ Excludes the leading `?`.
 
 `string`
 
-###### getQuery(options)
+###### Call Signature
 
 > **getQuery**(`options`: [`RawOption`](index.md#rawoption)): `Uint8Array`
+
+Get the unparsed query of the request.
+
+Get the raw version by passing `{ raw: true }` in the options.
+
+Excludes the leading `?`.
 
 ###### Parameters
 
@@ -1241,7 +1255,7 @@ Requests after a given cursor.
 
 ##### ascending()
 
-###### ascending(target, field)
+###### Call Signature
 
 Ascending ordering.
 
@@ -1256,7 +1270,7 @@ Ascending ordering.
 
 [`RequestsQuery`](index.md#requestsquery)
 
-###### ascending(target, field)
+###### Call Signature
 
 ###### Parameters
 
@@ -1285,7 +1299,7 @@ Requests before a given cursor.
 
 ##### descending()
 
-###### descending(target, field)
+###### Call Signature
 
 Descending ordering.
 
@@ -1300,7 +1314,7 @@ Descending ordering.
 
 [`RequestsQuery`](index.md#requestsquery)
 
-###### descending(target, field)
+###### Call Signature
 
 ###### Parameters
 
@@ -1837,9 +1851,27 @@ await sdk.findings.get({
 
 ### GetFindingInput
 
-> **GetFindingInput**: [`DedupeKey`](index.md#dedupekey) \| `object`
+> **GetFindingInput**: [`DedupeKey`](index.md#dedupekey) \| \{ `reporter`: `string`; `request`: [`Request`](index.md#request-1); \}
 
 Input to get a [Finding](index.md#finding).
+
+#### Type declaration
+
+[`DedupeKey`](index.md#dedupekey)
+
+\{ `reporter`: `string`; `request`: [`Request`](index.md#request-1); \}
+
+##### reporter?
+
+> `optional` **reporter**: `string`
+
+The name of the reporter.
+
+##### request
+
+> **request**: [`Request`](index.md#request-1)
+
+The associated [Request](index.md#request-1).
 
 ## Replay
 

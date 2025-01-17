@@ -28,6 +28,15 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Runtime",
+    items: [
+      {
+        text: "Backend modules",
+        link: "/reference/modules/",
+      },
+    ],
+  },
+  {
     text: "Files",
     items: [
       {
