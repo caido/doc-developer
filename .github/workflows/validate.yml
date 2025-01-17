@@ -35,6 +35,7 @@ jobs:
           globs: |
             src/**/*.md
             !src/reference/sdks/**/*.md
+            !src/reference/modules/**/*.md
 
       - name: Lint JS
         run: pnpm lint:js
