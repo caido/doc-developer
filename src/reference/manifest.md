@@ -14,7 +14,7 @@ The `manifest.json` file is the first file that is read by the Caido application
     "url": "https://github.com/caido-community/authmatrix"
   },
   "links": {
-    "fundme": "https://patreon.com/..."
+    "sponsor": "https://patreon.com/..."
   },
   "plugins": [
     {
@@ -73,7 +73,7 @@ The `links` field is optional and is currently used to provide users with a fund
 
 | Field   | Description                                      |
 | ------- | ------------------------------------------------ |
-| fundme  | A URL to the project's funding website.          |
+| sponsor | A URL to the project's funding website.          |
 
 ## Plugins Fields
 
