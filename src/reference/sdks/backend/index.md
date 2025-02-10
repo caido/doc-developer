@@ -84,6 +84,16 @@ The SDK for metadata information about the plugin.
 
 #### Type declaration
 
+##### assetsPath()
+
+The directory of the plugin's assets in Caido Data.
+You can read static data from your plugin in this directory.
+You shouldn't write anything there, as the contents can be reset at any time.
+
+###### Returns
+
+`string`
+
 ##### db()
 
 Get a sqlite database for the plugin stored in Caido Data.
@@ -305,13 +315,13 @@ Calling `to<FORMAT>` will try to convert the body to the desired format.
 
 ##### toJson()
 
-> **toJson**(): `any`
+> **toJson**(): `unknown`
 
 Try to parse the body as JSON.
 
 ###### Returns
 
-`any`
+`unknown`
 
 ###### Throws
 
@@ -785,6 +795,8 @@ Set if the request uses TLS (HTTPS).
 
 ##### parse()
 
+###### Call Signature
+
 > `static` **parse**(`bytes`: [`Bytes`](index.md#bytes)): [`RequestSpec`](index.md#requestspec)
 
 Parses raw bytes into a [RequestSpec](index.md#requestspec).
@@ -812,6 +824,26 @@ spec.setHeader('x-caido', 'test');
 const specRaw = spec.getRaw();
 const rawOutput = specRaw.getRaw(); // Will contain the new header
 ```
+
+###### Call Signature
+
+> `static` **parse**(`raw`: [`RequestSpecRaw`](index.md#requestspecraw)): [`RequestSpec`](index.md#requestspec)
+
+Parses the raw bytes of a [RequestSpecRaw](index.md#requestspecraw) into a [RequestSpec](index.md#requestspec).
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `raw` | [`RequestSpecRaw`](index.md#requestspecraw) |
+
+###### Returns
+
+[`RequestSpec`](index.md#requestspec)
+
+###### Throws
+
+If the bytes are not a valid HTTP request.
 
 ***
 
@@ -878,6 +910,24 @@ Get the raw bytes of the request.
 ###### Returns
 
 `Uint8Array`
+
+##### getSpec()
+
+> **getSpec**(): [`RequestSpec`](index.md#requestspec)
+
+This methods converts the [RequestSpecRaw](index.md#requestspecraw) to a [RequestSpec](index.md#requestspec).
+
+###### Returns
+
+[`RequestSpec`](index.md#requestspec)
+
+###### Throws
+
+If the bytes are not a valid HTTP request.
+
+###### See
+
+[RequestSpec.parse](index.md#parse)
 
 ##### getTls()
 
