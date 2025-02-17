@@ -22,14 +22,16 @@ The `manifest.json` file is the first file that is read by the Caido application
       "style": "frontend/style.css",
       "backend": {
         "id": "authmatrix-backend"
-      }
+      },
+      "assets": "frontend/assets"
     },
     {
       "kind": "backend",
       "id": "authmatrix-backend",
       "name": "Authmatrix Backend",
       "runtime": "javascript",
-      "entrypoint": "backend/script.js"
+      "entrypoint": "backend/script.js",
+      "assets": "frontend/assets"
     },
     {
       "kind": "workflow",
@@ -45,22 +47,24 @@ Here's a summary of each field (**required** fields are marked with an asterisk 
 
 ## Main Fields
 
-| Field       | Description                                                                                                                                                                                            |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| id\*        | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`\_). |
-| version\*   | The version of your plugin package. Follows the `MAJOR.MINOR.PATCH` syntax.                                                                                                                            |
-| name        | The name of your plugin package. If not supplied, the `id` will be used as the `name`.                                                                                                                 |
-| description | A description of the plugin.                                                                                                                                                                           |
+| Field       | Required | Description                                                                                                                                                                                            |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id          | Yes      | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`\_). |
+| version     | Yes      | The version of your plugin package. Follows the `MAJOR.MINOR.PATCH` syntax.                                                                                                                            |
+| name        | No       | The name of your plugin package. If not supplied, the `id` will be used as the `name`.                                                                                                                 |
+| description | No       | A description of the plugin package .                                                                                                                                                                  |
+| Author      | No       | See the [author fields](#author-fields).                                                                                                                                                               |
+| Plugins     | Yes      | Array of plugins. See the [plugin fields](#plugins-fields).                                                                                                                                            |
 
 ## Author Fields
 
 The `author` field is optional and may be used for crediting purposes.
 
-| Field | Description                      |
-| ----- | -------------------------------- |
-| name  | The name of the author.          |
-| email | The email address of the author. |
-| url   | A URL to the author's website.   |
+| Field | Required | Description                      |
+| ----- | -------- | -------------------------------- |
+| name  | No       | The name of the author.          |
+| email | No       | The email address of the author. |
+| url   | No       | A URL to the author's website.   |
 
 ## Plugins Fields
 
@@ -74,30 +78,32 @@ You can define multiple plugins of the same type. For example, you can define 3 
 
 ### Frontend Plugins
 
-| Field        | Description                                                                                                                                                                                                       |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kind\*       | Must be of type `frontend`                                                                                                                                                                                        |
-| id\*         | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`).              |
-| entrypoint\* | Specifies the location of the primary script to be executed when the plugin is launched.                                                                                                                          |
-| name         | The cosmetic plugin package name displayed in the [Plugins](https://docs.caido.io/reference/features/workspace/plugins.html) table. If not supplied, the `id` will be used as the `name`.                         |
-| style        | Specifies the location of the CSS file to be used to stylize elements of your plugin.                                                                                                                             |
-| backend      | This object contains the `id` of the associated backend plugin. Specifying this field will allow the frontend plugin to communicate with the backend plugin via [sdk.backend](/reference/sdks/frontend/#backend). |
+| Field      | Required | Description                                                                                                                                                                                                       |
+| ---------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| kind       | Yes      | Must be of type `frontend`                                                                                                                                                                                        |
+| id         | Yes      | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`).              |
+| entrypoint | Yes      | Specifies the location of the primary script to be executed when the plugin is launched.                                                                                                                          |
+| name       | No       | The cosmetic plugin package name displayed in the [Plugins](https://docs.caido.io/reference/features/workspace/plugins.html) table. If not supplied, the `id` will be used as the `name`.                         |
+| style      | No       | Specifies the location of the CSS file to be used to stylize elements of your plugin.                                                                                                                             |
+| backend    | No       | This object contains the `id` of the associated backend plugin. Specifying this field will allow the frontend plugin to communicate with the backend plugin via [sdk.backend](/reference/sdks/frontend/#backend). |
+| assets     | No       | Extra assets to be bundled with the plugin and loadable at runtime.                                                                                                                                               |
 
 ### Backend Plugins
 
-| Field        | Description                                                                                                                                                                                          |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kind\*       | Must be of type `backend`                                                                                                                                                                            |
-| id\*         | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`). |
-| entrypoint\* | Specifies the location of the primary script to be executed when the plugin is launched.                                                                                                             |
-| runtime\*    | Specifies that JavaScript code will be executed.                                                                                                                                                     |
-| name         | The name of your plugin. If not supplied, the `id` will be used as the `name`.                                                                                                                       |
+| Field      | Required | Description                                                                                                                                                                                          |
+| ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| kind       | Yes      | Must be of type `backend`                                                                                                                                                                            |
+| id         | Yes      | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`). |
+| entrypoint | Yes      | Specifies the location of the primary script to be executed when the plugin is launched.                                                                                                             |
+| runtime    | Yes      | Specifies that JavaScript code will be executed.                                                                                                                                                     |
+| name       | No       | The name of your plugin. If not supplied, the `id` will be used as the `name`.                                                                                                                       |
+| assets     | No       | Extra assets to be bundled with the plugin and loadable at runtime.                                                                                                                                  |
 
 ### Workflow Plugins
 
-| Field        | Description                                                                                                                                                                                          |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kind\*       | Must be of type `workflow`                                                                                                                                                                           |
-| id\*         | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`). |
-| definition\* | Specifies the location of workflow json definition.                                                                                                                                                  |
-| name         | The name of your plugin. If not supplied, the `id` will be used as the `name`.                                                                                                                       |
+| Field      | Required | Description                                                                                                                                                                                          |
+| ---------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| kind       | Yes      | Must be of type `workflow`                                                                                                                                                                           |
+| id         | Yes      | Must be **unique** and must only consist of **lowercase** letters, **numbers**, **hyphens** and **underscores** (_the order of which must satisfy the regex: `^[a-z][a-z0-9]+(?:[_-][a-z0-9]+)\*$`). |
+| definition | Yes      | Specifies the location of workflow json definition.                                                                                                                                                  |
+| name       | No       | The name of your plugin. If not supplied, the `id` will be used as the `name`.                                                                                                                       |
