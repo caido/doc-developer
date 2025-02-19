@@ -20,6 +20,12 @@ Utilities for frontend plugins.
 
 #### Type declaration
 
+##### assets
+
+> **assets**: [`AssetsSDK`](index.md#assetssdk)
+
+Utilities to interact with the plugin's static assets.
+
 ##### backend
 
 > **backend**: [`BackendSDK`](index.md#backendsdkt-e)\<`T`, `E`\>
@@ -103,6 +109,12 @@ Utilities to interact with navigation.
 > **replay**: [`ReplaySDK`](index.md#replaysdk)
 
 Utilities to interact with the Replay page.
+
+##### runtime
+
+> **runtime**: [`RuntimeSDK`](index.md#runtimesdk)
+
+Utilities to interact with the runtime.
 
 ##### scopes
 
@@ -1481,6 +1493,82 @@ Set the current scope.
 
 ## Files
 
+### Asset
+
+> **Asset**: `object`
+
+A static asset.
+
+#### Type declaration
+
+##### asArrayBuffer()
+
+> **asArrayBuffer**: () => `Promise`\<`ArrayBuffer`\>
+
+###### Returns
+
+`Promise`\<`ArrayBuffer`\>
+
+##### asJson()
+
+> **asJson**: \<`T`\>() => `Promise`\<`T`\>
+
+###### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
+
+###### Returns
+
+`Promise`\<`T`\>
+
+##### asReadableStream()
+
+> **asReadableStream**: () => `ReadableStream`
+
+###### Returns
+
+`ReadableStream`
+
+##### asString()
+
+> **asString**: () => `Promise`\<`string`\>
+
+###### Returns
+
+`Promise`\<`string`\>
+
+***
+
+### AssetsSDK
+
+> **AssetsSDK**: `object`
+
+Utilities to interact with the plugin's static assets.
+
+#### Type declaration
+
+##### get()
+
+> **get**: (`path`: `string`) => `Promise`\<[`Asset`](index.md#asset)\>
+
+Get a file from the assets folder.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+
+###### Returns
+
+`Promise`\<[`Asset`](index.md#asset)\>
+
+The asset file.
+
+***
+
 ### FilesSDK
 
 > **FilesSDK**: `object`
@@ -2342,6 +2430,28 @@ A unique Caido identifier per type.
 | Type Parameter |
 | ------ |
 | `T` *extends* (...`args`: `unknown`[]) => `unknown` |
+
+## Runtime
+
+### RuntimeSDK
+
+> **RuntimeSDK**: `object`
+
+Utilities to interact with the runtime.
+
+#### Type declaration
+
+##### version
+
+###### Get Signature
+
+> **get** **version**(): `string`
+
+Get the current version of Caido.
+
+###### Returns
+
+`string`
 
 ## Sitemap
 
