@@ -1,6 +1,12 @@
 # Using the Component Library
 
-Plugin pages provide a graphical user interface in the Caido application and can be customized.
+Caido plugins use [PrimeVue](https://tailwind.primevue.org/) as the component library, with custom styling to match the core application’s look and feel.
+
+You can explore our **UI Kit** at [ui-kit.caido.io](https://ui-kit.caido.io), which showcases the available styled components, their usage examples, and source code snippets.  
+
+This guide covers how to integrate these components to ensure a seamless user experience.
+
+## Starting from the VueJS Template
 
 When running the `pnpm create @caido-community/plugin` command to initialize a new plugin project, you are given the option to use the [Vue.js](https://vuejs.org/) framework.
 
