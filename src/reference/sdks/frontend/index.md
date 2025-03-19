@@ -20,6 +20,12 @@ Utilities for frontend plugins.
 
 #### Type declaration
 
+##### assets
+
+> **assets**: [`AssetsSDK`](index.md#assetssdk)
+
+Utilities to interact with the plugin's static assets.
+
 ##### backend
 
 > **backend**: [`BackendSDK`](index.md#backendsdkt-e)\<`T`, `E`\>
@@ -104,6 +110,12 @@ Utilities to interact with navigation.
 
 Utilities to interact with the Replay page.
 
+##### runtime
+
+> **runtime**: [`RuntimeSDK`](index.md#runtimesdk)
+
+Utilities to interact with the runtime.
+
 ##### scopes
 
 > **scopes**: [`ScopesSDK`](index.md#scopessdk)
@@ -151,6 +163,12 @@ Utilities to create UI components.
 > **window**: [`WindowSDK`](index.md#windowsdk)
 
 Utilities to interact with the active page.
+
+##### workflows
+
+> **workflows**: [`WorkflowSDK`](index.md#workflowsdk)
+
+Utilities to interact with workflows.
 
 ## Backend
 
@@ -580,10 +598,15 @@ The context for a command that is executed on a request pane.
 > **request**: `object`
 
 The request that is currently open in the request pane.
+If the request has not yet been saved in the database, the id will be undefined.
 
 ###### request.host
 
 > **host**: `string`
+
+###### request.id
+
+> **id**: [`ID`](index.md#id-3) \| `undefined`
 
 ###### request.isTls
 
@@ -1481,6 +1504,82 @@ Set the current scope.
 
 ## Files
 
+### Asset
+
+> **Asset**: `object`
+
+A static asset.
+
+#### Type declaration
+
+##### asArrayBuffer()
+
+> **asArrayBuffer**: () => `Promise`\<`ArrayBuffer`\>
+
+###### Returns
+
+`Promise`\<`ArrayBuffer`\>
+
+##### asJson()
+
+> **asJson**: \<`T`\>() => `Promise`\<`T`\>
+
+###### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
+
+###### Returns
+
+`Promise`\<`T`\>
+
+##### asReadableStream()
+
+> **asReadableStream**: () => `ReadableStream`
+
+###### Returns
+
+`ReadableStream`
+
+##### asString()
+
+> **asString**: () => `Promise`\<`string`\>
+
+###### Returns
+
+`Promise`\<`string`\>
+
+***
+
+### AssetsSDK
+
+> **AssetsSDK**: `object`
+
+Utilities to interact with the plugin's static assets.
+
+#### Type declaration
+
+##### get()
+
+> **get**: (`path`: `string`) => `Promise`\<[`Asset`](index.md#asset)\>
+
+Get a file from the assets folder.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+
+###### Returns
+
+`Promise`\<[`Asset`](index.md#asset)\>
+
+The asset file.
+
+***
+
 ### FilesSDK
 
 > **FilesSDK**: `object`
@@ -1820,6 +1919,170 @@ A collection in Match and Replace.
 
 ***
 
+### MatchReplaceMatcherRaw
+
+> **MatchReplaceMatcherRaw**: [`MatchReplaceMatcherRawRegex`](index.md#matchreplacematcherrawregex) \| [`MatchReplaceMatcherRawValue`](index.md#matchreplacematcherrawvalue) \| [`MatchReplaceMatcherRawFull`](index.md#matchreplacematcherrawfull)
+
+A matcher for raw operations in Match and Replace.
+
+***
+
+### MatchReplaceMatcherRawFull
+
+> **MatchReplaceMatcherRawFull**: `object`
+
+This matcher will match the entire section.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"MatcherRawFull"`
+
+***
+
+### MatchReplaceMatcherRawRegex
+
+> **MatchReplaceMatcherRawRegex**: `object`
+
+This matcher will match using a regex over the section.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"MatcherRawRegex"`
+
+##### regex
+
+> **regex**: `string`
+
+***
+
+### MatchReplaceMatcherRawValue
+
+> **MatchReplaceMatcherRawValue**: `object`
+
+This matcher will match the value if present in the section.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"MatcherRawValue"`
+
+##### value
+
+> **value**: `string`
+
+***
+
+### MatchReplaceOperationBody
+
+> **MatchReplaceOperationBody**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationBodyRaw`](index.md#matchreplaceoperationbodyraw)\>
+
+An operation for the body section.
+
+***
+
+### MatchReplaceOperationBodyRaw
+
+> **MatchReplaceOperationBodyRaw**: `object`
+
+A raw operation for the body section.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationBodyRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](index.md#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationFirstLineRaw
+
+> **MatchReplaceOperationFirstLineRaw**: `object`
+
+A raw operation for the request first line.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationFirstLineRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](index.md#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationHeader
+
+> **MatchReplaceOperationHeader**: [`MatchReplaceOperationHeaderRaw`](index.md#matchreplaceoperationheaderraw) \| [`MatchReplaceOperationHeaderAdd`](index.md#matchreplaceoperationheaderadd) \| [`MatchReplaceOperationHeaderRemove`](index.md#matchreplaceoperationheaderremove) \| [`MatchReplaceOperationHeaderUpdate`](index.md#matchreplaceoperationheaderupdate)
+
+An operation for the header section.
+
+***
+
+### MatchReplaceReplacer
+
+> **MatchReplaceReplacer**: [`MatchReplaceReplacerTerm`](index.md#matchreplacereplacerterm) \| [`MatchReplaceReplacerWorkflow`](index.md#matchreplacereplacerworkflow)
+
+A replacer in Match and Replace.
+
+***
+
+### MatchReplaceReplacerTerm
+
+> **MatchReplaceReplacerTerm**: `object`
+
+A replacer that replaces with a term.
+If the matcher is a regex, groups will be interpolated.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"ReplacerTerm"`
+
+##### term
+
+> **term**: `string`
+
+***
+
+### MatchReplaceReplacerWorkflow
+
+> **MatchReplaceReplacerWorkflow**: `object`
+
+A replacer that replaces with the result of a workflow.
+The input of the workflow depends on the operation and matcher.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"ReplacerWorkflow"`
+
+##### workflowId
+
+> **workflowId**: [`ID`](index.md#id-3)
+
+***
+
 ### MatchReplaceRule
 
 > **MatchReplaceRule**: `object`
@@ -1846,18 +2109,6 @@ The ID of the rule.
 
 Whether the rule is enabled.
 
-##### isRegex
-
-> **isRegex**: `boolean`
-
-Whether the match term is a regex.
-
-##### matchTerm
-
-> **matchTerm**: `string`
-
-The match term of the rule.
-
 ##### name
 
 > **name**: `string`
@@ -1871,17 +2122,11 @@ The name of the rule.
 The HTTPQL query to match the rule against.
 Only requests that match the query will be affected by the rule.
 
-##### replaceTerm
+##### section
 
-> **replaceTerm**: `string`
+> **section**: [`MatchReplaceSection`](index.md#matchreplacesection)
 
-The replace term of the rule.
-
-##### strategy
-
-> **strategy**: [`MatchReplaceStrategy`](index.md#matchreplacestrategy)
-
-The strategy of the rule.
+The section of the rule.
 
 ***
 
@@ -1920,15 +2165,11 @@ Create a rule.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | \{ `collectionId`: [`ID`](index.md#id-3); `isEnabled`: `boolean`; `isRegex`: `boolean`; `matchTerm`: `string`; `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); `replaceTerm`: `string`; `strategy`: [`MatchReplaceStrategy`](index.md#matchreplacestrategy); \} | The options for the rule. |
+| `options` | \{ `collectionId`: [`ID`](index.md#id-3); `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); `section`: [`MatchReplaceSection`](index.md#matchreplacesection); \} | The options for the rule. |
 | `options.collectionId` | [`ID`](index.md#id-3) | The ID of the collection the rule belongs to. |
-| `options.isEnabled` | `boolean` | Whether the rule is enabled. |
-| `options.isRegex` | `boolean` | Whether the match term is a regex. |
-| `options.matchTerm` | `string` | The match term of the rule. |
 | `options.name` | `string` | The name of the rule. |
 | `options.query` | [`HTTPQL`](index.md#httpql) | The HTTPQL query to match the rule against. |
-| `options.replaceTerm` | `string` | The replace term of the rule. |
-| `options.strategy` | [`MatchReplaceStrategy`](index.md#matchreplacestrategy) | The strategy of the rule. |
+| `options.section` | [`MatchReplaceSection`](index.md#matchreplacesection) | - |
 
 ###### Returns
 
@@ -2017,6 +2258,23 @@ Select a rule to be displayed in the UI.
 
 `void`
 
+##### toggleRule()
+
+> **toggleRule**: (`id`: [`ID`](index.md#id-3), `enabled`: `boolean`) => `Promise`\<`void`\>
+
+Toggle a rule.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the rule. |
+| `enabled` | `boolean` | Whether the rule should be enabled. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
 ##### updateCollection()
 
 > **updateCollection**: (`id`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`MatchReplaceCollection`](index.md#matchreplacecollection)\>
@@ -2046,18 +2304,50 @@ Update a rule.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | [`ID`](index.md#id-3) | The ID of the rule. |
-| `options` | \{ `isEnabled`: `boolean`; `isRegex`: `boolean`; `matchTerm`: `string`; `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); `replaceTerm`: `string`; `strategy`: [`MatchReplaceStrategy`](index.md#matchreplacestrategy); \} | The new values for the rule. |
-| `options.isEnabled` | `boolean` | Whether the rule is enabled. |
-| `options.isRegex` | `boolean` | Whether the match term is a regex. |
-| `options.matchTerm` | `string` | The new match term of the rule. |
+| `options` | \{ `name`: `string`; `query`: [`HTTPQL`](index.md#httpql); `section`: [`MatchReplaceSection`](index.md#matchreplacesection); \} | The new values for the rule. |
 | `options.name` | `string` | The new name of the rule. |
-| `options.query` | [`HTTPQL`](index.md#httpql) | The new HTTPQL query of the rule. |
-| `options.replaceTerm` | `string` | The new replace term of the rule. |
-| `options.strategy` | [`MatchReplaceStrategy`](index.md#matchreplacestrategy) | The new strategy of the rule. |
+| `options.query`? | [`HTTPQL`](index.md#httpql) | The new HTTPQL query of the rule. |
+| `options.section` | [`MatchReplaceSection`](index.md#matchreplacesection) | The new section of the rule. |
 
 ###### Returns
 
 `Promise`\<[`MatchReplaceRule`](index.md#matchreplacerule)\>
+
+***
+
+### MatchReplaceSectionRequestFirstLine
+
+> **MatchReplaceSectionRequestFirstLine**: `object`
+
+A section for the request first line.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestFirstLine"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationFirstLine`](index.md#matchreplaceoperationfirstline)
+
+***
+
+### MatchReplaceSectionResponseFirstLine
+
+> **MatchReplaceSectionResponseFirstLine**: `object`
+
+A section for the response first line.
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionResponseFirstLine"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationFirstLine`](index.md#matchreplaceoperationfirstline)
 
 ## Other
 
@@ -2321,15 +2611,482 @@ A unique Caido identifier per type.
 
 ***
 
-### MatchReplaceStrategy
+### KeepOperation\<T\>
 
-> **MatchReplaceStrategy**: `"REQUEST_FIRST_LINE"` \| `"REQUEST_HEADER"` \| `"REQUEST_BODY"` \| `"RESPONSE_FIRST_LINE"` \| `"RESPONSE_HEADER"` \| `"RESPONSE_BODY"`
+> **KeepOperation**\<`T`\>: `T` & `object`
+
+#### Type declaration
+
+##### \_\_operation?
+
+> `optional` **\_\_operation**: `never`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
+### ListenerHandle
+
+> **ListenerHandle**: `object`
+
+A handle for a listener.
+
+#### Type declaration
+
+##### stop()
+
+> **stop**: () => `void`
+
+Stop the listener.
+
+###### Returns
+
+`void`
+
+***
+
+### MatchReplaceMatcherName
+
+> **MatchReplaceMatcherName**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"MatcherName"`
+
+##### name
+
+> **name**: `string`
+
+***
+
+### MatchReplaceOperationFirstLine
+
+> **MatchReplaceOperationFirstLine**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationFirstLineRaw`](index.md#matchreplaceoperationfirstlineraw)\>
+
+***
+
+### MatchReplaceOperationHeaderAdd
+
+> **MatchReplaceOperationHeaderAdd**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationHeaderAdd"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherName`](index.md#matchreplacematchername)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationHeaderRaw
+
+> **MatchReplaceOperationHeaderRaw**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationHeaderRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](index.md#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationHeaderRemove
+
+> **MatchReplaceOperationHeaderRemove**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationHeaderRemove"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherName`](index.md#matchreplacematchername)
+
+***
+
+### MatchReplaceOperationHeaderUpdate
+
+> **MatchReplaceOperationHeaderUpdate**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationHeaderUpdate"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherName`](index.md#matchreplacematchername)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationMethod
+
+> **MatchReplaceOperationMethod**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationMethodUpdate`](index.md#matchreplaceoperationmethodupdate)\>
+
+***
+
+### MatchReplaceOperationMethodUpdate
+
+> **MatchReplaceOperationMethodUpdate**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationMethodUpdate"`
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationPath
+
+> **MatchReplaceOperationPath**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationPathRaw`](index.md#matchreplaceoperationpathraw)\>
+
+***
+
+### MatchReplaceOperationPathRaw
+
+> **MatchReplaceOperationPathRaw**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationPathRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](index.md#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationQuery
+
+> **MatchReplaceOperationQuery**: [`MatchReplaceOperationQueryRaw`](index.md#matchreplaceoperationqueryraw) \| [`MatchReplaceOperationQueryAdd`](index.md#matchreplaceoperationqueryadd) \| [`MatchReplaceOperationQueryRemove`](index.md#matchreplaceoperationqueryremove) \| [`MatchReplaceOperationQueryUpdate`](index.md#matchreplaceoperationqueryupdate)
+
+***
+
+### MatchReplaceOperationQueryAdd
+
+> **MatchReplaceOperationQueryAdd**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationQueryAdd"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherName`](index.md#matchreplacematchername)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationQueryRaw
+
+> **MatchReplaceOperationQueryRaw**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationQueryRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](index.md#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationQueryRemove
+
+> **MatchReplaceOperationQueryRemove**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationQueryRemove"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherName`](index.md#matchreplacematchername)
+
+***
+
+### MatchReplaceOperationQueryUpdate
+
+> **MatchReplaceOperationQueryUpdate**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationQueryUpdate"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherName`](index.md#matchreplacematchername)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceOperationStatusCode
+
+> **MatchReplaceOperationStatusCode**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationStatusCodeUpdate`](index.md#matchreplaceoperationstatuscodeupdate)\>
+
+***
+
+### MatchReplaceOperationStatusCodeUpdate
+
+> **MatchReplaceOperationStatusCodeUpdate**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationStatusCodeUpdate"`
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
+### MatchReplaceSection
+
+> **MatchReplaceSection**: [`MatchReplaceSectionRequestBody`](index.md#matchreplacesectionrequestbody) \| [`MatchReplaceSectionRequestFirstLine`](index.md#matchreplacesectionrequestfirstline) \| [`MatchReplaceSectionRequestHeader`](index.md#matchreplacesectionrequestheader) \| [`MatchReplaceSectionRequestMethod`](index.md#matchreplacesectionrequestmethod) \| [`MatchReplaceSectionRequestPath`](index.md#matchreplacesectionrequestpath) \| [`MatchReplaceSectionRequestQuery`](index.md#matchreplacesectionrequestquery) \| [`MatchReplaceSectionResponseBody`](index.md#matchreplacesectionresponsebody) \| [`MatchReplaceSectionResponseFirstLine`](index.md#matchreplacesectionresponsefirstline) \| [`MatchReplaceSectionResponseHeader`](index.md#matchreplacesectionresponseheader) \| [`MatchReplaceSectionResponseStatusCode`](index.md#matchreplacesectionresponsestatuscode)
+
+***
+
+### MatchReplaceSectionRequestBody
+
+> **MatchReplaceSectionRequestBody**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestBody"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationBody`](index.md#matchreplaceoperationbody)
+
+***
+
+### MatchReplaceSectionRequestHeader
+
+> **MatchReplaceSectionRequestHeader**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestHeader"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationHeader`](index.md#matchreplaceoperationheader)
+
+***
+
+### MatchReplaceSectionRequestMethod
+
+> **MatchReplaceSectionRequestMethod**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestMethod"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationMethod`](index.md#matchreplaceoperationmethod)
+
+***
+
+### MatchReplaceSectionRequestPath
+
+> **MatchReplaceSectionRequestPath**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestPath"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationPath`](index.md#matchreplaceoperationpath)
+
+***
+
+### MatchReplaceSectionRequestQuery
+
+> **MatchReplaceSectionRequestQuery**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestQuery"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationQuery`](index.md#matchreplaceoperationquery)
+
+***
+
+### MatchReplaceSectionResponseBody
+
+> **MatchReplaceSectionResponseBody**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionResponseBody"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationBody`](index.md#matchreplaceoperationbody)
+
+***
+
+### MatchReplaceSectionResponseHeader
+
+> **MatchReplaceSectionResponseHeader**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionResponseHeader"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationHeader`](index.md#matchreplaceoperationheader)
+
+***
+
+### MatchReplaceSectionResponseStatusCode
+
+> **MatchReplaceSectionResponseStatusCode**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionResponseStatusCode"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationStatusCode`](index.md#matchreplaceoperationstatuscode)
 
 ***
 
 ### NotAssignableToJson
 
 > **NotAssignableToJson**: `bigint` \| `symbol` \| `Function`
+
+***
+
+### OnCreatedWorkflowCallback()
+
+> **OnCreatedWorkflowCallback**: (`event`: `object`) => `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | \{ `workflow`: [`Workflow`](index.md#workflow); \} |
+| `event.workflow` | [`Workflow`](index.md#workflow) |
+
+#### Returns
+
+`void`
+
+***
+
+### OnDeletedWorkflowCallback()
+
+> **OnDeletedWorkflowCallback**: (`event`: `object`) => `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | \{ `id`: [`ID`](index.md#id-3); \} |
+| `event.id` | [`ID`](index.md#id-3) |
+
+#### Returns
+
+`void`
+
+***
+
+### OnUpdatedWorkflowCallback()
+
+> **OnUpdatedWorkflowCallback**: (`event`: `object`) => `void`
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `event` | \{ `workflow`: [`Workflow`](index.md#workflow); \} |
+| `event.workflow` | [`Workflow`](index.md#workflow) |
+
+#### Returns
+
+`void`
 
 ***
 
@@ -2342,6 +3099,34 @@ A unique Caido identifier per type.
 | Type Parameter |
 | ------ |
 | `T` *extends* (...`args`: `unknown`[]) => `unknown` |
+
+***
+
+### API
+
+Renames and re-exports [Caido](index.md#caidot-e)
+
+## Runtime
+
+### RuntimeSDK
+
+> **RuntimeSDK**: `object`
+
+Utilities to interact with the runtime.
+
+#### Type declaration
+
+##### version
+
+###### Get Signature
+
+> **get** **version**(): `string`
+
+Get the current version of Caido.
+
+###### Returns
+
+`string`
 
 ## Sitemap
 
@@ -2380,3 +3165,107 @@ Set the current scope.
 ###### Returns
 
 `void`
+
+## Workflows
+
+### Workflow
+
+> **Workflow**: `object`
+
+A workflow
+
+#### Type declaration
+
+##### description
+
+> **description**: `string`
+
+##### id
+
+> **id**: `string`
+
+##### kind
+
+> **kind**: [`WorkflowKind`](index.md#workflowkind)
+
+##### name
+
+> **name**: `string`
+
+***
+
+### WorkflowKind
+
+> **WorkflowKind**: `"Convert"` \| `"Active"` \| `"Passive"`
+
+The kind of workflow.
+
+***
+
+### WorkflowSDK
+
+> **WorkflowSDK**: `object`
+
+Utilities to interact with workflows.
+
+#### Type declaration
+
+##### getWorkflows()
+
+> **getWorkflows**: () => [`Workflow`](index.md#workflow)[]
+
+Get all workflows.
+
+###### Returns
+
+[`Workflow`](index.md#workflow)[]
+
+All workflows.
+
+##### onCreatedWorkflow()
+
+> **onCreatedWorkflow**: (`callback`: [`OnCreatedWorkflowCallback`](index.md#oncreatedworkflowcallback)) => [`ListenerHandle`](index.md#listenerhandle)
+
+Register a callback to be called when a workflow is created.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | [`OnCreatedWorkflowCallback`](index.md#oncreatedworkflowcallback) | The callback to be called. |
+
+###### Returns
+
+[`ListenerHandle`](index.md#listenerhandle)
+
+##### onDeletedWorkflow()
+
+> **onDeletedWorkflow**: (`callback`: [`OnDeletedWorkflowCallback`](index.md#ondeletedworkflowcallback)) => [`ListenerHandle`](index.md#listenerhandle)
+
+Register a callback to be called when a workflow is deleted.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | [`OnDeletedWorkflowCallback`](index.md#ondeletedworkflowcallback) | The callback to be called. |
+
+###### Returns
+
+[`ListenerHandle`](index.md#listenerhandle)
+
+##### onUpdatedWorkflow()
+
+> **onUpdatedWorkflow**: (`callback`: [`OnUpdatedWorkflowCallback`](index.md#onupdatedworkflowcallback)) => [`ListenerHandle`](index.md#listenerhandle)
+
+Register a callback to be called when a workflow is updated.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | [`OnUpdatedWorkflowCallback`](index.md#onupdatedworkflowcallback) | The callback to be called. |
+
+###### Returns
+
+[`ListenerHandle`](index.md#listenerhandle)
