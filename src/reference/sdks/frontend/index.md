@@ -628,6 +628,10 @@ If the request has not yet been saved in the database, the id will be undefined.
 
 > **raw**: `string`
 
+###### request.streamId?
+
+> `optional` **streamId**: [`ID`](index.md#id-3)
+
 ##### selection
 
 > **selection**: `string`
@@ -697,6 +701,10 @@ The request that is associated with the response.
 ###### request.query
 
 > **query**: `string`
+
+###### request.streamId?
+
+> `optional` **streamId**: [`ID`](index.md#id-3)
 
 ##### response
 
