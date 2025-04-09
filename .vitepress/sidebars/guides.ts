@@ -51,6 +51,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/components/request",
       },
       {
+        text: "Sending a Fetch Request to Discord via Workflows",
+        link: "/guides/components/fetch",
+      },
+      {
         text: "Sending Events to the Frontend",
         link: "/guides/components/events",
       },
