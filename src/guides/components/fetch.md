@@ -3,7 +3,7 @@
 Caido's [HTTP Module](/reference/modules/caido/http.md) provides an implementation of the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). With this module, you can create and send asynchronous HTTP requests and handle their responses.
 
 ::: warning NOTE
-The request and response objects of this module differ from those used in the [Backend SDK](/reference/sdks/backend) and [Workflow SDK](/reference/sdks/workflow). Due to this, their properties and methods differ as well. Additionally, they are not routed through the proxy and must adhere to the HTTP specification in order to be interpreted correctly.
+The request and response objects of this module differ from those used in the [Backend SDK](/reference/sdks/backend/index.md) and [Workflow SDK](/reference/sdks/workflow/index.md). Due to this, their properties and methods differ as well. Additionally, they are not routed through the proxy and must adhere to the HTTP specification in order to be interpreted correctly.
 :::
 
 ## Creating an Active Workflow
