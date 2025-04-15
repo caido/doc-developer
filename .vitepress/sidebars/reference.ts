@@ -31,7 +31,7 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
     text: "Runtime",
     items: [
       {
-        text: "Backend modules",
+        text: "Backend Modules",
         link: "/reference/modules/",
       },
     ],
