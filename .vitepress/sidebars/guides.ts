@@ -9,7 +9,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/",
       },
       {
-        text: "Configuring your Package",
+        text: "Configuring Your Package",
         link: "/guides/config",
       },
     ],
