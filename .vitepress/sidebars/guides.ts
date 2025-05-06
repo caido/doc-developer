@@ -9,8 +9,12 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/",
       },
       {
-        text: "Configuring your Package",
+        text: "Configuring Your Package",
         link: "/guides/config",
+      },
+      {
+        text: "AI Assisted Coding",
+        link: "/guides/vibe_coding",
       },
     ],
   },
@@ -49,6 +53,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Sending HTTP Requests",
         link: "/guides/components/request",
+      },
+      {
+        text: "Sending a Fetch Request",
+        link: "/guides/components/fetch",
       },
       {
         text: "Sending Events to the Frontend",
