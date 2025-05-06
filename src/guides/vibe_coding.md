@@ -28,11 +28,13 @@ https://developer.caido.io/
 
 ::: tip TIPS
 
+- Add `https://github.com/caido/sdk-js` to Cursor as well so it has the SDK alongside the developer documentation examples.
+
 - Also add `https://docs.caido.io/` to Cursor so you can reference interfaces for context.
 
 - You can also customize prompt responses by navigating to `Settings`, `Rules`, and writing your preferences in the `User Rules` input field.
 :::
 
-## Caido Developer Assistant
+## Custom GPT
 
-[Caido also offers a fine-tuned GTP to help with development.](https://chatgpt.com/g/g-68095eb17eb08191ba19fd85f0a516ec-caido-developer-assistant)
+[This custom GPT is trained on Caido documentation, SDKs, and additional sources to answer your prompts with higher accuracy.](https://chatgpt.com/g/g-68095eb17eb08191ba19fd85f0a516ec-caido-developer-assistant)

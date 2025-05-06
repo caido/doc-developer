@@ -12,6 +12,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Configuring Your Package",
         link: "/guides/config",
       },
+      {
+        text: "AI Assisted Coding",
+        link: "/guides/vibe_coding",
+      },
     ],
   },
   {
