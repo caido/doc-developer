@@ -628,6 +628,10 @@ If the request has not yet been saved in the database, the id will be undefined.
 
 > **raw**: `string`
 
+###### request.streamId?
+
+> `optional` **streamId**: [`ID`](index.md#id-3)
+
 ##### selection
 
 > **selection**: `string`
@@ -698,6 +702,10 @@ The request that is associated with the response.
 
 > **query**: `string`
 
+###### request.streamId?
+
+> `optional` **streamId**: [`ID`](index.md#id-3)
+
 ##### response
 
 > **response**: `object`
@@ -751,11 +759,11 @@ Register a command.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | [`CommandID`](index.md#commandid) | The id of the command. |
-| `options` | \{ `group`: `string`; `name`: `string`; `run`: (`context`: [`CommandContext`](index.md#commandcontext)) => `void`; `when`: (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean`; \} | Options for the command. |
+| `options` | \{ `group`: `string`; `name`: `string`; `run`: (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`void`\> \| `void`; `when`: (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`boolean`\> \| `boolean`; \} | Options for the command. |
 | `options.group`? | `string` | The group this command belongs to. |
 | `options.name` | `string` | The name of the command. |
-| `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `void` | The function to run when the command is executed. |
-| `options.when`? | (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean` | A function to determine if the command is available. |
+| `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`void`\> \| `void` | The function to run when the command is executed. |
+| `options.when`? | (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`boolean`\> \| `boolean` | A function to determine if the command is available. |
 
 ###### Returns
 
@@ -1255,6 +1263,56 @@ Close a replay tab for the given session.
 
 `void`
 
+##### createCollection()
+
+> **createCollection**: (`name`: `string`) => `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+Create a new collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The name of the collection to create. |
+
+###### Returns
+
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+##### deleteCollection()
+
+> **deleteCollection**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
+
+Delete a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection to delete. |
+
+###### Returns
+
+`Promise`\<`boolean`\>
+
+Whether the collection was deleted.
+
+##### deleteSessions()
+
+> **deleteSessions**: (`sessionIds`: [`ID`](index.md#id-3)[]) => `Promise`\<[`ID`](index.md#id-3)[]\>
+
+Delete a session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionIds` | [`ID`](index.md#id-3)[] | The IDs of the sessions to delete. |
+
+###### Returns
+
+`Promise`\<[`ID`](index.md#id-3)[]\>
+
 ##### getCollections()
 
 > **getCollections**: () => [`ReplayCollection`](index.md#replaycollection)[]
@@ -1291,6 +1349,25 @@ Get the list of all open replay tabs.
 
 The list of all open replay tabs.
 
+##### moveSession()
+
+> **moveSession**: (`sessionId`: [`ID`](index.md#id-3), `collectionId`: [`ID`](index.md#id-3)) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+Move a session to a different collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | [`ID`](index.md#id-3) | The ID of the session to move. |
+| `collectionId` | [`ID`](index.md#id-3) | The ID of the collection to move the session to. |
+
+###### Returns
+
+`Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+The updated session.
+
 ##### openTab()
 
 > **openTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
@@ -1306,6 +1383,25 @@ Open a replay tab for the given session.
 ###### Returns
 
 `void`
+
+##### renameCollection()
+
+> **renameCollection**: (`id`: [`ID`](index.md#id-3), `name`: `string`) => `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+Rename a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection to rename. |
+| `name` | `string` | The new name of the collection. |
+
+###### Returns
+
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+The updated collection.
 
 ##### renameSession()
 
@@ -1379,6 +1475,38 @@ The ID of the session associated with this tab.
 Utilities to interact with the HTTP History page.
 
 #### Type declaration
+
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addResponseEditorExtension()
+
+> **addResponseEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the response editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
 
 ##### getQuery()
 
