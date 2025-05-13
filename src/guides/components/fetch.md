@@ -103,7 +103,7 @@ To view the entire script, expand the following:
 <details>
 <summary>Full Script</summary>
 
-``` js
+``` ts
 import type { SDK, DefineAPI } from "caido:plugin";
 import { Request as FetchRequest, fetch } from "caido:http";
 
@@ -188,7 +188,7 @@ To view how the endpoint can be called with a frontend plugin, expand the follow
 <details>
 <summary>Full Script</summary>
 
-``` js
+``` ts
 import type { Caido } from "@caido/sdk-frontend";
 import type { API } from "../../backend/src/index.ts";
 
