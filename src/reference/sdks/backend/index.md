@@ -2369,6 +2369,13 @@ Input for the `setVar` of [EnvironmentSDK](index.md#environmentsdk).
 
 #### Type declaration
 
+##### env?
+
+> `optional` **env**: `string`
+
+The `name` of the Environment to set the variable on.
+This will take precedence over the `global` flag if provided.
+
 ##### global
 
 > **global**: `boolean`

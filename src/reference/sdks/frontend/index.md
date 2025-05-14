@@ -628,6 +628,10 @@ If the request has not yet been saved in the database, the id will be undefined.
 
 > **raw**: `string`
 
+###### request.streamId?
+
+> `optional` **streamId**: [`ID`](index.md#id-3)
+
 ##### selection
 
 > **selection**: `string`
@@ -698,6 +702,10 @@ The request that is associated with the response.
 
 > **query**: `string`
 
+###### request.streamId?
+
+> `optional` **streamId**: [`ID`](index.md#id-3)
+
 ##### response
 
 > **response**: `object`
@@ -751,11 +759,11 @@ Register a command.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | [`CommandID`](index.md#commandid) | The id of the command. |
-| `options` | \{ `group`: `string`; `name`: `string`; `run`: (`context`: [`CommandContext`](index.md#commandcontext)) => `void`; `when`: (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean`; \} | Options for the command. |
+| `options` | \{ `group`: `string`; `name`: `string`; `run`: (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`void`\> \| `void`; `when`: (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`boolean`\> \| `boolean`; \} | Options for the command. |
 | `options.group`? | `string` | The group this command belongs to. |
 | `options.name` | `string` | The name of the command. |
-| `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `void` | The function to run when the command is executed. |
-| `options.when`? | (`context`: [`CommandContext`](index.md#commandcontext)) => `boolean` | A function to determine if the command is available. |
+| `options.run` | (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`void`\> \| `void` | The function to run when the command is executed. |
+| `options.when`? | (`context`: [`CommandContext`](index.md#commandcontext)) => `Promise`\<`boolean`\> \| `boolean` | A function to determine if the command is available. |
 
 ###### Returns
 
@@ -1379,6 +1387,38 @@ The ID of the session associated with this tab.
 Utilities to interact with the HTTP History page.
 
 #### Type declaration
+
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addResponseEditorExtension()
+
+> **addResponseEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the response editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
 
 ##### getQuery()
 
