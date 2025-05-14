@@ -34,10 +34,6 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/components/menu",
       },
       {
-        text: "Handling Backend Events",
-        link: "/guides/components/backend_events",
-      },
-      {
         text: "Using the Component Library",
         link: "/guides/components/styling",
       },
@@ -49,6 +45,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Creating and Calling a Custom Function",
         link: "/guides/components/rpc",
+      },
+      {
+        text: "Handling Backend Events",
+        link: "/guides/components/backend_events",
       },
       {
         text: "Sending HTTP Requests",
@@ -83,6 +83,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
   {
     text: "Shared",
     items: [
+      {
+        text: "Adding Files",
+        link: "/guides/components/files",
+      },
       {
         text: "Using Environment Variables",
         link: "/guides/components/env",
