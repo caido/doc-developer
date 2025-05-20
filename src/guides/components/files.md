@@ -14,8 +14,15 @@ assets : ["./assets/myfile.txt"]
 
 ::: tip TIPS
 
-- Glob syntax (`*`) is supported to reference multiple files.
-- When just a directory is specified, Caido will recursively include all files within it.
+Glob syntax (`*`) is supported to reference multiple files:
+
+- `/path/*.txt`: Will include all `.txt` files in the path directory.
+- `/**/file.txt`: Will include any `file.txt` within any directory.
+
+Files and directories are included differently:
+
+- For a file, it will copy it at the root of the output assets directory.
+- For a directory, it will copy it recursively in the output assets directory.
 :::
 
 ::: info
@@ -87,10 +94,6 @@ export const init = async (sdk: FrontendSDK) => {
 ## Adding Files to the Backend Component
 
 Open the `caido.config.ts` file and add the property to the `backend` component object:
-
-``` ts
-assets : ["./assets/myfile.txt"]
-```
 
 <img alt="Event output." src="/_images/backend_assets_key.png" center/>
 
