@@ -13,6 +13,9 @@ The `manifest.json` file is the first file that is read by the Caido application
     "email": "dev@caido.io",
     "url": "https://github.com/caido-community/authmatrix"
   },
+  "links": {
+    "sponsor": "https://patreon.com/..."
+  },
   "plugins": [
     {
       "kind": "frontend",
@@ -54,6 +57,7 @@ Here's a summary of each field (**required** fields are marked with an asterisk 
 | name        | No       | The name of your plugin package. If not supplied, the `id` will be used as the `name`.                                                                                                                 |
 | description | No       | A description of the plugin package .                                                                                                                                                                  |
 | Author      | No       | See the [author fields](#author-fields).                                                                                                                                                               |
+| Links       | No       | See the [links fields]                                                                                                                                                                                 |
 | Plugins     | Yes      | Array of plugins. See the [plugin fields](#plugins-fields).                                                                                                                                            |
 
 ## Author Fields
@@ -65,6 +69,14 @@ The `author` field is optional and may be used for crediting purposes.
 | name  | No       | The name of the author.          |
 | email | No       | The email address of the author. |
 | url   | No       | A URL to the author's website.   |
+
+## Links Fields
+
+The `links` field is optional and is currently used to provide users with a funding link.
+
+| Field   | Required | Description                             |
+| ------- | -------- | --------------------------------------- |
+| sponsor | No       | A URL to the project's funding website. |
 
 ## Plugins Fields
 
