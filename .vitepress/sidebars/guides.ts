@@ -34,6 +34,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/components/menu",
       },
       {
+        text: "Storing Frontend Data",
+        link: "/guides/components/frontend_storage",
+      },
+      {
         text: "Using the Component Library",
         link: "/guides/components/styling",
       },
