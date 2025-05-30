@@ -37,6 +37,15 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Cloud",
+    items: [
+      {
+        text: "API",
+        link: "/reference/cloud/api.md",
+      },
+    ],
+  },
+  {
     text: "Files",
     items: [
       {

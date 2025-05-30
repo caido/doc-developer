@@ -3,6 +3,7 @@ import "./custom.css";
 
 import ProContainer from "../components/Pro.vue";
 import VideoContainer from "../components/Video.vue";
+import ApiContainer from "../components/API.vue";
 import type { Theme } from "vitepress";
 
 export default {
@@ -10,5 +11,6 @@ export default {
   enhanceApp({ app }) {
     app.component("ProContainer", ProContainer);
     app.component("VideoContainer", VideoContainer);
+    app.component("ApiContainer", ApiContainer);
   },
 } satisfies Theme;
