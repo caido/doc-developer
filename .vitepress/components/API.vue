@@ -13,13 +13,33 @@ const configuration = reactive<ApiReferenceConfiguration>({
   spec: { content },
   hideClientButton: true,
   hideDarkModeToggle: true,
+  hideSearch: true,
 });
 </script>
 <template>
-  <ApiReference :configuration="configuration">
-    <template #sidebar-end>
-      <h1>Hello</h1>
-    </template>
-  </ApiReference>
+  <div class="scalar-container">
+    <ApiReference :configuration="configuration">
+      <template #sidebar-start>
+        <h1>Hello</h1>
+      </template>
+      <template #sidebar-end>
+        <h1>Hello</h1>
+      </template>
+    </ApiReference>
+  </div>
 </template>
-<style scoped></style>
+<style scoped>
+.scalar-container {
+  height: 500px;
+}
+
+:deep(.VPDoc) {
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+:deep(.VPContent) {
+  padding: 0 !important;
+  max-width: none !important;
+}
+</style>

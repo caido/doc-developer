@@ -111,3 +111,15 @@ h6 {
     /* Single column layout */
   }
 }
+
+body {
+  --scalar-background-1: var(--vp-c-bg);
+}
+
+.VPContent:has(.scalar-app) {
+  padding-right: 0 !important;
+}
+
+.VPDoc:has(.scalar-app) {
+  padding: 0 !important;
+}

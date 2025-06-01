@@ -1,1 +1,5 @@
+---
+aside: false
+---
+
 <ApiContainer />
