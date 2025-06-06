@@ -15,6 +15,9 @@
   "author": "Caido Labs Inc. <dev@caido.io>",
   "license": "CC-BY-4.0",
   "devDependencies": {
+    "@scalar/openapi-types": "0.3.2",
+    "@types/node": "22.15.30",
+    "confbox": "0.2.2",
     "eslint": "9.10.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",

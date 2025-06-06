@@ -1,5 +1,7 @@
 ---
-aside: false
-outline: false
-title: vitepress-openapi
+aside: true
+outline: [1, 2]
+title: API
 ---
+
+<OASpec hide-branding />

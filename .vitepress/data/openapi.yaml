@@ -1,0 +1,421 @@
+openapi: 3.1.0
+info:
+  title: cloud-backend
+  version: 0.1.0
+paths:
+  /api/v1/team:
+    get:
+      tags:
+      - api
+      operationId: get_team
+      responses:
+        '200':
+          description: Current team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/team/invitations:
+    get:
+      tags:
+      - api
+      operationId: get_invitations
+      responses:
+        '200':
+          description: List all the invitations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamInvitation'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - api
+      operationId: create_invitations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamInvitationCreate'
+        required: true
+      responses:
+        '201':
+          description: Invitation created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamInvitation'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/team/invitations/{invitation_id}:
+    delete:
+      tags:
+      - api
+      operationId: delete_invitation
+      parameters:
+      - name: invitation_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ID'
+      responses:
+        '200':
+          description: Invitation deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamInvitationDeleted'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Invitation not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/team/subscription:
+    get:
+      tags:
+      - api
+      operationId: get_team_subscription
+      responses:
+        '200':
+          description: Current team subscription
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: 'null'
+                - $ref: '#/components/schemas/TeamSubscription'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/team/users:
+    get:
+      tags:
+      - api
+      operationId: get_team_users
+      responses:
+        '200':
+          description: List all the users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamUser'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/team/users/{user_id}:
+    delete:
+      tags:
+      - api
+      operationId: delete_team_user
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ID'
+      responses:
+        '200':
+          description: User removed from team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamUserDeleted'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user:
+    get:
+      tags:
+      - api
+      operationId: get_user
+      responses:
+        '200':
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Email:
+      type: string
+      format: email
+    ErrorResponse:
+      type: object
+      required:
+      - code
+      - error
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+          minimum: 0
+        error:
+          type: string
+        message:
+          type: string
+    ID:
+      type: string
+    Plan:
+      type: object
+      required:
+      - object
+      - id
+      - name
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        name:
+          type: string
+        object:
+          type: string
+    Team:
+      type: object
+      required:
+      - object
+      - id
+      - name
+      - email
+      - created_at
+      - updated_at
+      properties:
+        created_at:
+          $ref: '#/components/schemas/Timestamp'
+        email:
+          type: string
+        id:
+          $ref: '#/components/schemas/ID'
+        name:
+          type: string
+        object:
+          type: string
+        updated_at:
+          $ref: '#/components/schemas/Timestamp'
+    TeamInvitation:
+      type: object
+      required:
+      - object
+      - id
+      - email
+      - role
+      - use_seat
+      - expires_at
+      - created_at
+      - updated_at
+      properties:
+        created_at:
+          $ref: '#/components/schemas/Timestamp'
+        email:
+          $ref: '#/components/schemas/Email'
+        expires_at:
+          $ref: '#/components/schemas/Timestamp'
+        id:
+          $ref: '#/components/schemas/ID'
+        object:
+          type: string
+        role:
+          $ref: '#/components/schemas/TeamUserRole'
+        updated_at:
+          $ref: '#/components/schemas/Timestamp'
+        use_seat:
+          type: boolean
+    TeamInvitationCreate:
+      type: object
+      required:
+      - email
+      - role
+      - use_seat
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+        role:
+          $ref: '#/components/schemas/TeamUserRole'
+        use_seat:
+          type: boolean
+    TeamInvitationDeleted:
+      type: object
+      required:
+      - object
+      - id
+      - deleted
+      properties:
+        deleted:
+          type: boolean
+        id:
+          $ref: '#/components/schemas/ID'
+        object:
+          type: string
+    TeamSubscription:
+      type: object
+      required:
+      - object
+      - id
+      - starts_at
+      - seats
+      - seats_used
+      - plan
+      - created_at
+      - updated_at
+      properties:
+        created_at:
+          $ref: '#/components/schemas/Timestamp'
+        ends_at:
+          oneOf:
+          - type: 'null'
+          - $ref: '#/components/schemas/Timestamp'
+        id:
+          $ref: '#/components/schemas/ID'
+        object:
+          type: string
+        pauses_at:
+          oneOf:
+          - type: 'null'
+          - $ref: '#/components/schemas/Timestamp'
+        plan:
+          $ref: '#/components/schemas/Plan'
+        seats:
+          type: integer
+          format: int32
+        seats_used:
+          type: integer
+          format: int32
+          minimum: 0
+        starts_at:
+          $ref: '#/components/schemas/Timestamp'
+        updated_at:
+          $ref: '#/components/schemas/Timestamp'
+    TeamUser:
+      type: object
+      required:
+      - object
+      - id
+      - role
+      - use_seat
+      - created_at
+      - updated_at
+      properties:
+        created_at:
+          $ref: '#/components/schemas/Timestamp'
+        email:
+          oneOf:
+          - type: 'null'
+          - $ref: '#/components/schemas/Email'
+        id:
+          $ref: '#/components/schemas/ID'
+        name:
+          type:
+          - string
+          - 'null'
+        object:
+          type: string
+        role:
+          $ref: '#/components/schemas/TeamUserRole'
+        updated_at:
+          $ref: '#/components/schemas/Timestamp'
+        use_seat:
+          type: boolean
+    TeamUserDeleted:
+      type: object
+      required:
+      - object
+      - id
+      - deleted
+      properties:
+        deleted:
+          type: boolean
+        id:
+          type: string
+        object:
+          type: string
+    TeamUserRole:
+      type: string
+      enum:
+      - admin
+      - member
+    Timestamp:
+      type: integer
+      format: unix-timestamp
+    User:
+      type: object
+      required:
+      - object
+      - id
+      - created_at
+      - updated_at
+      properties:
+        created_at:
+          $ref: '#/components/schemas/Timestamp'
+        email:
+          oneOf:
+          - type: 'null'
+          - $ref: '#/components/schemas/Email'
+        id:
+          $ref: '#/components/schemas/ID'
+        name:
+          type:
+          - string
+          - 'null'
+        object:
+          type: string
+        updated_at:
+          $ref: '#/components/schemas/Timestamp'
