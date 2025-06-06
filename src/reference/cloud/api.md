@@ -1,6 +1,6 @@
 ---
 aside: true
-outline: [1, 2]
+outline: [1, 1]
 title: API
 ---
 
