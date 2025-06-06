@@ -53,18 +53,30 @@ export function init(sdk: SDK<API>) {
     try {
       // Only create Findings for 200 responses.
       if (response.getCode() === 200) {
-        await sdk.findings.create({
-          title: `Success Response ${response.getCode()}`,
-          description: `Request ID: ${request.getId()}\nResponse Code: ${response.getCode()}`,
-          reporter: "Response Logger Plugin",
-          request: request,
-          dedupeKey: `${request.getPath()}-${response.getCode()}`
-        });
+        const dedupeKey = `${request.getPath()}-${response.getCode()}`;
+        
+        // Check if Finding already exists.
+        const exists = await sdk.findings.exists(dedupeKey);
+        if (!exists) {
+          await sdk.findings.create({
+            title: `Success Response ${response.getCode()}`,
+            description: `Request ID: ${request.getId()}\nResponse Code: ${response.getCode()}`,
+            reporter: "Response Logger Plugin",
+            request: request,
+            dedupeKey
+          });
 
-        sdk.console.log(`Created finding for successful request ${request.getId()}`);
+          // Verify the Finding was created.
+          const created = await sdk.findings.exists(dedupeKey);
+          if (created) {
+            sdk.console.log(`Created and verified finding for request ${request.getId()}.`);
+          }
+        } else {
+          sdk.console.log(`Finding already exists for ${dedupeKey}.`);
+        }
       }
     } catch (err) {
-      sdk.console.error(`Error creating finding: ${err}`);
+      sdk.console.error(`Error handling finding: ${err}`);
     }
   });
 }
