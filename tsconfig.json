@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "types": ["node"],
 
     "jsx": "preserve",
     "noImplicitAny": true,
@@ -10,7 +11,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
 
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "sourceMap": true,
     "noUnusedLocals": true
@@ -18,6 +19,7 @@
   "include": [
     ".vitepress/**/*.ts",
     ".vitepress/**/*.vue",
-    ".vitepress/**/*.mts"
+    ".vitepress/**/*.mts",
+    "src/**/*.mts"
   ]
 }
