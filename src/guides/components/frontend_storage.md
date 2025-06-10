@@ -10,230 +10,207 @@ The storage system is defined by the [StorageSDK](/reference/sdks/frontend/#sdk)
 
 ## User Preferences
 
-To demonstrate its usage, let's create a frontend interface that offers light and dark theme options by clicking on the associated buttons.
+To demonstrate its usage, let's create a frontend interface that offers light and dark theme options.
 
-<img alt="Light and dark themes." src="/_images/ui_themes.png" center/>
-
-::: tip
-To view the entire frontend script, expand the following:
-
-<details>
-<summary>Full Script</summary>
+### App.vue
 
 ``` ts
-import "./styles/index.css";
+<script setup lang="ts">
+import Button from "primevue/button";
+import { useSDK } from "@/plugins/sdk";
+import { ref, onMounted, watch } from "vue";
 
-import type { FrontendSDK } from "./types";
+const sdk = useSDK();
 
-export const init = async (sdk: FrontendSDK) => {
-  const root = document.createElement("div");
-  root.style.height = "100%";
-  root.style.width = "100%";
-  root.id = `plugin--frontend-vanilla`;
+const currentTheme = ref<"light" | "dark" | null>(null);
 
-  const container = document.createElement("div");
+const updateTheme = async (theme: "light" | "dark") => {
+  await sdk.storage.set({ theme });
+  currentTheme.value = theme;
+};
 
-  const lightButton = sdk.ui.button({
-    variant: "primary",
-    label: "Light",
-  });
-
-  const darkButton = sdk.ui.button({
-    variant: "primary",
-    label: "Dark",
-  });
-
-  // Function to apply theme.
-  const applyTheme = (theme: "light" | "dark") => {
+const applyTheme = (theme: "light" | "dark") => {
+  const root = document.getElementById('plugin--frontend-vue');
+  if (root) {
     if (theme === "dark") {
       root.style.backgroundColor = "#202227";
     } else {
-      root.style.backgroundColor = "#D2D3D5";
+      root.style.backgroundColor = "#FFFFFF";
     }
-  };
+  }
+};
 
-  // Add event listeners.
-  lightButton.addEventListener("click", () => {
+const loadSettings = () => {
+  const settings = sdk.storage.get() as { theme: "light" | "dark" } | null;
+  if (settings?.theme) {
+    currentTheme.value = settings.theme;
+    applyTheme(settings.theme);
+  } else {
+    currentTheme.value = "light";
     applyTheme("light");
-  });
+  }
+};
 
-  darkButton.addEventListener("click", () => {
-    applyTheme("dark");
-  });
+watch(currentTheme, (newTheme) => {
+  if (newTheme) {
+    applyTheme(newTheme);
+  }
+});
 
-  // Assemble UI.
-  container.appendChild(lightButton);
-  container.appendChild(darkButton);
-  root.appendChild(container);
+sdk.storage.onChange((newSettings) => {
+  const settings = newSettings as { theme: "light" | "dark" } | null;
+  if (settings?.theme) {
+    currentTheme.value = settings.theme;
+  }
+});
 
-  sdk.navigation.addPage("/frontend-storage-demo", {
-    body: root,
-  });
+onMounted(() => {
+  loadSettings();
+});
+</script>
 
-  sdk.sidebar.registerItem("Frontend Storage Demo", "/frontend-storage-demo");
+<template>
+  <div class="h-full flex justify-center items-center" :style="{ backgroundColor: currentTheme === 'dark' ? '#202227' : '#FFFFFF' }">
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-2">
+        <!-- Light theme button -->
+        <Button 
+          label="Light" 
+          @click="updateTheme('light')"
+          :disabled="currentTheme === 'light'"
+        />
+        <!-- Dark theme button -->
+        <Button 
+          label="Dark" 
+          @click="updateTheme('dark')"
+          :disabled="currentTheme === 'dark'"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+### Script Breakdown
+
+First, the `<script>` block with TypeScript support is opened and the Caido SDK is imported along with three Vue reactivity utilities:
+
+- `ref`: Tracks value changes to automatically update the user interface.
+- `onMounted`: Registers a callback function that will be executed after a component has been added to the user interface.
+- `watch`: Monitors for changes to reactive components and executes a callback function when a change occurs.
+
+``` ts
+<script setup lang="ts">
+import Button from "primevue/button";
+import { useSDK } from "@/plugins/sdk";
+import { ref, onMounted, watch } from "vue";
+```
+
+The Caido SDK is initialized so the plugin can access its functionality.
+
+``` ts
+const sdk = useSDK();
+```
+
+A variable named `currentTheme` is defined that will dynamically store the theme selection, starting with `null` to account for the first initialization.
+
+``` ts
+const currentTheme = ref<"light" | "dark" | null>(null);
+```
+
+Next, an asynchronous function named `updateTheme` is defined to save the current theme selection in storage using `sdk.storage.set()`.
+
+``` ts
+const updateTheme = async (theme: "light" | "dark") => {
+  await sdk.storage.set({ theme });
+  currentTheme.value = theme;
 };
 ```
 
-</details>
-:::
-
-To persist the theme selection between Caido application closes and launches, we can add the following code to the file:
-
-To save the theme choice to storage so it can be recalled, we can use `sdk.storage.set` on the `theme`. To account for the time it takes to write the data to storage, this `updateTheme` function will need to be `async`.
+To apply the theme to the user interface, the `applyTheme` function switches the background color of the user interface.
 
 ``` ts
-  const updateTheme = async (theme: "light" | "dark") => {
-    await sdk.storage.set({ theme });
-  };
-```
-
-Next, we use `sdk.storage.get` to check if a theme has been saved before and apply it to when the page loads.
-
-``` ts
-  const loadSettings = () => {
-    const settings = sdk.storage.get() as { theme: "light" | "dark" } | null;
-    if (settings?.theme) {
-      applyTheme(settings.theme);
-    }
-  };
-```
-
-We will also need to add the `updateTheme` function to the buttons. Now, clicking a button will both save the theme choice and change the color of the interface.
-
-``` ts
-  lightButton.addEventListener("click", () => {
-    updateTheme("light");
-    applyTheme("light");
-  });
-
-  darkButton.addEventListener("click", () => {
-    updateTheme("dark");
-    applyTheme("dark");
-  });
-```
-
-By subscribing to any changes with `onChange`, we can add reactivity using the reference to disable the button of the currently selected theme.
-
-``` ts
-  sdk.storage.onChange((newSettings) => {
-    const settings = newSettings as { theme: "light" | "dark" } | null;
-    if (settings?.theme) {
-      applyTheme(settings.theme);
-      if (settings.theme === "light") {
-        lightButton.setAttribute("disabled", "true");
-        darkButton.removeAttribute("disabled");
-      } else {
-        lightButton.removeAttribute("disabled");
-        darkButton.setAttribute("disabled", "true");
-      }
-    }
-  });
-```
-
-To load saved settings when the page reloads, we call the `loadSettings` function defined earlier.
-
-``` ts
-  loadSettings();
-```
-
-::: tip
-To view the entire modified frontend script, expand the following:
-
-<details>
-<summary>Full Script</summary>
-
-``` ts
-import "./styles/index.css";
-
-import type { FrontendSDK } from "./types";
-
-export const init = async (sdk: FrontendSDK) => {
-  const root = document.createElement("div");
-  root.style.height = "100%";
-  root.style.width = "100%";
-  root.id = `plugin--frontend-vanilla`;
-
-  const container = document.createElement("div");
-
-  const lightButton = sdk.ui.button({
-    variant: "primary",
-    label: "Light",
-  });
-
-  const darkButton = sdk.ui.button({
-    variant: "primary",
-    label: "Dark",
-  });
-
-
-  // Function to update theme.
-  const updateTheme = async (theme: "light" | "dark") => {
-    await sdk.storage.set({ theme });
-  };
-
-  // Function to apply theme.
-  const applyTheme = (theme: "light" | "dark") => {
+const applyTheme = (theme: "light" | "dark") => {
+  const root = document.getElementById('plugin--frontend-vue');
+  if (root) {
     if (theme === "dark") {
       root.style.backgroundColor = "#202227";
     } else {
-      root.style.backgroundColor = "#D2D3D5";
+      root.style.backgroundColor = "#FFFFFF";
     }
-  };
-
-  // Function to load settings.
-  const loadSettings = () => {
-    const settings = sdk.storage.get() as { theme: "light" | "dark" } | null;
-    if (settings?.theme) {
-      applyTheme(settings.theme);
-    }
-  };
-
-  // Add event listeners.
-  lightButton.addEventListener("click", () => {
-    updateTheme("light");
-    applyTheme("light");
-  });
-
-  darkButton.addEventListener("click", () => {
-    updateTheme("dark");
-    applyTheme("dark");
-  });
-
-  // Subscribe to storage changes.
-  sdk.storage.onChange((newSettings) => {
-    const settings = newSettings as { theme: "light" | "dark" } | null;
-    if (settings?.theme) {
-      applyTheme(settings.theme);
-      // Update button states based on current theme
-      if (settings.theme === "light") {
-        lightButton.setAttribute("disabled", "true");
-        darkButton.removeAttribute("disabled");
-      } else {
-        lightButton.removeAttribute("disabled");
-        darkButton.setAttribute("disabled", "true");
-      }
-    }
-  });
-
-  // Assemble UI.
-  container.appendChild(lightButton);
-  container.appendChild(darkButton);
-
-  // Load saved settings on init.
-  loadSettings();
-
-  root.appendChild(container);
-
-  sdk.navigation.addPage("/frontend-storage-demo", {
-    body: root,
-  });
-
-  sdk.sidebar.registerItem("Frontend Storage Demo", "/frontend-storage-demo");
+  }
 };
 ```
 
-</details>
-:::
+To retrieve the saved theme setting from storage, `sdk.storage.get()` is called by the `loadSettings` function. If a theme exists in storage, it will be applied. If there is no saved theme selection, the theme will default to light.
+
+``` ts
+const loadSettings = () => {
+  const settings = sdk.storage.get() as { theme: "light" | "dark" } | null;
+  if (settings?.theme) {
+    currentTheme.value = settings.theme;
+    applyTheme(settings.theme);
+  } else {
+    currentTheme.value = "light";
+    applyTheme("light");
+  }
+};
+```
+
+The `watch` utility is used to monitor for changes to the value of the `currentTheme` variable and calls the `applyTheme` function if the value changes:
+
+``` ts
+watch(currentTheme, (newTheme) => {
+  if (newTheme) {
+    applyTheme(newTheme);
+  }
+});
+```
+
+With `sdk.storage.onChange()`, if a theme change is made from other user interfaces, they will be applied to this plugin's user interface as well.
+
+``` ts
+sdk.storage.onChange((newSettings) => {
+  const settings = newSettings as { theme: "light" | "dark" } | null;
+  if (settings?.theme) {
+    currentTheme.value = settings.theme;
+  }
+});
+```
+
+When the page is loaded, the `loadSettings()` function will be called.
+
+``` ts
+onMounted(() => {
+  loadSettings();
+});
+</script>
+```
+
+A button for both themes are added to the user interface that will call the `updateTheme` function to update the saved theme in storage when clicked. If the corresponding theme is already saved, its button will be disabled.
+
+``` vue
+<template>
+  <div class="h-full flex justify-center items-center" :style="{ backgroundColor: currentTheme === 'dark' ? '#202227' : '#FFFFFF' }">
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-2">
+        <!-- Light theme button -->
+        <Button 
+          label="Light" 
+          @click="updateTheme('light')"
+          :disabled="currentTheme === 'light'"
+        />
+        <!-- Dark theme button -->
+        <Button 
+          label="Dark" 
+          @click="updateTheme('dark')"
+          :disabled="currentTheme === 'dark'"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+```
 
 ::: info
 
