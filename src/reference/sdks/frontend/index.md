@@ -1263,6 +1263,56 @@ Close a replay tab for the given session.
 
 `void`
 
+##### createCollection()
+
+> **createCollection**: (`name`: `string`) => `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+Create a new collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The name of the collection to create. |
+
+###### Returns
+
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+##### deleteCollection()
+
+> **deleteCollection**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
+
+Delete a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection to delete. |
+
+###### Returns
+
+`Promise`\<`boolean`\>
+
+Whether the collection was deleted.
+
+##### deleteSessions()
+
+> **deleteSessions**: (`sessionIds`: [`ID`](index.md#id-3)[]) => `Promise`\<[`ID`](index.md#id-3)[]\>
+
+Delete a session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionIds` | [`ID`](index.md#id-3)[] | The IDs of the sessions to delete. |
+
+###### Returns
+
+`Promise`\<[`ID`](index.md#id-3)[]\>
+
 ##### getCollections()
 
 > **getCollections**: () => [`ReplayCollection`](index.md#replaycollection)[]
@@ -1299,6 +1349,25 @@ Get the list of all open replay tabs.
 
 The list of all open replay tabs.
 
+##### moveSession()
+
+> **moveSession**: (`sessionId`: [`ID`](index.md#id-3), `collectionId`: [`ID`](index.md#id-3)) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+Move a session to a different collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | [`ID`](index.md#id-3) | The ID of the session to move. |
+| `collectionId` | [`ID`](index.md#id-3) | The ID of the collection to move the session to. |
+
+###### Returns
+
+`Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+The updated session.
+
 ##### openTab()
 
 > **openTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
@@ -1314,6 +1383,25 @@ Open a replay tab for the given session.
 ###### Returns
 
 `void`
+
+##### renameCollection()
+
+> **renameCollection**: (`id`: [`ID`](index.md#id-3), `name`: `string`) => `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+Rename a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection to rename. |
+| `name` | `string` | The new name of the collection. |
+
+###### Returns
+
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+The updated collection.
 
 ##### renameSession()
 
