@@ -37,6 +37,40 @@ mutation CreatePat {
 }
 ```
 
+::: tip
+
+<details>
+<summary>To view the curl request, expand the following:</summary>
+
+```bash
+echo '{ "query":
+  "mutation CreatePat($name: String!, $teamId: ID!) {
+      createPat(
+        input: {
+          name: $name
+          teamId: $teamId
+        }
+      ) {
+        pat {
+          id
+          token
+        }
+      }
+    }",
+  "variables": {
+    "name": "My PAT",
+    "teamId": "01JXP5F0C40WYWSPQS9WAHSB9T"
+  }
+}' | tr -d '\n' | curl --silent \
+https://api.caido.io/dashboard/graphql \
+--header "Cookie: CAIDO_SESSION=<SESSION>" \
+--header "Content-Type: application/json" \
+--data @-
+```
+
+</details>
+:::
+
 ## How to revoke a PAT?
 
 We currently do not have an interface to revoke PATs.
@@ -54,3 +88,30 @@ mutation RevokePat {
   }
 }
 ```
+
+::: tip
+
+<details>
+<summary>To view the curl request, expand the following:</summary>
+
+```bash
+echo '{ "query":
+  "mutation RevokePat($id: ID!) {
+    revokePat(id: $id) {
+      pat {
+        id
+      }
+    }
+  }",
+  "variables": {
+    "id": "01JXP5F0C40WYWSPQS9WAHSB9T"
+  }
+}' | tr -d '\n' | curl --silent \
+https://api.caido.io/dashboard/graphql \
+--header "Cookie: CAIDO_SESSION=<SESSION>" \
+--header "Content-Type: application/json" \
+--data @-
+```
+
+</details>
+:::
