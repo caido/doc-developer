@@ -42,8 +42,8 @@ importers:
         specifier: 1.2.2
         version: 1.2.2(@algolia/client-search@4.23.3)(@types/node@22.15.30)(postcss@8.5.4)(search-insights@2.14.0)(typescript@5.6.2)
       vitepress-openapi:
-        specifier: 0.0.3-alpha.81
-        version: 0.0.3-alpha.81(typescript@5.6.2)(vitepress@1.2.2(@algolia/client-search@4.23.3)(@types/node@22.15.30)(postcss@8.5.4)(search-insights@2.14.0)(typescript@5.6.2))(vue@3.5.16(typescript@5.6.2))
+        specifier: 0.0.3-alpha.83
+        version: 0.0.3-alpha.83(typescript@5.6.2)(vitepress@1.2.2(@algolia/client-search@4.23.3)(@types/node@22.15.30)(postcss@8.5.4)(search-insights@2.14.0)(typescript@5.6.2))(vue@3.5.16(typescript@5.6.2))
       vue:
         specifier: 3.5.16
         version: 3.5.16(typescript@5.6.2)
@@ -1335,8 +1335,8 @@ packages:
       terser:
         optional: true
 
-  vitepress-openapi@0.0.3-alpha.81:
-    resolution: {integrity: sha512-OPUHbpbb6jL80Xb1P8Jb70P5Rwz6QPZaLvY0lbw1/2sQx1VevyHVmHdnkLVWskaySXudQmkugIBAo7ZIPXfsAA==}
+  vitepress-openapi@0.0.3-alpha.83:
+    resolution: {integrity: sha512-QG0ZLE1ygpDHwiNpdMXWNIKTZIWskJoqZl42fHr+3WljtDjWONocBkzRNdb/MDvIIsCYqxXStpItpk+S6UWw/A==}
     peerDependencies:
       vitepress: '>=1.0.0'
       vue: ^3.0.0
@@ -2047,7 +2047,7 @@ snapshots:
 
   aria-hidden@1.2.6:
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.1
 
   balanced-match@1.0.2: {}
 
@@ -2657,7 +2657,7 @@ snapshots:
       '@types/node': 22.15.30
       fsevents: 2.3.3
 
-  vitepress-openapi@0.0.3-alpha.81(typescript@5.6.2)(vitepress@1.2.2(@algolia/client-search@4.23.3)(@types/node@22.15.30)(postcss@8.5.4)(search-insights@2.14.0)(typescript@5.6.2))(vue@3.5.16(typescript@5.6.2)):
+  vitepress-openapi@0.0.3-alpha.83(typescript@5.6.2)(vitepress@1.2.2(@algolia/client-search@4.23.3)(@types/node@22.15.30)(postcss@8.5.4)(search-insights@2.14.0)(typescript@5.6.2))(vue@3.5.16(typescript@5.6.2)):
     dependencies:
       '@vueuse/core': 13.3.0(vue@3.5.16(typescript@5.6.2))
       class-variance-authority: 0.7.1
