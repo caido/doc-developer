@@ -57,6 +57,12 @@ The SDK for the Requests service.
 
 The SDK for the runtime information.
 
+##### scope
+
+> **scope**: [`ScopeSDK`](index.md#scopesdk)
+
+The SDK for the Scope service.
+
 ##### asString()
 
 Converts bytes to a string.
@@ -1616,6 +1622,14 @@ The name of the reporter.
 
 `string`
 
+##### getRequestId()
+
+The ID of the associated [Request](index.md#request-2).
+
+###### Returns
+
+`string`
+
 ##### getTitle()
 
 The title of the finding.
@@ -2277,3 +2291,57 @@ Get the current version of Caido.
 ###### Returns
 
 `string`
+
+## Scope
+
+### Scope
+
+> **Scope**: `object`
+
+A saved immutable Scope.
+
+#### Type declaration
+
+##### allowlist
+
+> `readonly` **allowlist**: `string`[]
+
+The allowlist of the scope.
+
+##### denylist
+
+> `readonly` **denylist**: `string`[]
+
+The denylist of the scope.
+
+##### id
+
+> `readonly` **id**: [`ID`](index.md#id)
+
+The unique Caido [ID](index.md#id) of the scope.
+
+##### name
+
+> `readonly` **name**: `string`
+
+The name of the scope.
+
+***
+
+### ScopeSDK
+
+> **ScopeSDK**: `object`
+
+The SDK for the Scope service.
+
+#### Type declaration
+
+##### getAll()
+
+Get all the scopes.
+
+###### Returns
+
+`Promise`\<[`Scope`](index.md#scope)[]\>
+
+An array of [Scope](index.md#scope)
