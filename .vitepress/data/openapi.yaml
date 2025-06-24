@@ -310,6 +310,7 @@ components:
       required:
       - object
       - id
+      - trial
       - starts_at
       - seats
       - seats_used
@@ -342,6 +343,8 @@ components:
           minimum: 0
         starts_at:
           $ref: '#/components/schemas/Timestamp'
+        trial:
+          type: boolean
         updated_at:
           $ref: '#/components/schemas/Timestamp'
     TeamUser:
