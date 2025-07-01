@@ -55,6 +55,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/components/backend_events",
       },
       {
+        text: "Fetching Proxied Requests",
+        link: "/guides/components/querying_requests",
+      },
+      {
         text: "Sending HTTP Requests",
         link: "/guides/components/request",
       },
