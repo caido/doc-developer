@@ -1126,7 +1126,7 @@ Utilities to interact with the command palette.
 
 #### Type declaration
 
-##### register()
+##### ~~register()~~
 
 > **register**: (`commandId`: `string`) => `void`
 
@@ -1141,6 +1141,10 @@ Register a command.
 ###### Returns
 
 `void`
+
+###### Deprecated
+
+Use `sdk.commandPalette.addToSlot` instead.
 
 ## Sidebar
 
@@ -1247,6 +1251,60 @@ Utilities to interact with Replay.
 
 #### Type declaration
 
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addToSlot
+
+> **addToSlot**: [`DefineAddToSlotFn`](index.md#defineaddtoslotfntmap)\<\{ `session-toolbar-primary`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); `session-toolbar-secondary`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); `topbar`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); \}\>
+
+Add a component to a slot.
+
+###### Param
+
+The slot to add the component to.
+
+###### Param
+
+The content to add to the slot.
+
+###### Example
+
+```ts
+addToSlot(ReplaySlot.SessionToolbarPrimary, {
+  kind: "Command",
+  commandId: "my-command",
+  icon: "my-icon",
+});
+
+addToSlot(ReplaySlot.SessionToolbarSecondary, {
+  kind: "Custom",
+  component: MyComponent,
+});
+
+addToSlot(ReplaySlot.Topbar, {
+  kind: "Button",
+  label: "My Button",
+  icon: "my-icon",
+  onClick: () => {
+    console.log("Button clicked");
+  },
+});
+```
+
 ##### closeTab()
 
 > **closeTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
@@ -1262,6 +1320,56 @@ Close a replay tab for the given session.
 ###### Returns
 
 `void`
+
+##### createCollection()
+
+> **createCollection**: (`name`: `string`) => `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+Create a new collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The name of the collection to create. |
+
+###### Returns
+
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+##### deleteCollection()
+
+> **deleteCollection**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
+
+Delete a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection to delete. |
+
+###### Returns
+
+`Promise`\<`boolean`\>
+
+Whether the collection was deleted.
+
+##### deleteSessions()
+
+> **deleteSessions**: (`sessionIds`: [`ID`](index.md#id-3)[]) => `Promise`\<[`ID`](index.md#id-3)[]\>
+
+Delete a session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionIds` | [`ID`](index.md#id-3)[] | The IDs of the sessions to delete. |
+
+###### Returns
+
+`Promise`\<[`ID`](index.md#id-3)[]\>
 
 ##### getCollections()
 
@@ -1299,6 +1407,25 @@ Get the list of all open replay tabs.
 
 The list of all open replay tabs.
 
+##### moveSession()
+
+> **moveSession**: (`sessionId`: [`ID`](index.md#id-3), `collectionId`: [`ID`](index.md#id-3)) => `Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+Move a session to a different collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | [`ID`](index.md#id-3) | The ID of the session to move. |
+| `collectionId` | [`ID`](index.md#id-3) | The ID of the collection to move the session to. |
+
+###### Returns
+
+`Promise`\<[`ReplaySession`](index.md#replaysession)\>
+
+The updated session.
+
 ##### openTab()
 
 > **openTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
@@ -1314,6 +1441,25 @@ Open a replay tab for the given session.
 ###### Returns
 
 `void`
+
+##### renameCollection()
+
+> **renameCollection**: (`id`: [`ID`](index.md#id-3), `name`: `string`) => `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+Rename a collection.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the collection to rename. |
+| `name` | `string` | The new name of the collection. |
+
+###### Returns
+
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
+
+The updated collection.
 
 ##### renameSession()
 
@@ -2391,6 +2537,12 @@ A section for the response first line.
 
 ## Other
 
+### ButtonSlotContent
+
+> **ButtonSlotContent**: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Button"`, \{ `icon`: `string`; `label`: `string`; `onClick`: () => `void`; \}\>
+
+***
+
 ### CommandID
 
 > **CommandID**: `string` & `object`
@@ -2408,6 +2560,72 @@ A unique command identifier.
 ```ts
 "my-super-command"
 ```
+
+***
+
+### CommandSlotContent
+
+> **CommandSlotContent**: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Command"`, \{ `commandId`: [`CommandID`](index.md#commandid); `icon`: `string`; \}\>
+
+***
+
+### CustomSlotContent\<TProps\>
+
+> **CustomSlotContent**\<`TProps`\>: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Custom"`, \{ `component`: `Component`\<`TProps`\>; \}\>
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* `Record`\<`string`, `unknown`\> | `Record`\<`string`, `unknown`\> |
+
+***
+
+### DefineAddToSlotFn()\<TMap\>
+
+> **DefineAddToSlotFn**\<`TMap`\>: \<`K`\>(`slot`: `K`, `spec`: `TMap`\[`K`\]) => `void`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TMap` *extends* `Record`\<`string`, [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`string`, `Record`\<`string`, `unknown`\>\>\> |
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `K` *extends* `string` \| `number` \| `symbol` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `slot` | `K` |
+| `spec` | `TMap`\[`K`\] |
+
+#### Returns
+
+`void`
+
+***
+
+### DefineSlotContent\<TType, P\>
+
+> **DefineSlotContent**\<`TType`, `P`\>: `object` & `P`
+
+#### Type declaration
+
+##### type
+
+> **type**: `TType`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TType` *extends* `string` |
+| `P` *extends* `Record`\<`string`, `unknown`\> |
 
 ***
 
@@ -3139,6 +3357,38 @@ Stop the listener.
 | Type Parameter |
 | ------ |
 | `T` *extends* (...`args`: `unknown`[]) => `unknown` |
+
+***
+
+### ReplaySlot
+
+> **ReplaySlot**: *typeof* [`ReplaySlot`](index.md#replayslot-1)\[keyof *typeof* [`ReplaySlot`](index.md#replayslot-1)\]
+
+***
+
+### SlotContent
+
+> **SlotContent**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+***
+
+### ReplaySlot
+
+> `const` **ReplaySlot**: `object`
+
+#### Type declaration
+
+##### SessionToolbarPrimary
+
+> `readonly` **SessionToolbarPrimary**: `"session-toolbar-primary"`
+
+##### SessionToolbarSecondary
+
+> `readonly` **SessionToolbarSecondary**: `"session-toolbar-secondary"`
+
+##### Topbar
+
+> `readonly` **Topbar**: `"topbar"`
 
 ***
 
