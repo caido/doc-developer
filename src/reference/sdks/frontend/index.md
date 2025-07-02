@@ -68,6 +68,12 @@ Utilities to interact with Filters page.
 
 Utilities to interact with findings
 
+##### footer
+
+> **footer**: [`FooterSDK`](index.md#footersdk)
+
+Utilities to interact with the footer.
+
 ##### graphql
 
 > **graphql**: `GraphqlSDK`
@@ -1007,6 +1013,23 @@ Get the active editor.
 [`Editor`](index.md#editor) \| `undefined`
 
 The active editor.
+
+##### showDialog()
+
+> **showDialog**: (`component`: [`CustomSlotContent`](index.md#customslotcontenttprops), `options`?: [`DialogOptions`](index.md#dialogoptions)) => `void`
+
+Show a dialog component.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `component` | [`CustomSlotContent`](index.md#customslotcontenttprops) | The custom slot content to display in the dialog. |
+| `options`? | [`DialogOptions`](index.md#dialogoptions) | Options for the dialog. |
+
+###### Returns
+
+`void`
 
 ##### showToast()
 
@@ -2043,6 +2066,54 @@ Updates a filter.
 
 The updated filter.
 
+## Footer
+
+### FooterSDK
+
+> **FooterSDK**: `object`
+
+Utilities to interact with the footer.
+
+#### Type declaration
+
+##### addToSlot
+
+> **addToSlot**: [`DefineAddToSlotFn`](index.md#defineaddtoslotfntmap)\<\{ `footer-primary`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); `footer-secondary`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); \}\>
+
+Add a component to a slot.
+
+###### Param
+
+The slot to add the component to.
+
+###### Param
+
+The content to add to the slot.
+
+###### Example
+
+```ts
+addToSlot(FooterSlot.FooterSlotPrimary, {
+  kind: "Command",
+  commandId: "my-command",
+  icon: "my-icon",
+});
+
+addToSlot(FooterSlot.FooterSlotPrimary, {
+  kind: "Button",
+  label: "My button",
+  icon: "fas fa-rocket",
+  onClick: () => {
+    console.log("Button clicked");
+  },
+});
+
+addToSlot(FooterSlot.FooterSlotSecondary, {
+  kind: "Custom",
+  component: MyComponent,
+});
+```
+
 ## Intercept
 
 ### InterceptSDK
@@ -2629,6 +2700,38 @@ A unique command identifier.
 
 ***
 
+### DialogOptions
+
+> **DialogOptions**: `object`
+
+#### Type declaration
+
+##### closable?
+
+> `optional` **closable**: `boolean`
+
+##### closeOnEscape?
+
+> `optional` **closeOnEscape**: `boolean`
+
+##### draggable?
+
+> `optional` **draggable**: `boolean`
+
+##### modal?
+
+> `optional` **modal**: `boolean`
+
+##### position?
+
+> `optional` **position**: `"left"` \| `"right"` \| `"top"` \| `"bottom"` \| `"center"` \| `"topleft"` \| `"topright"` \| `"bottomleft"` \| `"bottomright"`
+
+##### title?
+
+> `optional` **title**: `string`
+
+***
+
 ### Editor
 
 > **Editor**: `object`
@@ -2722,6 +2825,12 @@ The name of the environment variable.
 > **value**: `string`
 
 The value of the environment variable.
+
+***
+
+### FooterSlot
+
+> **FooterSlot**: *typeof* [`FooterSlot`](index.md#footerslot-1)\[keyof *typeof* [`FooterSlot`](index.md#footerslot-1)\]
 
 ***
 
@@ -3369,6 +3478,22 @@ Stop the listener.
 ### SlotContent
 
 > **SlotContent**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+***
+
+### FooterSlot
+
+> `const` **FooterSlot**: `object`
+
+#### Type declaration
+
+##### FooterSlotPrimary
+
+> `readonly` **FooterSlotPrimary**: `"footer-primary"`
+
+##### FooterSlotSecondary
+
+> `readonly` **FooterSlotSecondary**: `"footer-secondary"`
 
 ***
 
