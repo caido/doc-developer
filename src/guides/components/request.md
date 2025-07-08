@@ -43,7 +43,7 @@ async function sendRequest(sdk: SDK): Promise<void> {
   spec.setHost("example.com");
   spec.setPort(443);
   spec.setPath("/");
-  spec.setQuery("?query=test")
+  spec.setQuery("query=test")
   spec.setTls(true);
 ```
 
@@ -102,7 +102,7 @@ async function sendRequest(sdk: SDK): Promise<void> {
   spec.setHost("example.com");
   spec.setPort(443);
   spec.setPath("/");
-  spec.setQuery("?query=test")
+  spec.setQuery("query=test")
   spec.setTls(true);
 
   let sentRequest = await sdk.requests.send(spec);
