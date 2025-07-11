@@ -139,7 +139,7 @@ The input for the HTTP Javascript Nodes
 
 ##### response
 
-> **response**: [`Response`](index.md#response-4) \| `undefined`
+> **response**: [`Response`](index.md#response-5) \| `undefined`
 
 ***
 
@@ -155,7 +155,7 @@ Use HttpInput instead.
 
 ### Body
 
-The body of a [Request](index.md#request-2) or [Response](index.md#response-4).
+The body of a [Request](index.md#request-2) or [Response](index.md#response-5).
 
 Calling `to<FORMAT>` will try to convert the body to the desired format.
 
@@ -174,6 +174,14 @@ Calling `to<FORMAT>` will try to convert the body to the desired format.
 ###### Returns
 
 [`Body`](index.md#body)
+
+#### Properties
+
+##### length
+
+> `readonly` **length**: `number`
+
+The length of the body in bytes.
 
 #### Methods
 
@@ -1083,7 +1091,7 @@ An immutable saved Request and Response pair.
 
 ##### response
 
-> **response**: [`Response`](index.md#response-4)
+> **response**: [`Response`](index.md#response-5)
 
 ***
 
@@ -1101,7 +1109,7 @@ An immutable saved Request and optional Response pair.
 
 ##### response?
 
-> `optional` **response**: [`Response`](index.md#response-4)
+> `optional` **response**: [`Response`](index.md#response-5)
 
 ***
 
@@ -1141,7 +1149,64 @@ An item in a connection of requests.
 
 ##### response?
 
-> `optional` **response**: [`Response`](index.md#response-4)
+> `optional` **response**: [`Response`](index.md#response-5)
+
+***
+
+### RequestSendTimeouts
+
+> **RequestSendTimeouts**: `object`
+
+Timeouts for sending a request and receiving a response.
+
+#### Type declaration
+
+##### connect?
+
+> `optional` **connect**: `number`
+
+The timeout to open the TCP connection to the target host
+and perform the TLS handshake.
+
+Defaults to 30s.
+
+##### extra?
+
+> `optional` **extra**: `number`
+
+The timeout to read data after we have a read the full response.
+
+This is useful if you believe the server will send more data
+than implied by the Content-Length header.
+
+Defaults to 0s (no timeout).
+
+##### global?
+
+> `optional` **global**: `number`
+
+The global timeout for sending a request and receiving a response.
+
+No default value.
+
+##### partial?
+
+> `optional` **partial**: `number`
+
+The timeout between each read attempt for the response.
+On a slow connection, this is important to increase.
+
+Defaults to 5s.
+
+##### response?
+
+> `optional` **response**: `number`
+
+The timeout to receive the first byte of the response.
+
+After the first byte is received, the partial timeout will be used.
+
+Defaults to 30s.
 
 ***
 
@@ -1357,7 +1422,7 @@ Checks if a request/response matches an HTTPQL filter.
 | ------ | ------ | ------ |
 | `filter` | `string` | HTTPQL filter |
 | `request` | [`Request`](index.md#request-2) | The [Request](index.md#request-2) to match against |
-| `response`? | [`Response`](index.md#response-4) | The [Response](index.md#response-4) to match against |
+| `response`? | [`Response`](index.md#response-5) | The [Response](index.md#response-5) to match against |
 
 ###### Returns
 
@@ -1389,6 +1454,7 @@ This respects the upstream proxy settings.
 | Parameter | Type |
 | ------ | ------ |
 | `request` | [`RequestSpec`](index.md#requestspec) \| [`RequestSpecRaw`](index.md#requestspecraw) |
+| `options`? | [`RequestSendOptions`](index.md#requestsendoptions) |
 
 ###### Returns
 
@@ -1397,6 +1463,7 @@ This respects the upstream proxy settings.
 ###### Throws
 
 If the request cannot be sent.
+If the request times out, the error message will contain the word "Timeout".
 
 ###### Example
 
@@ -2269,6 +2336,40 @@ Information on the current page of paginated data.
 ##### startCursor
 
 > **startCursor**: [`Cursor`](index.md#cursor)
+
+***
+
+### RequestSendOptions
+
+> **RequestSendOptions**: `object`
+
+#### Type declaration
+
+##### save?
+
+> `optional` **save**: `boolean`
+
+If true, the request and response will be saved to the database
+and the user will see them in the Search tab.
+
+If you do not save, the request and response IDs will be set to 0.
+
+###### Default
+
+```ts
+true
+```
+
+##### timeouts?
+
+> `optional` **timeouts**: [`RequestSendTimeouts`](index.md#requestsendtimeouts) \| `number`
+
+The timeouts to use for sending a request and receiving a response.
+
+If a number is provided, it will be used as the global timeout and
+the other timeouts will be set to infinity.
+
+See the [RequestSendTimeouts](index.md#requestsendtimeouts) for the default values.
 
 ## Runtime
 
