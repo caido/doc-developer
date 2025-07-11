@@ -68,6 +68,12 @@ Utilities to interact with Filters page.
 
 Utilities to interact with findings
 
+##### footer
+
+> **footer**: [`FooterSDK`](index.md#footersdk)
+
+Utilities to interact with the footer.
+
 ##### graphql
 
 > **graphql**: `GraphqlSDK`
@@ -1008,6 +1014,25 @@ Get the active editor.
 
 The active editor.
 
+##### showDialog()
+
+> **showDialog**: (`component`: [`ComponentDefinition`](index.md#componentdefinition), `options`?: [`DialogOptions`](index.md#dialogoptions)) => [`Dialog`](index.md#dialog)
+
+Show a dialog component.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `component` | [`ComponentDefinition`](index.md#componentdefinition) | The custom slot content to display in the dialog. |
+| `options`? | [`DialogOptions`](index.md#dialogoptions) | Options for the dialog. |
+
+###### Returns
+
+[`Dialog`](index.md#dialog)
+
+A dialog object that can be used to close the dialog.
+
 ##### showToast()
 
 > **showToast**: (`message`: `string`, `options`?: `object`) => `void`
@@ -1126,9 +1151,9 @@ Utilities to interact with the command palette.
 
 #### Type declaration
 
-##### ~~register()~~
+##### register()
 
-> **register**: (`commandId`: `string`) => `void`
+> **register**: (`commandId`: [`CommandID`](index.md#commandid)) => `void`
 
 Register a command.
 
@@ -1136,15 +1161,11 @@ Register a command.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `commandId` | `string` | The id of the command to register. |
+| `commandId` | [`CommandID`](index.md#commandid) | The id of the command to register. |
 
 ###### Returns
 
 `void`
-
-###### Deprecated
-
-Use `sdk.commandPalette.addToSlot` instead.
 
 ## Sidebar
 
@@ -1215,6 +1236,23 @@ sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
 
 ## Replay
 
+### OpenTabOptions
+
+> **OpenTabOptions**: `object`
+
+Options for opening a tab.
+
+#### Type declaration
+
+##### select?
+
+> `optional` **select**: `boolean`
+
+Whether to select the tab after opening it.
+Defaults to true.
+
+***
+
 ### ReplayCollection
 
 > **ReplayCollection**: `object`
@@ -1269,7 +1307,7 @@ Add an extension to the request editor.
 
 ##### addToSlot
 
-> **addToSlot**: [`DefineAddToSlotFn`](index.md#defineaddtoslotfntmap)\<\{ `session-toolbar-primary`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); `session-toolbar-secondary`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); `topbar`: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent); \}\>
+> **addToSlot**: [`DefineAddToSlotFn`](index.md#defineaddtoslotfntmap)\<[`ReplaySlotContent`](index.md#replayslotcontent)\>
 
 Add a component to a slot.
 
@@ -1428,7 +1466,7 @@ The updated session.
 
 ##### openTab()
 
-> **openTab**: (`sessionId`: [`ID`](index.md#id-3)) => `void`
+> **openTab**: (`sessionId`: [`ID`](index.md#id-3), `options`?: [`OpenTabOptions`](index.md#opentaboptions)) => `void`
 
 Open a replay tab for the given session.
 
@@ -1437,6 +1475,7 @@ Open a replay tab for the given session.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `sessionId` | [`ID`](index.md#id-3) | The ID of the session to open. |
+| `options`? | [`OpenTabOptions`](index.md#opentaboptions) | The options for opening the tab. |
 
 ###### Returns
 
@@ -1545,6 +1584,22 @@ Add an extension to the request editor.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
 
 ###### Returns
 
@@ -2042,6 +2097,54 @@ Updates a filter.
 `Promise`\<[`Filter`](index.md#filter)\>
 
 The updated filter.
+
+## Footer
+
+### FooterSDK
+
+> **FooterSDK**: `object`
+
+Utilities to interact with the footer.
+
+#### Type declaration
+
+##### addToSlot
+
+> **addToSlot**: [`DefineAddToSlotFn`](index.md#defineaddtoslotfntmap)\<[`FooterSlotContent`](index.md#footerslotcontent)\>
+
+Add a component to a slot.
+
+###### Param
+
+The slot to add the component to.
+
+###### Param
+
+The content to add to the slot.
+
+###### Example
+
+```ts
+addToSlot(FooterSlot.FooterSlotPrimary, {
+  kind: "Command",
+  commandId: "my-command",
+  icon: "my-icon",
+});
+
+addToSlot(FooterSlot.FooterSlotPrimary, {
+  kind: "Button",
+  label: "My button",
+  icon: "fas fa-rocket",
+  onClick: () => {
+    console.log("Button clicked");
+  },
+});
+
+addToSlot(FooterSlot.FooterSlotSecondary, {
+  kind: "Custom",
+  component: MyComponent,
+});
+```
 
 ## Intercept
 
@@ -2569,15 +2672,31 @@ A unique command identifier.
 
 ***
 
-### CustomSlotContent\<TProps\>
+### ComponentDefinition
 
-> **CustomSlotContent**\<`TProps`\>: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Custom"`, \{ `component`: `Component`\<`TProps`\>; \}\>
+> **ComponentDefinition**: `object`
 
-#### Type Parameters
+A custom component that will be rendered in the UI.
 
-| Type Parameter | Default type |
-| ------ | ------ |
-| `TProps` *extends* `Record`\<`string`, `unknown`\> | `Record`\<`string`, `unknown`\> |
+#### Type declaration
+
+##### component
+
+> **component**: `VueComponent`
+
+##### events?
+
+> `optional` **events**: `Record`\<`string`, (...`args`: `unknown`[]) => `void`\>
+
+##### props?
+
+> `optional` **props**: `Record`\<`string`, `unknown`\>
+
+***
+
+### CustomSlotContent
+
+> **CustomSlotContent**: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Custom"`, \{ `definition`: [`ComponentDefinition`](index.md#componentdefinition); \}\>
 
 ***
 
@@ -2626,6 +2745,54 @@ A unique command identifier.
 | ------ |
 | `TType` *extends* `string` |
 | `P` *extends* `Record`\<`string`, `unknown`\> |
+
+***
+
+### Dialog
+
+> **Dialog**: `object`
+
+#### Type declaration
+
+##### close()
+
+> **close**: () => `void`
+
+###### Returns
+
+`void`
+
+***
+
+### DialogOptions
+
+> **DialogOptions**: `object`
+
+#### Type declaration
+
+##### closable?
+
+> `optional` **closable**: `boolean`
+
+##### closeOnEscape?
+
+> `optional` **closeOnEscape**: `boolean`
+
+##### draggable?
+
+> `optional` **draggable**: `boolean`
+
+##### modal?
+
+> `optional` **modal**: `boolean`
+
+##### position?
+
+> `optional` **position**: `"left"` \| `"right"` \| `"top"` \| `"bottom"` \| `"center"` \| `"topleft"` \| `"topright"` \| `"bottomleft"` \| `"bottomright"`
+
+##### title?
+
+> `optional` **title**: `string`
 
 ***
 
@@ -2722,6 +2889,28 @@ The name of the environment variable.
 > **value**: `string`
 
 The value of the environment variable.
+
+***
+
+### FooterSlot
+
+> **FooterSlot**: *typeof* [`FooterSlot`](index.md#footerslot-1)\[keyof *typeof* [`FooterSlot`](index.md#footerslot-1)\]
+
+***
+
+### FooterSlotContent
+
+> **FooterSlotContent**: `object`
+
+#### Type declaration
+
+##### footer-primary
+
+> **footer-primary**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+##### footer-secondary
+
+> **footer-secondary**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
 
 ***
 
@@ -3366,9 +3555,65 @@ Stop the listener.
 
 ***
 
+### ReplaySlotContent
+
+> **ReplaySlotContent**: `object`
+
+#### Type declaration
+
+##### session-toolbar-primary
+
+> **session-toolbar-primary**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+##### session-toolbar-secondary
+
+> **session-toolbar-secondary**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+##### topbar
+
+> **topbar**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+***
+
+### RequestViewModeOptions
+
+> **RequestViewModeOptions**: `object`
+
+#### Type declaration
+
+##### label
+
+> **label**: `string`
+
+The label of the view mode.
+
+##### view
+
+> **view**: [`ComponentDefinition`](index.md#componentdefinition)
+
+The component to render when the view mode is selected.
+
+***
+
 ### SlotContent
 
-> **SlotContent**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontenttprops) \| [`CommandSlotContent`](index.md#commandslotcontent)
+> **SlotContent**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+***
+
+### FooterSlot
+
+> `const` **FooterSlot**: `object`
+
+#### Type declaration
+
+##### FooterSlotPrimary
+
+> `readonly` **FooterSlotPrimary**: `"footer-primary"`
+
+##### FooterSlotSecondary
+
+> `readonly` **FooterSlotSecondary**: `"footer-secondary"`
 
 ***
 
