@@ -557,6 +557,27 @@ Fulfills with `undefined` upon success.
 
 ***
 
+### chmod()
+
+> **chmod**(`path`: `string`, `mode`: `number`): `Promise`\<`void`\>
+
+Changes the permissions of a file.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `mode` | `number` |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+Fulfills with `undefined` upon success.
+
+***
+
 ### mkdir()
 
 > **mkdir**(`path`: `string`, `options`?: [`MakeDirectoryOptions`](../index.md#makedirectoryoptions)): `Promise`\<`string`\>
