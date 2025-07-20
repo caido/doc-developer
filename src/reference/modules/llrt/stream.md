@@ -34,6 +34,20 @@
 
 #### Methods
 
+##### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Calls `readable.destroy()`.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DefaultReadableStream`](stream.md#defaultreadablestream).[`[dispose]`](stream.md#dispose-1)
+
 ##### addListener()
 
 ###### Call Signature
@@ -1150,6 +1164,20 @@ v0.9.4
 [`ReadableStreamInner`](stream.md#readablestreaminner).[`constructor`](stream.md#constructors-3)
 
 #### Methods
+
+##### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Calls `readable.destroy()`.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`ReadableStreamInner`](stream.md#readablestreaminner).[`[dispose]`](stream.md#dispose-2)
 
 ##### addListener()
 
@@ -3250,6 +3278,16 @@ v0.9.4
 [`EventEmitter`](globals/index.md#eventemittert).[`constructor`](globals/index.md#constructors)
 
 #### Methods
+
+##### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Calls `readable.destroy()`.
+
+###### Returns
+
+`void`
 
 ##### addListener()
 
