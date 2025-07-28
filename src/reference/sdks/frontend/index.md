@@ -1549,6 +1549,7 @@ sendRequest(sessionId, {
   raw: "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n",
   updateContentLength: false,
 });
+```
 
 ***
 
