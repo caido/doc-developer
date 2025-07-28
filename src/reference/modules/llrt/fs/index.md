@@ -706,6 +706,28 @@ try {
 
 ***
 
+### chmodSync()
+
+> **chmodSync**(`path`: `string`, `mode`: `number`): `void`
+
+For detailed information, see the documentation of the asynchronous version of
+this API: chmod.
+
+See the POSIX [`chmod(2)`](http://man7.org/linux/man-pages/man2/chmod.2.html) documentation for more detail.
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `path` | `string` |
+| `mode` | `number` |
+
+#### Returns
+
+`void`
+
+***
+
 ### mkdirSync()
 
 > **mkdirSync**(`path`: `string`, `options`?: [`MakeDirectoryOptions`](index.md#makedirectoryoptions)): `string`

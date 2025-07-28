@@ -1354,6 +1354,20 @@ the socket is destroyed (for example, if the client disconnected).
 
 #### Methods
 
+##### \[dispose\]()
+
+> **\[dispose\]**(): `void`
+
+Calls `readable.destroy()`.
+
+###### Returns
+
+`void`
+
+###### Inherited from
+
+[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`[dispose]`](stream.md#dispose)
+
 ##### addListener()
 
 ###### Call Signature
