@@ -1605,6 +1605,15 @@ Options for sending a request.
 
 #### Type declaration
 
+##### background?
+
+> `optional` **background**: `boolean`
+
+Whether to send the request in the background without updating the UI.
+If true, the request will not update the UI.
+If false, the UI will be updated to display the session and the new request.
+Defaults to false.
+
 ##### connectionInfo
 
 > **connectionInfo**: `object`
@@ -1635,6 +1644,15 @@ The port to use for the request.
 
 The SNI to use for the request.
 If not provided, the SNI will be inferred from the host.
+
+##### overwriteDraft?
+
+> `optional` **overwriteDraft**: `boolean`
+
+Whether to overwrite the editor's draft content.
+If true, draft content will be overwritten with the new request.
+If false, the draft will be kept.
+Defaults to true.
 
 ##### raw
 
