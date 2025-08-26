@@ -1375,6 +1375,23 @@ Create a new collection.
 
 `Promise`\<[`ReplayCollection`](index.md#replaycollection)\>
 
+##### createSession()
+
+> **createSession**: (`source`: [`RequestSource`](index.md#requestsource), `collectionId`?: [`ID`](index.md#id-3)) => `Promise`\<`void`\>
+
+Create a session.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `source` | [`RequestSource`](index.md#requestsource) | - |
+| `collectionId`? | [`ID`](index.md#id-3) | The ID of the collection to add the request. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
 ##### deleteCollection()
 
 > **deleteCollection**: (`id`: [`ID`](index.md#id-3)) => `Promise`\<`boolean`\>
@@ -1594,6 +1611,34 @@ A replay tab.
 > **sessionId**: [`ID`](index.md#id-3)
 
 The ID of the session associated with this tab.
+
+***
+
+### RequestSource
+
+> **RequestSource**: \{ `connectionInfo`: [`SendRequestOptions`](index.md#sendrequestoptions)\[`"connectionInfo"`\]; `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
+
+#### Remarks
+
+This type is a discriminated union with two possible shapes:
+- A raw request, containing the raw HTTP request string and connection information.
+- A reference to an existing request ID.
+
+#### Example
+
+```ts
+// Using a raw request
+const source: RequestSource = {
+  type: "Raw",
+  raw: "GET /api/data HTTP/1.1",
+  connectionInfo: { ... }
+};
+// Using an ID
+const source: RequestSource = {
+  type: "ID",
+  id: "request-123"
+};
+```
 
 ***
 
@@ -2067,6 +2112,12 @@ The path of the file.
 > **size**: `number`
 
 The size of the file in bytes.
+
+##### status
+
+> **status**: `"ready"` \| `"error"`
+
+The status of the file.
 
 ##### updatedAt
 
