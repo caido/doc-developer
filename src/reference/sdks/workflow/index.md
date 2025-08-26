@@ -33,6 +33,12 @@ The SDK for the Environment service.
 
 The SDK for the Findings service.
 
+##### graphql
+
+> **graphql**: [`GraphQLSDK`](index.md#graphqlsdk)
+
+The SDK for the GraphQL service.
+
 ##### projects
 
 > **projects**: [`ProjectsSDK`](index.md#projectssdk)
@@ -2234,6 +2240,47 @@ false
 
 Value of the environment variable
 
+## GraphQL
+
+### GraphQLSDK
+
+> **GraphQLSDK**: `object`
+
+The SDK for the GraphQL service.
+
+#### Type declaration
+
+##### execute()
+
+Executes a GraphQL query.
+
+###### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `query` | `string` |
+| `variables`? | `Record`\<`string`, `any`\> |
+
+###### Returns
+
+`Promise`\<[`GraphQLResponse`](index.md#graphqlresponset)\<`T`\>\>
+
+###### Example
+
+```js
+await sdk.graphql.execute(`
+  query {
+    viewer
+  }
+`);
+```
+
 ## Other
 
 ### Console
@@ -2310,6 +2357,74 @@ Usually used for unexpected behaviors.
 ###### Returns
 
 `void`
+
+***
+
+### GraphQLError
+
+> **GraphQLError**: `object`
+
+#### Type declaration
+
+##### extensions
+
+> **extensions**: `Record`\<`string`, `any`\>
+
+##### locations
+
+> **locations**: [`GraphQLLocation`](index.md#graphqllocation)[]
+
+##### message
+
+> **message**: `string`
+
+##### path
+
+> **path**: [`GraphQLPathSegment`](index.md#graphqlpathsegment)[]
+
+***
+
+### GraphQLLocation
+
+> **GraphQLLocation**: `object`
+
+#### Type declaration
+
+##### column
+
+> **column**: `number`
+
+##### line
+
+> **line**: `number`
+
+***
+
+### GraphQLPathSegment
+
+> **GraphQLPathSegment**: `string` \| `number`
+
+***
+
+### GraphQLResponse\<T\>
+
+> **GraphQLResponse**\<`T`\>: `object`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+#### Type declaration
+
+##### data?
+
+> `optional` **data**: `T`
+
+##### errors?
+
+> `optional` **errors**: [`GraphQLError`](index.md#graphqlerror)[]
 
 ***
 
