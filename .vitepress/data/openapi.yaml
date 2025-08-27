@@ -194,6 +194,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/workspace/{workspace_id}:
+    get:
+      tags:
+      - api
+      operationId: get_workspace
+      parameters:
+      - name: workspace_id
+        in: path
+        description: Workspace ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Workspace details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     Email:
@@ -422,3 +453,16 @@ components:
           type: string
         updated_at:
           $ref: '#/components/schemas/Timestamp'
+    Workspace:
+      type: object
+      required:
+      - object
+      - id
+      - name
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        name:
+          type: string
+        object:
+          type: string
