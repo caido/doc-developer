@@ -601,42 +601,10 @@ The context for a command that is executed on a request pane.
 
 ##### request
 
-> **request**: `object`
+> **request**: [`RequestDraft`](index.md#requestdraft) \| [`RequestFull`](index.md#requestfull)
 
 The request that is currently open in the request pane.
 If the request has not yet been saved in the database, the id will be undefined.
-
-###### request.host
-
-> **host**: `string`
-
-###### request.id
-
-> **id**: [`ID`](index.md#id-3) \| `undefined`
-
-###### request.isTls
-
-> **isTls**: `boolean`
-
-###### request.path
-
-> **path**: `string`
-
-###### request.port
-
-> **port**: `number`
-
-###### request.query
-
-> **query**: `string`
-
-###### request.raw
-
-> **raw**: `string`
-
-###### request.streamId?
-
-> `optional` **streamId**: [`ID`](index.md#id-3)
 
 ##### selection
 
@@ -660,7 +628,7 @@ The context for a command that is executed on a row in the request table.
 
 ##### requests
 
-> **requests**: `object`[]
+> **requests**: [`RequestMeta`](index.md#requestmeta)[]
 
 The requests that are selected in the request table.
 
@@ -680,37 +648,9 @@ The context for a command that is executed on a response pane.
 
 ##### request
 
-> **request**: `object`
+> **request**: [`RequestMeta`](index.md#requestmeta)
 
 The request that is associated with the response.
-
-###### request.host
-
-> **host**: `string`
-
-###### request.id
-
-> **id**: [`ID`](index.md#id-3)
-
-###### request.isTls
-
-> **isTls**: `boolean`
-
-###### request.path
-
-> **path**: `string`
-
-###### request.port
-
-> **port**: `number`
-
-###### request.query
-
-> **query**: `string`
-
-###### request.streamId?
-
-> `optional` **streamId**: [`ID`](index.md#id-3)
 
 ##### response
 
@@ -1864,6 +1804,38 @@ Utilities to interact with the Search page.
 
 #### Type declaration
 
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
 ##### getQuery()
 
 > **getQuery**: () => [`HTTPQL`](index.md#httpql)
@@ -2823,6 +2795,24 @@ A section for the response first line.
 
 ## Other
 
+### As\<TType\>
+
+> **As**\<`TType`\>: `object`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TType` *extends* `string` |
+
+#### Type declaration
+
+##### type
+
+> **type**: `TType`
+
+***
+
 ### ButtonSlotContent
 
 > **ButtonSlotContent**: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Button"`, \{ `icon`: `string`; `label`: `string`; `onClick`: () => `void`; \}\>
@@ -3720,6 +3710,18 @@ Stop the listener.
 
 ***
 
+### Prettify\<T\>
+
+> **Prettify**\<`T`\>: `{ [K in keyof T]: T[K] }` & `object`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
 ### PromisifiedReturnType\<T\>
 
 > **PromisifiedReturnType**\<`T`\>: `ReturnType`\<`T`\> *extends* `Promise`\<infer U\> ? `Promise`\<`U`\> : `Promise`\<`ReturnType`\<`T`\>\>
@@ -3755,6 +3757,24 @@ Stop the listener.
 ##### topbar
 
 > **topbar**: [`ButtonSlotContent`](index.md#buttonslotcontent) \| [`CustomSlotContent`](index.md#customslotcontent) \| [`CommandSlotContent`](index.md#commandslotcontent)
+
+***
+
+### RequestDraft
+
+> **RequestDraft**: [`Prettify`](index.md#prettifyt)\<[`As`](index.md#asttype)\<`"RequestDraft"`\> & `object`\>
+
+***
+
+### RequestFull
+
+> **RequestFull**: [`Prettify`](index.md#prettifyt)\<[`As`](index.md#asttype)\<`"RequestFull"`\> & `object`\>
+
+***
+
+### RequestMeta
+
+> **RequestMeta**: [`Prettify`](index.md#prettifyt)\<[`As`](index.md#asttype)\<`"RequestMeta"`\> & `object`\>
 
 ***
 
@@ -3835,6 +3855,38 @@ Get the current version of Caido.
 Utilities to interact with the Sitemap page.
 
 #### Type declaration
+
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
 
 ##### getScopeId()
 
