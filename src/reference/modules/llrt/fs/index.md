@@ -860,6 +860,28 @@ Synchronously reads the entire contents of a file.
 
 ***
 
+### renameSync()
+
+> **renameSync**(`oldPath`: `string`, `newPath`: `string`): `void`
+
+Synchronously renames a file or directory from `oldPath` to `newPath`.
+
+For detailed information, see the documentation of the asynchronous version of
+this API: [promises.rename](fs/promises.md#rename).
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `oldPath` | `string` |
+| `newPath` | `string` |
+
+#### Returns
+
+`void`
+
+***
+
 ### rmdirSync()
 
 > **rmdirSync**(`path`: `string`, `options`?: [`RmDirOptions`](index.md#rmdiroptions)): `void`

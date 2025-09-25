@@ -804,6 +804,38 @@ Asynchronously reads the entire contents of a file.
 
 ***
 
+### rename()
+
+> **rename**(`oldPath`: `string`, `newPath`: `string`): `Promise`\<`void`\>
+
+Asynchronously renames a file or directory from `oldPath` to `newPath`.
+
+```js
+import { rename } from 'fs/promises';
+
+try {
+  await rename('oldfile.txt', 'newfile.txt');
+  console.log('Rename complete!');
+} catch (err) {
+  console.error(err);
+}
+```
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `oldPath` | `string` | A path to a file or directory. |
+| `newPath` | `string` | The new path for the file or directory. |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+Fulfills with `undefined` upon success.
+
+***
+
 ### rm()
 
 > **rm**(`path`: `string`, `options`?: [`RmOptions`](../index.md#rmoptions)): `Promise`\<`void`\>
