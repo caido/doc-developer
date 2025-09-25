@@ -1975,6 +1975,14 @@ The name of the project.
 
 `string`
 
+##### getPath()
+
+The directory where the project is located.
+
+###### Returns
+
+`string`
+
 ##### getStatus()
 
 The status of the project.
