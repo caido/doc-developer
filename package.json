@@ -14,6 +14,10 @@
   },
   "author": "Caido Labs Inc. <dev@caido.io>",
   "license": "CC-BY-4.0",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
   "devDependencies": {
     "@scalar/openapi-types": "0.3.2",
     "@types/node": "22.15.30",
