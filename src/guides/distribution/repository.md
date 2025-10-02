@@ -70,7 +70,7 @@ This will create a file `private.pem` with the private key. We will use this key
 
 The file `private.pem` will contain the following format:
 
-```
+```text
 -----BEGIN PRIVATE KEY-----
 <SOME BASE64 DATA ON ONE LINE>
 -----END PRIVATE KEY-----
@@ -88,7 +88,7 @@ This will create a file `public.pem` with the public key. We will use this key w
 
 The file `public.pem` will contain the following format:
 
-```
+```text
 -----BEGIN PUBLIC KEY-----
 <SOME BASE64 DATA ON ONE LINE>
 -----END PUBLIC KEY-----

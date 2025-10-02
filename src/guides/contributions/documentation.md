@@ -41,5 +41,5 @@ You are now ready to edit files. 🚀
 We will then check your pull request, make changes if necessary and merge it. It will then appear on the official documentation. 🎉
 
 <center>
-  <h1>Thanks for your contributions!</h1>
+  <h2>Thanks for your contributions!</h2>
 </center>

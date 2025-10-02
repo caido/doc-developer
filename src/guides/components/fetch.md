@@ -164,7 +164,7 @@ export function init(sdk: SDK<API>) {
 ::: info
 Within the logs, the message will resemble:
 
-```
+```text
 2025-04-29T16:06:01.503261Z DEBUG actix-rt|system:0|arbiter:23 api|controller: Calling plugin (6aff5b11-5baf-452a-8971-f4c6f1eb7859) function: callApi    
 2025-04-29T16:06:01.503303Z  INFO plugin:6aff5b11-5baf-452a-8971-f4c6f1eb7859 plugin|executor: Calling method callApi (6aff5b11-5baf-452a-8971-f4c6f1eb7859)    
 2025-04-29T16:06:01.503316Z DEBUG plugin:6aff5b11-5baf-452a-8971-f4c6f1eb7859 js|runtime: Triggering API callApi (6aff5b11-5baf-452a-8971-f4c6f1eb7859)    

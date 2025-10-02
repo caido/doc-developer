@@ -2,7 +2,7 @@
 
 Commands are used to register actions to expose functionality, bind actions to the user-interface and implement business logic.
 
-### Registering a Command
+## Registering a Command
 
 ```ts
 sdk.commands.register("hello", {
