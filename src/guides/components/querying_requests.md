@@ -204,7 +204,7 @@ To view how the endpoint can be called with a frontend plugin, expand the follow
 <details>
 <summary>Full Script</summary>
 
-```
+```vue
 <script setup lang="ts">
 import Button from "primevue/button";
 import InputText from "primevue/inputtext";

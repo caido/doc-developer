@@ -57,7 +57,7 @@ Here's a summary of each field (**required** fields are marked with an asterisk 
 | name        | No       | The name of your plugin package. If not supplied, the `id` will be used as the `name`.                                                                                                                 |
 | description | No       | A description of the plugin package .                                                                                                                                                                  |
 | Author      | No       | See the [author fields](#author-fields).                                                                                                                                                               |
-| Links       | No       | See the [links fields]                                                                                                                                                                                 |
+| Links       | No       | See the [links fields](#links-fields)                                                                                                                                                                                 |
 | Plugins     | Yes      | Array of plugins. See the [plugin fields](#plugins-fields).                                                                                                                                            |
 
 ## Author Fields

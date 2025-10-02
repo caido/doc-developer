@@ -10,13 +10,13 @@ If you are using [Cursor](https://www.cursor.com/en) as your IDE, you can load t
 
 1. Open Cursor and click `View` in the menu bar and select `Command Palette` (_or use `CTRL + Shift + P`_) and search for:
 
-```
+```text
 Add New Custom Docs
 ```
 
 2. Select the option and enter the documentation URL:
 
-```
+```text
 https://developer.caido.io/
 ```
 

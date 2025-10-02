@@ -41,7 +41,7 @@ In order to submit your plugin package, you need to update the `plugin_packages.
 1. Select `Commit changes...` in the upper-right corner.
 1. Select `Propose changes`.
 1. Name your pull request `Add <YOUR PLUGIN PACKAGE NAME>`
-1. Fill in the details in the description for the pull request. For the checkboxes, insert an x between the brackets, [x], to mark them as done.
+1. Fill in the details in the description for the pull request. For the checkboxes, insert an x between the brackets, `[x]`, to mark them as done.
 1. Click `Create pull request`.
 
 You've now submitted your plugin package to the Caido store. Our bot will verify that the format is correct and you will have to sign the [Contributor License Agreement](https://cla-assistant.io/caido/store).

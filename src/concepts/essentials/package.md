@@ -14,7 +14,7 @@ The manifest.json file acts as the blueprint of the car, defining how all the co
 
 These parts are packaged together in a single entity known as a **plugin package**.
 
-### manifest.json
+## manifest.json
 
 The `manifest.json` configuration file defines the plugin package structure and also contains metadata used by the Caido installer.
 
