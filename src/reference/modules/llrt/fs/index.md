@@ -797,7 +797,7 @@ If `options.withFileTypes` is set to `true`, the result will contain `fs.Dirent`
 
 #### Call Signature
 
-> **readdirSync**(`path`: `string`, `options`: `object`): [`Dirent`](index.md#dirent)[]
+> **readdirSync**(`path`: `string`, `options`: `object`): [`Dirent`][index.md#dirent]()
 
 Synchronous readdir (2) - read a directory.
 
@@ -812,7 +812,7 @@ Synchronous readdir (2) - read a directory.
 
 ##### Returns
 
-[`Dirent`](index.md#dirent)[]
+[`Dirent`][index.md#dirent]()
 
 ***
 

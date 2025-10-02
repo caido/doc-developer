@@ -1277,7 +1277,7 @@ A connection of requests.
 
 ##### items
 
-> **items**: [`RequestsConnectionItem`](index.md#requestsconnectionitem)[]
+> **items**: [`RequestsConnectionItem`][index.md#requestsconnectionitem]()
 
 ##### pageInfo
 
@@ -2069,7 +2069,7 @@ The SDK for the Replay service.
 
 ###### Returns
 
-`Promise`\<[`ReplayCollection`](index.md#replaycollection)[]\>
+`Promise`\<[`ReplayCollection`][index.md#replaycollection]()\>
 
 ***
 
@@ -2386,7 +2386,7 @@ Those variables can change over time so avoid caching them.
 
 ###### Returns
 
-[`EnvironmentVariable`](index.md#environmentvariable)[]
+[`EnvironmentVariable`][index.md#environmentvariable]()
 
 An array of [EnvironmentVariable](index.md#environmentvariable)
 
@@ -2633,7 +2633,7 @@ Instead, instances are created via the database.prepare() method.
 
 ##### all()
 
-> **all**\<`T`\>(...`params`: [`Parameter`](index.md#parameter)[]): `Promise`\<`T`[]\>
+> **all**\<`T`\>(...`params`: [`Parameter`][index.md#parameter]()): `Promise`\<`T`[]\>
 
 This method executes a prepared statement and returns all results as an array of objects.
 If the prepared statement does not return any results, this method returns an empty array.
@@ -2649,7 +2649,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](index.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`][index.md#parameter]() | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
@@ -2657,7 +2657,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 ##### get()
 
-> **get**\<`T`\>(...`params`: [`Parameter`](index.md#parameter)[]): `Promise`\<`undefined` \| `T`\>
+> **get**\<`T`\>(...`params`: [`Parameter`][index.md#parameter]()): `Promise`\<`undefined` \| `T`\>
 
 This method executes a prepared statement and returns the first result as an object.
 If the prepared statement does not return any results, this method returns undefined.
@@ -2673,7 +2673,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](index.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`][index.md#parameter]() | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
@@ -2681,7 +2681,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 ##### run()
 
-> **run**(...`params`: [`Parameter`](index.md#parameter)[]): `Promise`\<[`Result`](index.md#result)\>
+> **run**(...`params`: [`Parameter`][index.md#parameter]()): `Promise`\<[`Result`](index.md#result)\>
 
 This method executes a prepared statement and returns an object summarizing the resulting changes.
 The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_blob.html) using the values in params.
@@ -2690,7 +2690,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](index.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`][index.md#parameter]() | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
@@ -2787,7 +2787,7 @@ Usually used for unexpected behaviors.
 
 ##### locations
 
-> **locations**: [`GraphQLLocation`](index.md#graphqllocation)[]
+> **locations**: [`GraphQLLocation`][index.md#graphqllocation]()
 
 ##### message
 
@@ -2795,7 +2795,7 @@ Usually used for unexpected behaviors.
 
 ##### path
 
-> **path**: [`GraphQLPathSegment`](index.md#graphqlpathsegment)[]
+> **path**: [`GraphQLPathSegment`][index.md#graphqlpathsegment]()
 
 ***
 
@@ -2839,7 +2839,7 @@ Usually used for unexpected behaviors.
 
 ##### errors?
 
-> `optional` **errors**: [`GraphQLError`](index.md#graphqlerror)[]
+> `optional` **errors**: [`GraphQLError`][index.md#graphqlerror]()
 
 ***
 
@@ -2995,6 +2995,6 @@ Get all the scopes.
 
 ###### Returns
 
-`Promise`\<[`Scope`](index.md#scope-1)[]\>
+`Promise`\<[`Scope`][index.md#scope-1]()\>
 
 An array of [Scope](index.md#scope-1)

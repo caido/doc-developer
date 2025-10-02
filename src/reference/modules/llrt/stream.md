@@ -332,7 +332,7 @@ Calling the [write](stream.md#write) method after calling [end](stream.md#end) w
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -353,7 +353,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Implementation of
 
@@ -1513,7 +1513,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -1534,7 +1534,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
@@ -2622,7 +2622,7 @@ Calling the [write](stream.md#write-2) method after calling [end](stream.md#end-
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -2643,7 +2643,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
@@ -3667,7 +3667,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -3688,7 +3688,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Implementation of
 
@@ -4944,7 +4944,7 @@ Calling the [write](stream.md#write-2) method after calling [end](stream.md#end-
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -4965,7 +4965,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Implementation of
 

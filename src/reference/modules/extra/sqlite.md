@@ -84,7 +84,7 @@ Instead, instances are created via the database.prepare() method.
 
 ##### all()
 
-> **all**\<`T`\>(...`params`: [`Parameter`](sqlite.md#parameter)[]): `Promise`\<`T`[]\>
+> **all**\<`T`\>(...`params`: [`Parameter`][sqlite.md#parameter]()): `Promise`\<`T`[]\>
 
 This method executes a prepared statement and returns all results as an array of objects.
 If the prepared statement does not return any results, this method returns an empty array.
@@ -100,7 +100,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](sqlite.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`][sqlite.md#parameter]() | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
@@ -108,7 +108,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 ##### get()
 
-> **get**\<`T`\>(...`params`: [`Parameter`](sqlite.md#parameter)[]): `Promise`\<`undefined` \| `T`\>
+> **get**\<`T`\>(...`params`: [`Parameter`][sqlite.md#parameter]()): `Promise`\<`undefined` \| `T`\>
 
 This method executes a prepared statement and returns the first result as an object.
 If the prepared statement does not return any results, this method returns undefined.
@@ -124,7 +124,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](sqlite.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`][sqlite.md#parameter]() | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
@@ -132,7 +132,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 ##### run()
 
-> **run**(...`params`: [`Parameter`](sqlite.md#parameter)[]): `Promise`\<[`Result`](sqlite.md#result)\>
+> **run**(...`params`: [`Parameter`][sqlite.md#parameter]()): `Promise`\<[`Result`](sqlite.md#result)\>
 
 This method executes a prepared statement and returns an object summarizing the resulting changes.
 The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_blob.html) using the values in params.
@@ -141,7 +141,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](sqlite.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`][sqlite.md#parameter]() | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 

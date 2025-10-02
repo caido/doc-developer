@@ -185,7 +185,7 @@ Returns an `AbortSignal` instance that is already set as aborted.
 
 ##### any()
 
-> `static` **any**(`signals`: [`AbortSignal`](abort.md#abortsignal)[]): [`AbortSignal`](abort.md#abortsignal)
+> `static` **any**(`signals`: [`AbortSignal`][abort.md#abortsignal]()): [`AbortSignal`](abort.md#abortsignal)
 
 Returns an `AbortSignal` that aborts when any of the given abort signals abort.
 
@@ -193,7 +193,7 @@ Returns an `AbortSignal` that aborts when any of the given abort signals abort.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `signals` | [`AbortSignal`](abort.md#abortsignal)[] | An array of `AbortSignal` objects to observe. |
+| `signals` | [`AbortSignal`][abort.md#abortsignal]() | An array of `AbortSignal` objects to observe. |
 
 ###### Returns
 

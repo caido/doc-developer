@@ -7,10 +7,11 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "lint": "pnpm lint:js && pnpm lint:md",
-    "lint:js": "ESLINT_ENV=production eslint ./.vitepress -c ./eslint.config.mjs --max-warnings 0",
-    "lint:md": "markdownlint-cli2 'src/**/*.md' '!src/reference/sdks/**/*.md' '!src/reference/modules/**/*.md'",
-    "generate:sdk": "./scripts/sdk.sh"
+    "lint": "bash ./scripts/lint.sh",
+    "lint-prod": "bash ./scripts/lint-prod.sh",
+    "generate:sdk": "./scripts/sdk.sh",
+    "typecheck": "tsc --noEmit",
+    "validate": "pnpm lint && pnpm typecheck && pnpm build"
   },
   "author": "Caido Labs Inc. <dev@caido.io>",
   "license": "CC-BY-4.0",
@@ -19,20 +20,16 @@
     "pnpm": ">=10"
   },
   "devDependencies": {
+    "@caido/eslint-config": "0.6.0",
+    "@eslint/markdown": "7.2.0",
     "@scalar/openapi-types": "0.3.2",
     "@types/node": "22.15.30",
     "confbox": "0.2.2",
-    "eslint": "9.10.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.2.1",
-    "eslint-plugin-vue": "9.27.0",
-    "markdownlint-cli2": "0.14.0",
+    "eslint": "9.28.0",
     "typescript": "5.6.2",
-    "typescript-eslint": "8.5.0",
     "vitepress": "1.2.2",
     "vitepress-openapi": "0.0.3-alpha.83",
     "vitepress-plugin-llms": "1.5.1",
-    "vue": "3.5.16",
-    "vue-eslint-parser": "9.4.3"
+    "vue": "3.5.16"
   }
 }

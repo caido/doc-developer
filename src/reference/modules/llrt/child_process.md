@@ -328,7 +328,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -349,7 +349,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
@@ -1258,7 +1258,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -1279,7 +1279,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
@@ -2184,7 +2184,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -2205,7 +2205,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
@@ -2902,7 +2902,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ##### stdio?
 
-> `optional` **stdio**: `"pipe"` \| [`StdioPipe`](child_process.md#stdiopipe)[]
+> `optional` **stdio**: `"pipe"` \| [`StdioPipe`][child_process.md#stdiopipe]()
 
 Can be set to 'pipe', 'inherit', or 'ignore', or an array of these strings.
 If passed as an array, the first element is used for `stdin`, the second for
@@ -3026,7 +3026,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ### StdioOptions
 
-> **StdioOptions**: [`IOType`](child_process.md#iotype) \| ([`IOType`](child_process.md#iotype) \| `number` \| `null` \| `undefined`)[]
+> **StdioOptions**: [`IOType`](child_process.md#iotype) \| [[`IOType`](child_process.md#iotype) \| `number` \| `null` \| `undefined`]()
 
 ***
 

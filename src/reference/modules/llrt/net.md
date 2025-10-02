@@ -359,7 +359,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -380,7 +380,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
@@ -1895,7 +1895,7 @@ The socket itself.
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](dom-events.md#eventkey)[]
+> **eventNames**(): [`EventKey`][dom-events.md#eventkey]()
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -1916,7 +1916,7 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](dom-events.md#eventkey)[]
+[`EventKey`][dom-events.md#eventkey]()
 
 ###### Inherited from
 
