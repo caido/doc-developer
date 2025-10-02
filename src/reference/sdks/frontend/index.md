@@ -20,11 +20,23 @@ Utilities for frontend plugins.
 
 #### Type declaration
 
+##### ai
+
+> **ai**: [`AiSDK`](index.md#aisdk)
+
+Utilities to interact with AI.
+
 ##### assets
 
 > **assets**: [`AssetsSDK`](index.md#assetssdk)
 
 Utilities to interact with the plugin's static assets.
+
+##### automate
+
+> **automate**: [`AutomateSDK`](index.md#automatesdk)
+
+Utilities to interact with the Automate page.
 
 ##### backend
 
@@ -92,6 +104,12 @@ Utilities to interact with the HTTP History page.
 
 Utilities to interact with the Intercept page.
 
+##### log
+
+> **log**: [`LogSDK`](index.md#logsdk)
+
+Utilities for logging messages to the console.
+
 ##### matchReplace
 
 > **matchReplace**: [`MatchReplaceSDK`](index.md#matchreplacesdk)
@@ -109,6 +127,12 @@ Utilities to insert menu items and context-menus throughout the UI.
 > **navigation**: [`NavigationSDK`](index.md#navigationsdk)
 
 Utilities to interact with navigation.
+
+##### projects
+
+> **projects**: [`ProjectsSDK`](index.md#projectssdk)
+
+Utilities to interact with projects.
 
 ##### replay
 
@@ -543,6 +567,38 @@ Utilities to interact with findings
 
 #### Type declaration
 
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
 ##### createFinding()
 
 > **createFinding**: (`requestId`: [`ID`](index.md#id-3), `options`: `object`) => `Promise`\<[`Finding`](index.md#finding) \| `undefined`\>
@@ -601,42 +657,10 @@ The context for a command that is executed on a request pane.
 
 ##### request
 
-> **request**: `object`
+> **request**: [`RequestDraft`](index.md#requestdraft) \| [`RequestFull`](index.md#requestfull)
 
 The request that is currently open in the request pane.
 If the request has not yet been saved in the database, the id will be undefined.
-
-###### request.host
-
-> **host**: `string`
-
-###### request.id
-
-> **id**: [`ID`](index.md#id-3) \| `undefined`
-
-###### request.isTls
-
-> **isTls**: `boolean`
-
-###### request.path
-
-> **path**: `string`
-
-###### request.port
-
-> **port**: `number`
-
-###### request.query
-
-> **query**: `string`
-
-###### request.raw
-
-> **raw**: `string`
-
-###### request.streamId?
-
-> `optional` **streamId**: [`ID`](index.md#id-3)
 
 ##### selection
 
@@ -660,7 +684,7 @@ The context for a command that is executed on a row in the request table.
 
 ##### requests
 
-> **requests**: `object`[]
+> **requests**: [`RequestMeta`](index.md#requestmeta)[]
 
 The requests that are selected in the request table.
 
@@ -680,37 +704,9 @@ The context for a command that is executed on a response pane.
 
 ##### request
 
-> **request**: `object`
+> **request**: [`RequestMeta`](index.md#requestmeta)
 
 The request that is associated with the response.
-
-###### request.host
-
-> **host**: `string`
-
-###### request.id
-
-> **id**: [`ID`](index.md#id-3)
-
-###### request.isTls
-
-> **isTls**: `boolean`
-
-###### request.path
-
-> **path**: `string`
-
-###### request.port
-
-> **port**: `number`
-
-###### request.query
-
-> **query**: `string`
-
-###### request.streamId?
-
-> `optional` **streamId**: [`ID`](index.md#id-3)
 
 ##### response
 
@@ -972,15 +968,15 @@ Add a page to the navigation.
 
 ##### goTo()
 
-> **goTo**: (`path`: `string`) => `void`
+> **goTo**: (`route`: `string` \| \{ `id`: [`Routes`](index.md#routes); \}) => `void`
 
-Navigate to a path.
+Navigate to a route or path.
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `path` | `string` | The path to navigate to. |
+| `route` | `string` \| \{ `id`: [`Routes`](index.md#routes); \} | The route to navigate to. Can be a route ID object or a custom path string. |
 
 ###### Returns
 
@@ -989,7 +985,39 @@ Navigate to a path.
 ###### Example
 
 ```ts
+sdk.navigation.goTo({ id: Routes.Replay });
+sdk.navigation.goTo({ id: Routes.Projects });
 sdk.navigation.goTo("/my-plugin-page");
+```
+
+##### onPageChange()
+
+> **onPageChange**: (`callback`: (`route`: [`PageChangeEvent`](index.md#pagechangeevent)) => `void`) => [`ListenerHandle`](index.md#listenerhandle)
+
+Subscribe to page changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`route`: [`PageChangeEvent`](index.md#pagechangeevent)) => `void` | The callback to call when the page changes. |
+
+###### Returns
+
+[`ListenerHandle`](index.md#listenerhandle)
+
+An object with a `stop` method that can be called to stop listening to page changes.
+
+###### Example
+
+```ts
+const handler = sdk.navigation.onPageChange((event) => {
+  console.log('Page changed to:', event.routeId);
+  console.log('- path:', event.path);
+});
+
+// Later, stop listening
+handler.stop();
 ```
 
 ## Window
@@ -1151,6 +1179,22 @@ Utilities to interact with the command palette.
 
 #### Type declaration
 
+##### pushView()
+
+> **pushView**: (`view`: [`CommandPaletteView`](index.md#commandpaletteview)) => `void`
+
+Push a new view onto the command palette view stack.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `view` | [`CommandPaletteView`](index.md#commandpaletteview) | The view to push onto the stack. |
+
+###### Returns
+
+`void`
+
 ##### register()
 
 > **register**: (`commandId`: [`CommandID`](index.md#commandid)) => `void`
@@ -1166,6 +1210,24 @@ Register a command.
 ###### Returns
 
 `void`
+
+***
+
+### CommandPaletteView
+
+> **CommandPaletteView**: `object`
+
+Command palette view definition for custom UI content.
+
+#### Type declaration
+
+##### definition
+
+> **definition**: [`ComponentDefinition`](index.md#componentdefinition)
+
+##### type
+
+> **type**: `"Custom"`
 
 ## Sidebar
 
@@ -1236,6 +1298,22 @@ sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
 
 ## Replay
 
+### CurrentReplaySessionChangeEvent
+
+> **CurrentReplaySessionChangeEvent**: `object`
+
+Event fired when the current replay session changes.
+
+#### Type declaration
+
+##### sessionId
+
+> **sessionId**: [`ID`](index.md#id-3) \| `undefined`
+
+The ID of the newly selected session, or undefined if no session is selected.
+
+***
+
 ### OpenTabOptions
 
 > **OpenTabOptions**: `object`
@@ -1300,6 +1378,22 @@ Add an extension to the request editor.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom view mode for requests.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
 
 ###### Returns
 
@@ -1481,6 +1575,35 @@ Move a session to a different collection.
 
 The updated session.
 
+##### onCurrentSessionChange()
+
+> **onCurrentSessionChange**: (`callback`: (`event`: [`CurrentReplaySessionChangeEvent`](index.md#currentreplaysessionchangeevent)) => `void`) => [`ListenerHandle`](index.md#listenerhandle)
+
+Subscribe to current replay session changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`event`: [`CurrentReplaySessionChangeEvent`](index.md#currentreplaysessionchangeevent)) => `void` | The callback to call when the selected session changes. |
+
+###### Returns
+
+[`ListenerHandle`](index.md#listenerhandle)
+
+An object with a `stop` method that can be called to stop listening to session changes.
+
+###### Example
+
+```ts
+const handler = sdk.replay.onCurrentSessionChange((event) => {
+  console.log(`Session ${event.sessionId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
+
 ##### openTab()
 
 > **openTab**: (`sessionId`: [`ID`](index.md#id-3), `options`?: [`OpenTabOptions`](index.md#opentaboptions)) => `void`
@@ -1659,6 +1782,13 @@ If true, the request will not update the UI.
 If false, the UI will be updated to display the session and the new request.
 Defaults to false.
 
+##### connectionClose?
+
+> `optional` **connectionClose**: `boolean`
+
+Whether to force close the connection by setting Connection: close header.
+Defaults to true.
+
 ##### connectionInfo
 
 > **connectionInfo**: `object`
@@ -1822,6 +1952,22 @@ Get the current scope ID.
 
 The current scope ID.
 
+##### scrollTo()
+
+> **scrollTo**: (`id`: [`ID`](index.md#id-3)) => `void`
+
+Scrolls the HTTP History table to a specific entry.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the entry to scroll to. |
+
+###### Returns
+
+`void`
+
 ##### setQuery()
 
 > **setQuery**: (`query`: [`HTTPQL`](index.md#httpql)) => `void`
@@ -1864,6 +2010,38 @@ Utilities to interact with the Search page.
 
 #### Type declaration
 
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
 ##### getQuery()
 
 > **getQuery**: () => [`HTTPQL`](index.md#httpql)
@@ -1887,6 +2065,22 @@ Get the current scope ID.
 [`ID`](index.md#id-3) \| `undefined`
 
 The current scope ID.
+
+##### scrollTo()
+
+> **scrollTo**: (`id`: [`ID`](index.md#id-3)) => `void`
+
+Scrolls the Search table to a specific request.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](index.md#id-3) | The ID of the request to scroll to. |
+
+###### Returns
+
+`void`
 
 ##### setQuery()
 
@@ -2125,6 +2319,78 @@ The status of the file.
 
 The date the file was updated.
 
+## AI
+
+### AIProvider
+
+> **AIProvider**: `ProviderV2` & (`modelId`: `string`) => `LanguageModelV2`
+
+Official AI Provider to be used by the [ai](https://ai-sdk.dev/) library.
+
+***
+
+### AiSDK
+
+> **AiSDK**: `object`
+
+Utilities to interact with AI.
+
+#### Type declaration
+
+##### createProvider()
+
+> **createProvider**: () => [`AIProvider`](index.md#aiprovider)
+
+Creates a new AI provider instance that can be used with the [ai](https://ai-sdk.dev/) library.
+
+###### Returns
+
+[`AIProvider`](index.md#aiprovider)
+
+A provider instance compatible with the [ai](https://ai-sdk.dev/) library.
+
+## Automate
+
+### AutomateSDK
+
+> **AutomateSDK**: `object`
+
+Utilities to interact with the Automate page.
+
+#### Type declaration
+
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
 ## Environment
 
 ### EnvironmentSDK
@@ -2339,6 +2605,22 @@ Utilities to interact with the Intercept page.
 
 #### Type declaration
 
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
 ##### getScopeId()
 
 > **getScopeId**: () => [`ID`](index.md#id-3) \| `undefined`
@@ -2362,6 +2644,80 @@ Set the current scope.
 | Parameter | Type |
 | ------ | ------ |
 | `id` | [`ID`](index.md#id-3) \| `undefined` |
+
+###### Returns
+
+`void`
+
+## Log
+
+### LogSDK
+
+> **LogSDK**: `object`
+
+Utilities to log messages to the console.
+
+#### Type declaration
+
+##### debug()
+
+> **debug**: (...`data`: `unknown`[]) => `void`
+
+Log debug message with variable arguments
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
+
+###### Returns
+
+`void`
+
+##### error()
+
+> **error**: (...`data`: `unknown`[]) => `void`
+
+Log error message with variable arguments
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
+
+###### Returns
+
+`void`
+
+##### info()
+
+> **info**: (...`data`: `unknown`[]) => `void`
+
+Log info message with variable arguments
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
+
+###### Returns
+
+`void`
+
+##### warn()
+
+> **warn**: (...`data`: `unknown`[]) => `void`
+
+Log warning message with variable arguments
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ###### Returns
 
@@ -2823,6 +3179,24 @@ A section for the response first line.
 
 ## Other
 
+### As\<TType\>
+
+> **As**\<`TType`\>: `object`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TType` *extends* `string` |
+
+#### Type declaration
+
+##### type
+
+> **type**: `TType`
+
+***
+
 ### ButtonSlotContent
 
 > **ButtonSlotContent**: [`DefineSlotContent`](index.md#defineslotcontentttype-p)\<`"Button"`, \{ `icon`: `string`; `label`: `string`; `onClick`: () => `void`; \}\>
@@ -2914,13 +3288,7 @@ A custom component that will be rendered in the UI.
 
 ### DefineSlotContent\<TType, P\>
 
-> **DefineSlotContent**\<`TType`, `P`\>: `object` & `P`
-
-#### Type declaration
-
-##### type
-
-> **type**: `TType`
+> **DefineSlotContent**\<`TType`, `P`\>: [`Prettify`](index.md#prettifyt)\<`object` & `P`\>
 
 #### Type Parameters
 
@@ -3295,6 +3663,32 @@ Stop the listener.
 
 ***
 
+### MatchReplaceOperationAll
+
+> **MatchReplaceOperationAll**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationAllRaw`](index.md#matchreplaceoperationallraw)\>
+
+***
+
+### MatchReplaceOperationAllRaw
+
+> **MatchReplaceOperationAllRaw**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"OperationAllRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](index.md#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](index.md#matchreplacereplacer)
+
+***
+
 ### MatchReplaceOperationFirstLine
 
 > **MatchReplaceOperationFirstLine**: [`KeepOperation`](index.md#keepoperationt)\<[`MatchReplaceOperationFirstLineRaw`](index.md#matchreplaceoperationfirstlineraw)\>
@@ -3531,7 +3925,23 @@ Stop the listener.
 
 ### MatchReplaceSection
 
-> **MatchReplaceSection**: [`MatchReplaceSectionRequestBody`](index.md#matchreplacesectionrequestbody) \| [`MatchReplaceSectionRequestFirstLine`](index.md#matchreplacesectionrequestfirstline) \| [`MatchReplaceSectionRequestHeader`](index.md#matchreplacesectionrequestheader) \| [`MatchReplaceSectionRequestMethod`](index.md#matchreplacesectionrequestmethod) \| [`MatchReplaceSectionRequestPath`](index.md#matchreplacesectionrequestpath) \| [`MatchReplaceSectionRequestQuery`](index.md#matchreplacesectionrequestquery) \| [`MatchReplaceSectionResponseBody`](index.md#matchreplacesectionresponsebody) \| [`MatchReplaceSectionResponseFirstLine`](index.md#matchreplacesectionresponsefirstline) \| [`MatchReplaceSectionResponseHeader`](index.md#matchreplacesectionresponseheader) \| [`MatchReplaceSectionResponseStatusCode`](index.md#matchreplacesectionresponsestatuscode)
+> **MatchReplaceSection**: [`MatchReplaceSectionRequestAll`](index.md#matchreplacesectionrequestall) \| [`MatchReplaceSectionRequestBody`](index.md#matchreplacesectionrequestbody) \| [`MatchReplaceSectionRequestFirstLine`](index.md#matchreplacesectionrequestfirstline) \| [`MatchReplaceSectionRequestHeader`](index.md#matchreplacesectionrequestheader) \| [`MatchReplaceSectionRequestMethod`](index.md#matchreplacesectionrequestmethod) \| [`MatchReplaceSectionRequestPath`](index.md#matchreplacesectionrequestpath) \| [`MatchReplaceSectionRequestQuery`](index.md#matchreplacesectionrequestquery) \| [`MatchReplaceSectionResponseAll`](index.md#matchreplacesectionresponseall) \| [`MatchReplaceSectionResponseBody`](index.md#matchreplacesectionresponsebody) \| [`MatchReplaceSectionResponseFirstLine`](index.md#matchreplacesectionresponsefirstline) \| [`MatchReplaceSectionResponseHeader`](index.md#matchreplacesectionresponseheader) \| [`MatchReplaceSectionResponseStatusCode`](index.md#matchreplacesectionresponsestatuscode)
+
+***
+
+### MatchReplaceSectionRequestAll
+
+> **MatchReplaceSectionRequestAll**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionRequestAll"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationAll`](index.md#matchreplaceoperationall)
 
 ***
 
@@ -3612,6 +4022,22 @@ Stop the listener.
 ##### operation
 
 > **operation**: [`MatchReplaceOperationQuery`](index.md#matchreplaceoperationquery)
+
+***
+
+### MatchReplaceSectionResponseAll
+
+> **MatchReplaceSectionResponseAll**: `object`
+
+#### Type declaration
+
+##### kind
+
+> **kind**: `"SectionResponseAll"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationAll`](index.md#matchreplaceoperationall)
 
 ***
 
@@ -3720,6 +4146,24 @@ Stop the listener.
 
 ***
 
+### PageChangeEvent
+
+> **PageChangeEvent**: \{ `path`: `string`; `routeId`: [`Routes`](index.md#routes); `type`: `"Core"`; \} \| \{ `path`: `string`; `type`: `"Plugin"`; \}
+
+***
+
+### Prettify\<T\>
+
+> **Prettify**\<`T`\>: `{ [K in keyof T]: T[K] }` & `object`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
 ### PromisifiedReturnType\<T\>
 
 > **PromisifiedReturnType**\<`T`\>: `ReturnType`\<`T`\> *extends* `Promise`\<infer U\> ? `Promise`\<`U`\> : `Promise`\<`ReturnType`\<`T`\>\>
@@ -3758,6 +4202,24 @@ Stop the listener.
 
 ***
 
+### RequestDraft
+
+> **RequestDraft**: [`Prettify`](index.md#prettifyt)\<[`As`](index.md#asttype)\<`"RequestDraft"`\> & `object`\>
+
+***
+
+### RequestFull
+
+> **RequestFull**: [`Prettify`](index.md#prettifyt)\<[`As`](index.md#asttype)\<`"RequestFull"`\> & `object`\>
+
+***
+
+### RequestMeta
+
+> **RequestMeta**: [`Prettify`](index.md#prettifyt)\<[`As`](index.md#asttype)\<`"RequestMeta"`\> & `object`\>
+
+***
+
 ### RequestViewModeOptions
 
 > **RequestViewModeOptions**: `object`
@@ -3775,6 +4237,12 @@ The label of the view mode.
 > **view**: [`ComponentDefinition`](index.md#componentdefinition)
 
 The component to render when the view mode is selected.
+
+***
+
+### Routes
+
+> **Routes**: *typeof* [`Routes`](index.md#routes-1)\[keyof *typeof* [`Routes`](index.md#routes-1)\]
 
 ***
 
@@ -3800,9 +4268,158 @@ The component to render when the view mode is selected.
 
 ***
 
+### Routes
+
+> `const` **Routes**: `object`
+
+#### Type declaration
+
+##### About
+
+> `readonly` **About**: `"About"`
+
+##### Assistant
+
+> `readonly` **Assistant**: `"Assistant"`
+
+##### Automate
+
+> `readonly` **Automate**: `"Automate"`
+
+##### Backups
+
+> `readonly` **Backups**: `"Backups"`
+
+##### Certificate
+
+> `readonly` **Certificate**: `"Certificate"`
+
+##### Environment
+
+> `readonly` **Environment**: `"Environment"`
+
+##### Exports
+
+> `readonly` **Exports**: `"Exports"`
+
+##### Files
+
+> `readonly` **Files**: `"Files"`
+
+##### Filter
+
+> `readonly` **Filter**: `"Filter"`
+
+##### Findings
+
+> `readonly` **Findings**: `"Findings"`
+
+##### HTTPHistory
+
+> `readonly` **HTTPHistory**: `"HTTPHistory"`
+
+##### Intercept
+
+> `readonly` **Intercept**: `"Intercept"`
+
+##### MatchReplace
+
+> `readonly` **MatchReplace**: `"Tamper"`
+
+##### Plugins
+
+> `readonly` **Plugins**: `"Plugins"`
+
+##### Projects
+
+> `readonly` **Projects**: `"Projects"`
+
+##### Replay
+
+> `readonly` **Replay**: `"Replay"`
+
+##### Scope
+
+> `readonly` **Scope**: `"Scope"`
+
+##### Search
+
+> `readonly` **Search**: `"Search"`
+
+##### Settings
+
+> `readonly` **Settings**: `"Settings"`
+
+##### Sitemap
+
+> `readonly` **Sitemap**: `"Sitemap"`
+
+##### Websockets
+
+> `readonly` **Websockets**: `"Websockets"`
+
+##### Workflows
+
+> `readonly` **Workflows**: `"Workflows"`
+
+***
+
 ### API
 
 Renames and re-exports [Caido](index.md#caidot-e)
+
+## Projects
+
+### ProjectsSDK
+
+> **ProjectsSDK**: `object`
+
+Utilities to interact with projects.
+
+#### Type declaration
+
+##### onCurrentProjectChange()
+
+> **onCurrentProjectChange**: (`callback`: (`event`: [`SelectedProjectChangeEvent`](index.md#selectedprojectchangeevent)) => `void`) => [`ListenerHandle`](index.md#listenerhandle)
+
+Subscribe to selected project changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`event`: [`SelectedProjectChangeEvent`](index.md#selectedprojectchangeevent)) => `void` | The callback to call when the selected project changes. |
+
+###### Returns
+
+[`ListenerHandle`](index.md#listenerhandle)
+
+An object with a `stop` method that can be called to stop listening to project changes.
+
+###### Example
+
+```ts
+const handler = sdk.projects.onCurrentProjectChange((event) => {
+  console.log('Selected project changed to:', event.projectId);
+});
+
+// Later, stop listening
+handler.stop();
+```
+
+***
+
+### SelectedProjectChangeEvent
+
+> **SelectedProjectChangeEvent**: `object`
+
+Event fired when the selected project changes.
+
+#### Type declaration
+
+##### projectId
+
+> **projectId**: [`ID`](index.md#id-3) \| `undefined`
 
 ## Runtime
 
@@ -3835,6 +4452,38 @@ Get the current version of Caido.
 Utilities to interact with the Sitemap page.
 
 #### Type declaration
+
+##### addRequestEditorExtension()
+
+> **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
+
+Add an extension to the request editor.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addRequestViewMode()
+
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](index.md#requestviewmodeoptions)) => `void`
+
+Add a custom request view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`RequestViewModeOptions`](index.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
 
 ##### getScopeId()
 
