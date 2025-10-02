@@ -2,7 +2,7 @@
 
 echo "[*] Generating doc"
 cd ../sdk-js
-pnpm -r documentation
+pnpm generate:doc
 
 echo "[*] Copying doc"
 cp -r ./packages/sdk-backend/docs/* ../doc-developer/src/reference/sdks/backend/
