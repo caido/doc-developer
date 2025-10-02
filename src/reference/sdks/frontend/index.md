@@ -455,13 +455,13 @@ Whether the scope was deleted.
 
 ##### getScopes()
 
-> **getScopes**: () => [`Scope`][index.md#scope]()
+> **getScopes**: () => [`Scope`](index.md#scope)[]
 
 Get all scopes.
 
 ###### Returns
 
-[`Scope`][index.md#scope]()
+[`Scope`](index.md#scope)[]
 
 A list of scopes.
 
@@ -1275,7 +1275,7 @@ The name of the collection.
 
 ##### sessionIds
 
-> **sessionIds**: [`ID`][index.md#id-3]()
+> **sessionIds**: [`ID`](index.md#id-3)[]
 
 The sessions in the collection.
 
@@ -1412,7 +1412,7 @@ Whether the collection was deleted.
 
 ##### deleteSessions()
 
-> **deleteSessions**: (`sessionIds`: [`ID`][index.md#id-3]()) => `Promise`\<[`ID`][index.md#id-3]()\>
+> **deleteSessions**: (`sessionIds`: [`ID`](index.md#id-3)[]) => `Promise`\<[`ID`](index.md#id-3)[]\>
 
 Delete a session.
 
@@ -1420,45 +1420,45 @@ Delete a session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sessionIds` | [`ID`][index.md#id-3]() | The IDs of the sessions to delete. |
+| `sessionIds` | [`ID`](index.md#id-3)[] | The IDs of the sessions to delete. |
 
 ###### Returns
 
-`Promise`\<[`ID`][index.md#id-3]()\>
+`Promise`\<[`ID`](index.md#id-3)[]\>
 
 ##### getCollections()
 
-> **getCollections**: () => [`ReplayCollection`][index.md#replaycollection]()
+> **getCollections**: () => [`ReplayCollection`](index.md#replaycollection)[]
 
 Get the list of all replay collections.
 
 ###### Returns
 
-[`ReplayCollection`][index.md#replaycollection]()
+[`ReplayCollection`](index.md#replaycollection)[]
 
 The list of all replay collections.
 
 ##### getSessions()
 
-> **getSessions**: () => [`ReplaySession`][index.md#replaysession]()
+> **getSessions**: () => [`ReplaySession`](index.md#replaysession)[]
 
 Get the list of all replay sessions.
 
 ###### Returns
 
-[`ReplaySession`][index.md#replaysession]()
+[`ReplaySession`](index.md#replaysession)[]
 
 The list of all replay sessions.
 
 ##### getTabs()
 
-> **getTabs**: () => [`ReplayTab`][index.md#replaytab]()
+> **getTabs**: () => [`ReplayTab`](index.md#replaytab)[]
 
 Get the list of all open replay tabs.
 
 ###### Returns
 
-[`ReplayTab`][index.md#replaytab]()
+[`ReplayTab`](index.md#replaytab)[]
 
 The list of all open replay tabs.
 
@@ -2044,13 +2044,13 @@ The deleted file.
 
 ##### getAll()
 
-> **getAll**: () => [`HostedFile`][index.md#hostedfile]()
+> **getAll**: () => [`HostedFile`](index.md#hostedfile)[]
 
 Gets all hosted files.
 
 ###### Returns
 
-[`HostedFile`][index.md#hostedfile]()
+[`HostedFile`](index.md#hostedfile)[]
 
 The files.
 
@@ -2155,13 +2155,13 @@ The value of the environment variable.
 
 ##### getVars()
 
-> **getVars**: () => [`EnvironmentVariable`][index.md#environmentvariable]()
+> **getVars**: () => [`EnvironmentVariable`](index.md#environmentvariable)[]
 
 Get all environment variables available in the global environment and the selected environment.
 
 ###### Returns
 
-[`EnvironmentVariable`][index.md#environmentvariable]()
+[`EnvironmentVariable`](index.md#environmentvariable)[]
 
 All environment variables.
 
@@ -2249,13 +2249,13 @@ Deletes a filter.
 
 ##### getAll()
 
-> **getAll**: () => [`Filter`][index.md#filter]()
+> **getAll**: () => [`Filter`](index.md#filter)[]
 
 Gets all filters.
 
 ###### Returns
 
-[`Filter`][index.md#filter]()
+[`Filter`](index.md#filter)[]
 
 The filters.
 
@@ -2387,7 +2387,7 @@ A collection in Match and Replace.
 
 ##### ruleIds
 
-> **ruleIds**: [`ID`][index.md#id-3]()
+> **ruleIds**: [`ID`](index.md#id-3)[]
 
 ***
 
@@ -2681,36 +2681,36 @@ Delete a rule.
 
 ##### getActiveRules()
 
-> **getActiveRules**: () => [`MatchReplaceRule`][index.md#matchreplacerule]()
+> **getActiveRules**: () => [`MatchReplaceRule`](index.md#matchreplacerule)[]
 
 Get all active rules.
 Rules are ordered in priority from highest to lowest.
 
 ###### Returns
 
-[`MatchReplaceRule`][index.md#matchreplacerule]()
+[`MatchReplaceRule`](index.md#matchreplacerule)[]
 
 All active rules.
 
 ##### getCollections()
 
-> **getCollections**: () => [`MatchReplaceCollection`][index.md#matchreplacecollection]()
+> **getCollections**: () => [`MatchReplaceCollection`](index.md#matchreplacecollection)[]
 
 Get all collections.
 
 ###### Returns
 
-[`MatchReplaceCollection`][index.md#matchreplacecollection]()
+[`MatchReplaceCollection`](index.md#matchreplacecollection)[]
 
 ##### getRules()
 
-> **getRules**: () => [`MatchReplaceRule`][index.md#matchreplacerule]()
+> **getRules**: () => [`MatchReplaceRule`](index.md#matchreplacerule)[]
 
 Get all rules.
 
 ###### Returns
 
-[`MatchReplaceRule`][index.md#matchreplacerule]()
+[`MatchReplaceRule`](index.md#matchreplacerule)[]
 
 All rules.
 
@@ -3237,7 +3237,7 @@ A unique Caido identifier per type.
 
 ### JSONValue
 
-> **JSONValue**: [`JSONPrimitive`](index.md#jsonprimitive) \| [`JSONValue`][index.md#jsonvalue]() \| \{\}
+> **JSONValue**: [`JSONPrimitive`](index.md#jsonprimitive) \| [`JSONValue`](index.md#jsonvalue)[] \| \{\}
 
 ***
 
@@ -3910,13 +3910,13 @@ Utilities to interact with workflows.
 
 ##### getWorkflows()
 
-> **getWorkflows**: () => [`Workflow`][index.md#workflow]()
+> **getWorkflows**: () => [`Workflow`](index.md#workflow)[]
 
 Get all workflows.
 
 ###### Returns
 
-[`Workflow`][index.md#workflow]()
+[`Workflow`](index.md#workflow)[]
 
 All workflows.
 

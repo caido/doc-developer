@@ -1129,7 +1129,7 @@ A connection of requests.
 
 ##### items
 
-> **items**: [`RequestsConnectionItem`][index.md#requestsconnectionitem]()
+> **items**: [`RequestsConnectionItem`](index.md#requestsconnectionitem)[]
 
 ##### pageInfo
 
@@ -1921,7 +1921,7 @@ The SDK for the Replay service.
 
 ###### Returns
 
-`Promise`\<[`ReplayCollection`][index.md#replaycollection]()\>
+`Promise`\<[`ReplayCollection`](index.md#replaycollection)[]\>
 
 ***
 
@@ -2124,7 +2124,7 @@ Those variables can change over time so avoid caching them.
 
 ###### Returns
 
-[`EnvironmentVariable`][index.md#environmentvariable]()
+[`EnvironmentVariable`](index.md#environmentvariable)[]
 
 An array of [EnvironmentVariable](index.md#environmentvariable)
 
@@ -2380,7 +2380,7 @@ Usually used for unexpected behaviors.
 
 ##### locations
 
-> **locations**: [`GraphQLLocation`][index.md#graphqllocation]()
+> **locations**: [`GraphQLLocation`](index.md#graphqllocation)[]
 
 ##### message
 
@@ -2388,7 +2388,7 @@ Usually used for unexpected behaviors.
 
 ##### path
 
-> **path**: [`GraphQLPathSegment`][index.md#graphqlpathsegment]()
+> **path**: [`GraphQLPathSegment`](index.md#graphqlpathsegment)[]
 
 ***
 
@@ -2432,7 +2432,7 @@ Usually used for unexpected behaviors.
 
 ##### errors?
 
-> `optional` **errors**: [`GraphQLError`][index.md#graphqlerror]()
+> `optional` **errors**: [`GraphQLError`](index.md#graphqlerror)[]
 
 ***
 
@@ -2566,6 +2566,6 @@ Get all the scopes.
 
 ###### Returns
 
-`Promise`\<[`Scope`][index.md#scope]()\>
+`Promise`\<[`Scope`](index.md#scope)[]\>
 
 An array of [Scope](index.md#scope)

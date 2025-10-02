@@ -722,7 +722,7 @@ Fulfills with an array of the names of the files in the directory excluding `'.'
 
 #### Call Signature
 
-> **readdir**(`path`: `string`, `options`: `object`): `Promise`\<[`Dirent`][../index.md#dirent]()\>
+> **readdir**(`path`: `string`, `options`: `object`): `Promise`\<[`Dirent`](../index.md#dirent)[]\>
 
 Asynchronous readdir(2) - read a directory.
 
@@ -737,7 +737,7 @@ Asynchronous readdir(2) - read a directory.
 
 ##### Returns
 
-`Promise`\<[`Dirent`][../index.md#dirent]()\>
+`Promise`\<[`Dirent`](../index.md#dirent)[]\>
 
 ***
 

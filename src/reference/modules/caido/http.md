@@ -16,7 +16,7 @@ A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) encapsulates i
 
 ##### new Blob()
 
-> **new Blob**[`parts`: (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob)](), `opts`?: [`BlobOpts`](http.md#blobopts)): [`Blob`](http.md#blob)
+> **new Blob**(`parts`: (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[], `opts`?: [`BlobOpts`](http.md#blobopts)): [`Blob`](http.md#blob)
 
 Creates a new `Blob` object containing a concatenation of the given sources.
 
@@ -29,7 +29,7 @@ String sources are also copied into the `Blob`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `parts` | [`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob)]() |
+| `parts` | (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[] |
 | `opts`? | [`BlobOpts`](http.md#blobopts) |
 
 ###### Returns
@@ -116,7 +116,7 @@ A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) encapsulates i
 
 ##### new File()
 
-> **new File**[`data`: (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob)](), `fileName`: `string`, `opts`?: [`FileOpts`](http.md#fileopts)): [`File`](http.md#file)
+> **new File**(`data`: (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[], `fileName`: `string`, `opts`?: [`FileOpts`](http.md#fileopts)): [`File`](http.md#file)
 
 Returns a newly constructed File.
 
@@ -124,7 +124,7 @@ Returns a newly constructed File.
 
 | Parameter | Type |
 | ------ | ------ |
-| `data` | [`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob)]() |
+| `data` | (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[] |
 | `fileName` | `string` |
 | `opts`? | [`FileOpts`](http.md#fileopts) |
 
