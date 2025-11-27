@@ -2,7 +2,7 @@ import type { DefaultTheme } from "vitepress";
 
 export const guidesSidebar: DefaultTheme.SidebarItem[] = [
   {
-    text: "Guides",
+    text: "Getting Started",
     items: [
       {
         text: "Getting Started",
@@ -19,7 +19,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
-    text: "Frontend",
+    text: "Building User Interfaces",
     items: [
       {
         text: "Creating a Page",
@@ -34,17 +34,64 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/menu",
       },
       {
-        text: "Storing Frontend Data",
-        link: "/guides/frontend_storage",
-      },
-      {
         text: "Using the Component Library",
         link: "/guides/styling",
       },
     ],
   },
   {
-    text: "Backend",
+    text: "Working with HTTP",
+    items: [
+      {
+        text: "Sending HTTP Requests",
+        link: "/guides/request",
+      },
+      {
+        text: "Sending a Fetch Request",
+        link: "/guides/fetch",
+      },
+      {
+        text: "Fetching Proxied Requests",
+        link: "/guides/querying_requests",
+      },
+      {
+        text: "Using Invalid UTF-8",
+        link: "/guides/utf",
+      },
+    ],
+  },
+  {
+    text: "Working with Caido Features",
+    items: [
+      {
+        text: "Using Findings",
+        link: "/guides/findings",
+      },
+      {
+        text: "Using Environment Variables",
+        link: "/guides/env",
+      },
+    ],
+  },
+  {
+    text: "Storing Data",
+    items: [
+      {
+        text: "Storing Frontend Data",
+        link: "/guides/frontend_storage",
+      },
+      {
+        text: "Storing Data in SQLite",
+        link: "/guides/sqlite",
+      },
+      {
+        text: "Adding Files",
+        link: "/guides/files",
+      },
+    ],
+  },
+  {
+    text: "Communication & Events",
     items: [
       {
         text: "Creating and Calling a Custom Function",
@@ -55,54 +102,22 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/backend_events",
       },
       {
-        text: "Fetching Proxied Requests",
-        link: "/guides/querying_requests",
-      },
-      {
-        text: "Sending HTTP Requests",
-        link: "/guides/request",
-      },
-      {
-        text: "Sending a Fetch Request",
-        link: "/guides/fetch",
-      },
-      {
         text: "Sending Events to the Frontend",
         link: "/guides/events",
       },
+    ],
+  },
+  {
+    text: "System Integration",
+    items: [
       {
         text: "Spawning a Process",
         link: "/guides/spawning_process",
       },
-      {
-        text: "Storing Data in SQLite",
-        link: "/guides/sqlite",
-      },
-      {
-        text: "Using Findings",
-        link: "/guides/findings",
-      },
-      {
-        text: "Using Invalid UTF-8",
-        link: "/guides/utf",
-      },
     ],
   },
   {
-    text: "Shared",
-    items: [
-      {
-        text: "Adding Files",
-        link: "/guides/files",
-      },
-      {
-        text: "Using Environment Variables",
-        link: "/guides/env",
-      },
-    ],
-  },
-  {
-    text: "Community Store",
+    text: "Distribution",
     items: [
       {
         text: "Setting Up Your Repository",

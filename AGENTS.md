@@ -65,24 +65,49 @@ src/
 ├── tutorials/          # Step-by-step learning experiences
 │   ├── index.md
 │   └── notebook.md
-├── guides/             # Task-oriented how-to guides
+├── guides/             # Task-oriented how-to guides (all files flattened)
 │   ├── index.md
-│   ├── components/     # Component-specific guides
 │   ├── config.md
-│   ├── contributions/  # Contribution guides
-│   └── distribution/   # Distribution guides
+│   ├── vibe_coding.md
+│   ├── page.md
+│   ├── command.md
+│   ├── menu.md
+│   ├── styling.md
+│   ├── request.md
+│   ├── fetch.md
+│   ├── querying_requests.md
+│   ├── utf.md
+│   ├── findings.md
+│   ├── env.md
+│   ├── frontend_storage.md
+│   ├── sqlite.md
+│   ├── files.md
+│   ├── rpc.md
+│   ├── backend_events.md
+│   ├── events.md
+│   ├── spawning_process.md
+│   ├── repository.md
+│   ├── store.md
+│   └── documentation.md
 ├── reference/          # Technical reference documentation
 │   ├── index.md
-│   ├── sdks/          # SDK documentation
-│   ├── modules/       # Module documentation
+│   ├── sdks/          # Generated SDK documentation
+│   ├── modules/       # Generated module documentation
 │   ├── config.md
-│   └── manifest.md
-└── concepts/          # Explanatory documentation
+│   ├── manifest.md
+│   ├── plugin_packages.md
+│   ├── api.md
+│   └── authentication.md
+└── concepts/          # Explanatory documentation (all files flattened)
     ├── index.md
-    ├── essentials/    # Core concepts
-    ├── frontend/      # Frontend concepts
-    ├── backend/      # Backend concepts
-    └── modules/       # Module concepts
+    ├── package.md
+    ├── tooling.md
+    ├── runtime.md
+    ├── signing.md
+    ├── ui.md
+    ├── binary.md
+    ├── workflow.md
+    └── child_process.md
 ```
 
 ## How to Contribute (For AI Agents)
@@ -101,7 +126,73 @@ Before writing or editing documentation, determine which type it should be:
 - All documentation files are Markdown (`.md`)
 - Files must be linked in the appropriate `index.md` file to appear in navigation
 - Use descriptive, lowercase filenames with hyphens (e.g., `creating-commands.md`)
-- Place files in the appropriate subdirectory based on topic
+- **Guides are now flattened**: All guide files are directly in `src/guides/` (no subdirectories)
+- **Concepts are now flattened**: All concept files are directly in `src/concepts/` (no subdirectories)
+- **Reference non-generated pages are flattened**: Non-generated reference files are directly in `src/reference/` (generated SDK/module docs remain in subdirectories)
+
+#### Guides Sidebar Organization
+
+The guides sidebar is organized by **user goals and tasks**, not by technical boundaries (Frontend/Backend). This follows Diátaxis principles for how-to guides, which should be organized around "what the user wants to accomplish."
+
+**Current Sidebar Structure:**
+
+1. **Getting Started** - Onboarding and setup
+   - Getting Started
+   - Configuring Your Package
+   - AI Assisted Coding
+
+2. **Building User Interfaces** - Creating UI components and interactions
+   - Creating a Page
+   - Creating a Command
+   - Customizing Context Menus
+   - Using the Component Library
+
+3. **Working with HTTP** - Sending, fetching, and manipulating HTTP requests
+   - Sending HTTP Requests
+   - Sending a Fetch Request
+   - Fetching Proxied Requests
+   - Using Invalid UTF-8
+
+4. **Working with Caido Features** - Interacting with Caido's built-in features/objects
+   - Using Findings
+   - Using Environment Variables
+   - (Future: Scopes, HTTP History, Filters, etc.)
+
+5. **Storing Data** - Storing your plugin's own data
+   - Storing Frontend Data
+   - Storing Data in SQLite
+   - Adding Files
+
+6. **Communication & Events** - Frontend-backend communication and event handling
+   - Creating and Calling a Custom Function
+   - Handling Backend Events
+   - Sending Events to the Frontend
+
+7. **System Integration** - System-level operations
+   - Spawning a Process
+
+8. **Distribution** - Publishing and sharing plugins
+   - Setting Up Your Repository
+   - Submitting to the Store
+
+9. **Contributions** - Contributing to the documentation
+   - Documentation
+
+**Key Principles:**
+
+- **Task-oriented, not SDK-oriented**: Guides are grouped by what users want to accomplish, not which SDK they use
+- **No technical boundaries**: Frontend/backend separation is hidden - users find guides by their goal
+- **Conceptual groupings**: Related concepts are grouped together (e.g., all HTTP guides together, all Caido features together)
+- **User mental models**: Organization matches how users think about problems ("I want to build a UI" not "I want to use the frontend SDK")
+
+**When adding a new guide:**
+
+1. Determine the user's goal: What task are they trying to accomplish?
+2. Find the appropriate section based on that goal
+3. If it's about interacting with Caido's built-in features (Findings, Scopes, Environment Variables, HTTP History, etc.), use "Working with Caido Features"
+4. If it's about sending/manipulating HTTP requests, use "Working with HTTP"
+5. If it's about storing your plugin's data, use "Storing Data"
+6. Update the sidebar in `.vitepress/sidebars/guides.ts`
 
 ### 3. Writing Guidelines
 
