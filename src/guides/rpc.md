@@ -5,7 +5,7 @@ When developing a plugin, there are two components to consider: the **frontend**
 In this guide, we'll cover how to create a custom endpoint in a backend plugin, and call it from a frontend plugin.
 
 ::: info
-For additional documentation on the differences between a frontend and backend plugin - click [here](/concepts/essentials/package.md).
+For additional documentation on the differences between a frontend and backend plugin - click [here](/concepts/package.md).
 :::
 
 ## Registering an Endpoint

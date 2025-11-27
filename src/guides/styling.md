@@ -15,7 +15,7 @@ When using this option, instead of building the plugin page in the frontend `ind
 However, the initialization, configuration, SDK setup, routing, and registration are still handled by `index.ts`.
 
 ::: info
-[Learn about the concepts behind this.](/concepts/frontend/ui.md)
+[Learn about the concepts behind this.](/concepts/ui.md)
 :::
 
 ## Adding the Toast Component

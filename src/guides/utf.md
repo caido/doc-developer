@@ -1,7 +1,7 @@
 # Using Invalid UTF-8
 
 ::: info
-For conceptual information regarding this guide - click [here](/concepts/backend/binary.md).
+For conceptual information regarding this guide - click [here](/concepts/binary.md).
 :::
 
 ## Using a Mutable Proxied Request

@@ -15,7 +15,7 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "UI Styling",
-        link: "/concepts/frontend/ui",
+        link: "/concepts/ui",
       },
     ],
   },
@@ -24,11 +24,11 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Dealing with Binary",
-        link: "/concepts/backend/binary",
+        link: "/concepts/binary",
       },
       {
         text: "Plugins vs Workflows",
-        link: "/concepts/backend/workflow",
+        link: "/concepts/workflow",
       },
     ],
   },
@@ -37,19 +37,19 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Plugin Architecture",
-        link: "/concepts/essentials/package",
+        link: "/concepts/package",
       },
       {
         text: "Tooling",
-        link: "/concepts/essentials/tooling",
+        link: "/concepts/tooling",
       },
       {
         text: "Runtime",
-        link: "/concepts/essentials/runtime",
+        link: "/concepts/runtime",
       },
       {
         text: "Signing",
-        link: "/concepts/essentials/signing",
+        link: "/concepts/signing",
       },
     ],
   },
@@ -58,7 +58,7 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Child Process",
-        link: "/concepts/modules/child_process",
+        link: "/concepts/child_process",
       },
     ],
   },

@@ -11,14 +11,14 @@ The pre-made Nodes use the [Workflow SDK](/reference/sdks/workflow/) of Caido un
 Workflows run on-demand and they don't persist in-between runs. They are similar in concept to Lambdas or Functions-as-a-Service system.
 
 When using the Javascript Node, you have a full access to the [Workflow SDK](/reference/sdks/workflow/).
-The [runtime](/concepts/essentials/runtime) for that Javascript code is the same as for the backend plugins, but the SDK has access to less functionalities.
+The [runtime](/concepts/runtime) for that Javascript code is the same as for the backend plugins, but the SDK has access to less functionalities.
 This is why it is easier to start with a Workflow using Javascript Nodes and then transition to a backend plugin.
 
 <img alt="Workflow editor" src="/_images/workflow_editor.png" width="800" center/>
 
 ## Backend Plugins
 
-Backend plugins give you a long running thread inside Caido that uses our Javascript [runtime](/concepts/essentials/runtime).
+Backend plugins give you a long running thread inside Caido that uses our Javascript [runtime](/concepts/runtime).
 It can use the [Backend SDK](/reference/sdks/backend/) which is similar to the [Workflow SDK](/reference/sdks/workflow/), but with more features.
 For example, it can expose an API that a `frontend plugin` can use.
 
