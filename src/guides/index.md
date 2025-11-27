@@ -10,7 +10,7 @@ Plugin development is done in JavaScript and consists of many parts:
 
 These parts are packaged together in a single entity known as a **plugin package**.
 
-For more information on the structure of a plugin package, see [Plugin Architecture](/concepts/essentials/package.md).
+For more information on the structure of a plugin package, see [Plugin Architecture](/concepts/package.md).
 
 <VideoContainer url="https://komododecks.com/embed/recordings/5twR5WEktb0IADgKYp5z?onlyRecording=1" />
 

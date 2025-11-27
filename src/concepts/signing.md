@@ -1,6 +1,6 @@
 # Plugin Signing
 
-If you have gone through the [process of publishing a plugin](/guides/distribution/repository.md) to our store, you had to create keys to sign your plugin.
+If you have gone through the [process of publishing a plugin](/guides/repository.md) to our store, you had to create keys to sign your plugin.
 This ensures that your build process outputs a valid signature on each release.
 You can see that signature by looking at the attached files of a given release, it contains a `.sig` file.
 

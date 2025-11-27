@@ -5,7 +5,7 @@ You might want to spawn a process to interact with external tools or programs.
 To do this, you can use the `spawn` function from the `child_process` module.
 
 ::: info
-This module is similar to NodeJS's `child_process` module, but with some differences. You can find more information in the [child_process](/concepts/modules/child_process.md) documentation.
+This module is similar to NodeJS's `child_process` module, but with some differences. You can find more information in the [child_process](/concepts/child_process.md) documentation.
 :::
 
 ## Launching a Process

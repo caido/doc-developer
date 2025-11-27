@@ -41,11 +41,11 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Authentication",
-        link: "/reference/cloud/authentication/",
+        link: "/reference/authentication",
       },
       {
         text: "API",
-        link: "/reference/cloud/api/",
+        link: "/reference/api",
       },
     ],
   },

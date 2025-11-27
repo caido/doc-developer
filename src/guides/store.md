@@ -8,7 +8,7 @@ The submission process is done once. Once your plugin package has been accepted,
 
 ## Prerequisites
 
-Before submitting your plugin package to the store, make sure you have followed the [Setting Up Your Repository](/guides/distribution/repository) guide.
+Before submitting your plugin package to the store, make sure you have followed the [Setting Up Your Repository](/guides/repository) guide.
 
 By this point, you should have a repository with a [Github release](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) of your plugin package.
 

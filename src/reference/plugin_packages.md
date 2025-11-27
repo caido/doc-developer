@@ -33,5 +33,5 @@ Field|Description
 `license`|The license of your plugin.
 `description`|A short description of your plugin.
 `author`|Author details of your plugin.
-`public_key`|The Base64 part of the public key generated in the [Setting up your repository](/guides/distribution/repository#_3-generate-a-key-pair) guide. **Don't** include the header/footer (`BEGIN/END PUBLIC KEY`).
+`public_key`|The Base64 part of the public key generated in the [Setting up your repository](/guides/repository#_3-generate-a-key-pair) guide. **Don't** include the header/footer (`BEGIN/END PUBLIC KEY`).
 `repository`|The path to your GitHub repository. For example, if your GitHub repo is <https://github.com/username/repo-name>, the path is `username/repo-name`.

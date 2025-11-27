@@ -76,7 +76,7 @@ When creating a new release of your plugin, you should increment this version nu
 
 ## Updating Plugin Details
 
-Packages are comprised of one or more plugins that may need to be configured differently. You can find more information about plugins in the [Plugin Architecture](/concepts/essentials/package) page.
+Packages are comprised of one or more plugins that may need to be configured differently. You can find more information about plugins in the [Plugin Architecture](/concepts/package) page.
 
 These options usually don't need to be updated, but you can if needed.
 

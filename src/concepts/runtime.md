@@ -20,7 +20,7 @@ While we try to document those modules here, the most up-to-date documentation w
 
 Here are the modules we have implemented so far:
 
-- [`child_process`](/concepts/modules/child_process.md)
+- [`child_process`](/concepts/child_process.md)
 - `sqlite` (Async version)
 - `buffer`
 - `fs` / `fs/promise`

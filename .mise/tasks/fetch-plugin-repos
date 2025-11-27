@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+gh api repos/caido/store/contents/plugin_packages.json?ref=main --jq '.content' | base64 -d | jq -r '.[].repository | "https://github.com/\(.)"'

@@ -214,7 +214,7 @@ A button for both themes are added to the user interface that will call the `upd
 
 ::: info
 
-- Although frontend storage actually exists in the backend, it is inaccessible by the backend component. To share data with the backend component of a plugin, you will need to [create and call a custom function](/guides/components/rpc.md).
+- Although frontend storage actually exists in the backend, it is inaccessible by the backend component. To share data with the backend component of a plugin, you will need to [create and call a custom function](/guides/rpc.md).
 
 - Stored data needs to be JSON serializable.
 :::

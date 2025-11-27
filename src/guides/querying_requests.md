@@ -186,7 +186,7 @@ The number of requests that match the query in each processed batch are added to
 }
 ```
 
-The `fetchRequests` function is [added to the API](/guides/components/rpc.md) and exported so it can be used in other files. Finally, the base `SDK` is extended bu adding the `<API>`. In order to register the function, we use the `sdk.api.register()` method which takes two parameters: a string name for the function and the function it refers to. We give the name `"fetchRequests"` to the `fetchRequests` function.
+The `fetchRequests` function is [added to the API](/guides/rpc.md) and exported so it can be used in other files. Finally, the base `SDK` is extended bu adding the `<API>`. In order to register the function, we use the `sdk.api.register()` method which takes two parameters: a string name for the function and the function it refers to. We give the name `"fetchRequests"` to the `fetchRequests` function.
 
 ```ts
 export type API = DefineAPI<{

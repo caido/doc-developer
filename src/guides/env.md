@@ -7,7 +7,7 @@ You may want to allow users to use environment variables set via the `Environmen
 ## Getting the Value: Frontend Call to Backend Function
 
 ::: info
-[Learn more on how to create custom backend functions.](/guides/components/rpc.md)
+[Learn more on how to create custom backend functions.](/guides/rpc.md)
 :::
 
 To securely access environment variables in Caido, the `sdk.env.getVar()` method can be used:

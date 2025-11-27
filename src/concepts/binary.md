@@ -60,4 +60,4 @@ Now, `C2` will not be prefixed:
 
 ## What's next?
 
-To view the full script and an additional technique that can be used to set raw bytes in Caido plugins, click [here](/guides/components/utf.md).
+To view the full script and an additional technique that can be used to set raw bytes in Caido plugins, click [here](/guides/utf.md).
