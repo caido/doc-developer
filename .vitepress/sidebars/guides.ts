@@ -37,6 +37,30 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Using the Component Library",
         link: "/guides/styling",
       },
+      {
+        text: "Extending Editors with CodeMirror",
+        link: "/guides/editor_extensions",
+      },
+      {
+        text: "Adding Custom Request View Modes",
+        link: "/guides/view_modes",
+      },
+      {
+        text: "Adding Components to UI Slots",
+        link: "/guides/slots",
+      },
+      {
+        text: "Showing Dialogs",
+        link: "/guides/dialogs",
+      },
+      {
+        text: "Registering Keyboard Shortcuts",
+        link: "/guides/shortcuts",
+      },
+      {
+        text: "Customizing the Command Palette",
+        link: "/guides/command_palette_advanced",
+      },
     ],
   },
   {
@@ -58,6 +82,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Using Invalid UTF-8",
         link: "/guides/utf",
       },
+      {
+        text: "Working with HTTPQL Queries and Filters",
+        link: "/guides/filters",
+      },
     ],
   },
   {
@@ -70,6 +98,22 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Using Environment Variables",
         link: "/guides/env",
+      },
+      {
+        text: "Creating and Managing Scopes",
+        link: "/guides/scopes",
+      },
+      {
+        text: "Managing Replay Sessions and Collections",
+        link: "/guides/replay",
+      },
+      {
+        text: "Creating and Managing Match and Replace Rules",
+        link: "/guides/match_replace",
+      },
+      {
+        text: "Interacting with Workflows",
+        link: "/guides/workflows",
       },
     ],
   },
@@ -88,6 +132,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Adding Files",
         link: "/guides/files",
       },
+      {
+        text: "Accessing Static Assets",
+        link: "/guides/assets",
+      },
     ],
   },
   {
@@ -105,6 +153,14 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Sending Events to the Frontend",
         link: "/guides/events",
       },
+      {
+        text: "Subscribing to Application Events",
+        link: "/guides/application_events",
+      },
+      {
+        text: "Listening to Page Navigation Changes",
+        link: "/guides/navigation_events",
+      },
     ],
   },
   {
@@ -113,6 +169,27 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
       {
         text: "Spawning a Process",
         link: "/guides/spawning_process",
+      },
+      {
+        text: "Logging Messages",
+        link: "/guides/log",
+      },
+      {
+        text: "Getting Caido Version Information",
+        link: "/guides/runtime",
+      },
+    ],
+  },
+  {
+    text: "Advanced Features",
+    items: [
+      {
+        text: "Using AI in Your Plugin",
+        link: "/guides/ai",
+      },
+      {
+        text: "Querying the GraphQL API",
+        link: "/guides/graphql",
       },
     ],
   },
