@@ -67,7 +67,7 @@ export type BackendEvents = DefineEvents<{
 Next, we define an empty API type using `DefineAPI` to satisy the `SDK` parameter requirements.
 
 ::: tip
-[Learn how to create and call custom backend functions.](/guides/components/rpc.html)
+[Learn how to create and call custom backend functions.](/guides/rpc.md)
 :::
 
 ``` ts

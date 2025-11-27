@@ -23,23 +23,23 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Creating a Page",
-        link: "/guides/components/page",
+        link: "/guides/page",
       },
       {
         text: "Creating a Command",
-        link: "/guides/components/command",
+        link: "/guides/command",
       },
       {
         text: "Customizing Context Menus",
-        link: "/guides/components/menu",
+        link: "/guides/menu",
       },
       {
         text: "Storing Frontend Data",
-        link: "/guides/components/frontend_storage",
+        link: "/guides/frontend_storage",
       },
       {
         text: "Using the Component Library",
-        link: "/guides/components/styling",
+        link: "/guides/styling",
       },
     ],
   },
@@ -48,43 +48,43 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Creating and Calling a Custom Function",
-        link: "/guides/components/rpc",
+        link: "/guides/rpc",
       },
       {
         text: "Handling Backend Events",
-        link: "/guides/components/backend_events",
+        link: "/guides/backend_events",
       },
       {
         text: "Fetching Proxied Requests",
-        link: "/guides/components/querying_requests",
+        link: "/guides/querying_requests",
       },
       {
         text: "Sending HTTP Requests",
-        link: "/guides/components/request",
+        link: "/guides/request",
       },
       {
         text: "Sending a Fetch Request",
-        link: "/guides/components/fetch",
+        link: "/guides/fetch",
       },
       {
         text: "Sending Events to the Frontend",
-        link: "/guides/components/events",
+        link: "/guides/events",
       },
       {
         text: "Spawning a Process",
-        link: "/guides/components/spawning_process",
+        link: "/guides/spawning_process",
       },
       {
         text: "Storing Data in SQLite",
-        link: "/guides/components/sqlite",
+        link: "/guides/sqlite",
       },
       {
         text: "Using Findings",
-        link: "/guides/components/findings",
+        link: "/guides/findings",
       },
       {
         text: "Using Invalid UTF-8",
-        link: "/guides/components/utf",
+        link: "/guides/utf",
       },
     ],
   },
@@ -93,11 +93,11 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Adding Files",
-        link: "/guides/components/files",
+        link: "/guides/files",
       },
       {
         text: "Using Environment Variables",
-        link: "/guides/components/env",
+        link: "/guides/env",
       },
     ],
   },
@@ -106,11 +106,11 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Setting Up Your Repository",
-        link: "/guides/distribution/repository",
+        link: "/guides/repository",
       },
       {
         text: "Submitting to the Store",
-        link: "/guides/distribution/store",
+        link: "/guides/store",
       },
     ],
   },
@@ -119,7 +119,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: "Documentation",
-        link: "/guides/contributions/documentation",
+        link: "/guides/documentation",
       },
     ],
   },

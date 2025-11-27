@@ -198,7 +198,7 @@ The documentation uses VitePress components like:
 
 #### Linking
 
-- Use relative paths for internal links: `/guides/components/command.md`
+- Use relative paths for internal links: `/guides/command.md`
 - Always update `index.md` files when adding new pages
 
 ### 7. Content Guidelines
@@ -240,7 +240,7 @@ When adding new documentation, ask:
 
 - [Diátaxis Framework](https://diataxis.fr/) - The documentation framework this repo follows
 - [VitePress Documentation](https://vitepress.dev/) - The static site generator used
-- [Contribution Guide](./src/guides/contributions/documentation.md) - Human-oriented contribution guide
+- [Contribution Guide](./src/guides/documentation.md) - Human-oriented contribution guide
 - [Caido Developer Documentation](https://docs.caido.io) - The live documentation site
 
 ## Summary for AI Agents

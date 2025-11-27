@@ -149,7 +149,7 @@ export type CaidoSDK = Caido<API>;
 The page will include two input fields, one for each expected number parameter and a `<p></p>` tag that will be used to display the result.
 
 ::: tip
-For additional documentation on creating a page - click [here](/guides/components/page.md).
+For additional documentation on creating a page - click [here](/guides/page.md).
 :::
 
 ``` ts
