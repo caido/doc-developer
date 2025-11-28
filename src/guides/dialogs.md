@@ -1,18 +1,10 @@
 # Showing Dialogs
 
-Dialogs are modal windows that can display custom components, collect user input, or show important information. They provide a way to create focused interactions with users.
+When you need to display a modal window to collect user input, show important information, or confirm an action, use dialogs to create focused interactions with users.
 
-## Showing a Dialog
+## Show a Simple Dialog
 
-To show a dialog, use `sdk.window.showDialog()`:
-
-```ts
-const dialog = sdk.window.showDialog(component, options);
-```
-
-The method returns a `Dialog` object that can be used to programmatically close the dialog.
-
-## Basic Dialog
+To display a basic dialog, create a DOM element and pass it to `sdk.window.showDialog()`. The method returns a `Dialog` object that you can use to programmatically close the dialog later.
 
 ```ts
 const content = document.createElement("div");
@@ -21,9 +13,9 @@ content.textContent = "This is a dialog";
 const dialog = sdk.window.showDialog(content);
 ```
 
-## Dialog Options
+## Customize Dialog Behavior
 
-You can customize the dialog behavior with options:
+You can customize how the dialog appears and behaves by passing an options object as the second parameter. Common options include setting a title, controlling whether the dialog is modal, and configuring how users can close it.
 
 ```ts
 const dialog = sdk.window.showDialog(component, {
@@ -36,18 +28,11 @@ const dialog = sdk.window.showDialog(component, {
 });
 ```
 
-### Available Options
+The `modal` option controls whether the dialog blocks interaction with the rest of the application (default: `true`). Set `closable` to control whether users can close the dialog (default: `true`), and `closeOnEscape` to allow closing with the Escape key (default: `true`). Use `draggable` to make the dialog draggable (default: `false`), and `position` to set where it appears: `"left"`, `"right"`, `"top"`, `"bottom"`, `"center"`, `"topleft"`, `"topright"`, `"bottomleft"`, or `"bottomright"` (default: `"center"`).
 
-- `title` - The title displayed in the dialog header
-- `modal` - Whether the dialog blocks interaction with the rest of the application (default: `true`)
-- `closable` - Whether the dialog can be closed (default: `true`)
-- `closeOnEscape` - Whether pressing Escape closes the dialog (default: `true`)
-- `draggable` - Whether the dialog can be dragged (default: `false`)
-- `position` - Dialog position: `"left"`, `"right"`, `"top"`, `"bottom"`, `"center"`, `"topleft"`, `"topright"`, `"bottomleft"`, `"bottomright"` (default: `"center"`)
+## Close a Dialog Programmatically
 
-## Closing a Dialog
-
-You can close a dialog programmatically using the returned `Dialog` object:
+Close a dialog programmatically by calling the `close()` method on the `Dialog` object returned from `showDialog()`. This is useful when you need to close the dialog based on user actions or application logic.
 
 ```ts
 const dialog = sdk.window.showDialog(content);
