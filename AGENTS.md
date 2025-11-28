@@ -194,6 +194,14 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 5. If it's about storing your plugin's data, use "Storing Data"
 6. Update the sidebar in `.vitepress/sidebars/guides.ts`
 
+#### Guide Title Matching
+
+- **Guide titles MUST exactly match their corresponding sidebar item text**
+- The H1 title in each guide file (e.g., `# Title`) must match the `text` property in `.vitepress/sidebars/guides.ts`
+- Titles should be concise and use gerund forms (e.g., "Creating", "Managing", "Interacting") for how-to guides, following Diátaxis principles
+- When updating a guide title, always verify it matches the sidebar entry
+- When updating the sidebar, ensure the corresponding guide file's H1 title is updated to match
+
 ### 3. Writing Guidelines
 
 #### For Tutorials
@@ -246,6 +254,7 @@ Before submitting changes:
 2. **Type check**: Run `pnpm typecheck` to verify TypeScript types
 3. **Build**: Run `pnpm build` to ensure the site builds successfully
 4. **Preview**: Run `pnpm dev` to preview changes locally
+5. **Title Check**: Verify that all guide file H1 titles exactly match their corresponding sidebar entries in `.vitepress/sidebars/guides.ts`
 
 ### 6. Common Patterns
 
@@ -307,6 +316,7 @@ The documentation uses VitePress components like:
 - ❌ Don't use absolute paths for images or internal links
 - ❌ Don't skip validation steps
 - ❌ Don't add content that doesn't fit the Diátaxis framework
+- ❌ **Don't create mismatched titles**: Guide file H1 titles must exactly match sidebar item text
 
 ## Quick Reference: Decision Tree
 

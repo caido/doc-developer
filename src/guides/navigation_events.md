@@ -1,4 +1,4 @@
-# How to Listen to Page Navigation Changes
+# Listening to Page Navigation Changes
 
 You can subscribe to page navigation changes to react when users navigate between different pages in Caido. This is useful for updating UI based on the current page, performing page-specific initialization, or cleaning up resources.
 

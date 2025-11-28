@@ -1,4 +1,4 @@
-# How to Extend Request and Response Editors with CodeMirror
+# Extending Editors with CodeMirror
 
 You can extend the request and response editors in Caido with CodeMirror extensions to add custom functionality like syntax highlighting, validation, autocomplete, custom keybindings, and editor themes.
 

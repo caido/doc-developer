@@ -1,4 +1,4 @@
-# How to Subscribe to Application Events
+# Subscribing to Application Events
 
 You can subscribe to various application events to react to state changes in Caido, such as project selection, workflow lifecycle, replay session changes, and backend plugin events.
 

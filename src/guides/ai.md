@@ -1,4 +1,4 @@
-# How to Use AI in Your Plugin
+# Using AI in Your Plugin
 
 You can integrate AI capabilities into your plugin using Caido's AI provider, which is compatible with the [ai](https://ai-sdk.dev/) library.
 

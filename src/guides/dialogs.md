@@ -1,4 +1,4 @@
-# How to Show Dialogs
+# Showing Dialogs
 
 Dialogs are modal windows that can display custom components, collect user input, or show important information. They provide a way to create focused interactions with users.
 

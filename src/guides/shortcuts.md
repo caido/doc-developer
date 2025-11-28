@@ -1,4 +1,4 @@
-# How to Register Keyboard Shortcuts
+# Registering Keyboard Shortcuts
 
 Keyboard shortcuts provide quick access to commands, improving the user experience for power users and enabling accessibility features.
 

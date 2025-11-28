@@ -1,4 +1,4 @@
-# How to Create and Manage Match and Replace Rules
+# Creating and Managing Match and Replace Rules
 
 Match and Replace rules allow you to automatically modify HTTP requests and responses based on matching conditions. You can programmatically create, manage, and control match and replace rules and collections.
 

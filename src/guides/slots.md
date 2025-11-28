@@ -1,4 +1,4 @@
-# How to Add Components to UI Slots
+# Adding Components to UI Slots
 
 UI slots allow you to extend Caido's interface by adding custom components to specific locations, such as toolbars and footers. You can add buttons, commands, or custom components to these slots.
 

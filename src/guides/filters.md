@@ -1,4 +1,4 @@
-# How to Work with HTTPQL Queries and Filters
+# Working with HTTPQL Queries and Filters
 
 HTTPQL is Caido's query language for filtering HTTP requests. You can programmatically create, manage, and apply filters, as well as set HTTPQL queries on pages like HTTP History and Search.
 

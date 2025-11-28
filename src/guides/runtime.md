@@ -1,4 +1,4 @@
-# How to Get Caido Version Information
+# Getting Caido Version Information
 
 You can retrieve the current Caido version to check compatibility, enable version-specific features, or display version information in your plugin.
 

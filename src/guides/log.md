@@ -1,4 +1,4 @@
-# How to Log Messages
+# Logging Messages
 
 The frontend SDK provides logging utilities to help you debug your plugin and track information at different severity levels.
 

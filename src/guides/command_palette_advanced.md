@@ -1,4 +1,4 @@
-# How to Customize the Command Palette
+# Customizing the Command Palette
 
 Beyond registering commands, you can push custom views onto the command palette stack to create interactive command palette experiences, custom search interfaces, and multi-step commands.
 
