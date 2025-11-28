@@ -57,7 +57,16 @@ try {
 }
 ```
 
-## Example: Logging User Actions
+## Best Practices
+
+- Use appropriate log levels: reserve `debug()` for development, `info()` for normal operations, `warn()` for warnings, and `error()` for errors
+- Include context in your log messages to make debugging easier
+- Use structured data when logging objects or complex values
+- Avoid logging sensitive information such as passwords or API keys
+
+## Examples
+
+### Logging User Actions
 
 This example demonstrates logging at different levels during user interactions. It logs info messages when operations start and complete, error messages when operations fail, and shows corresponding toast notifications to the user.
 
@@ -99,11 +108,3 @@ export const init = (sdk: CaidoSDK) => {
   createPage(sdk);
 };
 ```
-
-## Best Practices
-
-- Use appropriate log levels: reserve `debug()` for development, `info()` for normal operations, `warn()` for warnings, and `error()` for errors
-- Include context in your log messages to make debugging easier
-- Use structured data when logging objects or complex values
-- Avoid logging sensitive information such as passwords or API keys
-

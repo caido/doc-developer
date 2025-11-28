@@ -118,7 +118,9 @@ To clear the selection:
 sdk.matchReplace.selectRule(undefined);
 ```
 
-## Example: Rule Manager Plugin
+## Examples
+
+### Rule Manager Plugin
 
 This example creates a comprehensive interface for managing match and replace rule collections and individual rules. It displays collections with their rule counts, lists all rules with their queries, and provides buttons to toggle rule states, create collections, and delete items.
 
@@ -270,7 +272,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Auto-Enable Rules
+### Auto-Enable Rules
 
 This example automatically enables all rules in a specific collection named "Auto Rules" when the plugin initializes. It finds the collection, filters rules belonging to it, and enables any that are currently disabled.
 
@@ -304,7 +306,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Rule Priority Management
+### Rule Priority Management
 
 This example demonstrates how to access and log rule priority information. It retrieves all active rules (which are automatically sorted by priority) and logs each rule's name and priority value.
 
@@ -334,4 +336,3 @@ Active rules are processed in priority order. Higher priority rules are applied 
 ::: warning
 Be careful when creating rules that modify request/response data, as they can affect the behavior of your application testing. Test rules thoroughly before enabling them.
 :::
-

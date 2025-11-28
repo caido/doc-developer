@@ -6,7 +6,9 @@ Caido provides a GraphQL API for advanced data queries and custom operations. Yo
 
 The GraphQL SDK provides utilities for querying Caido's GraphQL API. The exact methods and structure depend on your Caido version and configuration.
 
-## Example: Basic GraphQL Query
+## Examples
+
+### Basic GraphQL Query
 
 This example demonstrates a basic GraphQL query that fetches all projects with their IDs and names. It shows the structure of a simple query operation using the GraphQL SDK.
 
@@ -33,7 +35,7 @@ const queryData = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: GraphQL Query Plugin
+### GraphQL Query Plugin
 
 This example creates an interactive GraphQL query explorer page with a textarea for entering queries, an execute button, and a results display area. It includes error handling and loading states for a complete query interface.
 
@@ -117,7 +119,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Custom GraphQL Operations
+### Custom GraphQL Operations
 
 This example demonstrates both GraphQL queries with variables and mutations. It shows how to query requests with a filter variable and how to perform a mutation to update a request, both using typed variables.
 
@@ -185,4 +187,3 @@ The GraphQL API structure may vary between Caido versions. Refer to your Caido v
 ::: warning
 GraphQL queries can be powerful but also complex. Ensure you understand the schema and query structure before executing queries, especially mutations that modify data.
 :::
-

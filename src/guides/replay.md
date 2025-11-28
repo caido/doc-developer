@@ -125,7 +125,9 @@ const handler = sdk.replay.onCurrentSessionChange((event) => {
 handler.stop();
 ```
 
-## Example: Session Manager Plugin
+## Examples
+
+### Session Manager Plugin
 
 This example creates a comprehensive session and collection management interface. It displays all replay sessions and collections, allows opening sessions in tabs, creating new collections, and deleting items. It also subscribes to session change events.
 
@@ -273,7 +275,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Auto-Organize Sessions
+### Auto-Organize Sessions
 
 This example automatically organizes replay sessions by creating or finding a collection called "Automated Sessions" and listening for session changes to potentially move sessions into this collection.
 
@@ -327,4 +329,3 @@ Sessions and collections are persisted across Caido restarts, so programmaticall
 ::: warning
 Deleting a collection does not delete the sessions it contains. Sessions are moved to the default location when their collection is deleted.
 :::
-

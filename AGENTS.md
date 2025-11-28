@@ -221,6 +221,10 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - Address common pitfalls or edge cases
 - Use imperative mood ("Create a command", "Register the handler")
 - Be concise and focused on the task
+- **Examples placement**: All examples must be placed at the end of the guide under a `## Examples` header
+- **Example sub-headers**: Use `###` for individual examples (e.g., `### JSON Formatter View`)
+- **No "Example:" prefix**: Do not prefix example titles with "Example:" since they're already under the Examples section
+- **No content after examples**: Do not include any non-example sections after the Examples section (only tips/info/warning callouts are allowed at the very end)
 
 #### Code Examples and Snippets
 

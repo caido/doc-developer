@@ -56,7 +56,9 @@ const dialog = sdk.window.showDialog(content);
 dialog.close();
 ```
 
-## Example: Confirmation Dialog
+## Examples
+
+### Confirmation Dialog
 
 This example creates a reusable confirmation dialog function that displays a message and returns a promise resolving to `true` if confirmed or `false` if cancelled. It's used in a page with a delete button.
 
@@ -145,7 +147,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Form Dialog
+### Form Dialog
 
 This example creates a dialog with a text input field that collects user input. The dialog returns the entered value when submitted, or `null` if cancelled. The input is automatically focused when the dialog opens.
 
@@ -202,21 +204,6 @@ const showFormDialog = (sdk: CaidoSDK): Promise<string | null> => {
 };
 ```
 
-## Dialog Positions
-
-You can position dialogs in different locations:
-
-```ts
-// Center (default)
-sdk.window.showDialog(content, { position: "center" });
-
-// Top right
-sdk.window.showDialog(content, { position: "topright" });
-
-// Bottom left
-sdk.window.showDialog(content, { position: "bottomleft" });
-```
-
 ::: tip
 Use modal dialogs for critical actions that require user attention. Non-modal dialogs are useful for displaying information that doesn't block the user's workflow.
 :::
@@ -224,4 +211,3 @@ Use modal dialogs for critical actions that require user attention. Non-modal di
 ::: warning
 Always provide a way to close dialogs, either through a close button or by enabling `closable` and `closeOnEscape` options.
 :::
-

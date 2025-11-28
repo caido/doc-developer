@@ -12,7 +12,9 @@ const provider = sdk.ai.createProvider();
 
 This returns an `AIProvider` instance that can be used with the `ai` library.
 
-## Example: Basic AI Integration
+## Examples
+
+### Basic AI Integration
 
 This example demonstrates the basic setup for using AI in your plugin. It creates an AI provider, uses it with the `ai` library to generate text from a prompt, and logs the response.
 
@@ -43,7 +45,7 @@ export const init = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: AI-Powered Request Analysis
+### AI-Powered Request Analysis
 
 This example creates a page with a button that analyzes HTTP requests using AI. When clicked, it extracts text from the active editor, sends it to the AI provider for security analysis, and displays the results.
 
@@ -121,7 +123,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: AI-Powered Code Generation
+### AI-Powered Code Generation
 
 This example registers a command that uses AI to generate Caido plugin code based on a user's description. The command prompts for a description, generates code using AI, and logs the result.
 
@@ -159,7 +161,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Streaming AI Responses
+### Streaming AI Responses
 
 This example demonstrates how to stream AI responses in real-time. It processes HTTP request text through AI analysis and calls a callback function for each chunk of the response as it arrives.
 
@@ -199,4 +201,3 @@ The AI provider uses Caido's configured AI settings. Users can configure their A
 ::: warning
 AI operations can be resource-intensive and may have rate limits. Consider implementing error handling and user feedback for long-running AI operations.
 :::
-

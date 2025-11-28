@@ -9,6 +9,7 @@ Editor extensions are available on multiple pages in Caido. You can add extensio
 ### Request Editor Extensions
 
 Request editor extensions are available on:
+
 - HTTP History (`sdk.httpHistory.addRequestEditorExtension()`)
 - Replay (`sdk.replay.addRequestEditorExtension()`)
 - Search (`sdk.search.addRequestEditorExtension()`)
@@ -29,6 +30,7 @@ sdk.httpHistory.addRequestEditorExtension(myExtension);
 ### Response Editor Extensions
 
 Response editor extensions are available on:
+
 - HTTP History (`sdk.httpHistory.addResponseEditorExtension()`)
 
 ```ts
@@ -38,6 +40,7 @@ sdk.httpHistory.addResponseEditorExtension(myExtension);
 ## CodeMirror Extension Types
 
 CodeMirror extensions can be:
+
 - A single extension object
 - An array of extensions
 - A function that returns an extension
@@ -53,7 +56,35 @@ sdk.httpHistory.addRequestEditorExtension([extension1, extension2]);
 sdk.httpHistory.addRequestEditorExtension(() => myExtension);
 ```
 
-## Example: Custom Syntax Highlighting
+## Multiple Extensions
+
+You can add multiple extensions to the same editor:
+
+```ts
+export const init = (sdk: CaidoSDK) => {
+  sdk.httpHistory.addRequestEditorExtension([
+    customHighlightExtension,
+    customKeymapExtension,
+    darkThemeExtension,
+  ]);
+};
+```
+
+## Accessing the Editor View
+
+If you need to access the editor view directly, you can use `sdk.window.getActiveEditor()`:
+
+```ts
+const editor = sdk.window.getActiveEditor();
+if (editor) {
+  const view = editor.getEditorView();
+  // Use the CodeMirror EditorView
+}
+```
+
+## Examples
+
+### Custom Syntax Highlighting
 
 This example creates a custom syntax highlighting extension that colors strings green and numbers blue. The extension is applied to both HTTP History and Replay request editors.
 
@@ -81,7 +112,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Custom Keybindings
+### Custom Keybindings
 
 This example adds a custom keyboard shortcut (Ctrl+Enter) that logs the currently selected text in the editor. The keybinding is registered as a CodeMirror extension.
 
@@ -111,7 +142,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Editor Theme
+### Editor Theme
 
 This example applies a custom dark theme to the request and response editors. It sets background colors, text colors, and cursor colors to create a dark editor appearance.
 
@@ -141,7 +172,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Autocomplete
+### Autocomplete
 
 This example adds autocomplete functionality that suggests HTTP methods (GET, POST, PUT, DELETE) as you type in the editor. The autocomplete appears when you start typing a word.
 
@@ -176,7 +207,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Validation
+### Validation
 
 This example implements a validation extension that marks lines longer than 1000 characters as errors. It uses CodeMirror's state effects and decorations to visually highlight problematic lines.
 
@@ -260,32 +291,6 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Multiple Extensions
-
-You can add multiple extensions to the same editor:
-
-```ts
-export const init = (sdk: CaidoSDK) => {
-  sdk.httpHistory.addRequestEditorExtension([
-    customHighlightExtension,
-    customKeymapExtension,
-    darkThemeExtension,
-  ]);
-};
-```
-
-## Accessing the Editor View
-
-If you need to access the editor view directly, you can use `sdk.window.getActiveEditor()`:
-
-```ts
-const editor = sdk.window.getActiveEditor();
-if (editor) {
-  const view = editor.getEditorView();
-  // Use the CodeMirror EditorView
-}
-```
-
 ::: tip
 CodeMirror extensions are powerful and flexible. Refer to the [CodeMirror documentation](https://codemirror.net/docs/) for more advanced extension patterns.
 :::
@@ -297,4 +302,3 @@ Extensions are applied globally to all editors on the specified page. If you nee
 ::: warning
 Be careful with extensions that modify editor behavior significantly, as they may interfere with Caido's built-in editor functionality.
 :::
-

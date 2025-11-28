@@ -94,7 +94,25 @@ const currentScopeId = sdk.intercept.getScopeId();
 sdk.intercept.setScope(scopeId);
 ```
 
-## Example: Scope Management Plugin
+## Scope Patterns
+
+Scope allowlists and denylists support wildcard patterns:
+
+- `*example.com` - Matches any subdomain of example.com
+- `example.com` - Matches exactly example.com
+- `*` - Matches everything (when used in allowlist)
+
+```ts
+const scope = await sdk.scopes.createScope({
+  name: "Production Scope",
+  allowlist: ["*prod.example.com", "*api.example.com"],
+  denylist: ["*test.example.com", "*dev.example.com"],
+});
+```
+
+## Examples
+
+### Scope Management Plugin
 
 This example creates a scope management interface that lists all scopes with their allowlists and denylists. It provides buttons to create new scopes and delete existing ones, with automatic list refreshing.
 
@@ -235,22 +253,6 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Scope Patterns
-
-Scope allowlists and denylists support wildcard patterns:
-
-- `*example.com` - Matches any subdomain of example.com
-- `example.com` - Matches exactly example.com
-- `*` - Matches everything (when used in allowlist)
-
-```ts
-const scope = await sdk.scopes.createScope({
-  name: "Production Scope",
-  allowlist: ["*prod.example.com", "*api.example.com"],
-  denylist: ["*test.example.com", "*dev.example.com"],
-});
-```
-
 ::: tip
 Use scopes to filter requests programmatically across different pages. This is useful for automation and workflow management.
 :::
@@ -258,4 +260,3 @@ Use scopes to filter requests programmatically across different pages. This is u
 ::: info
 Scope operations on different pages may have different return types. HTTP History and Search return promises, while Intercept returns void.
 :::
-

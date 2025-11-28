@@ -79,7 +79,31 @@ sdk.search.setQuery("status:404");
 sdk.search.scrollTo(requestId);
 ```
 
-## Example: Filter Management Plugin
+## HTTPQL Query Examples
+
+Common HTTPQL query patterns:
+
+```ts
+// Status code
+"status:200"
+"status:>=400"
+
+// HTTP method
+"method:GET"
+"method:POST"
+
+// Path
+"path:/api/users"
+"path:*api*"
+
+// Combined
+"status:200 method:GET path:/api"
+"status:>=400 OR status:<200"
+```
+
+## Examples
+
+### Filter Management Plugin
 
 This example creates a complete filter management interface that displays all saved filters, allows creating new filters, applying filters to HTTP History, and deleting existing filters. Each filter shows its name, alias, and query.
 
@@ -190,7 +214,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Dynamic Query Building
+### Dynamic Query Building
 
 This example creates a query builder interface with input fields for status code, HTTP method, and path. It dynamically constructs HTTPQL queries from the input values and applies them to HTTP History.
 
@@ -280,7 +304,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Using Filter Presets
+### Using Filter Presets
 
 This example demonstrates creating a filter with an alias and then using that filter as a preset in HTTPQL queries. The preset can be referenced using the `preset:` prefix followed by the alias.
 
@@ -296,28 +320,6 @@ const filter = await sdk.filters.create({
 sdk.httpHistory.setQuery("preset:success-get");
 ```
 
-## HTTPQL Query Examples
-
-Common HTTPQL query patterns:
-
-```ts
-// Status code
-"status:200"
-"status:>=400"
-
-// HTTP method
-"method:GET"
-"method:POST"
-
-// Path
-"path:/api/users"
-"path:*api*"
-
-// Combined
-"status:200 method:GET path:/api"
-"status:>=400 OR status:<200"
-```
-
 ::: tip
 Use saved filters to create reusable query presets that can be referenced with the `preset:` prefix in HTTPQL queries.
 :::
@@ -325,4 +327,3 @@ Use saved filters to create reusable query presets that can be referenced with t
 ::: info
 The `scrollTo()` method is useful for highlighting specific requests after applying a filter, making it easier for users to find relevant results.
 :::
-

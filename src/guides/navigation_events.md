@@ -14,6 +14,7 @@ const handler = sdk.navigation.onPageChange((event) => {
 ```
 
 The callback receives a `PageChangeEvent` object containing:
+
 - `routeId` - The route ID of the new page
 - `path` - The path of the new page
 
@@ -30,7 +31,21 @@ const handler = sdk.navigation.onPageChange((event) => {
 handler.stop();
 ```
 
-## Example: Page-Specific Initialization
+## Route IDs
+
+Common route IDs include:
+
+- `"replay"` - Replay page
+- `"http-history"` - HTTP History page
+- `"search"` - Search page
+- `"sitemap"` - Sitemap page
+- `"intercept"` - Intercept page
+- `"findings"` - Findings page
+- Custom plugin page paths (e.g., `"/my-plugin-page"`)
+
+## Examples
+
+### Page-Specific Initialization
 
 This example performs cleanup when leaving pages and initialization when entering new pages. It tracks the current page and executes page-specific setup code for Replay and HTTP History pages.
 
@@ -68,7 +83,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Updating UI Based on Current Page
+### Updating UI Based on Current Page
 
 This example creates a page that displays the current route ID and updates it in real-time as the user navigates. It subscribes to page change events and updates a status text element with the current page information.
 
@@ -107,7 +122,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Conditional Feature Activation
+### Conditional Feature Activation
 
 This example conditionally enables or disables a feature based on the current page. The feature is only active on Replay or HTTP History pages, and is automatically deactivated when navigating to other pages.
 
@@ -138,17 +153,6 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Route IDs
-
-Common route IDs include:
-- `"replay"` - Replay page
-- `"http-history"` - HTTP History page
-- `"search"` - Search page
-- `"sitemap"` - Sitemap page
-- `"intercept"` - Intercept page
-- `"findings"` - Findings page
-- Custom plugin page paths (e.g., `"/my-plugin-page"`)
-
 ::: tip
 Use page change events to optimize performance by only loading resources when needed for specific pages.
 :::
@@ -156,4 +160,3 @@ Use page change events to optimize performance by only loading resources when ne
 ::: info
 The `onPageChange` callback is called after the page has changed. To perform actions before navigation, you may need to use other mechanisms depending on your use case.
 :::
-

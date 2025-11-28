@@ -26,7 +26,41 @@ sdk.httpHistory.addRequestViewMode({
 - `label` - The display name shown in the view mode selector
 - `view` - A component definition that renders the custom view
 
-## Example: JSON Formatter View
+## Component Definition
+
+The `view` property accepts a `ComponentDefinition` object that includes a Vue component. The component receives the request data via props.
+
+```ts
+{
+  component: YourVueComponent,
+  props: {
+    request: {}, // The request object will be passed automatically
+  },
+}
+```
+
+The Vue component should be defined in a `.vue` file and receive the request as a prop:
+
+```vue
+<script setup lang="ts">
+defineProps<{
+  request: {
+    body?: string;
+    method?: string;
+    url?: string;
+    headers?: Record<string, string>;
+  };
+}>();
+</script>
+
+<template>
+  <!-- Your view content -->
+</template>
+```
+
+## Examples
+
+### JSON Formatter View
 
 This example creates a custom view mode that formats request bodies as pretty-printed JSON. If the body isn't valid JSON, it displays an error message.
 
@@ -98,7 +132,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Visual Request Builder
+### Visual Request Builder
 
 This example creates an interactive form view that displays request method, URL, and headers as editable form fields. Users can modify these values directly in the visual interface.
 
@@ -197,38 +231,6 @@ export const init = (sdk: CaidoSDK) => {
     },
   });
 };
-```
-
-## Component Definition
-
-The `view` property accepts a `ComponentDefinition` object that includes a Vue component. The component receives the request data via props.
-
-```ts
-{
-  component: YourVueComponent,
-  props: {
-    request: {}, // The request object will be passed automatically
-  },
-}
-```
-
-The Vue component should be defined in a `.vue` file and receive the request as a prop:
-
-```vue
-<script setup lang="ts">
-defineProps<{
-  request: {
-    body?: string;
-    method?: string;
-    url?: string;
-    headers?: Record<string, string>;
-  };
-}>();
-</script>
-
-<template>
-  <!-- Your view content -->
-</template>
 ```
 
 ::: tip

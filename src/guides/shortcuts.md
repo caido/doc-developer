@@ -63,7 +63,9 @@ sdk.shortcuts.register("quick-action", ["Ctrl+K", "Ctrl+Q", "F5"]);
 - `Ctrl` works consistently across platforms
 - Consider providing platform-specific shortcuts if needed
 
-## Example: Command with Shortcut
+## Examples
+
+### Command with Shortcut
 
 This example registers a command that toggles a feature, assigns it a keyboard shortcut (Ctrl+T), and also makes it available in the command palette. This demonstrates the complete setup for a command with keyboard access.
 
@@ -97,4 +99,3 @@ Keyboard shortcuts work globally when the command is available. Use the `when` p
 ::: warning
 Avoid registering shortcuts that conflict with Caido's built-in shortcuts. Common shortcuts like `Ctrl+C`, `Ctrl+V`, `Ctrl+Z` are reserved for standard operations.
 :::
-

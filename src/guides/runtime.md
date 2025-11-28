@@ -12,7 +12,9 @@ const version = sdk.runtime.version;
 
 The version is returned as a string (e.g., `"1.0.0"`).
 
-## Example: Version Check
+## Examples
+
+### Version Check
 
 This example checks if the current Caido version meets a minimum requirement (1.2.0). It parses the version string, compares it to the minimum version, and displays a warning toast if the version is too old.
 
@@ -35,7 +37,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Version Display
+### Version Display
 
 This example creates a page that displays the current Caido version and plugin compatibility status. It shows the version information in a formatted card with styling.
 
@@ -79,7 +81,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Feature Detection
+### Feature Detection
 
 This example implements a feature availability checker that determines if specific features are available based on the Caido version. It checks version requirements for features like "advanced-filters" and "ai-integration" and enables or disables features accordingly.
 
@@ -120,7 +122,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Compatibility Check
+### Compatibility Check
 
 This example performs a comprehensive version compatibility check with a custom version comparison function. If the version is incompatible, it displays an error toast and prevents plugin initialization, otherwise it logs successful initialization.
 
@@ -173,4 +175,3 @@ Version strings follow semantic versioning (major.minor.patch). Parse the versio
 ::: warning
 Always test your plugin on the minimum required version to ensure compatibility. Version checks help prevent runtime errors but don't guarantee feature availability.
 :::
-

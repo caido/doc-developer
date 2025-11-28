@@ -40,7 +40,21 @@ const buffer = await asset.asArrayBuffer();
 const stream = asset.asReadableStream();
 ```
 
-## Example: Loading Configuration
+## Asset Path Configuration
+
+Assets are configured in your `caido.config.ts`:
+
+```ts
+export default defineConfig({
+  frontend: {
+    assets: ["./assets/**/*"],
+  },
+});
+```
+
+## Examples
+
+### Loading Configuration
 
 This example loads a JSON configuration file from assets and parses it into a typed TypeScript object. It demonstrates error handling and logging for configuration loading operations.
 
@@ -72,7 +86,7 @@ export const init = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Loading Text Templates
+### Loading Text Templates
 
 This example loads a text template file from the assets directory and displays it in a page. It handles loading errors gracefully by showing an error message if the template file cannot be found or loaded.
 
@@ -116,7 +130,7 @@ export const init = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Processing Large Files
+### Processing Large Files
 
 This example demonstrates how to process large asset files efficiently using streams. It reads the file in chunks, processes them incrementally, and logs progress every 100 chunks to avoid loading the entire file into memory at once.
 
@@ -157,7 +171,7 @@ export const init = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Loading Binary Data
+### Loading Binary Data
 
 This example loads a binary image file from assets, converts it to a Blob, creates an object URL, and displays it in an image element. This demonstrates how to work with binary assets like images.
 
@@ -205,7 +219,7 @@ export const init = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Loading Multiple Assets
+### Loading Multiple Assets
 
 This example demonstrates loading multiple assets in parallel using Promise.all. It loads a JSON config file, a text template, and a data JSON file simultaneously, converting each to its appropriate format.
 
@@ -234,18 +248,6 @@ export const init = async (sdk: CaidoSDK) => {
 };
 ```
 
-## Asset Path Configuration
-
-Assets are configured in your `caido.config.ts`:
-
-```ts
-export default defineConfig({
-  frontend: {
-    assets: ["./assets/**/*"],
-  },
-});
-```
-
 ::: tip
 Use `asReadableStream()` for large files to process them in chunks and avoid loading the entire file into memory.
 :::
@@ -257,4 +259,3 @@ Asset paths are relative to your plugin's assets directory. Use glob patterns in
 ::: warning
 Assets are bundled with your plugin, so large files will increase the plugin size. Consider loading external resources at runtime for very large files.
 :::
-

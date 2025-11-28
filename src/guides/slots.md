@@ -87,7 +87,26 @@ sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
 });
 ```
 
-## Example: Footer Actions
+## Slot Import
+
+You need to import the slot constants:
+
+```ts
+import { FooterSlot } from "@caido/sdk-frontend";
+import { ReplaySlot } from "@caido/sdk-frontend";
+```
+
+## Best Practices
+
+- Use buttons for simple actions that don't need command registration
+- Use commands when you want the action to be available in multiple places (command palette, menus, etc.)
+- Use custom components for complex UI or dynamic content
+- Keep slot content concise to maintain a clean interface
+- Consider the visual hierarchy when adding multiple items to the same slot
+
+## Examples
+
+### Footer Actions
 
 This example demonstrates adding multiple types of content to footer slots: a button with a click handler, a command button, and a custom status indicator component.
 
@@ -151,7 +170,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Dynamic Slot Content
+### Dynamic Slot Content
 
 This example creates a custom component that tracks and displays a click counter. The button updates its label each time it's clicked and shows a toast notification.
 
@@ -206,23 +225,6 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-## Slot Import
-
-You need to import the slot constants:
-
-```ts
-import { FooterSlot } from "@caido/sdk-frontend";
-import { ReplaySlot } from "@caido/sdk-frontend";
-```
-
-## Best Practices
-
-- Use buttons for simple actions that don't need command registration
-- Use commands when you want the action to be available in multiple places (command palette, menus, etc.)
-- Use custom components for complex UI or dynamic content
-- Keep slot content concise to maintain a clean interface
-- Consider the visual hierarchy when adding multiple items to the same slot
 
 ::: tip
 Slots are a powerful way to extend Caido's UI without creating custom pages. Use them to add plugin-specific functionality that integrates seamlessly with the existing interface.
