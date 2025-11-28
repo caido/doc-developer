@@ -222,6 +222,14 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - Use imperative mood ("Create a command", "Register the handler")
 - Be concise and focused on the task
 
+#### Code Examples and Snippets
+
+- **ALWAYS include a description before code snippets** - Never show code without explaining what it does
+- For examples with titles (e.g., `## Example: Feature Name`), add a short descriptive paragraph before the code block explaining what the example demonstrates
+- Descriptions should be concise (1-2 sentences) and explain the purpose and functionality of the code
+- Even simple code snippets should have context explaining their purpose
+- Example format: After the example heading, add a descriptive paragraph, then the code block. The structure should be: heading → description paragraph → code block
+
 #### For Reference
 
 - Be accurate, complete, and concise
@@ -317,6 +325,7 @@ The documentation uses VitePress components like:
 - ❌ Don't skip validation steps
 - ❌ Don't add content that doesn't fit the Diátaxis framework
 - ❌ **Don't create mismatched titles**: Guide file H1 titles must exactly match sidebar item text
+- ❌ **Don't show code without descriptions**: Every code snippet, especially examples, must have a description explaining what it does
 
 ## Quick Reference: Decision Tree
 

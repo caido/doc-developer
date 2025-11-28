@@ -120,6 +120,8 @@ sdk.matchReplace.selectRule(undefined);
 
 ## Example: Rule Manager Plugin
 
+This example creates a comprehensive interface for managing match and replace rule collections and individual rules. It displays collections with their rule counts, lists all rules with their queries, and provides buttons to toggle rule states, create collections, and delete items.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -270,6 +272,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Auto-Enable Rules
 
+This example automatically enables all rules in a specific collection named "Auto Rules" when the plugin initializes. It finds the collection, filters rules belonging to it, and enables any that are currently disabled.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -301,6 +305,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Rule Priority Management
+
+This example demonstrates how to access and log rule priority information. It retrieves all active rules (which are automatically sorted by priority) and logs each rule's name and priority value.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

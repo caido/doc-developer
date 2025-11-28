@@ -81,6 +81,8 @@ sdk.search.scrollTo(requestId);
 
 ## Example: Filter Management Plugin
 
+This example creates a complete filter management interface that displays all saved filters, allows creating new filters, applying filters to HTTP History, and deleting existing filters. Each filter shows its name, alias, and query.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -190,6 +192,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Dynamic Query Building
 
+This example creates a query builder interface with input fields for status code, HTTP method, and path. It dynamically constructs HTTPQL queries from the input values and applies them to HTTP History.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -277,6 +281,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Using Filter Presets
+
+This example demonstrates creating a filter with an alias and then using that filter as a preset in HTTPQL queries. The preset can be referenced using the `preset:` prefix followed by the alias.
 
 ```ts
 // Create a filter with an alias

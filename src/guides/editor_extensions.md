@@ -55,6 +55,8 @@ sdk.httpHistory.addRequestEditorExtension(() => myExtension);
 
 ## Example: Custom Syntax Highlighting
 
+This example creates a custom syntax highlighting extension that colors strings green and numbers blue. The extension is applied to both HTTP History and Replay request editors.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { Extension } from "@codemirror/state";
@@ -80,6 +82,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Custom Keybindings
+
+This example adds a custom keyboard shortcut (Ctrl+Enter) that logs the currently selected text in the editor. The keybinding is registered as a CodeMirror extension.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -109,6 +113,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Editor Theme
 
+This example applies a custom dark theme to the request and response editors. It sets background colors, text colors, and cursor colors to create a dark editor appearance.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { Extension } from "@codemirror/state";
@@ -136,6 +142,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Autocomplete
+
+This example adds autocomplete functionality that suggests HTTP methods (GET, POST, PUT, DELETE) as you type in the editor. The autocomplete appears when you start typing a word.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -169,6 +177,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Validation
+
+This example implements a validation extension that marks lines longer than 1000 characters as errors. It uses CodeMirror's state effects and decorations to visually highlight problematic lines.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

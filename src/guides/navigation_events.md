@@ -32,6 +32,8 @@ handler.stop();
 
 ## Example: Page-Specific Initialization
 
+This example performs cleanup when leaving pages and initialization when entering new pages. It tracks the current page and executes page-specific setup code for Replay and HTTP History pages.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -67,6 +69,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Updating UI Based on Current Page
+
+This example creates a page that displays the current route ID and updates it in real-time as the user navigates. It subscribes to page change events and updates a status text element with the current page information.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -104,6 +108,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Conditional Feature Activation
+
+This example conditionally enables or disables a feature based on the current page. The feature is only active on Replay or HTTP History pages, and is automatically deactivated when navigating to other pages.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

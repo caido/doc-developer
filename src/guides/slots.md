@@ -79,6 +79,8 @@ sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
 
 ## Example: Footer Actions
 
+This example demonstrates adding multiple types of content to footer slots: a button with a click handler, a command button, and a custom status indicator component.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { FooterSlot } from "@caido/sdk-frontend";
@@ -131,6 +133,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Replay Toolbar Extensions
 
+This example adds custom buttons and components to different Replay toolbar slots, including the primary toolbar (left side), secondary toolbar (right side), and topbar area.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { ReplaySlot } from "@caido/sdk-frontend";
@@ -175,6 +179,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Dynamic Slot Content
 
+This example creates a custom component that tracks and displays a click counter. The button updates its label each time it's clicked and shows a toast notification.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { FooterSlot } from "@caido/sdk-frontend";
@@ -204,6 +210,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Status Indicator
+
+This example creates a status indicator component that shows a colored dot and connection status text. The status updates every 5 seconds to reflect the current connection state.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

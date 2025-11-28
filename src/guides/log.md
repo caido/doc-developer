@@ -59,6 +59,8 @@ try {
 
 ## Example: Logging User Actions
 
+This example demonstrates logging at different levels during user interactions. It logs info messages when operations start and complete, error messages when operations fail, and shows corresponding toast notifications to the user.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 

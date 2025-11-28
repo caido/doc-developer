@@ -27,6 +27,8 @@ sdk.httpHistory.addRequestViewMode({
 
 ## Example: JSON Formatter View
 
+This example creates a custom view mode that formats request bodies as pretty-printed JSON. If the body isn't valid JSON, it displays an error message.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -70,6 +72,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Visual Request Builder
+
+This example creates an interactive form view that displays request method, URL, and headers as editable form fields. Users can modify these values directly in the visual interface.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -153,6 +157,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: XML Tree View
 
+This example parses XML request bodies and displays them as an indented tree structure. Element tags are shown in blue, and text content is displayed in a hierarchical format.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -226,6 +232,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Request Statistics View
+
+This example displays request metadata in a statistics format, showing the HTTP method, URL length, header count, and body size in a clean table layout.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

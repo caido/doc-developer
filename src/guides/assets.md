@@ -42,6 +42,8 @@ const stream = asset.asReadableStream();
 
 ## Example: Loading Configuration
 
+This example loads a JSON configuration file from assets and parses it into a typed TypeScript object. It demonstrates error handling and logging for configuration loading operations.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -71,6 +73,8 @@ export const init = async (sdk: CaidoSDK) => {
 ```
 
 ## Example: Loading Text Templates
+
+This example loads a text template file from the assets directory and displays it in a page. It handles loading errors gracefully by showing an error message if the template file cannot be found or loaded.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -114,6 +118,8 @@ export const init = async (sdk: CaidoSDK) => {
 
 ## Example: Processing Large Files
 
+This example demonstrates how to process large asset files efficiently using streams. It reads the file in chunks, processes them incrementally, and logs progress every 100 chunks to avoid loading the entire file into memory at once.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -152,6 +158,8 @@ export const init = async (sdk: CaidoSDK) => {
 ```
 
 ## Example: Loading Binary Data
+
+This example loads a binary image file from assets, converts it to a Blob, creates an object URL, and displays it in an image element. This demonstrates how to work with binary assets like images.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -198,6 +206,8 @@ export const init = async (sdk: CaidoSDK) => {
 ```
 
 ## Example: Loading Multiple Assets
+
+This example demonstrates loading multiple assets in parallel using Promise.all. It loads a JSON config file, a text template, and a data JSON file simultaneously, converting each to its appropriate format.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

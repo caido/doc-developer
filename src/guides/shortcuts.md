@@ -65,6 +65,8 @@ sdk.shortcuts.register("quick-action", ["Ctrl+K", "Ctrl+Q", "F5"]);
 
 ## Example: Command with Shortcut
 
+This example registers a command that toggles a feature, assigns it a keyboard shortcut (Ctrl+T), and also makes it available in the command palette. This demonstrates the complete setup for a command with keyboard access.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 

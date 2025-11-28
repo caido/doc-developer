@@ -55,6 +55,8 @@ handler.stop();
 
 ## Example: Workflow Monitor Plugin
 
+This example creates a page that displays all workflows and maintains a real-time event log. It subscribes to workflow creation, update, and deletion events, updating both the workflow list and event log whenever changes occur.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -154,6 +156,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Workflow Automation
 
+This example demonstrates reactive workflow management by subscribing to workflow lifecycle events. It logs workflow changes and can trigger automation, notifications, or UI updates when workflows are created, updated, or deleted.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -185,6 +189,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Workflow Discovery
+
+This example implements a workflow discovery system that logs all workflows on initialization and re-discovers them whenever workflows are created or deleted. This keeps the plugin's workflow list synchronized with Caido's state.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

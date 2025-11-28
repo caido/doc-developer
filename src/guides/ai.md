@@ -14,6 +14,8 @@ This returns an `AIProvider` instance that can be used with the `ai` library.
 
 ## Example: Basic AI Integration
 
+This example demonstrates the basic setup for using AI in your plugin. It creates an AI provider, uses it with the `ai` library to generate text from a prompt, and logs the response.
+
 First, install the `ai` package:
 
 ```bash
@@ -42,6 +44,8 @@ export const init = async (sdk: CaidoSDK) => {
 ```
 
 ## Example: AI-Powered Request Analysis
+
+This example creates a page with a button that analyzes HTTP requests using AI. When clicked, it extracts text from the active editor, sends it to the AI provider for security analysis, and displays the results.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -119,6 +123,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: AI-Powered Code Generation
 
+This example registers a command that uses AI to generate Caido plugin code based on a user's description. The command prompts for a description, generates code using AI, and logs the result.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { generateText } from "ai";
@@ -154,6 +160,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Streaming AI Responses
+
+This example demonstrates how to stream AI responses in real-time. It processes HTTP request text through AI analysis and calls a callback function for each chunk of the response as it arrives.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

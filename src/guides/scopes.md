@@ -96,6 +96,8 @@ sdk.intercept.setScope(scopeId);
 
 ## Example: Scope Management Plugin
 
+This example creates a scope management interface that lists all scopes with their allowlists and denylists. It provides buttons to create new scopes and delete existing ones, with automatic list refreshing.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -192,6 +194,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Setting Scope on Page Navigation
+
+This example automatically sets a specific scope when navigating to the HTTP History page. It creates or finds a scope named "Auto Scope" and applies it whenever the user visits HTTP History.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

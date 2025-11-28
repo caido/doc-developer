@@ -16,6 +16,8 @@ sdk.commandPalette.pushView({
 
 ## Example: Custom Search Interface
 
+This example creates a custom search interface within the command palette. It provides a text input that filters available commands in real-time as you type, displaying matching commands as clickable items.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -87,6 +89,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Multi-Step Command
+
+This example implements a multi-step wizard interface in the command palette. It displays a step indicator, shows the current step content, and provides Next/Back navigation buttons to move through the steps.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -164,6 +168,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Interactive Form
+
+This example creates an interactive form within the command palette that collects a name and email address. When submitted, it displays the collected data in a toast notification.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

@@ -95,6 +95,8 @@ For more details on navigation events, see [How to Listen to Page Navigation Cha
 
 ## Example: Comprehensive Event Monitor
 
+This example creates a comprehensive event monitoring page that subscribes to all major application events (projects, workflows, replay sessions, navigation, and backend events). It displays all events in a scrollable log with timestamps and event types.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -175,6 +177,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Project-Specific Configuration
 
+This example manages project-specific configuration by listening to project change events. When switching projects, it cleans up resources from the previous project and loads configuration for the new project.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -210,6 +214,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Workflow Automation
 
+This example reacts to workflow lifecycle events to trigger automation or notifications. It logs when workflows are created, updated, or deleted, and can perform actions like updating related UI or cleaning up resources.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -235,6 +241,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Real-Time Updates
+
+This example demonstrates real-time UI updates based on application events. It listens to replay session changes and page navigation events, calling update functions to keep the UI synchronized with the current state.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

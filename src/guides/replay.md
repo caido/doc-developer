@@ -127,6 +127,8 @@ handler.stop();
 
 ## Example: Session Manager Plugin
 
+This example creates a comprehensive session and collection management interface. It displays all replay sessions and collections, allows opening sessions in tabs, creating new collections, and deleting items. It also subscribes to session change events.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -272,6 +274,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Auto-Organize Sessions
+
+This example automatically organizes replay sessions by creating or finding a collection called "Automated Sessions" and listening for session changes to potentially move sessions into this collection.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

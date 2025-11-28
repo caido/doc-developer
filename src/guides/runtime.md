@@ -14,6 +14,8 @@ The version is returned as a string (e.g., `"1.0.0"`).
 
 ## Example: Version Check
 
+This example checks if the current Caido version meets a minimum requirement (1.2.0). It parses the version string, compares it to the minimum version, and displays a warning toast if the version is too old.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -34,6 +36,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Version Display
+
+This example creates a page that displays the current Caido version and plugin compatibility status. It shows the version information in a formatted card with styling.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -77,6 +81,8 @@ export const init = (sdk: CaidoSDK) => {
 
 ## Example: Feature Detection
 
+This example implements a feature availability checker that determines if specific features are available based on the Caido version. It checks version requirements for features like "advanced-filters" and "ai-integration" and enables or disables features accordingly.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -115,6 +121,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Compatibility Check
+
+This example performs a comprehensive version compatibility check with a custom version comparison function. If the version is incompatible, it displays an error toast and prevents plugin initialization, otherwise it logs successful initialization.
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";

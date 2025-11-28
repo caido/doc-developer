@@ -58,6 +58,8 @@ dialog.close();
 
 ## Example: Confirmation Dialog
 
+This example creates a reusable confirmation dialog function that displays a message and returns a promise resolving to `true` if confirmed or `false` if cancelled. It's used in a page with a delete button.
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 
@@ -144,6 +146,8 @@ export const init = (sdk: CaidoSDK) => {
 ```
 
 ## Example: Form Dialog
+
+This example creates a dialog with a text input field that collects user input. The dialog returns the entered value when submitted, or `null` if cancelled. The input is automatically focused when the dialog opens.
 
 ```ts
 const showFormDialog = (sdk: CaidoSDK): Promise<string | null> => {
