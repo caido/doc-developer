@@ -61,18 +61,28 @@ sdk.footer.addToSlot(FooterSlot.FooterSlotPrimary, {
 
 ### Custom Component
 
-A custom component definition:
+A custom Vue component from a `.vue` file:
+
+```vue
+<!-- CustomStatus.vue -->
+<script setup lang="ts">
+// Component logic here
+</script>
+
+<template>
+  <div class="p-2">
+    Custom content
+  </div>
+</template>
+```
 
 ```ts
+import CustomStatus from "./CustomStatus.vue";
+
 sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
   kind: "Custom",
   component: {
-    render: (container: HTMLElement) => {
-      const div = document.createElement("div");
-      div.textContent = "Custom content";
-      div.style.padding = "8px";
-      container.appendChild(div);
-    },
+    component: CustomStatus,
   },
 });
 ```
@@ -81,9 +91,27 @@ sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
 
 This example demonstrates adding multiple types of content to footer slots: a button with a click handler, a command button, and a custom status indicator component.
 
+First, create the status indicator component:
+
+```vue
+<!-- StatusIndicator.vue -->
+<script setup lang="ts">
+// Component logic here
+</script>
+
+<template>
+  <span class="px-2 py-1 bg-green-500 text-white rounded">
+    Plugin Active
+  </span>
+</template>
+```
+
+Then, register all slot content types:
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { FooterSlot } from "@caido/sdk-frontend";
+import StatusIndicator from "./StatusIndicator.vue";
 
 export type CaidoSDK = Caido;
 
@@ -117,61 +145,7 @@ export const init = (sdk: CaidoSDK) => {
   sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
     kind: "Custom",
     component: {
-      render: (container: HTMLElement) => {
-        const status = document.createElement("span");
-        status.textContent = "Plugin Active";
-        status.style.padding = "4px 8px";
-        status.style.backgroundColor = "#4caf50";
-        status.style.color = "white";
-        status.style.borderRadius = "4px";
-        container.appendChild(status);
-      },
-    },
-  });
-};
-```
-
-## Example: Replay Toolbar Extensions
-
-This example adds custom buttons and components to different Replay toolbar slots, including the primary toolbar (left side), secondary toolbar (right side), and topbar area.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-import { ReplaySlot } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-export const init = (sdk: CaidoSDK) => {
-  // Add to session toolbar primary (left side)
-  sdk.replay.addToSlot(ReplaySlot.SessionToolbarPrimary, {
-    kind: "Button",
-    label: "Custom Replay Action",
-    icon: "fas fa-play",
-    onClick: () => {
-      sdk.log.info("Replay action triggered");
-    },
-  });
-
-  // Add to session toolbar secondary (right side)
-  sdk.replay.addToSlot(ReplaySlot.SessionToolbarSecondary, {
-    kind: "Command",
-    commandId: "my-replay-command",
-    icon: "fas fa-cog",
-  });
-
-  // Add to topbar
-  sdk.replay.addToSlot(ReplaySlot.Topbar, {
-    kind: "Custom",
-    component: {
-      render: (container: HTMLElement) => {
-        const badge = document.createElement("div");
-        badge.textContent = "Replay Extension";
-        badge.style.padding = "4px 8px";
-        badge.style.backgroundColor = "#2196f3";
-        badge.style.color = "white";
-        badge.style.borderRadius = "4px";
-        container.appendChild(badge);
-      },
+      component: StatusIndicator,
     },
   });
 };
@@ -181,73 +155,52 @@ export const init = (sdk: CaidoSDK) => {
 
 This example creates a custom component that tracks and displays a click counter. The button updates its label each time it's clicked and shows a toast notification.
 
+First, create a Vue component with reactive state:
+
+```vue
+<!-- ClickCounter.vue -->
+<script setup lang="ts">
+import { ref } from "vue";
+import type { Caido } from "@caido/sdk-frontend";
+
+const props = defineProps<{
+  sdk: Caido;
+}>();
+
+const count = ref(0);
+
+const handleClick = () => {
+  count.value++;
+  props.sdk.window.showToast(`Clicked ${count.value} times`, { variant: "info" });
+};
+</script>
+
+<template>
+  <button
+    @click="handleClick"
+    class="px-4 py-2"
+  >
+    Clicks: {{ count }}
+  </button>
+</template>
+```
+
+Then, register the component in a slot:
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
 import { FooterSlot } from "@caido/sdk-frontend";
+import ClickCounter from "./ClickCounter.vue";
 
 export type CaidoSDK = Caido;
 
 export const init = (sdk: CaidoSDK) => {
-  let clickCount = 0;
-
   sdk.footer.addToSlot(FooterSlot.FooterSlotPrimary, {
     kind: "Custom",
     component: {
-      render: (container: HTMLElement) => {
-        const button = document.createElement("button");
-        button.textContent = `Clicks: ${clickCount}`;
-        button.style.padding = "8px 16px";
-        button.addEventListener("click", () => {
-          clickCount++;
-          button.textContent = `Clicks: ${clickCount}`;
-          sdk.window.showToast(`Clicked ${clickCount} times`, { variant: "info" });
-        });
-        container.appendChild(button);
-      },
-    },
-  });
-};
-```
-
-## Example: Status Indicator
-
-This example creates a status indicator component that shows a colored dot and connection status text. The status updates every 5 seconds to reflect the current connection state.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-import { FooterSlot } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-export const init = (sdk: CaidoSDK) => {
-  sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
-    kind: "Custom",
-    component: {
-      render: (container: HTMLElement) => {
-        const indicator = document.createElement("div");
-        indicator.style.display = "flex";
-        indicator.style.alignItems = "center";
-        indicator.style.gap = "8px";
-
-        const dot = document.createElement("div");
-        dot.style.width = "8px";
-        dot.style.height = "8px";
-        dot.style.borderRadius = "50%";
-        dot.style.backgroundColor = "#4caf50";
-
-        const text = document.createElement("span");
-        text.textContent = "Connected";
-
-        indicator.appendChild(dot);
-        indicator.appendChild(text);
-        container.appendChild(indicator);
-
-        // Update status periodically
-        setInterval(() => {
-          const isConnected = Math.random() > 0.1; // Example check
-          dot.style.backgroundColor = isConnected ? "#4caf50" : "#f44336";
-          text.textContent = isConnected ? "Connected" : "Disconnected";
-        }, 5000);
+      component: ClickCounter,
+      props: {
+        sdk,
       },
     },
   });
@@ -282,4 +235,3 @@ Slot content is rendered when the relevant page is active. For footer slots, con
 ::: warning
 Be mindful of slot space limitations. Too many items in a slot can clutter the interface. Consider grouping related actions or using custom components to organize multiple controls.
 :::
-

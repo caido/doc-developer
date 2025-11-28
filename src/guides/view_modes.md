@@ -5,6 +5,7 @@ You can add custom view modes to display requests in alternative formats, such a
 ## Adding a View Mode
 
 View modes are available on multiple pages:
+
 - HTTP History (`sdk.httpHistory.addRequestViewMode()`)
 - Replay (`sdk.replay.addRequestViewMode()`)
 - Search (`sdk.search.addRequestViewMode()`)
@@ -29,44 +30,70 @@ sdk.httpHistory.addRequestViewMode({
 
 This example creates a custom view mode that formats request bodies as pretty-printed JSON. If the body isn't valid JSON, it displays an error message.
 
+First, create a Vue component that receives the request data as props:
+
+```vue
+<!-- JSONFormatterView.vue -->
+<script setup lang="ts">
+import { computed } from "vue";
+
+const props = defineProps<{
+  request: {
+    body?: string;
+    method?: string;
+    url?: string;
+    headers?: Record<string, string>;
+  };
+}>();
+
+const formattedJson = computed(() => {
+  try {
+    const body = props.request.body || "{}";
+    const json = JSON.parse(body);
+    return JSON.stringify(json, null, 2);
+  } catch {
+    return "";
+  }
+});
+
+const error = computed(() => {
+  try {
+    const body = props.request.body || "{}";
+    JSON.parse(body);
+    return null;
+  } catch {
+    return "Invalid JSON";
+  }
+});
+</script>
+
+<template>
+  <div v-if="error" class="text-red-500 p-4">
+    {{ error }}
+  </div>
+  <pre v-else class="p-4 bg-gray-100 rounded overflow-auto">
+    {{ formattedJson }}
+  </pre>
+</template>
+```
+
+Then, register the view mode with the component:
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
+import JSONFormatterView from "./JSONFormatterView.vue";
 
 export type CaidoSDK = Caido;
-
-const createJSONFormatterView = (sdk: CaidoSDK) => {
-  return {
-    render: (container: HTMLElement, request: any) => {
-      container.innerHTML = "";
-
-      try {
-        // Parse request body as JSON
-        const body = request.body || "{}";
-        const json = JSON.parse(body);
-        const formatted = JSON.stringify(json, null, 2);
-
-        const pre = document.createElement("pre");
-        pre.style.padding = "16px";
-        pre.style.backgroundColor = "#f5f5f5";
-        pre.style.borderRadius = "4px";
-        pre.style.overflow = "auto";
-        pre.textContent = formatted;
-
-        container.appendChild(pre);
-      } catch (err) {
-        const error = document.createElement("div");
-        error.textContent = "Invalid JSON";
-        error.style.color = "red";
-        container.appendChild(error);
-      }
-    },
-  };
-};
 
 export const init = (sdk: CaidoSDK) => {
   sdk.httpHistory.addRequestViewMode({
     label: "JSON Formatter",
-    view: createJSONFormatterView(sdk),
+    view: {
+      component: JSONFormatterView,
+      props: {
+        request: {}, // The request object will be passed automatically
+      },
+    },
   });
 };
 ```
@@ -75,226 +102,133 @@ export const init = (sdk: CaidoSDK) => {
 
 This example creates an interactive form view that displays request method, URL, and headers as editable form fields. Users can modify these values directly in the visual interface.
 
+First, create a Vue component with reactive form fields:
+
+```vue
+<!-- VisualBuilderView.vue -->
+<script setup lang="ts">
+import { reactive } from "vue";
+
+const props = defineProps<{
+  request: {
+    body?: string;
+    method?: string;
+    url?: string;
+    headers?: Record<string, string>;
+  };
+}>();
+
+const methods = ["GET", "POST", "PUT", "DELETE", "PATCH"];
+
+const localRequest = reactive({
+  method: props.request.method || "GET",
+  url: props.request.url || "",
+  headers: { ...(props.request.headers || {}) },
+});
+
+const updateHeaderKey = (oldKey: string, newKey: string) => {
+  const value = localRequest.headers[oldKey];
+  delete localRequest.headers[oldKey];
+  localRequest.headers[newKey] = value;
+};
+
+const updateHeaderValue = (key: string, value: string) => {
+  localRequest.headers[key] = value;
+};
+</script>
+
+<template>
+  <div class="p-5">
+    <label>
+      Method:
+      <select v-model="localRequest.method">
+        <option v-for="method in methods" :key="method" :value="method">
+          {{ method }}
+        </option>
+      </select>
+    </label>
+
+    <label class="block mt-4">
+      URL:
+      <input
+        v-model="localRequest.url"
+        type="text"
+        class="w-full p-2 mt-1"
+      />
+    </label>
+
+    <h3 class="mt-4">Headers</h3>
+    <div
+      v-for="(value, key, index) in localRequest.headers"
+      :key="index"
+      class="flex gap-2 mb-2"
+    >
+      <input
+        :value="key"
+        class="flex-1 p-2"
+        @input="updateHeaderKey(index, $event.target.value)"
+      />
+      <input
+        :value="value"
+        class="flex-[2] p-2"
+        @input="updateHeaderValue(key, $event.target.value)"
+      />
+    </div>
+  </div>
+</template>
+```
+
+Then, register the view mode:
+
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
+import VisualBuilderView from "./VisualBuilderView.vue";
 
 export type CaidoSDK = Caido;
-
-const createVisualBuilderView = (sdk: CaidoSDK) => {
-  return {
-    render: (container: HTMLElement, request: any) => {
-      container.innerHTML = "";
-      container.style.padding = "20px";
-
-      // Method selector
-      const methodLabel = document.createElement("label");
-      methodLabel.textContent = "Method: ";
-      const methodSelect = document.createElement("select");
-      ["GET", "POST", "PUT", "DELETE", "PATCH"].forEach((method) => {
-        const option = document.createElement("option");
-        option.value = method;
-        option.textContent = method;
-        if (request.method === method) {
-          option.selected = true;
-        }
-        methodSelect.appendChild(option);
-      });
-      methodLabel.appendChild(methodSelect);
-      container.appendChild(methodLabel);
-
-      // URL input
-      const urlLabel = document.createElement("label");
-      urlLabel.textContent = "URL: ";
-      urlLabel.style.display = "block";
-      urlLabel.style.marginTop = "16px";
-      const urlInput = document.createElement("input");
-      urlInput.type = "text";
-      urlInput.value = request.url || "";
-      urlInput.style.width = "100%";
-      urlInput.style.padding = "8px";
-      urlLabel.appendChild(urlInput);
-      container.appendChild(urlLabel);
-
-      // Headers section
-      const headersLabel = document.createElement("h3");
-      headersLabel.textContent = "Headers";
-      headersLabel.style.marginTop = "16px";
-      container.appendChild(headersLabel);
-
-      const headersContainer = document.createElement("div");
-      Object.entries(request.headers || {}).forEach(([key, value]) => {
-        const headerRow = document.createElement("div");
-        headerRow.style.display = "flex";
-        headerRow.style.gap = "8px";
-        headerRow.style.marginBottom = "8px";
-
-        const keyInput = document.createElement("input");
-        keyInput.value = key;
-        keyInput.style.flex = "1";
-        keyInput.style.padding = "8px";
-
-        const valueInput = document.createElement("input");
-        valueInput.value = String(value);
-        valueInput.style.flex = "2";
-        valueInput.style.padding = "8px";
-
-        headerRow.appendChild(keyInput);
-        headerRow.appendChild(valueInput);
-        headersContainer.appendChild(headerRow);
-      });
-      container.appendChild(headersContainer);
-    },
-  };
-};
 
 export const init = (sdk: CaidoSDK) => {
   sdk.httpHistory.addRequestViewMode({
     label: "Visual Builder",
-    view: createVisualBuilderView(sdk),
-  });
-};
-```
-
-## Example: XML Tree View
-
-This example parses XML request bodies and displays them as an indented tree structure. Element tags are shown in blue, and text content is displayed in a hierarchical format.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const createXMLTreeView = (sdk: CaidoSDK) => {
-  return {
-    render: (container: HTMLElement, request: any) => {
-      container.innerHTML = "";
-
-      const body = request.body || "";
-      
-      if (!body.trim().startsWith("<")) {
-        const message = document.createElement("div");
-        message.textContent = "Not an XML request";
-        message.style.padding = "16px";
-        message.style.color = "#666";
-        container.appendChild(message);
-        return;
-      }
-
-      // Simple XML tree renderer
-      const parseXML = (xmlString: string): HTMLElement => {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlString, "text/xml");
-        
-        const renderNode = (node: Node, depth: number = 0): HTMLElement => {
-          const div = document.createElement("div");
-          div.style.paddingLeft = `${depth * 20}px`;
-          div.style.marginBottom = "4px";
-
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            const element = node as Element;
-            div.textContent = `<${element.tagName}>`;
-            div.style.fontWeight = "bold";
-            div.style.color = "#0066cc";
-
-            Array.from(element.childNodes).forEach((child) => {
-              div.appendChild(renderNode(child, depth + 1));
-            });
-          } else if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
-            div.textContent = node.textContent.trim();
-            div.style.color = "#333";
-          }
-
-          return div;
-        };
-
-        return renderNode(xmlDoc.documentElement);
-      };
-
-      try {
-        const tree = parseXML(body);
-        container.appendChild(tree);
-      } catch (err) {
-        const error = document.createElement("div");
-        error.textContent = "Failed to parse XML";
-        error.style.color = "red";
-        container.appendChild(error);
-      }
+    view: {
+      component: VisualBuilderView,
+      props: {
+        request: {}, // The request object will be passed automatically
+      },
     },
-  };
-};
-
-export const init = (sdk: CaidoSDK) => {
-  sdk.httpHistory.addRequestViewMode({
-    label: "XML Tree",
-    view: createXMLTreeView(sdk),
-  });
-};
-```
-
-## Example: Request Statistics View
-
-This example displays request metadata in a statistics format, showing the HTTP method, URL length, header count, and body size in a clean table layout.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const createStatisticsView = (sdk: CaidoSDK) => {
-  return {
-    render: (container: HTMLElement, request: any) => {
-      container.innerHTML = "";
-      container.style.padding = "20px";
-
-      const stats = [
-        { label: "Method", value: request.method || "N/A" },
-        { label: "URL Length", value: String((request.url || "").length) },
-        { label: "Header Count", value: String(Object.keys(request.headers || {}).length) },
-        { label: "Body Size", value: String((request.body || "").length) + " bytes" },
-      ];
-
-      stats.forEach((stat) => {
-        const row = document.createElement("div");
-        row.style.display = "flex";
-        row.style.justifyContent = "space-between";
-        row.style.padding = "8px";
-        row.style.borderBottom = "1px solid #eee";
-
-        const label = document.createElement("span");
-        label.textContent = stat.label + ":";
-        label.style.fontWeight = "bold";
-
-        const value = document.createElement("span");
-        value.textContent = stat.value;
-
-        row.appendChild(label);
-        row.appendChild(value);
-        container.appendChild(row);
-      });
-    },
-  };
-};
-
-export const init = (sdk: CaidoSDK) => {
-  sdk.httpHistory.addRequestViewMode({
-    label: "Statistics",
-    view: createStatisticsView(sdk),
   });
 };
 ```
 
 ## Component Definition
 
-The `view` property accepts a component definition with a `render` method that receives:
-- `container` - The HTMLElement where your view should be rendered
-- `request` - The request object containing method, URL, headers, body, etc.
+The `view` property accepts a `ComponentDefinition` object that includes a Vue component. The component receives the request data via props.
 
 ```ts
 {
-  render: (container: HTMLElement, request: any) => {
-    // Render your custom view
-  }
+  component: YourVueComponent,
+  props: {
+    request: {}, // The request object will be passed automatically
+  },
 }
+```
+
+The Vue component should be defined in a `.vue` file and receive the request as a prop:
+
+```vue
+<script setup lang="ts">
+defineProps<{
+  request: {
+    body?: string;
+    method?: string;
+    url?: string;
+    headers?: Record<string, string>;
+  };
+}>();
+</script>
+
+<template>
+  <!-- Your view content -->
+</template>
 ```
 
 ::: tip
@@ -308,4 +242,3 @@ View modes are available on all pages that display requests. Consider adding you
 ::: warning
 The request object structure may vary between pages. Test your view mode on the pages where you add it to ensure compatibility.
 :::
-

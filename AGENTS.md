@@ -230,6 +230,29 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - Even simple code snippets should have context explaining their purpose
 - Example format: After the example heading, add a descriptive paragraph, then the code block. The structure should be: heading → description paragraph → code block
 
+#### Vue Component Examples
+
+When showing Vue Single File Component (`.vue`) examples in documentation:
+
+- **Script section first**: Place `<script setup lang="ts">` at the top of the component
+- **Template section second**: Place `<template>` after the script section
+- **Use Tailwind CSS**: Replace inline `style` attributes with Tailwind utility classes
+- **Structure**: Script → Template (not Template → Script)
+
+Example structure:
+
+```vue
+<script setup lang="ts">
+// Script content here
+</script>
+
+<template>
+  <!-- HTML template with Tailwind classes -->
+</template>
+```
+
+This convention ensures consistency across all Vue component examples in the documentation.
+
 #### For Reference
 
 - Be accurate, complete, and concise
