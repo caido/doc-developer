@@ -117,7 +117,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         ],
       },
       {
-        text: "Communication & Events",
+        text: "Events",
         items: [
           {
             text: "Subscribe to Application Events",
@@ -148,10 +148,6 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
           {
             text: "Use AI in Your Plugin",
             link: "/guides/ai",
-          },
-          {
-            text: "Query the GraphQL API",
-            link: "/guides/graphql",
           },
         ],
       },
@@ -208,7 +204,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         ],
       },
       {
-        text: "Communication & Events",
+        text: "Events",
         items: [
           {
             text: "Handle Backend Events",
