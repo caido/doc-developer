@@ -2,11 +2,15 @@
 
 Scopes define which requests and responses are included or excluded from various operations in Caido. You can programmatically create, update, delete, and query scopes, as well as set the active scope on different pages.
 
-## Core Scope Operations
+::: tip
+Use scopes to filter requests programmatically across different pages. This is useful for automation and workflow management.
+:::
+
+## Creating and Managing Scopes
 
 ### Creating a Scope
 
-To create a new scope, use `sdk.scopes.createScope()`:
+Create a new scope using `sdk.scopes.createScope()`. The `allowlist` specifies URLs that should be included, while `denylist` specifies URLs that should be excluded. Both support wildcard patterns.
 
 ```ts
 const scope = await sdk.scopes.createScope({
@@ -16,11 +20,9 @@ const scope = await sdk.scopes.createScope({
 });
 ```
 
-The `allowlist` specifies URLs that should be included, while `denylist` specifies URLs that should be excluded. Both support wildcard patterns.
-
 ### Getting All Scopes
 
-To retrieve all available scopes:
+Retrieve all available scopes using `sdk.scopes.getScopes()`:
 
 ```ts
 const scopes = sdk.scopes.getScopes();
@@ -28,7 +30,7 @@ const scopes = sdk.scopes.getScopes();
 
 ### Updating a Scope
 
-To update an existing scope:
+Update an existing scope by providing the scope ID and the fields you want to change. You can update the name, allowlist, or denylist. All fields are optional.
 
 ```ts
 const updatedScope = await sdk.scopes.updateScope(scopeId, {
@@ -38,23 +40,21 @@ const updatedScope = await sdk.scopes.updateScope(scopeId, {
 });
 ```
 
-You can update the name, allowlist, or denylist. All fields are optional.
-
 ### Deleting a Scope
 
-To delete a scope:
+Delete a scope by its ID. The method returns `true` if the scope was successfully deleted.
 
 ```ts
 const deleted = await sdk.scopes.deleteScope(scopeId);
 ```
 
-Returns `true` if the scope was successfully deleted.
+## Setting Scopes on Different Pages
 
-## Page-Specific Scope Operations
+Different pages in Caido provide scope operations specific to their context. You can get the current scope ID and set a new scope for each page.
 
-Different pages in Caido provide scope operations specific to their context.
+### Setting Scope on HTTP History
 
-### HTTP History
+Get the current scope ID or set a new scope for the HTTP History page:
 
 ```ts
 // Get current scope
@@ -64,7 +64,9 @@ const currentScopeId = sdk.httpHistory.getScopeId();
 await sdk.httpHistory.setScope(scopeId);
 ```
 
-### Search
+### Setting Scope on Search
+
+Get the current scope ID or set a new scope for the Search page:
 
 ```ts
 // Get current scope
@@ -74,7 +76,9 @@ const currentScopeId = sdk.search.getScopeId();
 await sdk.search.setScope(scopeId);
 ```
 
-### Sitemap
+### Setting Scope on Sitemap
+
+Get the current scope ID or set a new scope for the Sitemap page:
 
 ```ts
 // Get current scope
@@ -84,7 +88,9 @@ const currentScopeId = sdk.sitemap.getScopeId();
 await sdk.sitemap.setScope(scopeId);
 ```
 
-### Intercept
+### Setting Scope on Intercept
+
+Get the current scope ID or set a new scope for the Intercept page:
 
 ```ts
 // Get current scope
@@ -98,13 +104,15 @@ sdk.intercept.setScope(scopeId);
 Scope operations on different pages may have different return types. HTTP History and Search return promises, while Intercept returns void.
 :::
 
-## Using Scope Patterns
+## Using Wildcard Patterns
 
-Scope allowlists and denylists support wildcard patterns:
+Scope allowlists and denylists support wildcard patterns to match multiple URLs:
 
 - `*example.com` - Matches any subdomain of example.com
 - `example.com` - Matches exactly example.com
 - `*` - Matches everything (when used in allowlist)
+
+Create a scope with wildcard patterns to filter production URLs while excluding test and development environments:
 
 ```ts
 const scope = await sdk.scopes.createScope({
@@ -215,7 +223,7 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-## Example: Setting Scope on Page Navigation
+### Setting Scope on Page Navigation
 
 This example automatically sets a specific scope when navigating to the HTTP History page. It creates or finds a scope named "Auto Scope" and applies it whenever the user visits HTTP History.
 
@@ -256,7 +264,3 @@ export const init = (sdk: CaidoSDK) => {
   initializeScope();
 };
 ```
-
-::: tip
-Use scopes to filter requests programmatically across different pages. This is useful for automation and workflow management.
-:::
