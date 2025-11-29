@@ -2,6 +2,16 @@
 
 You can extend the request and response editors in Caido with CodeMirror extensions to add custom functionality like syntax highlighting, validation, autocomplete, custom keybindings, and editor themes.
 
+
+::: tip
+CodeMirror extensions are powerful and flexible. Refer to the [CodeMirror documentation](https://codemirror.net/docs/) for more advanced extension patterns.
+:::
+
+::: warning
+Be careful with extensions that modify editor behavior significantly, as they may interfere with Caido's built-in editor functionality.
+:::
+
+
 ## Adding Editor Extensions
 
 Editor extensions are available on multiple pages in Caido. You can add extensions to request editors and response editors (where available).
@@ -206,99 +216,3 @@ export const init = (sdk: CaidoSDK) => {
   sdk.httpHistory.addRequestEditorExtension(customAutocompleteExtension);
 };
 ```
-
-### Validation
-
-This example implements a validation extension that marks lines longer than 1000 characters as errors. It uses CodeMirror's state effects and decorations to visually highlight problematic lines.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-import { Extension } from "@codemirror/state";
-import { EditorView, Decoration, ViewPlugin } from "@codemirror/view";
-import { StateField, StateEffect } from "@codemirror/state";
-
-export type CaidoSDK = Caido;
-
-const addErrorMark = StateEffect.define<{ from: number; to: number }>({
-  map: ({ from, to }, change) => ({
-    from: change.mapPos(from),
-    to: change.mapPos(to),
-  }),
-});
-
-const errorField = StateField.define({
-  create() {
-    return Decoration.none;
-  },
-  update(errors, tr) {
-    errors = errors.map(tr.changes);
-    for (let effect of tr.effects) {
-      if (effect.is(addErrorMark)) {
-        errors = errors.update({
-          add: [
-            Decoration.mark({
-              class: "cm-error",
-              attributes: { title: "Invalid syntax" },
-            }).range(effect.value.from, effect.value.to),
-          ],
-        });
-      }
-    }
-    return errors;
-  },
-  provide: (f) => EditorView.decorations.from(f),
-});
-
-const validationPlugin = ViewPlugin.fromClass(
-  class {
-    constructor(private view: EditorView) {
-      this.validate();
-    }
-
-    update() {
-      this.validate();
-    }
-
-    validate() {
-      const doc = this.view.state.doc;
-      const text = doc.toString();
-
-      // Simple validation example: check for common issues
-      const effects: StateEffect<unknown>[] = [];
-      
-      // Example: mark lines that are too long
-      doc.iterLines((line, lineNo) => {
-        if (line.length > 1000) {
-          const from = doc.line(lineNo + 1).from;
-          const to = doc.line(lineNo + 1).to;
-          effects.push(addErrorMark.of({ from, to }));
-        }
-      });
-
-      if (effects.length > 0) {
-        this.view.dispatch({
-          effects,
-        });
-      }
-    }
-  }
-);
-
-const validationExtension: Extension = [errorField, validationPlugin];
-
-export const init = (sdk: CaidoSDK) => {
-  sdk.httpHistory.addRequestEditorExtension(validationExtension);
-};
-```
-
-::: tip
-CodeMirror extensions are powerful and flexible. Refer to the [CodeMirror documentation](https://codemirror.net/docs/) for more advanced extension patterns.
-:::
-
-::: info
-Extensions are applied globally to all editors on the specified page. If you need page-specific behavior, check the current page using `sdk.navigation.onPageChange()`.
-:::
-
-::: warning
-Be careful with extensions that modify editor behavior significantly, as they may interfere with Caido's built-in editor functionality.
-:::

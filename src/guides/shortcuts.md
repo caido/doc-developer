@@ -34,10 +34,6 @@ sdk.shortcuts.register("open-settings", ["Alt+S"]);
 ## Complete Example
 
 ```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
 // First, register the command
 sdk.commands.register("quick-action", {
   name: "Quick Action",

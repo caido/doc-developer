@@ -57,7 +57,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             link: "/guides/editor_extensions",
           },
           {
-            text: "Add Custom View Modes",
+            text: "Add View Modes",
             link: "/guides/view_modes",
           },
           {

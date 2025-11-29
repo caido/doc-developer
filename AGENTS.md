@@ -233,6 +233,7 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - Descriptions should be concise (1-2 sentences) and explain the purpose and functionality of the code
 - Even simple code snippets should have context explaining their purpose
 - Example format: After the example heading, add a descriptive paragraph, then the code block. The structure should be: heading → description paragraph → code block
+- **Remove unused type imports**: When reviewing frontend guides, remove `import type { Caido } from "@caido/sdk-frontend"` and `export type CaidoSDK = Caido;` declarations if `CaidoSDK` is not actually used in the code block (e.g., if the code only uses `sdk` without type annotations). Only keep these imports when `CaidoSDK` appears in function parameters or type annotations within the example.
 
 #### Vue Component Examples
 

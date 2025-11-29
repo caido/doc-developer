@@ -1,4 +1,4 @@
-# Add Custom View Modes
+# Add View Modes
 
 You can add custom view modes to display requests in alternative formats, such as custom parsers, formatted views, or visual editors. Custom view modes appear alongside the default view options in the request viewer.
 
@@ -28,28 +28,28 @@ sdk.httpHistory.addRequestViewMode({
 
 ## Component Definition
 
-The `view` property accepts a `ComponentDefinition` object that includes a Vue component. The component receives the request data via props.
+The `view` property accepts a `ComponentDefinition` object that includes a Vue component. The component automatically receives certain props that you don't need to pass explicitly.
 
-```ts
-{
-  component: YourVueComponent,
-  props: {
-    request: {}, // The request object will be passed automatically
-  },
-}
-```
+## Component Props
 
-The Vue component should be defined in a `.vue` file and receive the request as a prop:
+Request view mode components automatically receive the following implicit props:
+
+- `sdk` - The Caido SDK instance
+- `request` - The request object of type `RequestFull`
+
+For writable contexts (Intercept and Replay), components also receive:
+
+- `requestDraft` - A writable request object of type `RequestDraft`
+
+You don't need to pass these props when registering the view mode. Simply define them in your Vue component's props:
 
 ```vue
 <script setup lang="ts">
+import type { Caido, RequestFull } from "@caido/sdk-frontend";
+
 defineProps<{
-  request: {
-    body?: string;
-    method?: string;
-    url?: string;
-    headers?: Record<string, string>;
-  };
+  sdk: Caido;
+  request: RequestFull;
 }>();
 </script>
 
@@ -58,26 +58,50 @@ defineProps<{
 </template>
 ```
 
+For writable contexts (Intercept or Replay), you can also access the draft:
+
+```vue
+<script setup lang="ts">
+import type { Caido, RequestFull, RequestDraft } from "@caido/sdk-frontend";
+
+defineProps<{
+  sdk: Caido;
+  request: RequestFull;
+  requestDraft: RequestDraft;
+}>();
+</script>
+
+<template>
+  <!-- Your view content -->
+</template>
+```
+
+When registering the view mode, you don't need to pass these props:
+
+```ts
+{
+  component: YourVueComponent,
+  // No need to pass sdk, request, or requestDraft - they're passed automatically
+}
+```
+
 ## Examples
 
 ### JSON Formatter View
 
 This example creates a custom view mode that formats request bodies as pretty-printed JSON. If the body isn't valid JSON, it displays an error message.
 
-First, create a Vue component that receives the request data as props:
+First, create a Vue component that receives the request data as props. The SDK and request are passed automatically:
 
 ```vue
 <!-- JSONFormatterView.vue -->
 <script setup lang="ts">
 import { computed } from "vue";
+import type { Caido, RequestFull } from "@caido/sdk-frontend";
 
 const props = defineProps<{
-  request: {
-    body?: string;
-    method?: string;
-    url?: string;
-    headers?: Record<string, string>;
-  };
+  sdk: Caido;
+  request: RequestFull;
 }>();
 
 const formattedJson = computed(() => {
@@ -111,7 +135,7 @@ const error = computed(() => {
 </template>
 ```
 
-Then, register the view mode with the component:
+Then, register the view mode with the component. You don't need to pass the SDK or request props:
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -124,9 +148,6 @@ export const init = (sdk: CaidoSDK) => {
     label: "JSON Formatter",
     view: {
       component: JSONFormatterView,
-      props: {
-        request: {}, // The request object will be passed automatically
-      },
     },
   });
 };
@@ -136,20 +157,17 @@ export const init = (sdk: CaidoSDK) => {
 
 This example creates an interactive form view that displays request method, URL, and headers as editable form fields. Users can modify these values directly in the visual interface.
 
-First, create a Vue component with reactive form fields:
+First, create a Vue component with reactive form fields. The SDK and request are passed automatically:
 
 ```vue
 <!-- VisualBuilderView.vue -->
 <script setup lang="ts">
 import { reactive } from "vue";
+import type { Caido, RequestFull } from "@caido/sdk-frontend";
 
 const props = defineProps<{
-  request: {
-    body?: string;
-    method?: string;
-    url?: string;
-    headers?: Record<string, string>;
-  };
+  sdk: Caido;
+  request: RequestFull;
 }>();
 
 const methods = ["GET", "POST", "PUT", "DELETE", "PATCH"];
@@ -212,7 +230,7 @@ const updateHeaderValue = (key: string, value: string) => {
 </template>
 ```
 
-Then, register the view mode:
+Then, register the view mode. You don't need to pass the SDK or request props:
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -225,9 +243,79 @@ export const init = (sdk: CaidoSDK) => {
     label: "Visual Builder",
     view: {
       component: VisualBuilderView,
-      props: {
-        request: {}, // The request object will be passed automatically
-      },
+    },
+  });
+};
+```
+
+### Editable Request View (Writable Context)
+
+This example creates a view mode for Intercept or Replay that allows editing the request using the `requestDraft` prop. The component receives both `request` (read-only) and `requestDraft` (writable) props automatically.
+
+First, create a Vue component that uses the draft to modify the request:
+
+```vue
+<!-- EditableRequestView.vue -->
+<script setup lang="ts">
+import { ref } from "vue";
+import type { Caido, RequestFull, RequestDraft } from "@caido/sdk-frontend";
+
+const props = defineProps<{
+  sdk: Caido;
+  request: RequestFull;
+  requestDraft: RequestDraft;
+}>();
+
+const editedBody = ref(props.request.body || "");
+
+const updateBody = () => {
+  props.requestDraft.setBody(editedBody.value);
+  props.sdk.window.showToast("Request body updated", { variant: "success" });
+};
+</script>
+
+<template>
+  <div class="p-5">
+    <label class="block mb-2">
+      Request Body:
+      <textarea
+        v-model="editedBody"
+        class="w-full p-2 mt-1 border rounded"
+        rows="10"
+      />
+    </label>
+    <button
+      @click="updateBody"
+      class="px-4 py-2 bg-blue-500 text-white rounded"
+    >
+      Update Request
+    </button>
+  </div>
+</template>
+```
+
+Then, register the view mode for Intercept or Replay:
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+import EditableRequestView from "./EditableRequestView.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  // For Intercept
+  sdk.intercept.addRequestViewMode({
+    label: "Editable Body",
+    view: {
+      component: EditableRequestView,
+    },
+  });
+
+  // For Replay
+  sdk.replay.addRequestViewMode({
+    label: "Editable Body",
+    view: {
+      component: EditableRequestView,
     },
   });
 };

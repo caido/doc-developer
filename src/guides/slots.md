@@ -87,6 +87,22 @@ sdk.footer.addToSlot(FooterSlot.FooterSlotSecondary, {
 });
 ```
 
+## Component Props
+
+Custom slot components automatically receive the SDK as an implicit prop. You don't need to pass it explicitly when registering the component.
+
+If your Vue component defines an `sdk` prop, it will automatically receive the SDK instance:
+
+```vue
+<script setup lang="ts">
+import type { Caido } from "@caido/sdk-frontend";
+
+const props = defineProps<{
+  sdk: Caido;
+}>();
+</script>
+```
+
 ## Slot Import
 
 You need to import the slot constants:
@@ -174,7 +190,7 @@ export const init = (sdk: CaidoSDK) => {
 
 This example creates a custom component that tracks and displays a click counter. The button updates its label each time it's clicked and shows a toast notification.
 
-First, create a Vue component with reactive state:
+First, create a Vue component with reactive state. The SDK is automatically passed as a prop, so you only need to define it in the component:
 
 ```vue
 <!-- ClickCounter.vue -->
@@ -204,7 +220,7 @@ const handleClick = () => {
 </template>
 ```
 
-Then, register the component in a slot:
+Then, register the component in a slot. You don't need to pass the SDK prop explicitly:
 
 ```ts
 import type { Caido } from "@caido/sdk-frontend";
@@ -218,9 +234,6 @@ export const init = (sdk: CaidoSDK) => {
     kind: "Custom",
     component: {
       component: ClickCounter,
-      props: {
-        sdk,
-      },
     },
   });
 };
