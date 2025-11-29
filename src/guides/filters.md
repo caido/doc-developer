@@ -12,7 +12,7 @@ To create a saved filter:
 const filter = await sdk.filters.create({
   name: "My Filter",
   alias: "my-filter",
-  query: "status:200",
+  query: "resp.code.eq:200",
 });
 ```
 
@@ -39,7 +39,7 @@ To update an existing filter:
 ```ts
 const updatedFilter = await sdk.filters.update(filterId, {
   name: "Updated Filter Name",
-  query: "status:200 method:GET",
+  query: "resp.code.eq:200 AND req.method.eq:\"GET\"",
 });
 ```
 
@@ -62,7 +62,7 @@ You can get and set the current HTTPQL query on the HTTP History page:
 const currentQuery = sdk.httpHistory.getQuery();
 
 // Set query
-sdk.httpHistory.setQuery("status:200 method:GET");
+sdk.httpHistory.setQuery("resp.code.eq:200 AND req.method.eq:\"GET\"");
 
 // Scroll to a specific request by ID
 sdk.httpHistory.scrollTo(requestId);
@@ -81,32 +81,10 @@ Similarly, you can manage queries on the Search page:
 const currentQuery = sdk.search.getQuery();
 
 // Set query
-sdk.search.setQuery("status:404");
+sdk.search.setQuery("resp.code.eq:404");
 
 // Scroll to a specific request by ID
 sdk.search.scrollTo(requestId);
-```
-
-## HTTPQL Query Examples
-
-Common HTTPQL query patterns:
-
-```ts
-// Status code
-"status:200"
-"status:>=400"
-
-// HTTP method
-"method:GET"
-"method:POST"
-
-// Path
-"path:/api/users"
-"path:*api*"
-
-// Combined
-"status:200 method:GET path:/api"
-"status:>=400 OR status:<200"
 ```
 
 ## Examples
@@ -168,16 +146,16 @@ const buildQuery = (): string => {
   const parts: string[] = [];
 
   if (status.value) {
-    parts.push(`status:${status.value}`);
+    parts.push(`resp.code.eq:${status.value}`);
   }
   if (method.value) {
-    parts.push(`method:${method.value}`);
+    parts.push(`req.method.eq:"${method.value}"`);
   }
   if (path.value) {
-    parts.push(`path:*${path.value}*`);
+    parts.push(`req.path.contains:"${path.value}"`);
   }
 
-  return parts.join(" ");
+  return parts.join(" AND ");
 };
 
 const applyFilter = () => {
@@ -222,7 +200,7 @@ This example demonstrates creating a filter with an alias and then using that fi
 const filter = await sdk.filters.create({
   name: "Successful GET Requests",
   alias: "success-get",
-  query: "status:200 method:GET",
+  query: "resp.code.eq:200 AND req.method.eq:\"GET\"",
 });
 
 // Use the filter in a query

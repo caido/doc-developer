@@ -44,10 +44,6 @@ sdk.commandPalette.pushView({
 Pushed views are added to a stack. Users can navigate back through the stack using standard command palette navigation.
 :::
 
-::: warning
-Keep custom views focused and lightweight. Complex views may impact command palette performance and user experience.
-:::
-
 ## Using Component Props
 
 Command palette components automatically receive the SDK as an implicit prop. If your Vue component defines an `sdk` prop, it will automatically receive the SDK instance:

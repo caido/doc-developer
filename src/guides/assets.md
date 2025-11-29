@@ -56,10 +56,6 @@ export default defineConfig({
 });
 ```
 
-::: info
-Asset paths are relative to your plugin's assets directory. Use glob patterns in your config to include multiple files.
-:::
-
 ::: warning
 Assets are bundled with your plugin, so large files will increase the plugin size. Consider loading external resources at runtime for very large files.
 :::

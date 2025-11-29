@@ -12,7 +12,7 @@ To create a new replay session:
 await sdk.replay.createSession(source, collectionId);
 ```
 
-The `source` parameter specifies where the request comes from (e.g., from HTTP History). The optional `collectionId` adds the session to a specific collection.
+The `source` parameter is a `RequestSource` object that can either be a raw HTTP request (with `type: "Raw"`, `raw` string, and `connectionInfo`) or a reference to an existing request by ID (with `type: "ID"` and `id` string). The optional `collectionId` adds the session to a specific collection.
 
 ### Getting Sessions
 

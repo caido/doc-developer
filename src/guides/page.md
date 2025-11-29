@@ -47,10 +47,6 @@ This creates a page where the contents are defined in your `App.vue` component. 
 
 The `topbar` property is optional and appears to the right of the Caido logo in the top-left corner.
 
-::: warning
-The inclusion of a topbar will remove the Browser button, >\_Commands button, Forwarding/Queuing button, Project Dropdown Menu and Account Menu from the top-right corner of the Caido UI in your plugin page.
-:::
-
 ### Navigating to a Page
 
 ```ts

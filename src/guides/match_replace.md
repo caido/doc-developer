@@ -22,10 +22,6 @@ To retrieve all collections:
 const collections = sdk.matchReplace.getCollections();
 ```
 
-::: tip
-Use collections to organize related match and replace rules, making it easier to enable/disable groups of rules together.
-:::
-
 ### Updating a Collection
 
 To update a collection:
@@ -54,16 +50,12 @@ To create a new match and replace rule:
 const rule = await sdk.matchReplace.createRule({
   collectionId: collection.id,
   name: "My Rule",
-  query: "status:200",
+  query: "resp.code.eq:200",
   section: "RequestHeaders",
 });
 ```
 
 The `section` parameter specifies which part of the request/response to match and replace (e.g., `RequestHeaders`, `ResponseBody`, etc.).
-
-::: warning
-Be careful when creating rules that modify request/response data, as they can affect the behavior of your application testing. Test rules thoroughly before enabling them.
-:::
 
 ### Getting Rules
 
@@ -94,7 +86,7 @@ To update a rule:
 ```ts
 const updated = await sdk.matchReplace.updateRule(ruleId, {
   name: "Updated Rule Name",
-  query: "status:404",
+  query: "resp.code.eq:404",
   section: "ResponseBody",
 });
 ```
