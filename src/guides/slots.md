@@ -124,6 +124,14 @@ import { ReplaySlot } from "@caido/sdk-frontend";
 Be mindful of slot space limitations. Too many items in a slot can clutter the interface. Consider grouping related actions or using custom components to organize multiple controls.
 :::
 
+::: tip
+Slots are a powerful way to extend Caido's UI without creating custom pages. Use them to add plugin-specific functionality that integrates seamlessly with the existing interface.
+:::
+
+::: info
+Slot content is rendered when the relevant page is active. For footer slots, content is always visible. For Replay slots, content is only visible on the Replay page.
+:::
+
 ## Examples
 
 ### Footer Actions
@@ -242,11 +250,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Slots are a powerful way to extend Caido's UI without creating custom pages. Use them to add plugin-specific functionality that integrates seamlessly with the existing interface.
-:::
-
-::: info
-Slot content is rendered when the relevant page is active. For footer slots, content is always visible. For Replay slots, content is only visible on the Replay page.
-:::

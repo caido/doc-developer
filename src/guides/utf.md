@@ -85,60 +85,30 @@ export function init(sdk: SDK<API>) {
 }
 ```
 
-::: tip
-<details>
-<summary>To view the entire frontend script, expand the following:</summary>
+### Calling from Frontend
 
-``` ts
-import type { Caido } from "@caido/sdk-frontend";
-import type { API } from "../../backend/src/index";
+To call the backend function from a Vue component:
 
-import "./styles/index.css";
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject } from "vue";
 
-export type CaidoSDK = Caido<API>;
+const sdk = inject<CaidoSDK>("sdk");
 
-const Commands = {
-  sending: "my-plugin-page.req",
-} as const;
-
-const sending = async (sdk: CaidoSDK) => {
+const sendRequest = async () => {
+  if (!sdk) return;
   await sdk.backend.testSendRequest();
 };
+</script>
 
-const createPage = (sdk: CaidoSDK) => {
-  const requestButton = sdk.ui.button({
-    variant: "primary",
-    label: "Send Request",
-  });
-
-  requestButton.addEventListener("click", async () => {
-    await sending(sdk);
-  });
-
-  const bodyContainer = document.createElement("div");
-  bodyContainer.appendChild(requestButton);
-
-  const card = sdk.ui.card({
-    body: bodyContainer,
-
-  });
-
-  sdk.navigation.addPage("/my-plugin-page", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-  sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
-    icon: "fas fa-rocket",
-  });
-
-  sdk.commands.register(Commands.sending, {
-    name: "Send Request",
-    run: () => sending(sdk),
-  });
-};
+<template>
+  <div class="p-4">
+    <Button label="Send Request" @click="sendRequest" />
+  </div>
+</template>
 ```
 
-</details>
+::: info
+For information on creating pages and setting up Vue components, see [Create a Page](/guides/page.md).
+:::

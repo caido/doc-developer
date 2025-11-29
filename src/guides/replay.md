@@ -50,6 +50,10 @@ To create a new collection:
 const collection = await sdk.replay.createCollection("My Collection");
 ```
 
+::: tip
+Use collections to organize related replay sessions, making it easier to manage and find specific sessions for testing scenarios.
+:::
+
 ### Getting Collections
 
 To retrieve all collections:
@@ -129,6 +133,10 @@ const handler = sdk.replay.onCurrentSessionChange((event) => {
 handler.stop();
 ```
 
+::: info
+Sessions and collections are persisted across Caido restarts, so programmatically created items will remain available.
+:::
+
 ## Examples
 
 ### Session Manager Plugin
@@ -136,147 +144,154 @@ handler.stop();
 This example creates a comprehensive session and collection management interface. It displays all replay sessions and collections, allows opening sessions in tabs, creating new collections, and deleting items. It also subscribes to session change events.
 
 ```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
 import type { Caido } from "@caido/sdk-frontend";
+
+import App from "./views/App.vue";
 
 export type CaidoSDK = Caido;
 
-const createPage = (sdk: CaidoSDK) => {
-  const container = document.createElement("div");
-  container.style.padding = "20px";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.gap = "16px";
-
-  // Sessions list
-  const sessionsList = document.createElement("div");
-  sessionsList.id = "sessions-list";
-
-  const refreshSessions = () => {
-    sessionsList.innerHTML = "";
-    const sessions = sdk.replay.getSessions();
-
-    if (sessions.length === 0) {
-      sessionsList.textContent = "No sessions found";
-      return;
-    }
-
-    sessions.forEach((session) => {
-      const sessionItem = document.createElement("div");
-      sessionItem.style.padding = "8px";
-      sessionItem.style.border = "1px solid #ccc";
-      sessionItem.style.marginBottom = "8px";
-
-      const name = document.createElement("h3");
-      name.textContent = session.name || `Session ${session.id}`;
-      sessionItem.appendChild(name);
-
-      const openButton = sdk.ui.button({
-        variant: "primary",
-        label: "Open",
-        size: "small",
-      });
-      openButton.addEventListener("click", () => {
-        sdk.replay.openTab(session.id);
-        sdk.navigation.goTo({ id: "replay" });
-      });
-      sessionItem.appendChild(openButton);
-
-      const deleteButton = sdk.ui.button({
-        variant: "secondary",
-        label: "Delete",
-        size: "small",
-      });
-      deleteButton.addEventListener("click", async () => {
-        await sdk.replay.deleteSessions([session.id]);
-        refreshSessions();
-        sdk.window.showToast("Session deleted", { variant: "success" });
-      });
-      sessionItem.appendChild(deleteButton);
-
-      sessionsList.appendChild(sessionItem);
-    });
-  };
-
-  // Collections list
-  const collectionsList = document.createElement("div");
-  collectionsList.id = "collections-list";
-
-  const refreshCollections = () => {
-    collectionsList.innerHTML = "";
-    const collections = sdk.replay.getCollections();
-
-    if (collections.length === 0) {
-      collectionsList.textContent = "No collections found";
-      return;
-    }
-
-    collections.forEach((collection) => {
-      const collectionItem = document.createElement("div");
-      collectionItem.style.padding = "8px";
-      collectionItem.style.border = "1px solid #ccc";
-      collectionItem.style.marginBottom = "8px";
-
-      const name = document.createElement("h3");
-      name.textContent = collection.name;
-      collectionItem.appendChild(name);
-
-      const sessionCount = document.createElement("p");
-      sessionCount.textContent = `${collection.sessionIds.length} sessions`;
-      collectionItem.appendChild(sessionCount);
-
-      const deleteButton = sdk.ui.button({
-        variant: "secondary",
-        label: "Delete",
-        size: "small",
-      });
-      deleteButton.addEventListener("click", async () => {
-        await sdk.replay.deleteCollection(collection.id);
-        refreshCollections();
-        sdk.window.showToast("Collection deleted", { variant: "success" });
-      });
-      collectionItem.appendChild(deleteButton);
-
-      collectionsList.appendChild(collectionItem);
-    });
-  };
-
-  // Create collection button
-  const createCollectionButton = sdk.ui.button({
-    variant: "primary",
-    label: "Create Collection",
-  });
-  createCollectionButton.addEventListener("click", async () => {
-    const collection = await sdk.replay.createCollection(`Collection ${Date.now()}`);
-    if (collection) {
-      refreshCollections();
-      sdk.window.showToast("Collection created", { variant: "success" });
-    }
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+  
+  app.provide("sdk", sdk);
+  
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
   });
 
-  container.appendChild(createCollectionButton);
-  container.appendChild(collectionsList);
-  container.appendChild(sessionsList);
-
-  refreshSessions();
-  refreshCollections();
-
-  const card = sdk.ui.card({
-    body: container,
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
   });
+
+  app.mount(root);
 
   sdk.navigation.addPage("/replay-manager", {
-    body: card,
+    body: root,
   });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
 
   // Listen for session changes
   sdk.replay.onCurrentSessionChange((event) => {
     sdk.log.info("Current session changed to:", event.sessionId);
   });
 };
+```
+
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject, onMounted, ref } from "vue";
+
+import type { CaidoSDK } from "../index";
+
+const sdk = inject<CaidoSDK>("sdk");
+
+const sessions = ref<Array<{ id: string; name?: string }>>([]);
+const collections = ref<Array<{ id: string; name: string; sessionIds: string[] }>>([]);
+
+const refreshSessions = () => {
+  if (!sdk) return;
+  sessions.value = sdk.replay.getSessions();
+};
+
+const refreshCollections = () => {
+  if (!sdk) return;
+  collections.value = sdk.replay.getCollections();
+};
+
+const openSession = (sessionId: string) => {
+  if (!sdk) return;
+  sdk.replay.openTab(sessionId);
+  sdk.navigation.goTo({ id: "replay" });
+};
+
+const deleteSession = async (sessionId: string) => {
+  if (!sdk) return;
+  await sdk.replay.deleteSessions([sessionId]);
+  refreshSessions();
+  sdk.window.showToast("Session deleted", { variant: "success" });
+};
+
+const createCollection = async () => {
+  if (!sdk) return;
+  const collection = await sdk.replay.createCollection(`Collection ${Date.now()}`);
+  if (collection) {
+    refreshCollections();
+    sdk.window.showToast("Collection created", { variant: "success" });
+  }
+};
+
+const deleteCollection = async (collectionId: string) => {
+  if (!sdk) return;
+  await sdk.replay.deleteCollection(collectionId);
+  refreshCollections();
+  sdk.window.showToast("Collection deleted", { variant: "success" });
+};
+
+onMounted(() => {
+  refreshSessions();
+  refreshCollections();
+});
+</script>
+
+<template>
+  <div class="h-full flex flex-col p-4 gap-4 overflow-auto">
+    <div>
+      <h2 class="text-lg font-bold mb-2">Collections</h2>
+      <Button label="Create Collection" @click="createCollection" class="mb-2" />
+      <div v-if="collections.length === 0" class="text-gray-400">No collections found</div>
+      <div v-else class="flex flex-col gap-2">
+        <div
+          v-for="collection in collections"
+          :key="collection.id"
+          class="p-2 border border-gray-600 rounded"
+        >
+          <h3 class="font-bold mb-1">{{ collection.name }}</h3>
+          <p class="text-sm text-gray-400">{{ collection.sessionIds.length }} sessions</p>
+          <Button
+            label="Delete"
+            severity="secondary"
+            size="small"
+            class="mt-2"
+            @click="deleteCollection(collection.id)"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-lg font-bold mb-2">Sessions</h2>
+      <div v-if="sessions.length === 0" class="text-gray-400">No sessions found</div>
+      <div v-else class="flex flex-col gap-2">
+        <div
+          v-for="session in sessions"
+          :key="session.id"
+          class="p-2 border border-gray-600 rounded"
+        >
+          <h3 class="font-bold mb-1">{{ session.name || `Session ${session.id}` }}</h3>
+          <div class="flex gap-2 mt-2">
+            <Button
+              label="Open"
+              size="small"
+              @click="openSession(session.id)"
+            />
+            <Button
+              label="Delete"
+              severity="secondary"
+              size="small"
+              @click="deleteSession(session.id)"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 ```
 
 ### Auto-Organize Sessions
@@ -321,11 +336,3 @@ export const init = (sdk: CaidoSDK) => {
   initializeCollection();
 };
 ```
-
-::: tip
-Use collections to organize related replay sessions, making it easier to manage and find specific sessions for testing scenarios.
-:::
-
-::: info
-Sessions and collections are persisted across Caido restarts, so programmatically created items will remain available.
-:::

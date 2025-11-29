@@ -22,6 +22,10 @@ To retrieve all collections:
 const collections = sdk.matchReplace.getCollections();
 ```
 
+::: tip
+Use collections to organize related match and replace rules, making it easier to enable/disable groups of rules together.
+:::
+
 ### Updating a Collection
 
 To update a collection:
@@ -79,6 +83,10 @@ const activeRules = sdk.matchReplace.getActiveRules();
 
 Rules are returned in priority order from highest to lowest.
 
+::: info
+Active rules are processed in priority order. Higher priority rules are applied first. Use `getActiveRules()` to see the processing order.
+:::
+
 ### Updating a Rule
 
 To update a rule:
@@ -123,158 +131,6 @@ sdk.matchReplace.selectRule(undefined);
 ```
 
 ## Examples
-
-### Rule Manager Plugin
-
-This example creates a comprehensive interface for managing match and replace rule collections and individual rules. It displays collections with their rule counts, lists all rules with their queries, and provides buttons to toggle rule states, create collections, and delete items.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const createPage = (sdk: CaidoSDK) => {
-  const container = document.createElement("div");
-  container.style.padding = "20px";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.gap = "16px";
-
-  // Collections list
-  const collectionsList = document.createElement("div");
-  collectionsList.id = "collections-list";
-
-  const refreshCollections = () => {
-    collectionsList.innerHTML = "";
-    const collections = sdk.matchReplace.getCollections();
-
-    if (collections.length === 0) {
-      collectionsList.textContent = "No collections found";
-      return;
-    }
-
-    collections.forEach((collection) => {
-      const collectionItem = document.createElement("div");
-      collectionItem.style.padding = "8px";
-      collectionItem.style.border = "1px solid #ccc";
-      collectionItem.style.marginBottom = "8px";
-
-      const name = document.createElement("h3");
-      name.textContent = collection.name;
-      collectionItem.appendChild(name);
-
-      const ruleCount = document.createElement("p");
-      ruleCount.textContent = `${collection.ruleIds.length} rules`;
-      collectionItem.appendChild(ruleCount);
-
-      const deleteButton = sdk.ui.button({
-        variant: "secondary",
-        label: "Delete",
-        size: "small",
-      });
-      deleteButton.addEventListener("click", async () => {
-        await sdk.matchReplace.deleteCollection(collection.id);
-        refreshCollections();
-        sdk.window.showToast("Collection deleted", { variant: "success" });
-      });
-      collectionItem.appendChild(deleteButton);
-
-      collectionsList.appendChild(collectionItem);
-    });
-  };
-
-  // Rules list
-  const rulesList = document.createElement("div");
-  rulesList.id = "rules-list";
-
-  const refreshRules = () => {
-    rulesList.innerHTML = "";
-    const rules = sdk.matchReplace.getRules();
-
-    if (rules.length === 0) {
-      rulesList.textContent = "No rules found";
-      return;
-    }
-
-    rules.forEach((rule) => {
-      const ruleItem = document.createElement("div");
-      ruleItem.style.padding = "8px";
-      ruleItem.style.border = "1px solid #ccc";
-      ruleItem.style.marginBottom = "8px";
-
-      const name = document.createElement("h3");
-      name.textContent = rule.name;
-      ruleItem.appendChild(name);
-
-      const query = document.createElement("p");
-      query.textContent = `Query: ${rule.query}`;
-      ruleItem.appendChild(query);
-
-      const toggleButton = sdk.ui.button({
-        variant: rule.enabled ? "primary" : "secondary",
-        label: rule.enabled ? "Disable" : "Enable",
-        size: "small",
-      });
-      toggleButton.addEventListener("click", async () => {
-        await sdk.matchReplace.toggleRule(rule.id, !rule.enabled);
-        refreshRules();
-        sdk.window.showToast(`Rule ${rule.enabled ? "disabled" : "enabled"}`, {
-          variant: "success",
-        });
-      });
-      ruleItem.appendChild(toggleButton);
-
-      const deleteButton = sdk.ui.button({
-        variant: "secondary",
-        label: "Delete",
-        size: "small",
-      });
-      deleteButton.addEventListener("click", async () => {
-        await sdk.matchReplace.deleteRule(rule.id);
-        refreshRules();
-        sdk.window.showToast("Rule deleted", { variant: "success" });
-      });
-      ruleItem.appendChild(deleteButton);
-
-      rulesList.appendChild(ruleItem);
-    });
-  };
-
-  // Create collection button
-  const createCollectionButton = sdk.ui.button({
-    variant: "primary",
-    label: "Create Collection",
-  });
-  createCollectionButton.addEventListener("click", async () => {
-    const collection = await sdk.matchReplace.createCollection({
-      name: `Collection ${Date.now()}`,
-    });
-    if (collection) {
-      refreshCollections();
-      sdk.window.showToast("Collection created", { variant: "success" });
-    }
-  });
-
-  container.appendChild(createCollectionButton);
-  container.appendChild(collectionsList);
-  container.appendChild(rulesList);
-
-  refreshCollections();
-  refreshRules();
-
-  const card = sdk.ui.card({
-    body: container,
-  });
-
-  sdk.navigation.addPage("/match-replace-manager", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-};
-```
 
 ### Auto-Enable Rules
 
@@ -328,11 +184,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Use collections to organize related match and replace rules, making it easier to enable/disable groups of rules together.
-:::
-
-::: info
-Active rules are processed in priority order. Higher priority rules are applied first. Use `getActiveRules()` to see the processing order.
-:::

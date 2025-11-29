@@ -14,6 +14,14 @@ const workflows = sdk.workflows.getWorkflows();
 
 You can subscribe to three types of workflow events:
 
+::: tip
+Use workflow events to keep your plugin's state synchronized with workflow changes, enabling reactive behavior and automation.
+:::
+
+::: info
+Workflow events are fired for all workflow changes, not just those made by your plugin. This allows you to react to user actions and other plugin modifications.
+:::
+
 ### Workflow Created
 
 To listen for when a workflow is created:
@@ -58,107 +66,6 @@ Be mindful of performance when subscribing to workflow events. Avoid performing 
 :::
 
 ## Examples
-
-### Workflow Monitor Plugin
-
-This example creates a page that displays all workflows and maintains a real-time event log. It subscribes to workflow creation, update, and deletion events, updating both the workflow list and event log whenever changes occur.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const createPage = (sdk: CaidoSDK) => {
-  const container = document.createElement("div");
-  container.style.padding = "20px";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.gap = "16px";
-
-  // Workflows list
-  const workflowsList = document.createElement("div");
-  workflowsList.id = "workflows-list";
-
-  const refreshWorkflows = () => {
-    workflowsList.innerHTML = "";
-    const workflows = sdk.workflows.getWorkflows();
-
-    if (workflows.length === 0) {
-      workflowsList.textContent = "No workflows found";
-      return;
-    }
-
-    workflows.forEach((workflow) => {
-      const workflowItem = document.createElement("div");
-      workflowItem.style.padding = "8px";
-      workflowItem.style.border = "1px solid #ccc";
-      workflowItem.style.marginBottom = "8px";
-
-      const name = document.createElement("h3");
-      name.textContent = workflow.name || `Workflow ${workflow.id}`;
-      workflowItem.appendChild(name);
-
-      const id = document.createElement("p");
-      id.textContent = `ID: ${workflow.id}`;
-      id.style.fontSize = "12px";
-      id.style.color = "#666";
-      workflowItem.appendChild(id);
-
-      workflowsList.appendChild(workflowItem);
-    });
-  };
-
-  // Event log
-  const eventLog = document.createElement("div");
-  eventLog.id = "event-log";
-  eventLog.style.maxHeight = "300px";
-  eventLog.style.overflowY = "auto";
-  eventLog.style.padding = "8px";
-  eventLog.style.backgroundColor = "#f5f5f5";
-  eventLog.style.borderRadius = "4px";
-
-  const addLogEntry = (message: string) => {
-    const entry = document.createElement("div");
-    entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
-    entry.style.marginBottom = "4px";
-    eventLog.appendChild(entry);
-    eventLog.scrollTop = eventLog.scrollHeight;
-  };
-
-  container.appendChild(workflowsList);
-  container.appendChild(eventLog);
-
-  refreshWorkflows();
-
-  const card = sdk.ui.card({
-    body: container,
-  });
-
-  sdk.navigation.addPage("/workflow-monitor", {
-    body: card,
-  });
-
-  // Subscribe to workflow events
-  sdk.workflows.onCreatedWorkflow((workflow) => {
-    addLogEntry(`Workflow created: ${workflow.name}`);
-    refreshWorkflows();
-  });
-
-  sdk.workflows.onUpdatedWorkflow((workflow) => {
-    addLogEntry(`Workflow updated: ${workflow.name}`);
-    refreshWorkflows();
-  });
-
-  sdk.workflows.onDeletedWorkflow((workflowId) => {
-    addLogEntry(`Workflow deleted: ${workflowId}`);
-    refreshWorkflows();
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-};
-```
 
 ### Workflow Automation
 
@@ -227,11 +134,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Use workflow events to keep your plugin's state synchronized with workflow changes, enabling reactive behavior and automation.
-:::
-
-::: info
-Workflow events are fired for all workflow changes, not just those made by your plugin. This allows you to react to user actions and other plugin modifications.
-:::

@@ -12,6 +12,10 @@ The storage system is defined by the [StorageSDK](/reference/sdks/frontend/#sdk)
 Stored data needs to be JSON serializable.
 :::
 
+::: info
+Although frontend storage actually exists in the backend, it is inaccessible by the backend component. To share data with the backend component of a plugin, you will need to [create and call a custom function](/guides/rpc.md).
+:::
+
 ## User Preferences
 
 To demonstrate its usage, let's create a frontend interface that offers light and dark theme options.
@@ -215,7 +219,3 @@ A button for both themes are added to the user interface that will call the `upd
   </div>
 </template>
 ```
-
-::: info
-Although frontend storage actually exists in the backend, it is inaccessible by the backend component. To share data with the backend component of a plugin, you will need to [create and call a custom function](/guides/rpc.md).
-:::

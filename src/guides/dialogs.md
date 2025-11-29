@@ -53,43 +53,34 @@ dialog.close();
 
 ### Confirmation Dialog
 
-This example creates a reusable confirmation dialog function that displays a message and returns a promise resolving to `true` if confirmed or `false` if cancelled. It's used in a page with a delete button.
+This example creates a reusable confirmation dialog function that displays a message and returns a promise resolving to `true` if confirmed or `false` if cancelled.
 
 ```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
+import Button from "primevue/button";
 
 const showConfirmationDialog = (sdk: CaidoSDK, message: string): Promise<boolean> => {
   return new Promise((resolve) => {
     const container = document.createElement("div");
-    container.style.padding = "20px";
-    container.style.display = "flex";
-    container.style.flexDirection = "column";
-    container.style.gap = "16px";
+    container.className = "p-5 flex flex-col gap-4";
 
     const messageEl = document.createElement("p");
     messageEl.textContent = message;
     container.appendChild(messageEl);
 
     const buttonContainer = document.createElement("div");
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "8px";
-    buttonContainer.style.justifyContent = "flex-end";
+    buttonContainer.className = "flex gap-2 justify-end";
 
-    const confirmButton = sdk.ui.button({
-      variant: "primary",
-      label: "Confirm",
-    });
+    const confirmButton = document.createElement("button");
+    confirmButton.textContent = "Confirm";
+    confirmButton.className = "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700";
     confirmButton.addEventListener("click", () => {
       dialog.close();
       resolve(true);
     });
 
-    const cancelButton = sdk.ui.button({
-      variant: "secondary",
-      label: "Cancel",
-    });
+    const cancelButton = document.createElement("button");
+    cancelButton.textContent = "Cancel";
+    cancelButton.className = "px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700";
     cancelButton.addEventListener("click", () => {
       dialog.close();
       resolve(false);
@@ -106,39 +97,39 @@ const showConfirmationDialog = (sdk: CaidoSDK, message: string): Promise<boolean
     });
   });
 };
-
-const createPage = (sdk: CaidoSDK) => {
-  const button = sdk.ui.button({
-    variant: "primary",
-    label: "Delete Item",
-  });
-
-  button.addEventListener("click", async () => {
-    const confirmed = await showConfirmationDialog(
-      sdk,
-      "Are you sure you want to delete this item?"
-    );
-
-    if (confirmed) {
-      sdk.window.showToast("Item deleted", { variant: "success" });
-    } else {
-      sdk.window.showToast("Cancelled", { variant: "info" });
-    }
-  });
-
-  const card = sdk.ui.card({
-    body: button,
-  });
-
-  sdk.navigation.addPage("/dialog-example", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-};
 ```
+
+To use this dialog in a Vue component, call it from a button click handler:
+
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject } from "vue";
+
+const sdk = inject<CaidoSDK>("sdk");
+
+const handleDelete = async () => {
+  const confirmed = await showConfirmationDialog(
+    sdk!,
+    "Are you sure you want to delete this item?"
+  );
+
+  if (confirmed) {
+    sdk?.window.showToast("Item deleted", { variant: "success" });
+  } else {
+    sdk?.window.showToast("Cancelled", { variant: "info" });
+  }
+};
+</script>
+
+<template>
+  <Button label="Delete Item" @click="handleDelete" />
+</template>
+```
+
+::: info
+For information on creating pages and setting up Vue components, see [Create a Page](/guides/page.md).
+:::
 
 ### Form Dialog
 
@@ -148,35 +139,28 @@ This example creates a dialog with a text input field that collects user input. 
 const showFormDialog = (sdk: CaidoSDK): Promise<string | null> => {
   return new Promise((resolve) => {
     const container = document.createElement("div");
-    container.style.padding = "20px";
-    container.style.display = "flex";
-    container.style.flexDirection = "column";
-    container.style.gap = "16px";
+    container.className = "p-5 flex flex-col gap-4";
 
     const input = document.createElement("input");
     input.type = "text";
     input.placeholder = "Enter value";
-    input.style.padding = "8px";
+    input.className = "px-3 py-2 border border-gray-600 rounded bg-gray-800 text-white";
     container.appendChild(input);
 
     const buttonContainer = document.createElement("div");
-    buttonContainer.style.display = "flex";
-    buttonContainer.style.gap = "8px";
-    buttonContainer.style.justifyContent = "flex-end";
+    buttonContainer.className = "flex gap-2 justify-end";
 
-    const submitButton = sdk.ui.button({
-      variant: "primary",
-      label: "Submit",
-    });
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "Submit";
+    submitButton.className = "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700";
     submitButton.addEventListener("click", () => {
       dialog.close();
       resolve(input.value || null);
     });
 
-    const cancelButton = sdk.ui.button({
-      variant: "secondary",
-      label: "Cancel",
-    });
+    const cancelButton = document.createElement("button");
+    cancelButton.textContent = "Cancel";
+    cancelButton.className = "px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700";
     cancelButton.addEventListener("click", () => {
       dialog.close();
       resolve(null);

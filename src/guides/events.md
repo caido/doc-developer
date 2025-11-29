@@ -108,55 +108,40 @@ sdk.backend.onEvent("request-completed", (data) => {
 });
 ```
 
-### /frontend/src/index.ts
+### Subscribing to Events in Vue
 
-::: tip
-To view the entire frontend script, including the UI - expand the following:
+To subscribe to backend events in a Vue component:
 
-<details>
-<summary>Example</summary>
+```vue
+<script setup lang="ts">
+import { inject, onMounted, ref } from "vue";
 
-``` ts
-import type { Caido } from "@caido/sdk-frontend";
-import type { BackendAPI, BackendEvents } from "../../backend/src";
+const sdk = inject<CaidoSDK>("sdk");
+const results = ref<string[]>([]);
 
-import "./styles/index.css";
-
-export type CaidoSDK = Caido<BackendAPI, BackendEvents>;
-
-const createPage = (sdk: CaidoSDK) => {
-  const resultsList = document.createElement("ul");
-  resultsList.style.listStyle = "none";
-  resultsList.style.padding = "1rem";
-
-  // Subscribe to backend events.
-  sdk.backend.onEvent("request-completed", (data) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = `Request to ${data.url} completed with status ${data.status} (ID: ${data.id})`;
-    resultsList.insertBefore(listItem, resultsList.firstChild);
-  });
-
-  // Create card.
-  const card = sdk.ui.card({
-    body: resultsList,
-  });
-
-  // Add page.
-  sdk.navigation.addPage("/request-monitor", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
+onMounted(() => {
+  if (!sdk) return;
   
-  sdk.sidebar.registerItem("Request Monitor", "/request-monitor", {
-    icon: "fas fa-globe",
+  sdk.backend.onEvent("request-completed", (data) => {
+    const message = `Request to ${data.url} completed with status ${data.status} (ID: ${data.id})`;
+    results.value.unshift(message);
   });
-};
+});
+</script>
+
+<template>
+  <div class="p-4">
+    <ul class="list-none p-4">
+      <li v-for="(result, index) in results" :key="index" class="mb-2">
+        {{ result }}
+      </li>
+    </ul>
+  </div>
+</template>
 ```
 
-</details>
+::: info
+For information on creating pages and setting up Vue components, see [Create a Page](/guides/page.md).
 :::
 
 ## The Result

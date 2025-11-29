@@ -2,6 +2,10 @@
 
 You can subscribe to various application events to react to state changes in Caido, such as project selection, workflow lifecycle, replay session changes, and backend plugin events.
 
+::: tip
+Application events enable reactive programming patterns. Use them to keep your plugin's state synchronized with Caido's state.
+:::
+
 ## Subscribing to Backend Plugin Events
 
 To listen for events sent from your backend plugin:
@@ -34,6 +38,10 @@ const handler = sdk.projects.onCurrentProjectChange((event) => {
 // Later, stop listening
 handler.stop();
 ```
+
+::: info
+All event subscription methods return a `ListenerHandle` with a `stop()` method. Call `stop()` when your plugin is unloaded to prevent memory leaks.
+:::
 
 ## Subscribing to Workflow Events
 
@@ -99,88 +107,6 @@ For more details on navigation events, see [How to Listen to Page Navigation Cha
 
 ## Examples
 
-### Comprehensive Event Monitor
-
-This example creates a comprehensive event monitoring page that subscribes to all major application events (projects, workflows, replay sessions, navigation, and backend events). It displays all events in a scrollable log with timestamps and event types.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const createPage = (sdk: CaidoSDK) => {
-  const container = document.createElement("div");
-  container.style.padding = "20px";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.gap = "16px";
-
-  const eventLog = document.createElement("div");
-  eventLog.id = "event-log";
-  eventLog.style.maxHeight = "400px";
-  eventLog.style.overflowY = "auto";
-  eventLog.style.padding = "8px";
-  eventLog.style.backgroundColor = "#f5f5f5";
-  eventLog.style.borderRadius = "4px";
-  eventLog.style.fontFamily = "monospace";
-  eventLog.style.fontSize = "12px";
-
-  const addLogEntry = (type: string, message: string) => {
-    const entry = document.createElement("div");
-    entry.style.marginBottom = "4px";
-    entry.style.padding = "4px";
-    entry.style.borderLeft = "3px solid #2196f3";
-    entry.innerHTML = `<strong>[${type}]</strong> ${message} <span style="color: #666;">(${new Date().toLocaleTimeString()})</span>`;
-    eventLog.appendChild(entry);
-    eventLog.scrollTop = eventLog.scrollHeight;
-  };
-
-  // Subscribe to all events
-  sdk.projects.onCurrentProjectChange((event) => {
-    addLogEntry("Project", `Changed to: ${event.projectId || "None"}`);
-  });
-
-  sdk.workflows.onCreatedWorkflow((workflow) => {
-    addLogEntry("Workflow", `Created: ${workflow.name}`);
-  });
-
-  sdk.workflows.onUpdatedWorkflow((workflow) => {
-    addLogEntry("Workflow", `Updated: ${workflow.name}`);
-  });
-
-  sdk.workflows.onDeletedWorkflow((workflowId) => {
-    addLogEntry("Workflow", `Deleted: ${workflowId}`);
-  });
-
-  sdk.replay.onCurrentSessionChange((event) => {
-    addLogEntry("Replay", `Session changed to: ${event.sessionId || "None"}`);
-  });
-
-  sdk.navigation.onPageChange((event) => {
-    addLogEntry("Navigation", `Page changed to: ${event.routeId}`);
-  });
-
-  // Backend events (if your backend sends events)
-  sdk.backend.onEvent("custom-event", (data) => {
-    addLogEntry("Backend", `Custom event: ${JSON.stringify(data)}`);
-  });
-
-  container.appendChild(eventLog);
-
-  const card = sdk.ui.card({
-    body: container,
-  });
-
-  sdk.navigation.addPage("/event-monitor", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-};
-```
-
 ### Project-Specific Configuration
 
 This example manages project-specific configuration by listening to project change events. When switching projects, it cleans up resources from the previous project and loads configuration for the new project.
@@ -245,46 +171,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-### Real-Time Updates
-
-This example demonstrates real-time UI updates based on application events. It listens to replay session changes and page navigation events, calling update functions to keep the UI synchronized with the current state.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-export const init = (sdk: CaidoSDK) => {
-  // Update UI in real-time based on events
-  sdk.replay.onCurrentSessionChange((event) => {
-    if (event.sessionId) {
-      // Update UI to reflect current session
-      updateSessionUI(event.sessionId);
-    }
-  });
-
-  sdk.navigation.onPageChange((event) => {
-    // Update UI based on current page
-    updatePageUI(event.routeId);
-  });
-
-  const updateSessionUI = (sessionId: string) => {
-    // Update UI elements related to the current session
-    sdk.log.debug("Updating UI for session:", sessionId);
-  };
-
-  const updatePageUI = (routeId: string) => {
-    // Update UI elements based on the current page
-    sdk.log.debug("Updating UI for page:", routeId);
-  };
-};
-```
-
-::: tip
-Application events enable reactive programming patterns. Use them to keep your plugin's state synchronized with Caido's state.
-:::
-
-::: info
-All event subscription methods return a `ListenerHandle` with a `stop()` method. Call `stop()` when your plugin is unloaded to prevent memory leaks.
-:::

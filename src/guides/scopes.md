@@ -129,98 +129,104 @@ const scope = await sdk.scopes.createScope({
 This example creates a scope management interface that lists all scopes with their allowlists and denylists. It provides buttons to create new scopes and delete existing ones, with automatic list refreshing.
 
 ```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
 import type { Caido } from "@caido/sdk-frontend";
+
+import App from "./views/App.vue";
 
 export type CaidoSDK = Caido;
 
-const createPage = (sdk: CaidoSDK) => {
-  const container = document.createElement("div");
-  container.style.padding = "20px";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.gap = "16px";
-
-  // Scope list
-  const scopeList = document.createElement("div");
-  scopeList.id = "scope-list";
-
-  const refreshScopeList = () => {
-    scopeList.innerHTML = "";
-    const scopes = sdk.scopes.getScopes();
-
-    if (scopes.length === 0) {
-      scopeList.textContent = "No scopes found";
-      return;
-    }
-
-    scopes.forEach((scope) => {
-      const scopeItem = document.createElement("div");
-      scopeItem.style.padding = "8px";
-      scopeItem.style.border = "1px solid #ccc";
-      scopeItem.style.marginBottom = "8px";
-
-      const name = document.createElement("h3");
-      name.textContent = scope.name;
-      scopeItem.appendChild(name);
-
-      const allowlist = document.createElement("p");
-      allowlist.textContent = `Allowlist: ${scope.allowlist.join(", ")}`;
-      scopeItem.appendChild(allowlist);
-
-      const denylist = document.createElement("p");
-      denylist.textContent = `Denylist: ${scope.denylist.join(", ")}`;
-      scopeItem.appendChild(denylist);
-
-      const deleteButton = sdk.ui.button({
-        variant: "secondary",
-        label: "Delete",
-        size: "small",
-      });
-      deleteButton.addEventListener("click", async () => {
-        await sdk.scopes.deleteScope(scope.id);
-        refreshScopeList();
-        sdk.window.showToast("Scope deleted", { variant: "success" });
-      });
-      scopeItem.appendChild(deleteButton);
-
-      scopeList.appendChild(scopeItem);
-    });
-  };
-
-  // Create scope button
-  const createButton = sdk.ui.button({
-    variant: "primary",
-    label: "Create New Scope",
-  });
-  createButton.addEventListener("click", async () => {
-    const scope = await sdk.scopes.createScope({
-      name: `Scope ${Date.now()}`,
-      allowlist: ["*example.com"],
-      denylist: [],
-    });
-    if (scope) {
-      refreshScopeList();
-      sdk.window.showToast("Scope created", { variant: "success" });
-    }
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+  
+  app.provide("sdk", sdk);
+  
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
   });
 
-  container.appendChild(createButton);
-  container.appendChild(scopeList);
-
-  refreshScopeList();
-
-  const card = sdk.ui.card({
-    body: container,
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
   });
+
+  app.mount(root);
 
   sdk.navigation.addPage("/scope-manager", {
-    body: card,
+    body: root,
   });
 };
+```
 
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject, onMounted, ref } from "vue";
+
+import type { CaidoSDK } from "../index";
+
+const sdk = inject<CaidoSDK>("sdk");
+const scopes = ref<Array<{ id: string; name: string; allowlist: string[]; denylist: string[] }>>([]);
+
+const refreshScopes = () => {
+  if (!sdk) return;
+  scopes.value = sdk.scopes.getScopes();
 };
+
+const createScope = async () => {
+  if (!sdk) return;
+  const scope = await sdk.scopes.createScope({
+    name: `Scope ${Date.now()}`,
+    allowlist: ["*example.com"],
+    denylist: [],
+  });
+  if (scope) {
+    refreshScopes();
+    sdk.window.showToast("Scope created", { variant: "success" });
+  }
+};
+
+const deleteScope = async (id: string) => {
+  if (!sdk) return;
+  await sdk.scopes.deleteScope(id);
+  refreshScopes();
+  sdk.window.showToast("Scope deleted", { variant: "success" });
+};
+
+onMounted(() => {
+  refreshScopes();
+});
+</script>
+
+<template>
+  <div class="h-full flex flex-col p-4 gap-4">
+    <Button label="Create New Scope" @click="createScope" />
+    <div v-if="scopes.length === 0" class="text-gray-400">No scopes found</div>
+    <div v-else class="flex flex-col gap-2">
+      <div
+        v-for="scope in scopes"
+        :key="scope.id"
+        class="p-2 border border-gray-600 rounded"
+      >
+        <h3 class="font-bold mb-1">{{ scope.name }}</h3>
+        <p class="text-sm text-gray-400">Allowlist: {{ scope.allowlist.join(", ") }}</p>
+        <p class="text-sm text-gray-400">Denylist: {{ scope.denylist.join(", ") }}</p>
+        <Button
+          label="Delete"
+          severity="secondary"
+          size="small"
+          class="mt-2"
+          @click="deleteScope(scope.id)"
+        />
+      </div>
+    </div>
+  </div>
+</template>
 ```
 
 ### Setting Scope on Page Navigation
