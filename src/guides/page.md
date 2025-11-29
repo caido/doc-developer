@@ -1,6 +1,10 @@
 # Create a Page
 
-Plugin pages provide a graphical user interface in the Caido application. There are multiple SDK objects and methods available to assist you in customization.
+Plugin pages provide a graphical user interface in the Caido application. Pages are created using Vue.js components with PrimeVue and Tailwind CSS for styling.
+
+::: info
+Vue.js is the standard approach for creating plugin pages in Caido. When you initialize a plugin using `pnpm create @caido-community/plugin`, you can choose the Vue.js template option. This guide shows how to create pages using Vue components. For more information about using PrimeVue components and styling, see [Using the Component Library](/guides/styling.md).
+:::
 
 ## Creating Pages and Navigating
 
@@ -8,14 +12,38 @@ Used to create pages in the application and navigate to them.
 
 ### Adding a Page
 
+Pages are created by setting up a Vue application and mounting it to a root element, which is then passed to `sdk.navigation.addPage()`. The Vue app handles the page's layout, state, and user interactions.
+
 ```ts
-sdk.navigation.addPage("/my-plugin-page", {
-    body: card;
-    topbar: bar;
-});
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import App from "./views/App.vue";
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+  
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/my-plugin-page", {
+    body: root,
+  });
+};
 ```
 
-This creates a page of which the contents are the [card](#creating-a-card) you will learn how to create below.
+This creates a page where the contents are defined in your `App.vue` component. The Vue app is mounted to a root `div` element, which is then passed as the `body` property to `addPage`.
 
 The `topbar` property is optional and appears to the right of the Caido logo in the top-left corner.
 
@@ -47,240 +75,124 @@ The `icon` property is optional and adds a [FontAwesome](https://fontawesome.com
 - The `isExternal` property is optional and takes a boolean value of _true_ if the path points to an external URL.
   :::
 
-## Creating UI Components
+## Building UI Components with PrimeVue
 
-Used to create visual elements. Content options for each element are also provided. These elements provide a way to sectionalize the user-interface of your plugin.
+UI components are built using PrimeVue components styled with Tailwind CSS. PrimeVue provides a comprehensive set of components that match Caido's design system.
 
-### Creating a Button
+### Using PrimeVue Components
 
-```ts
-const deleteButton = sdk.ui.button({
-  variant: "primary",
-  label: "Delete",
-  trailingIcon: "fas fa-trash-can",
-  size: "small",
-});
+Import and use PrimeVue components directly in your Vue components. For example, to create a button:
+
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+</script>
+
+<template>
+  <Button label="Delete" icon="fas fa-trash-can" severity="danger" size="small" />
+</template>
 ```
 
-All button properties are optional and include:
+PrimeVue components support various props for customization:
 
-- `variant` - Specifies the button type and can have a value of `"primary"`, `"secondary"` or `"tertiary"`.
-- `label` - Specifies the inner string within the button.
-- `leadingIcon` - Adds an icon at the leading side of the button.
-- `trailingIcon` - Addsan icon at the trailing side of the button.
-- `size` - Specifies the button size and can have a value of `"small"`, `"medium"` or `"large"`.
+- `label` - The button text
+- `icon` - FontAwesome icon class
+- `severity` - Button style (`primary`, `secondary`, `success`, `info`, `warning`, `danger`)
+- `size` - Button size (`small`, `medium`, `large`)
 
-### Creating a Card
+### Creating Layouts with Tailwind CSS
 
-```ts
-const card = sdk.ui.card({
-  header: headerContainer,
-  body: bodyText,
-  footer: footerText,
-});
+Use Tailwind CSS utility classes to create layouts. For example, to create a card-like layout:
+
+```vue
+<script setup lang="ts">
+import { ref } from "vue";
+</script>
+
+<template>
+  <div class="h-full flex flex-col">
+    <div class="p-4 border-b border-gray-700">
+      <h1 class="text-xl font-bold">Hello world!</h1>
+      <p class="text-gray-400">Lorem ipsum.</p>
+    </div>
+    <div class="flex-1 p-4">
+      <p>Paragraph.</p>
+    </div>
+    <div class="p-4 border-t border-gray-700">
+      <p>Footer text.</p>
+    </div>
+  </div>
+</template>
 ```
-
-A **card** is a layout component. Similar to an HTML file, Cards consist of `header`, `body` and `footer` properties.
-
-All properties are optional. The value of each property is a defined HTML element.
 
 ::: tip
-To use multiple HTML elements, combine them using `<div></div>` tags:
+For a complete example of creating a page with Vue components, see the example below. This shows how to set up a Vue app in `index.ts` and create the page layout in `App.vue`:
 
 ```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
 import type { Caido } from "@caido/sdk-frontend";
 import type { API } from "starterkit-plugin-backend";
 
+import App from "./views/App.vue";
+
 export type CaidoSDK = Caido<API>;
 
-const createPage = (sdk: CaidoSDK) => {
-  const headerText = document.createElement("h1");
-  headerText.textContent = "Hello world!";
-
-  const subText = document.createElement("p");
-  subText.textContent = "Lorem ipsum.";
-
-  const bodyText = document.createElement("p");
-  bodyText.textContent = "Paragraph.";
-
-  const footerText = document.createElement("p");
-  footerText.textContent = "Footer text.";
-
-  const headerContainer = document.createElement("div");
-  headerContainer.appendChild(headerText);
-  headerContainer.appendChild(subText);
-
-  const bar = document.createElement("p");
-  bar.textContent = "Topbar.";
-
-  const card = sdk.ui.card({
-    header: headerContainer,
-    body: bodyText,
-    footer: footerText,
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+  
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
   });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
 
   sdk.navigation.addPage("/my-plugin-page", {
-    body: card,
-    topbar: bar,
+    body: root,
   });
-};
 
-export const init = (sdk: CaidoSDK) => {
-  // Register commands
-  // Commands are registered with a unique identifier and a handler function
-  // The run function is called when the command is executed
-  // These commands can be registered in various places like command palette, context menu, etc.
-
-  // Register page
-  createPage(sdk);
-
-  // Register sidebar
   sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
     icon: "fas fa-rocket",
   });
 };
 ```
 
-The `init` function contains the `createPage(sdk)` function to register the page and the `.registerItem` method to make it available in the sidebar when the plugin initializes.
+The `App.vue` component defines the page layout:
+
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+</script>
+
+<template>
+  <div class="h-full flex flex-col">
+    <div class="p-4 border-b border-gray-700">
+      <h1 class="text-xl font-bold">Hello world!</h1>
+      <p class="text-gray-400">Lorem ipsum.</p>
+    </div>
+    <div class="flex-1 p-4">
+      <p>Paragraph.</p>
+    </div>
+    <div class="p-4 border-t border-gray-700">
+      <p>Footer text.</p>
+    </div>
+  </div>
+</template>
+```
+
+The `init` function creates the Vue app, mounts it to a root element, and registers the page with `addPage`. The sidebar item is registered to make the page accessible from the navigation menu.
 :::
 
 <img alt="Add page SKD." src="/_images/add_page_sdk.png" center/>
-
-### Creating a Well
-
-```ts
-const well = sdk.ui.well({
-  header: title,
-  body: paragraph,
-  footer: advisory,
-});
-```
-
-A **well** is a layout component. Wells are similar to cards in that they consist of `header`, `body` and `footer` properties.
-
-All properties are optional. The value of each property is a defined HTML element.
-
-### Creating a Request Editor
-
-```ts
-const reqEditor = sdk.ui.httpRequestEditor();
-const reqEditorPane = reqEditor.getElement();
-```
-
-### Creating a Response Editor
-
-```ts
-const respEditor = sdk.ui.httpResponseEditor();
-const respEditorPane = respEditor.getElement();
-```
-
-::: tip
-For an example of a page with request and response editors, expand the following:
-
-<details>
-<summary>Example</summary>
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-import type { API } from "starterkit-plugin-backend";
-
-export type CaidoSDK = Caido<API>;
-
-const createPage = (sdk: CaidoSDK) => {
-  const headerText = document.createElement("h1");
-  headerText.textContent = "Hello world!";
-
-  const subText = document.createElement("p");
-  subText.textContent = "Lorem ipsum.";
-
-  const bodyText = document.createElement("p");
-  bodyText.textContent = "Paragraph.";
-
-  const reqEditor = sdk.ui.httpRequestEditor();
-  const reqEditorPane = reqEditor.getElement();
-  const respEditor = sdk.ui.httpResponseEditor();
-  const respEditorPane = respEditor.getElement();
-
-  const footerText = document.createElement("p");
-  footerText.textContent = "Footer text.";
-
-  const headerContainer = document.createElement("div");
-  headerContainer.appendChild(headerText);
-  headerContainer.appendChild(subText);
-
-  const bodyContainer = document.createElement("div");
-  bodyContainer.appendChild(bodyText);
-
-  const editorsContainer = document.createElement("div");
-  editorsContainer.classList.add("editors-container");
-
-  reqEditorPane.classList.add("editor-pane");
-  respEditorPane.classList.add("editor-pane");
-
-  editorsContainer.appendChild(reqEditorPane);
-  editorsContainer.appendChild(respEditorPane);
-
-  bodyContainer.appendChild(editorsContainer);
-
-  const bar = document.createElement("p");
-  bar.textContent = "Topbar.";
-
-  const card = sdk.ui.card({
-    header: headerContainer,
-    body: bodyContainer,
-    footer: footerText,
-  });
-
-  sdk.navigation.addPage("/my-plugin-page", {
-    body: card,
-    topbar: bar,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-  sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
-    icon: "fas fa-rocket",
-  });
-};
-```
-
-</details>
-:::
-
-::: tip
-To view the CSS rules of the editors shown below, expand the following:
-
-<details>
-<summary>Example</summary>
-
-``` css
-.editors-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-}
-
-.editor-pane {
-  flex: 1;
-  min-width: 300px;
-  min-height: 500px;
-  margin: 0 10px;
-}
-
-.editor-pane h2 {
-  margin: 0;
-  padding: 10px;
-  border-radius: 4px;
-}
-```
-
-</details>
-:::
-
-<img alt="Page with request and response editors." src="/_images/page_with_req_resp_editors.png" center/>
 
 ## Interacting with Windows and Editors
 
@@ -318,80 +230,83 @@ All message properties are optional and include:
 - `variant` - Specifies the message type and can have a value of `"success"`, `"error"`, `"warning"` or `"info"`.
 - `duration` - Specifies the amount of time a message will be displayed in milliseconds.
 
-::: tip
-For an example of how to trigger Toast messages on button clicks, expand the following:
+## Examples
 
-<details>
-<summary>Example</summary>
+### Basic Page with Button
+
+This example creates a simple page with a button that displays a toast message when clicked.
+
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject } from "vue";
+
+const sdk = inject<CaidoSDK>("sdk");
+
+const handleClick = () => {
+  sdk?.window.showToast("Message to display.", {
+    variant: "info",
+    duration: 3000,
+  });
+};
+</script>
+
+<template>
+  <div class="h-full flex flex-col p-4">
+    <div class="mb-4">
+      <h1 class="text-xl font-bold mb-2">Hello world!</h1>
+      <p class="text-gray-400">Lorem ipsum.</p>
+    </div>
+    <div class="flex-1">
+      <p>Paragraph.</p>
+    </div>
+    <div class="mt-4">
+      <Button label="Message Button" @click="handleClick" />
+    </div>
+  </div>
+</template>
+```
+
+The corresponding `index.ts` file:
 
 ```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
 import type { Caido } from "@caido/sdk-frontend";
 import type { API } from "starterkit-plugin-backend";
 
+import App from "./views/App.vue";
+
 export type CaidoSDK = Caido<API>;
 
-const createPage = (sdk: CaidoSDK) => {
-  const messageButton = sdk.ui.button({
-    variant: "primary",
-    label: "Message Button",
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+  
+  app.provide("sdk", sdk);
+  
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
   });
 
-  messageButton.addEventListener("click", async () => {
-    sdk.window.showToast("Message to display.", {
-      variant: "info",
-      duration: 3000,
-    });
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
   });
 
-  const headerText = document.createElement("h1");
-  headerText.textContent = "Hello world!";
-
-  const subText = document.createElement("p");
-  subText.textContent = "Lorem ipsum.";
-
-  const bodyText = document.createElement("p");
-  bodyText.textContent = "Paragraph.";
-
-  const footerText = document.createElement("p");
-  footerText.textContent = "Footer text.";
-
-  const headerContainer = document.createElement("div");
-  headerContainer.appendChild(headerText);
-  headerContainer.appendChild(subText);
-  headerContainer.appendChild(messageButton);
-
-  const bar = document.createElement("p");
-  bar.textContent = "Topbar.";
-
-  const card = sdk.ui.card({
-    header: headerContainer,
-    body: bodyText,
-    footer: footerText,
-  });
+  app.mount(root);
 
   sdk.navigation.addPage("/my-plugin-page", {
-    body: card,
-    topbar: bar,
+    body: root,
   });
-};
 
-export const init = (sdk: CaidoSDK) => {
-  // Register commands
-  // Commands are registered with a unique identifier and a handler function
-  // The run function is called when the command is executed
-  // These commands can be registered in various places like command palette, context menu, etc.
-
-  // Register page
-  createPage(sdk);
-
-  // Register sidebar
   sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
     icon: "fas fa-rocket",
   });
 };
 ```
-
-</details>
-:::
 
 <img alt="Toast messages SKD." src="/_images/toast_message_sdk.png" center/>

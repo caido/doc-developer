@@ -263,6 +263,13 @@ Example structure:
 
 This convention ensures consistency across all Vue component examples in the documentation.
 
+#### UI Component Guidelines
+
+- **Never use `sdk.ui` methods**: Methods like `sdk.ui.button()`, `sdk.ui.card()`, `sdk.ui.well()`, `sdk.ui.httpRequestEditor()`, etc. are deprecated and should not be used in documentation examples
+- **Always use PrimeVue components**: Use PrimeVue components (e.g., `Button` from `primevue/button`, `Card` from `primevue/card`) for all UI elements
+- **Style with Tailwind CSS**: Use Tailwind CSS utility classes for layout and styling instead of inline styles or custom CSS
+- **Vue is the standard**: All page creation examples should use Vue.js components, not DOM manipulation (`document.createElement`, `appendChild`, etc.)
+
 #### For Reference
 
 - Be accurate, complete, and concise
