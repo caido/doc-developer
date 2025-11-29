@@ -221,6 +221,10 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - Address common pitfalls or edge cases
 - Use imperative mood ("Create a command", "Register the handler")
 - Be concise and focused on the task
+- **Section headings must be use-case/question-oriented**: Section headings should describe a use case or answer a question, not describe types or categories. Use gerund forms (e.g., "Adding", "Creating", "Subscribing", "Converting") to describe actions.
+  - ✅ **Good**: "Subscribing to Project Events", "Adding Multiple Extensions", "Converting Assets to Different Formats", "Using Different Log Levels"
+  - ❌ **Bad**: "Project Events", "Multiple Extensions", "Asset Methods", "Log Levels", "Extension Types"
+  - The only exception is the `## Examples` section, which is exempt from this rule
 - **Examples placement**: All examples must be placed at the end of the guide under a `## Examples` header
 - **Example sub-headers**: Use `###` for individual examples (e.g., `### JSON Formatter View`)
 - **No "Example:" prefix**: Do not prefix example titles with "Example:" since they're already under the Examples section
@@ -354,6 +358,7 @@ The documentation uses VitePress components like:
 - ❌ Don't add content that doesn't fit the Diátaxis framework
 - ❌ **Don't create mismatched titles**: Guide file H1 titles must exactly match sidebar item text
 - ❌ **Don't show code without descriptions**: Every code snippet, especially examples, must have a description explaining what it does
+- ❌ **Don't use type/category-oriented section headings**: Section headings in how-to guides must describe use cases or questions, not types or categories. Avoid headings like "Extension Types", "Log Levels", "Asset Methods" - instead use "Using Extension Types", "Choosing a Log Level", "Converting Assets to Different Formats"
 
 ## Quick Reference: Decision Tree
 
