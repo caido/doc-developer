@@ -87,45 +87,6 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
-### Updating UI Based on Current Page
-
-This example creates a page that displays the current route ID and updates it in real-time as the user navigates. It subscribes to page change events and updates a status text element with the current page information.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const createPage = (sdk: CaidoSDK) => {
-  const statusText = document.createElement("p");
-  statusText.textContent = "Current page: Unknown";
-
-  const updateStatus = (routeId: string) => {
-    statusText.textContent = `Current page: ${routeId}`;
-  };
-
-  // Subscribe to page changes
-  sdk.navigation.onPageChange((event) => {
-    updateStatus(event.routeId || "unknown");
-  });
-
-  // Get initial page state
-  // Note: You may need to check the current page on initialization
-
-  const card = sdk.ui.card({
-    body: statusText,
-  });
-
-  sdk.navigation.addPage("/page-tracker", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-};
-```
-
 ### Conditional Feature Activation
 
 This example conditionally enables or disables a feature based on the current page. The feature is only active on Replay or HTTP History pages, and is automatically deactivated when navigating to other pages.

@@ -43,130 +43,30 @@ export const init = (sdk: CaidoSDK) => {
 
 ### Version Display
 
-This example creates a page that displays the current Caido version and plugin compatibility status. It shows the version information in a formatted card with styling.
+This example displays the current Caido version and plugin compatibility status.
 
-```ts
-import type { Caido } from "@caido/sdk-frontend";
+```vue
+<script setup lang="ts">
+import { inject, computed } from "vue";
 
-export type CaidoSDK = Caido;
+const sdk = inject<CaidoSDK>("sdk");
+const version = computed(() => sdk?.runtime.version || "Unknown");
+</script>
 
-const createPage = (sdk: CaidoSDK) => {
-  const container = document.createElement("div");
-  container.style.padding = "20px";
-  container.style.display = "flex";
-  container.style.flexDirection = "column";
-  container.style.gap = "16px";
-
-  const versionInfo = document.createElement("div");
-  versionInfo.style.padding = "16px";
-  versionInfo.style.backgroundColor = "#f5f5f5";
-  versionInfo.style.borderRadius = "4px";
-
-  const version = sdk.runtime.version;
-  versionInfo.innerHTML = `
-    <h3>Caido Version</h3>
-    <p><strong>Version:</strong> ${version}</p>
-    <p><strong>Plugin Compatibility:</strong> ✓ Compatible</p>
-  `;
-
-  container.appendChild(versionInfo);
-
-  const card = sdk.ui.card({
-    body: container,
-  });
-
-  sdk.navigation.addPage("/version-info", {
-    body: card,
-  });
-};
-
-export const init = (sdk: CaidoSDK) => {
-  createPage(sdk);
-};
+<template>
+  <div class="p-4">
+    <div class="p-4 bg-gray-800 rounded">
+      <h3 class="text-lg font-bold mb-2">Caido Version</h3>
+      <p><strong>Version:</strong> {{ version }}</p>
+      <p><strong>Plugin Compatibility:</strong> ✓ Compatible</p>
+    </div>
+  </div>
+</template>
 ```
 
-### Feature Detection
-
-This example implements a feature availability checker that determines if specific features are available based on the Caido version. It checks version requirements for features like "advanced-filters" and "ai-integration" and enables or disables features accordingly.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const checkFeatureAvailability = (sdk: CaidoSDK, feature: string): boolean => {
-  const version = sdk.runtime.version;
-  const [major, minor] = version.split(".").map(Number);
-
-  // Feature availability based on version
-  const features: Record<string, { minMajor: number; minMinor: number }> = {
-    "advanced-filters": { minMajor: 1, minMinor: 3 },
-    "ai-integration": { minMajor: 1, minMinor: 5 },
-  };
-
-  const requirement = features[feature];
-  if (!requirement) {
-    return true; // Unknown feature, assume available
-  }
-
-  return (
-    major > requirement.minMajor ||
-    (major === requirement.minMajor && minor >= requirement.minMinor)
-  );
-};
-
-export const init = (sdk: CaidoSDK) => {
-  if (checkFeatureAvailability(sdk, "advanced-filters")) {
-    sdk.log.info("Advanced filters are available");
-    // Enable advanced filter features
-  } else {
-    sdk.log.warn("Advanced filters require Caido 1.3.0 or higher");
-    // Use fallback features
-  }
-};
-```
-
-### Compatibility Check
-
-This example performs a comprehensive version compatibility check with a custom version comparison function. If the version is incompatible, it displays an error toast and prevents plugin initialization, otherwise it logs successful initialization.
-
-```ts
-import type { Caido } from "@caido/sdk-frontend";
-
-export type CaidoSDK = Caido;
-
-const MIN_VERSION = "1.2.0";
-
-const compareVersions = (v1: string, v2: string): number => {
-  const parts1 = v1.split(".").map(Number);
-  const parts2 = v2.split(".").map(Number);
-
-  for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
-    const part1 = parts1[i] || 0;
-    const part2 = parts2[i] || 0;
-
-    if (part1 < part2) return -1;
-    if (part1 > part2) return 1;
-  }
-
-  return 0;
-};
-
-export const init = (sdk: CaidoSDK) => {
-  const version = sdk.runtime.version;
-
-  if (compareVersions(version, MIN_VERSION) < 0) {
-    sdk.window.showToast(
-      `This plugin requires Caido ${MIN_VERSION} or higher. Current version: ${version}`,
-      { variant: "error", duration: 5000 }
-    );
-    sdk.log.error(`Version mismatch: ${version} < ${MIN_VERSION}`);
-    return;
-  }
-
-  sdk.log.info(`Plugin initialized on Caido ${version}`);
-};
-```
+::: info
+For information on creating pages and setting up Vue components, see [Create a Page](/guides/page.md).
+:::
 
 ::: tip
 Use version checks to ensure your plugin works correctly across different Caido versions and to provide helpful error messages when requirements aren't met.

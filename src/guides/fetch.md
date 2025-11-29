@@ -182,54 +182,33 @@ Fetch Response:
 
 :::
 
-::: tip
-To view how the endpoint can be called with a frontend plugin, expand the following:
+### Calling the Endpoint from Frontend
 
-<details>
-<summary>Full Script</summary>
+To call the endpoint from a Vue component, use the backend SDK:
 
-``` ts
-import type { Caido } from "@caido/sdk-frontend";
-import type { API } from "../../backend/src/index.ts";
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject, ref } from "vue";
 
-export type CaidoSDK = Caido<API>;
+const sdk = inject<CaidoSDK>("sdk");
+const result = ref<string>("Result will appear here.");
 
-const createPage = (sdk: CaidoSDK) => {
+const handleFetch = async () => {
+  if (!sdk) return;
+  const data = await sdk.backend.callApi();
+  result.value = `Result: ${JSON.stringify(data, null, 2)}`;
+};
+</script>
 
-    const resultText = document.createElement("p");
-    resultText.textContent = "Result will appear here.";
-
-    const calculateButton = sdk.ui.button({
-        variant: "primary",
-        label: "Fetch",
-    });
-
-    calculateButton.addEventListener("click", async () => {
-        const result = await sdk.backend.callApi();
-        resultText.textContent = `Result: ${JSON.stringify(result, null, 2)}`;
-    });
-
-    const container = document.createElement("div");
-    container.appendChild(calculateButton);
-    container.appendChild(resultText);
-
-    const card = sdk.ui.card({
-        body: container
-    });
-
-    sdk.navigation.addPage("/fetch-page", {
-        body: card
-    });
-}
-
-export function init(sdk: CaidoSDK) {
-    createPage(sdk);
-    
-    sdk.sidebar.registerItem("Fetch", "/fetch-page", {
-        icon: "fas fa-paper-plane"
-    });
-}
+<template>
+  <div class="p-4 flex flex-col gap-4">
+    <Button label="Fetch" @click="handleFetch" />
+    <p class="text-gray-400">{{ result }}</p>
+  </div>
+</template>
 ```
 
-</details>
+::: info
+For information on creating pages and setting up Vue components, see [Create a Page](/guides/page.md).
 :::

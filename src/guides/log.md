@@ -70,41 +70,36 @@ try {
 
 This example demonstrates logging at different levels during user interactions. It logs info messages when operations start and complete, error messages when operations fail, and shows corresponding toast notifications to the user.
 
-```ts
-import type { Caido } from "@caido/sdk-frontend";
+```vue
+<script setup lang="ts">
+import Button from "primevue/button";
+import { inject } from "vue";
 
-export type CaidoSDK = Caido;
+const sdk = inject<CaidoSDK>("sdk");
 
-const createPage = (sdk: CaidoSDK) => {
-  const button = sdk.ui.button({
-    variant: "primary",
-    label: "Perform Action",
-  });
-
-  button.addEventListener("click", async () => {
-    sdk.log.info("Button clicked, starting operation");
-    
-    try {
-      const result = await performOperation();
-      sdk.log.info("Operation completed successfully:", result);
-      sdk.window.showToast("Success!", { variant: "success" });
-    } catch (err) {
-      sdk.log.error("Operation failed:", err);
-      sdk.window.showToast("Error occurred", { variant: "error" });
-    }
-  });
-
-  const card = sdk.ui.card({
-    body: button,
-  });
-
-  sdk.navigation.addPage("/logging-example", {
-    body: card,
-  });
+const performAction = async () => {
+  if (!sdk) return;
+  
+  sdk.log.info("Button clicked, starting operation");
+  
+  try {
+    const result = await performOperation();
+    sdk.log.info("Operation completed successfully:", result);
+    sdk.window.showToast("Success!", { variant: "success" });
+  } catch (err) {
+    sdk.log.error("Operation failed:", err);
+    sdk.window.showToast("Error occurred", { variant: "error" });
+  }
 };
+</script>
 
-export const init = (sdk: CaidoSDK) => {
-  sdk.log.info("Logging example plugin initialized");
-  createPage(sdk);
-};
+<template>
+  <div class="p-4">
+    <Button label="Perform Action" @click="performAction" />
+  </div>
+</template>
 ```
+
+::: info
+For information on creating pages and setting up Vue components, see [Create a Page](/guides/page.md).
+:::
