@@ -39,6 +39,12 @@ The SDK for the Findings service.
 
 The SDK for the GraphQL service.
 
+##### hostedFile
+
+> **hostedFile**: [`HostedFileSDK`](index.md#hostedfilesdk)
+
+The SDK for the HostedFile service.
+
 ##### projects
 
 > **projects**: [`ProjectsSDK`](index.md#projectssdk)
@@ -283,7 +289,7 @@ The body of the request.
 
 ##### getHeader()
 
-> **getHeader**(`name`: `string`): `undefined` \| `string`[]
+> **getHeader**(`name`: `string` \| [`GetHeaderOptions`](index.md#getheaderoptions)): `undefined` \| `string`[]
 
 Get a header value.
 
@@ -294,7 +300,7 @@ The header might have multiple values.
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `string` \| [`GetHeaderOptions`](index.md#getheaderoptions) |
 
 ###### Returns
 
@@ -887,6 +893,35 @@ Set if the request uses TLS (HTTPS).
 
 ***
 
+### GetHeaderOptions
+
+> **GetHeaderOptions**: `object`
+
+Options for getting a header value.
+
+#### Type declaration
+
+##### name
+
+> **name**: `string`
+
+The name of the header to get.
+Header name is case-insensitive.
+
+##### split?
+
+> `optional` **split**: `boolean`
+
+Whether to split the header value on commas.
+
+###### Default
+
+```ts
+false
+```
+
+***
+
 ### Request
 
 > **Request**: `object`
@@ -924,7 +959,7 @@ The header might have multiple values.
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `string` \| [`GetHeaderOptions`](index.md#getheaderoptions) |
 
 ###### Returns
 
@@ -961,11 +996,11 @@ The target host of the request.
 
 ##### getId()
 
-The unique Caido [ID](index.md#id) of the request.
+The unique Caido [ID](index.md#id-1) of the request.
 
 ###### Returns
 
-[`ID`](index.md#id)
+[`ID`](index.md#id-1)
 
 ##### getMethod()
 
@@ -1378,13 +1413,13 @@ The SDK for the Requests service.
 
 ##### get()
 
-Get a request by its unique [ID](index.md#id).
+Get a request by its unique [ID](index.md#id-1).
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `id` | [`ID`](index.md#id) |
+| `id` | [`ID`](index.md#id-1) |
 
 ###### Returns
 
@@ -1402,20 +1437,28 @@ Checks if a request is in scope.
 
 ###### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `request` | [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `request` | [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) | The request to check |
+| `scopes`? | [`Scope`](index.md#scope)[] \| [`ID`](index.md#id-1)[] | Optional scopes or scope IDs to check against. If not provided, checks against the default scope. |
 
 ###### Returns
 
 `boolean`
 
+True if the request is in scope
+
 ###### Example
 
 ```js
+// Check against default scope
 if (sdk.requests.inScope(request)) {
  sdk.console.log("In scope");
 }
+
+// Check against specific scopes
+const isInScope = sdk.requests.inScope(request, [scope1, scope2]);
+sdk.console.log(isInScope); // true or false
 ```
 
 ##### matches()
@@ -1529,7 +1572,7 @@ The header might have multiple values.
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | `string` |
+| `name` | `string` \| [`GetHeaderOptions`](index.md#getheaderoptions) |
 
 ###### Returns
 
@@ -1557,11 +1600,11 @@ Each header might have multiple values.
 
 ##### getId()
 
-The unique Caido [ID](index.md#id) of the response.
+The unique Caido [ID](index.md#id-1) of the response.
 
 ###### Returns
 
-[`ID`](index.md#id)
+[`ID`](index.md#id-1)
 
 ##### getRaw()
 
@@ -1681,11 +1724,11 @@ The description of the finding.
 
 ##### getId()
 
-The unique Caido [ID](index.md#id) of the finding.
+The unique Caido [ID](index.md#id-1) of the finding.
 
 ###### Returns
 
-[`ID`](index.md#id)
+[`ID`](index.md#id-1)
 
 ##### getReporter()
 
@@ -1880,11 +1923,11 @@ A collection of replay sessions.
 
 ##### getId()
 
-The unique Caido [ID](index.md#id) of the replay collection.
+The unique Caido [ID](index.md#id-1) of the replay collection.
 
 ###### Returns
 
-[`ID`](index.md#id)
+[`ID`](index.md#id-1)
 
 ##### getName()
 
@@ -1911,7 +1954,7 @@ The SDK for the Replay service.
 | Parameter | Type |
 | ------ | ------ |
 | `source`? | [`RequestSource`](index.md#requestsource) |
-| `collection`? | [`ID`](index.md#id) \| [`ReplayCollection`](index.md#replaycollection) |
+| `collection`? | [`ID`](index.md#id-1) \| [`ReplayCollection`](index.md#replaycollection) |
 
 ###### Returns
 
@@ -1935,11 +1978,11 @@ A replay session.
 
 ##### getId()
 
-The unique Caido [ID](index.md#id) of the replay session.
+The unique Caido [ID](index.md#id-1) of the replay session.
 
 ###### Returns
 
-[`ID`](index.md#id)
+[`ID`](index.md#id-1)
 
 ##### getName()
 
@@ -1961,11 +2004,11 @@ A saved immutable Project.
 
 ##### getId()
 
-The unique Caido [ID](index.md#id) of the project.
+The unique Caido [ID](index.md#id-1) of the project.
 
 ###### Returns
 
-[`ID`](index.md#id)
+[`ID`](index.md#id-1)
 
 ##### getName()
 
@@ -2086,7 +2129,7 @@ Option to return raw value
 
 ### RequestSource
 
-> **RequestSource**: [`ID`](index.md#id) \| [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) \| [`RequestSpecRaw`](index.md#requestspecraw)
+> **RequestSource**: [`ID`](index.md#id-1) \| [`Request`](index.md#request-2) \| [`RequestSpec`](index.md#requestspec) \| [`RequestSpecRaw`](index.md#requestspecraw)
 
 The source of a request.
 
@@ -2250,6 +2293,82 @@ Value of the environment variable
 
 ## GraphQL
 
+### GraphQLError
+
+> **GraphQLError**: `object`
+
+An error from a GraphQL query.
+
+#### Type declaration
+
+##### extensions
+
+> **extensions**: `Record`\<`string`, `any`\>
+
+##### locations
+
+> **locations**: [`GraphQLLocation`](index.md#graphqllocation)[]
+
+##### message
+
+> **message**: `string`
+
+##### path
+
+> **path**: [`GraphQLPathSegment`](index.md#graphqlpathsegment)[]
+
+***
+
+### GraphQLLocation
+
+> **GraphQLLocation**: `object`
+
+A location in a GraphQL query.
+
+#### Type declaration
+
+##### column
+
+> **column**: `number`
+
+##### line
+
+> **line**: `number`
+
+***
+
+### GraphQLPathSegment
+
+> **GraphQLPathSegment**: `string` \| `number`
+
+A segment of a path in a GraphQL query.
+
+***
+
+### GraphQLResponse\<T\>
+
+> **GraphQLResponse**\<`T`\>: `object`
+
+The response from a GraphQL query.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+#### Type declaration
+
+##### data?
+
+> `optional` **data**: `T`
+
+##### errors?
+
+> `optional` **errors**: [`GraphQLError`](index.md#graphqlerror)[]
+
+***
+
 ### GraphQLSDK
 
 > **GraphQLSDK**: `object`
@@ -2288,6 +2407,96 @@ await sdk.graphql.execute(`
   }
 `);
 ```
+
+## HostedFile
+
+### HostedFile
+
+> **HostedFile**: `object`
+
+A hosted file.
+
+#### Type declaration
+
+##### id
+
+> **id**: `string`
+
+The unique Caido [ID](index.md#id-1) of the project.
+
+##### name
+
+> **name**: `string`
+
+The name of the project.
+
+##### path
+
+> **path**: `string`
+
+The path of the file.
+
+***
+
+### HostedFileSDK
+
+> **HostedFileSDK**: `object`
+
+The SDK for the HostedFile service.
+
+#### Type declaration
+
+##### create()
+
+Create a hosted file.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `spec` | [`HostedFileSpec`](index.md#hostedfilespec) |
+
+###### Returns
+
+`Promise`\<[`HostedFile`](index.md#hostedfile)\>
+
+###### Example
+
+```js
+await sdk.hostedFile.create({ name: "My File", content: "Hello, world!" });
+```
+
+##### getAll()
+
+Get all hosted files.
+
+###### Returns
+
+`Promise`\<[`HostedFile`](index.md#hostedfile)[]\>
+
+###### Example
+
+```js
+await sdk.hostedFile.getAll();
+```
+
+***
+
+### HostedFileSpec
+
+> **HostedFileSpec**: `object`
+
+A specification for creating a hosted file.
+
+#### Type declaration
+
+##### content
+
+> **content**: [`Bytes`](index.md#bytes)
+
+##### name
+
+> **name**: `string`
 
 ## Other
 
@@ -2365,74 +2574,6 @@ Usually used for unexpected behaviors.
 ###### Returns
 
 `void`
-
-***
-
-### GraphQLError
-
-> **GraphQLError**: `object`
-
-#### Type declaration
-
-##### extensions
-
-> **extensions**: `Record`\<`string`, `any`\>
-
-##### locations
-
-> **locations**: [`GraphQLLocation`](index.md#graphqllocation)[]
-
-##### message
-
-> **message**: `string`
-
-##### path
-
-> **path**: [`GraphQLPathSegment`](index.md#graphqlpathsegment)[]
-
-***
-
-### GraphQLLocation
-
-> **GraphQLLocation**: `object`
-
-#### Type declaration
-
-##### column
-
-> **column**: `number`
-
-##### line
-
-> **line**: `number`
-
-***
-
-### GraphQLPathSegment
-
-> **GraphQLPathSegment**: `string` \| `number`
-
-***
-
-### GraphQLResponse\<T\>
-
-> **GraphQLResponse**\<`T`\>: `object`
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` |
-
-#### Type declaration
-
-##### data?
-
-> `optional` **data**: `T`
-
-##### errors?
-
-> `optional` **errors**: [`GraphQLError`](index.md#graphqlerror)[]
 
 ***
 
@@ -2540,9 +2681,9 @@ The denylist of the scope.
 
 ##### id
 
-> `readonly` **id**: [`ID`](index.md#id)
+> `readonly` **id**: [`ID`](index.md#id-1)
 
-The unique Caido [ID](index.md#id) of the scope.
+The unique Caido [ID](index.md#id-1) of the scope.
 
 ##### name
 
