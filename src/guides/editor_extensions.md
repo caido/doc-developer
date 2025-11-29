@@ -2,7 +2,6 @@
 
 You can extend the request and response editors in Caido with CodeMirror extensions to add custom functionality like syntax highlighting, validation, autocomplete, custom keybindings, and editor themes.
 
-
 ::: tip
 CodeMirror extensions are powerful and flexible. Refer to the [CodeMirror documentation](https://codemirror.net/docs/) for more advanced extension patterns.
 :::
@@ -10,7 +9,6 @@ CodeMirror extensions are powerful and flexible. Refer to the [CodeMirror docume
 ::: warning
 Be careful with extensions that modify editor behavior significantly, as they may interfere with Caido's built-in editor functionality.
 :::
-
 
 ## Adding Editor Extensions
 
@@ -47,26 +45,7 @@ Response editor extensions are available on:
 sdk.httpHistory.addResponseEditorExtension(myExtension);
 ```
 
-## CodeMirror Extension Types
-
-CodeMirror extensions can be:
-
-- A single extension object
-- An array of extensions
-- A function that returns an extension
-
-```ts
-// Single extension
-sdk.httpHistory.addRequestEditorExtension(myExtension);
-
-// Array of extensions
-sdk.httpHistory.addRequestEditorExtension([extension1, extension2]);
-
-// Function returning extension
-sdk.httpHistory.addRequestEditorExtension(() => myExtension);
-```
-
-## Multiple Extensions
+## Adding Multiple Extensions
 
 You can add multiple extensions to the same editor:
 

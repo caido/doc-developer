@@ -4,7 +4,7 @@ In this guide, you will learn how to handle backend events in the frontend of yo
 
 This can be accomplished using the three event handlers provided by the SDK:
 
-## onProjectChange
+## Listening for Project Changes
 
 An event will be triggered when the active [Project](https://docs.caido.io/quickstart/beginner_guide/first_steps_with_caido/project.html) changes.
 
@@ -32,7 +32,7 @@ export function init(sdk: SDK<API>) {
 Project changed from "Caido" to "Example".
 ```
 
-## onInterceptRequest and onInterceptResponse
+## Intercepting Requests and Responses
 
 An event will be triggered with `onInterceptRequest` and `onInterceptResponse` when a request or response is proxied through Caido respectively.
 

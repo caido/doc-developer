@@ -21,16 +21,16 @@ sdk.httpHistory.addRequestViewMode({
 });
 ```
 
-## View Mode Options
+## Configuring View Modes
 
 - `label` - The display name shown in the view mode selector
 - `view` - A component definition that renders the custom view
 
-## Component Definition
+## Defining View Mode Components
 
 The `view` property accepts a `ComponentDefinition` object that includes a Vue component. The component automatically receives certain props that you don't need to pass explicitly.
 
-## Component Props
+## Using Component Props in View Modes
 
 Request view mode components automatically receive the following implicit props:
 

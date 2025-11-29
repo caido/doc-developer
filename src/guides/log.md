@@ -19,7 +19,7 @@ All logging methods accept variable arguments, allowing you to pass multiple val
 sdk.log.info("User action:", action, "with data:", data);
 ```
 
-## Log Levels
+## Using Different Log Levels
 
 ### Debug
 

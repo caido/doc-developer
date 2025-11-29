@@ -2,7 +2,7 @@
 
 You can subscribe to various application events to react to state changes in Caido, such as project selection, workflow lifecycle, replay session changes, and backend plugin events.
 
-## Backend Plugin Events
+## Subscribing to Backend Plugin Events
 
 To listen for events sent from your backend plugin:
 
@@ -16,7 +16,7 @@ sdk.backend.onEvent("my-event", (data) => {
 For more details on backend events, see [Sending Events to the Frontend](/guides/events.md).
 :::
 
-## Project Events
+## Subscribing to Project Events
 
 ### Project Selection Changes
 
@@ -31,7 +31,7 @@ const handler = sdk.projects.onCurrentProjectChange((event) => {
 handler.stop();
 ```
 
-## Workflow Events
+## Subscribing to Workflow Events
 
 ### Workflow Created
 
@@ -61,7 +61,7 @@ const handler = sdk.workflows.onDeletedWorkflow((workflowId) => {
 For more details on workflow events, see [How to Interact with Workflows](/guides/workflows.md).
 :::
 
-## Replay Session Events
+## Subscribing to Replay Session Events
 
 ### Current Session Changes
 
@@ -77,7 +77,7 @@ const handler = sdk.replay.onCurrentSessionChange((event) => {
 For more details on replay events, see [How to Manage Replay Sessions and Collections](/guides/replay.md).
 :::
 
-## Navigation Events
+## Subscribing to Navigation Events
 
 ### Page Changes
 

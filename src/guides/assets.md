@@ -12,29 +12,29 @@ const asset = await sdk.assets.get("path/to/file.txt");
 
 The path is relative to your plugin's assets directory.
 
-## Asset Methods
+## Converting Assets to Different Formats
 
 Once you have an asset, you can convert it to different formats:
 
-### As String
+### Converting to String
 
 ```ts
 const content = await asset.asString();
 ```
 
-### As JSON
+### Converting to JSON
 
 ```ts
 const data = await asset.asJson<MyType>();
 ```
 
-### As ArrayBuffer
+### Converting to ArrayBuffer
 
 ```ts
 const buffer = await asset.asArrayBuffer();
 ```
 
-### As ReadableStream
+### Converting to ReadableStream
 
 ```ts
 const stream = asset.asReadableStream();

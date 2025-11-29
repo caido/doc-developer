@@ -2,7 +2,7 @@
 
 UI slots allow you to extend Caido's interface by adding custom components to specific locations, such as toolbars and footers. You can add buttons, commands, or custom components to these slots.
 
-## Available Slots
+## Finding Available Slots
 
 ### Footer Slots
 
@@ -19,7 +19,7 @@ Replay slots are available via `sdk.replay.addToSlot()`:
 - `ReplaySlot.SessionToolbarSecondary` - Right side of the session toolbar
 - `ReplaySlot.Topbar` - Topbar area
 
-## Slot Content Types
+## Adding Different Types of Content to Slots
 
 You can add three types of content to slots:
 
@@ -103,7 +103,7 @@ const props = defineProps<{
 </script>
 ```
 
-## Slot Import
+## Importing Slot Constants
 
 You need to import the slot constants:
 

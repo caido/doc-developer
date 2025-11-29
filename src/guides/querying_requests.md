@@ -2,7 +2,7 @@
 
 In this guide, we'll cover how to fetch proxied requests in a backend plugin.
 
-## query()
+## Querying Requests
 
 The `query()` method queries proxied requests belonging to the current [Project](https://docs.caido.io/guides/projects.html).
 
@@ -12,7 +12,7 @@ let query = sdk.requests.query();
 
 This method returns the results as a [RequestsQuery](/reference/sdks/backend/#requestsquery) object.
 
-## execute()
+## Executing a Query
 
 Queries for requests are executed with the `execute()` method.
 

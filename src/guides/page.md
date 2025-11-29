@@ -2,7 +2,7 @@
 
 Plugin pages provide a graphical user interface in the Caido application. There are multiple SDK objects and methods available to assist you in customization.
 
-## navigation
+## Creating Pages and Navigating
 
 Used to create pages in the application and navigate to them.
 
@@ -29,7 +29,7 @@ The inclusion of a topbar will remove the Browser button, >\_Commands button, Fo
 sdk.navigation.goTo("/my-plugin-page");
 ```
 
-## sidebar
+## Adding Sidebar Items
 
 Used to add an entry to the left-hand navigation menu in the Caido user-interface to navigate between pages.
 
@@ -47,7 +47,7 @@ The `icon` property is optional and adds a [FontAwesome](https://fontawesome.com
 - The `isExternal` property is optional and takes a boolean value of _true_ if the path points to an external URL.
   :::
 
-## ui
+## Creating UI Components
 
 Used to create visual elements. Content options for each element are also provided. These elements provide a way to sectionalize the user-interface of your plugin.
 
@@ -282,7 +282,7 @@ To view the CSS rules of the editors shown below, expand the following:
 
 <img alt="Page with request and response editors." src="/_images/page_with_req_resp_editors.png" center/>
 
-## window
+## Interacting with Windows and Editors
 
 Used to interact with text within the application environment, allowing text selection, replacement, read permission designations, focusing and editor related messaging.
 

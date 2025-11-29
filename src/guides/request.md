@@ -2,7 +2,7 @@
 
 Requests can be interacted with and sent in both Workflows and plugins.
 
-## RequestSpec
+## Creating and Modifying Requests
 
 Used to create mutable request objects that have not yet been sent.
 

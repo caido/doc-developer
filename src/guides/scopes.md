@@ -94,7 +94,7 @@ const currentScopeId = sdk.intercept.getScopeId();
 sdk.intercept.setScope(scopeId);
 ```
 
-## Scope Patterns
+## Using Scope Patterns
 
 Scope allowlists and denylists support wildcard patterns:
 
