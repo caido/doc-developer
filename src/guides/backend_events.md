@@ -1,4 +1,4 @@
-# Handling Backend Events
+# Handle Backend Events
 
 In this guide, you will learn how to handle backend events in the frontend of your Caido plugin.
 

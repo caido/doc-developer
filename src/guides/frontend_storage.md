@@ -1,4 +1,4 @@
-# Storing Frontend Data
+# Store Frontend Data
 
 By default, the frontend component of a plugin is stateless, meaning data will be lost between Caido sessions. However, if your plugin needs to persist data in the frontend you can utilize the storage system through `sdk.storage`.
 

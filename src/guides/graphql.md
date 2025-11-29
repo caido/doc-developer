@@ -1,4 +1,4 @@
-# Querying the GraphQL API
+# Query the GraphQL API
 
 Caido provides a GraphQL API for advanced data queries and custom operations. You can interact with this API through the `sdk.graphql` utilities.
 

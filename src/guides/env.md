@@ -1,4 +1,4 @@
-# Using Environment Variables
+# Use Environment Variables
 
 You may want to allow users to use environment variables set via the `Environment` page in your Caido plugin.
 

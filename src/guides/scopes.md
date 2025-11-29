@@ -1,4 +1,4 @@
-# Creating and Managing Scopes
+# Manage Scopes
 
 Scopes define which requests and responses are included or excluded from various operations in Caido. You can programmatically create, update, delete, and query scopes, as well as set the active scope on different pages.
 

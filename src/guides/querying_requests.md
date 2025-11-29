@@ -1,4 +1,4 @@
-# Fetching Proxied Requests
+# Fetch Proxied Requests
 
 In this guide, we'll cover how to fetch proxied requests in a backend plugin.
 

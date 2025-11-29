@@ -1,4 +1,4 @@
-# Managing Replay Sessions and Collections
+# Manage Replay Sessions
 
 Replay sessions allow you to replay HTTP requests, and collections help organize related sessions. You can programmatically create, manage, and interact with replay sessions and collections.
 

@@ -1,4 +1,4 @@
-# Adding Custom Request View Modes
+# Add Custom View Modes
 
 You can add custom view modes to display requests in alternative formats, such as custom parsers, formatted views, or visual editors. Custom view modes appear alongside the default view options in the request viewer.
 

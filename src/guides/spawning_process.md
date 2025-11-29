@@ -1,4 +1,4 @@
-# Spawning a Process
+# Spawn a Process
 
 You might want to spawn a process to interact with external tools or programs.
 

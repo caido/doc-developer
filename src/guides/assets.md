@@ -1,4 +1,4 @@
-# Accessing Static Assets
+# Access Static Assets
 
 Static assets are files bundled with your plugin that can be accessed at runtime. You can load configuration files, images, templates, data files, and other resources from the assets folder.
 

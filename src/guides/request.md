@@ -1,4 +1,4 @@
-# Sending HTTP Requests
+# Send HTTP Requests
 
 Requests can be interacted with and sent in both Workflows and plugins.
 

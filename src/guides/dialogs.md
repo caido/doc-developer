@@ -1,4 +1,4 @@
-# Showing Dialogs
+# Show Dialogs
 
 When you need to display a modal window to collect user input, show important information, or confirm an action, use dialogs to create focused interactions with users.
 

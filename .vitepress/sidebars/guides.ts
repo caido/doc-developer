@@ -9,12 +9,24 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/",
       },
       {
-        text: "Configuring Your Package",
+        text: "Configure Package",
         link: "/guides/config",
       },
       {
         text: "AI Assisted Coding",
         link: "/guides/vibe_coding",
+      },
+      {
+        text: "Set Up Repository",
+        link: "/guides/repository",
+      },
+      {
+        text: "Submit to Store",
+        link: "/guides/store",
+      },
+      {
+        text: "Contributing",
+        link: "/guides/documentation",
       },
     ],
   },
@@ -22,60 +34,85 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
     text: "Frontend Guides",
     items: [
       {
-        text: "Building User Interfaces",
+        text: "User Interface",
         items: [
           {
-            text: "Creating a Page",
+            text: "Create a Page",
             link: "/guides/page",
           },
           {
-            text: "Creating a Command",
+            text: "Create a Command",
             link: "/guides/command",
           },
           {
-            text: "Customizing Context Menus",
+            text: "Customize Context Menus",
             link: "/guides/menu",
           },
           {
-            text: "Using the Component Library",
+            text: "Use the Component Library",
             link: "/guides/styling",
           },
           {
-            text: "Extending Editors with CodeMirror",
+            text: "Extend Editors",
             link: "/guides/editor_extensions",
           },
           {
-            text: "Adding Custom Request View Modes",
+            text: "Add Custom View Modes",
             link: "/guides/view_modes",
           },
           {
-            text: "Adding Components to UI Slots",
+            text: "Add to UI Slots",
             link: "/guides/slots",
           },
           {
-            text: "Showing Dialogs",
+            text: "Show Dialogs",
             link: "/guides/dialogs",
           },
           {
-            text: "Registering Keyboard Shortcuts",
+            text: "Register Shortcuts",
             link: "/guides/shortcuts",
           },
           {
-            text: "Customizing the Command Palette",
+            text: "Customize Command Palette",
             link: "/guides/command_palette_advanced",
           },
         ],
       },
       {
-        text: "Storing Data",
+        text: "Data Storage",
         items: [
           {
-            text: "Storing Frontend Data",
+            text: "Store Frontend Data",
             link: "/guides/frontend_storage",
           },
           {
-            text: "Accessing Static Assets",
+            text: "Access Static Assets",
             link: "/guides/assets",
+          },
+        ],
+      },
+      {
+        text: "Working with Caido Features",
+        items: [
+          {
+            text: "Use HTTPQL Queries",
+            link: "/guides/filters",
+          },
+          {
+            text: "Manage Scopes",
+            link: "/guides/scopes",
+          },
+          {
+            text: "Manage Replay Sessions",
+            link: "/guides/replay",
+          },
+          {
+            text: "Manage Match and Replace",
+            link: "/guides/match_replace",
+          },
+          {
+            text: "Interact with Workflows",
+            link: "/guides/workflows",
           },
         ],
       },
@@ -83,15 +120,11 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Communication & Events",
         items: [
           {
-            text: "Handling Backend Events",
-            link: "/guides/backend_events",
-          },
-          {
-            text: "Subscribing to Application Events",
+            text: "Subscribe to Application Events",
             link: "/guides/application_events",
           },
           {
-            text: "Listening to Page Navigation Changes",
+            text: "Listen to Navigation Events",
             link: "/guides/navigation_events",
           },
         ],
@@ -100,8 +133,25 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "System Integration",
         items: [
           {
-            text: "Logging Messages",
+            text: "Log Messages",
             link: "/guides/log",
+          },
+          {
+            text: "Get Version Information",
+            link: "/guides/runtime",
+          },
+        ],
+      },
+      {
+        text: "Advanced Features",
+        items: [
+          {
+            text: "Use AI in Your Plugin",
+            link: "/guides/ai",
+          },
+          {
+            text: "Query the GraphQL API",
+            link: "/guides/graphql",
           },
         ],
       },
@@ -114,65 +164,45 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Working with HTTP",
         items: [
           {
-            text: "Sending HTTP Requests",
+            text: "Send HTTP Requests",
             link: "/guides/request",
           },
           {
-            text: "Sending a Fetch Request",
+            text: "Send a Fetch Request",
             link: "/guides/fetch",
           },
           {
-            text: "Fetching Proxied Requests",
+            text: "Fetch Proxied Requests",
             link: "/guides/querying_requests",
           },
           {
-            text: "Using Invalid UTF-8",
+            text: "Use Invalid UTF-8",
             link: "/guides/utf",
-          },
-          {
-            text: "Working with HTTPQL Queries and Filters",
-            link: "/guides/filters",
           },
         ],
       },
       {
-        text: "Working with Caido Features",
+        text: "Caido Features",
         items: [
           {
-            text: "Using Findings",
+            text: "Use Findings",
             link: "/guides/findings",
           },
           {
-            text: "Using Environment Variables",
+            text: "Use Environment Variables",
             link: "/guides/env",
-          },
-          {
-            text: "Creating and Managing Scopes",
-            link: "/guides/scopes",
-          },
-          {
-            text: "Managing Replay Sessions and Collections",
-            link: "/guides/replay",
-          },
-          {
-            text: "Creating and Managing Match and Replace Rules",
-            link: "/guides/match_replace",
-          },
-          {
-            text: "Interacting with Workflows",
-            link: "/guides/workflows",
           },
         ],
       },
       {
-        text: "Storing Data",
+        text: "Data Storage",
         items: [
           {
-            text: "Storing Data in SQLite",
+            text: "Store Data in SQLite",
             link: "/guides/sqlite",
           },
           {
-            text: "Adding Files",
+            text: "Add Files",
             link: "/guides/files",
           },
         ],
@@ -181,11 +211,15 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Communication & Events",
         items: [
           {
-            text: "Creating and Calling a Custom Function",
+            text: "Handle Backend Events",
+            link: "/guides/backend_events",
+          },
+          {
+            text: "Call Custom Functions",
             link: "/guides/rpc",
           },
           {
-            text: "Sending Events to the Frontend",
+            text: "Send Events to the Frontend",
             link: "/guides/events",
           },
         ],
@@ -194,49 +228,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "System Integration",
         items: [
           {
-            text: "Spawning a Process",
+            text: "Spawn a Process",
             link: "/guides/spawning_process",
           },
-          {
-            text: "Getting Caido Version Information",
-            link: "/guides/runtime",
-          },
         ],
-      },
-      {
-        text: "Advanced Features",
-        items: [
-          {
-            text: "Using AI in Your Plugin",
-            link: "/guides/ai",
-          },
-          {
-            text: "Querying the GraphQL API",
-            link: "/guides/graphql",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    text: "Distribution",
-    items: [
-      {
-        text: "Setting Up Your Repository",
-        link: "/guides/repository",
-      },
-      {
-        text: "Submitting to the Store",
-        link: "/guides/store",
-      },
-    ],
-  },
-  {
-    text: "Contributions",
-    items: [
-      {
-        text: "Documentation",
-        link: "/guides/documentation",
       },
     ],
   },

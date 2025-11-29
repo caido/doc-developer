@@ -1,4 +1,4 @@
-# Interacting with Workflows
+# Interact with Workflows
 
 Workflows in Caido allow you to automate sequences of actions. You can programmatically retrieve workflows and subscribe to workflow lifecycle events to react to changes.
 

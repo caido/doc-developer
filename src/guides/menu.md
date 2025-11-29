@@ -1,4 +1,4 @@
-# Customizing Context Menus
+# Customize Context Menus
 
 The context menu is the list of actions/options that appears when right-clicking within an application.
 

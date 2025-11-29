@@ -1,4 +1,4 @@
-# Creating a Page
+# Create a Page
 
 Plugin pages provide a graphical user interface in the Caido application. There are multiple SDK objects and methods available to assist you in customization.
 

@@ -1,4 +1,4 @@
-# Using Invalid UTF-8
+# Use Invalid UTF-8
 
 ::: info
 For conceptual information regarding this guide - click [here](/concepts/binary.md).
