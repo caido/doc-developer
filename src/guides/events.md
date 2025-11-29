@@ -1,4 +1,4 @@
-# Sending Events from the Backend to Frontend
+# Send Events to the Frontend
 
 In this guide, you will learn how to facilitate event-driven communication between the backend and the frontend components of a plugin.
 

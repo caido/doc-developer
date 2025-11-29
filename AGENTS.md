@@ -194,6 +194,14 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 5. If it's about storing your plugin's data, use "Storing Data"
 6. Update the sidebar in `.vitepress/sidebars/guides.ts`
 
+#### Guide Title Matching
+
+- **Guide titles MUST exactly match their corresponding sidebar item text**
+- The H1 title in each guide file (e.g., `# Title`) must match the `text` property in `.vitepress/sidebars/guides.ts`
+- Titles should be concise and use gerund forms (e.g., "Creating", "Managing", "Interacting") for how-to guides, following Diátaxis principles
+- When updating a guide title, always verify it matches the sidebar entry
+- When updating the sidebar, ensure the corresponding guide file's H1 title is updated to match
+
 ### 3. Writing Guidelines
 
 #### For Tutorials
@@ -213,6 +221,47 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - Address common pitfalls or edge cases
 - Use imperative mood ("Create a command", "Register the handler")
 - Be concise and focused on the task
+- **Section headings must be use-case/question-oriented**: Section headings should describe a use case or answer a question, not describe types or categories. Use gerund forms (e.g., "Adding", "Creating", "Subscribing", "Converting") to describe actions.
+  - ✅ **Good**: "Subscribing to Project Events", "Adding Multiple Extensions", "Converting Assets to Different Formats", "Using Different Log Levels"
+  - ❌ **Bad**: "Project Events", "Multiple Extensions", "Asset Methods", "Log Levels", "Extension Types"
+  - The only exception is the `## Examples` section, which is exempt from this rule
+- **Examples placement**: All examples must be placed at the end of the guide under a `## Examples` header
+- **Example sub-headers**: Use `###` for individual examples (e.g., `### JSON Formatter View`)
+- **No "Example:" prefix**: Do not prefix example titles with "Example:" since they're already under the Examples section
+- **No content after examples**: Do not include any non-example sections after the Examples section
+- **Tip/info/warning placement**: Place tip/info/warning callouts logically where they make the most sense in the content, not at the very end of the page. Callouts at the end of a page are not visible to readers. For example, place warnings near the relevant section they apply to, tips near the feature they describe, and info blocks where the information is most relevant.
+
+#### Code Examples and Snippets
+
+- **ALWAYS include a description before code snippets** - Never show code without explaining what it does
+- For examples with titles (e.g., `## Example: Feature Name`), add a short descriptive paragraph before the code block explaining what the example demonstrates
+- Descriptions should be concise (1-2 sentences) and explain the purpose and functionality of the code
+- Even simple code snippets should have context explaining their purpose
+- Example format: After the example heading, add a descriptive paragraph, then the code block. The structure should be: heading → description paragraph → code block
+- **Remove unused type imports**: When reviewing frontend guides, remove `import type { Caido } from "@caido/sdk-frontend"` and `export type CaidoSDK = Caido;` declarations if `CaidoSDK` is not actually used in the code block (e.g., if the code only uses `sdk` without type annotations). Only keep these imports when `CaidoSDK` appears in function parameters or type annotations within the example.
+
+#### Vue Component Examples
+
+When showing Vue Single File Component (`.vue`) examples in documentation:
+
+- **Script section first**: Place `<script setup lang="ts">` at the top of the component
+- **Template section second**: Place `<template>` after the script section
+- **Use Tailwind CSS**: Replace inline `style` attributes with Tailwind utility classes
+- **Structure**: Script → Template (not Template → Script)
+
+Example structure:
+
+```vue
+<script setup lang="ts">
+// Script content here
+</script>
+
+<template>
+  <!-- HTML template with Tailwind classes -->
+</template>
+```
+
+This convention ensures consistency across all Vue component examples in the documentation.
 
 #### For Reference
 
@@ -246,6 +295,7 @@ Before submitting changes:
 2. **Type check**: Run `pnpm typecheck` to verify TypeScript types
 3. **Build**: Run `pnpm build` to ensure the site builds successfully
 4. **Preview**: Run `pnpm dev` to preview changes locally
+5. **Title Check**: Verify that all guide file H1 titles exactly match their corresponding sidebar entries in `.vitepress/sidebars/guides.ts`
 
 ### 6. Common Patterns
 
@@ -307,6 +357,10 @@ The documentation uses VitePress components like:
 - ❌ Don't use absolute paths for images or internal links
 - ❌ Don't skip validation steps
 - ❌ Don't add content that doesn't fit the Diátaxis framework
+- ❌ **Don't create mismatched titles**: Guide file H1 titles must exactly match sidebar item text
+- ❌ **Don't show code without descriptions**: Every code snippet, especially examples, must have a description explaining what it does
+- ❌ **Don't use type/category-oriented section headings**: Section headings in how-to guides must describe use cases or questions, not types or categories. Avoid headings like "Extension Types", "Log Levels", "Asset Methods" - instead use "Using Extension Types", "Choosing a Log Level", "Converting Assets to Different Formats"
+- ❌ **Don't put tip/info/warning blocks at the end of pages**: These callouts are not visible when placed at the very end. Place them logically where they make the most sense in the content (e.g., warnings near the relevant section, tips near the feature they describe)
 
 ## Quick Reference: Decision Tree
 

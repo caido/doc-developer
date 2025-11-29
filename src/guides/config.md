@@ -1,4 +1,4 @@
-# Configuring your Package
+# Configure Package
 
 Caido packages are configured using the `caido.config.ts` file. This file is located in the root of your plugin's directory.
 This file is used by the `caido-dev` CLI to build your plugin into a `plugin_package.zip` file.

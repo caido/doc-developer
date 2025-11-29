@@ -1,4 +1,4 @@
-# Documentation
+# Contributing
 
 Our documentation is totally [open source](https://github.com/caido/doc-developer) and is there to help the community.
 We are doing our best to improve it, but we would gladly welcome your contributions.

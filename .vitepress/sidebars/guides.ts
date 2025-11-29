@@ -9,132 +9,225 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/",
       },
       {
-        text: "Configuring Your Package",
+        text: "Configure Package",
         link: "/guides/config",
       },
       {
         text: "AI Assisted Coding",
         link: "/guides/vibe_coding",
       },
-    ],
-  },
-  {
-    text: "Building User Interfaces",
-    items: [
       {
-        text: "Creating a Page",
-        link: "/guides/page",
-      },
-      {
-        text: "Creating a Command",
-        link: "/guides/command",
-      },
-      {
-        text: "Customizing Context Menus",
-        link: "/guides/menu",
-      },
-      {
-        text: "Using the Component Library",
-        link: "/guides/styling",
-      },
-    ],
-  },
-  {
-    text: "Working with HTTP",
-    items: [
-      {
-        text: "Sending HTTP Requests",
-        link: "/guides/request",
-      },
-      {
-        text: "Sending a Fetch Request",
-        link: "/guides/fetch",
-      },
-      {
-        text: "Fetching Proxied Requests",
-        link: "/guides/querying_requests",
-      },
-      {
-        text: "Using Invalid UTF-8",
-        link: "/guides/utf",
-      },
-    ],
-  },
-  {
-    text: "Working with Caido Features",
-    items: [
-      {
-        text: "Using Findings",
-        link: "/guides/findings",
-      },
-      {
-        text: "Using Environment Variables",
-        link: "/guides/env",
-      },
-    ],
-  },
-  {
-    text: "Storing Data",
-    items: [
-      {
-        text: "Storing Frontend Data",
-        link: "/guides/frontend_storage",
-      },
-      {
-        text: "Storing Data in SQLite",
-        link: "/guides/sqlite",
-      },
-      {
-        text: "Adding Files",
-        link: "/guides/files",
-      },
-    ],
-  },
-  {
-    text: "Communication & Events",
-    items: [
-      {
-        text: "Creating and Calling a Custom Function",
-        link: "/guides/rpc",
-      },
-      {
-        text: "Handling Backend Events",
-        link: "/guides/backend_events",
-      },
-      {
-        text: "Sending Events to the Frontend",
-        link: "/guides/events",
-      },
-    ],
-  },
-  {
-    text: "System Integration",
-    items: [
-      {
-        text: "Spawning a Process",
-        link: "/guides/spawning_process",
-      },
-    ],
-  },
-  {
-    text: "Distribution",
-    items: [
-      {
-        text: "Setting Up Your Repository",
+        text: "Set Up Repository",
         link: "/guides/repository",
       },
       {
-        text: "Submitting to the Store",
+        text: "Submit to Store",
         link: "/guides/store",
+      },
+      {
+        text: "Contributing",
+        link: "/guides/documentation",
       },
     ],
   },
   {
-    text: "Contributions",
+    text: "Frontend Guides",
     items: [
       {
-        text: "Documentation",
-        link: "/guides/documentation",
+        text: "User Interface",
+        items: [
+          {
+            text: "Create a Page",
+            link: "/guides/page",
+          },
+          {
+            text: "Create a Command",
+            link: "/guides/command",
+          },
+          {
+            text: "Customize Context Menus",
+            link: "/guides/menu",
+          },
+          {
+            text: "Use the Component Library",
+            link: "/guides/styling",
+          },
+          {
+            text: "Extend Editors",
+            link: "/guides/editor_extensions",
+          },
+          {
+            text: "Add View Modes",
+            link: "/guides/view_modes",
+          },
+          {
+            text: "Add to UI Slots",
+            link: "/guides/slots",
+          },
+          {
+            text: "Show Dialogs",
+            link: "/guides/dialogs",
+          },
+          {
+            text: "Register Shortcuts",
+            link: "/guides/shortcuts",
+          },
+          {
+            text: "Customize the Command Palette",
+            link: "/guides/command_palette_advanced",
+          },
+        ],
+      },
+      {
+        text: "Data Storage",
+        items: [
+          {
+            text: "Store Frontend Data",
+            link: "/guides/frontend_storage",
+          },
+          {
+            text: "Access Static Assets",
+            link: "/guides/assets",
+          },
+        ],
+      },
+      {
+        text: "Caido Features",
+        items: [
+          {
+            text: "Use HTTPQL Queries",
+            link: "/guides/filters",
+          },
+          {
+            text: "Manage Scopes",
+            link: "/guides/scopes",
+          },
+          {
+            text: "Manage Replay Sessions",
+            link: "/guides/replay",
+          },
+          {
+            text: "Manage Match and Replace",
+            link: "/guides/match_replace",
+          },
+          {
+            text: "Interact with Workflows",
+            link: "/guides/workflows",
+          },
+        ],
+      },
+      {
+        text: "Events",
+        items: [
+          {
+            text: "Subscribe to Application Events",
+            link: "/guides/application_events",
+          },
+          {
+            text: "Listen to Navigation Events",
+            link: "/guides/navigation_events",
+          },
+        ],
+      },
+      {
+        text: "System Integration",
+        items: [
+          {
+            text: "Log Messages",
+            link: "/guides/log",
+          },
+          {
+            text: "Get Version Information",
+            link: "/guides/runtime",
+          },
+        ],
+      },
+      {
+        text: "Advanced Features",
+        items: [
+          {
+            text: "Use AI in Your Plugin",
+            link: "/guides/ai",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: "Backend Guides",
+    items: [
+      {
+        text: "Working with HTTP",
+        items: [
+          {
+            text: "Send HTTP Requests",
+            link: "/guides/request",
+          },
+          {
+            text: "Send a Fetch Request",
+            link: "/guides/fetch",
+          },
+          {
+            text: "Fetch Proxied Requests",
+            link: "/guides/querying_requests",
+          },
+          {
+            text: "Use Invalid UTF-8",
+            link: "/guides/utf",
+          },
+        ],
+      },
+      {
+        text: "Caido Features",
+        items: [
+          {
+            text: "Use Findings",
+            link: "/guides/findings",
+          },
+          {
+            text: "Use Environment Variables",
+            link: "/guides/env",
+          },
+        ],
+      },
+      {
+        text: "Data Storage",
+        items: [
+          {
+            text: "Store Data in SQLite",
+            link: "/guides/sqlite",
+          },
+          {
+            text: "Add Files",
+            link: "/guides/files",
+          },
+        ],
+      },
+      {
+        text: "Events",
+        items: [
+          {
+            text: "Handle Backend Events",
+            link: "/guides/backend_events",
+          },
+          {
+            text: "Call Custom Functions",
+            link: "/guides/rpc",
+          },
+          {
+            text: "Send Events to the Frontend",
+            link: "/guides/events",
+          },
+        ],
+      },
+      {
+        text: "System Integration",
+        items: [
+          {
+            text: "Spawn a Process",
+            link: "/guides/spawning_process",
+          },
+        ],
       },
     ],
   },

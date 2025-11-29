@@ -1,4 +1,4 @@
-# Adding Files
+# Add Files
 
 To include additional files in your Caido plugins, you can add the `assets` property key to either the frontend or backend component objects in the `caido.config.ts` file. The key value is an array that stores the locations of any files accessible to the plugin.
 

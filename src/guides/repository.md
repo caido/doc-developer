@@ -1,4 +1,4 @@
-# Setting Up Your Repository
+# Set Up Repository
 
 Caido uses [GitHub](https://github.com) to download and distribute plugin packages. To share your plugin with the community, you’ll first need to set up a Github repository that meets Caido’s requirements.
 

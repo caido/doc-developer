@@ -1,4 +1,4 @@
-# Using AI to Assist in Plugin Development
+# AI Assisted Coding
 
 ::: warning DISCLAIMER
 While AI assistants can be helpful in development, they may sometimes provide incorrect or incomplete information. Always verify AI-generated code and suggestions against the official documentation and test thoroughly.

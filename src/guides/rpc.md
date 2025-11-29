@@ -1,4 +1,4 @@
-# Creating and Calling a Custom Function
+# Call Custom Functions
 
 When developing a plugin, there are two components to consider: the **frontend** and the **backend**.
 

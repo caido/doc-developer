@@ -1,4 +1,4 @@
-# Sending a Fetch Request
+# Send a Fetch Request
 
 Caido's [HTTP Module](/reference/modules/caido/http.md) provides an implementation of the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). With this module, you can create and send asynchronous HTTP requests and handle their responses.
 

@@ -1,4 +1,4 @@
-# Using the Component Library
+# Use the Component Library
 
 Caido plugins use [PrimeVue](https://tailwind.primevue.org/) as the component library, with custom styling to match the core application’s look and feel.
 

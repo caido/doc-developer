@@ -1,4 +1,4 @@
-# Submitting to the Store
+# Submit to Store
 
 If you want to share your plugin package with the Caido community, the best way is to submit it to the official list of plugin packages.
 
