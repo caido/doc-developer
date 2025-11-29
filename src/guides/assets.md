@@ -52,6 +52,10 @@ export default defineConfig({
 });
 ```
 
+::: warning
+Assets are bundled with your plugin, so large files will increase the plugin size. Consider loading external resources at runtime for very large files.
+:::
+
 ## Examples
 
 ### Loading Configuration
@@ -254,8 +258,4 @@ Use `asReadableStream()` for large files to process them in chunks and avoid loa
 
 ::: info
 Asset paths are relative to your plugin's assets directory. Use glob patterns in your config to include multiple files.
-:::
-
-::: warning
-Assets are bundled with your plugin, so large files will increase the plugin size. Consider loading external resources at runtime for very large files.
 :::

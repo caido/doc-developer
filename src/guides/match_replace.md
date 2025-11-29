@@ -57,6 +57,10 @@ const rule = await sdk.matchReplace.createRule({
 
 The `section` parameter specifies which part of the request/response to match and replace (e.g., `RequestHeaders`, `ResponseBody`, etc.).
 
+::: warning
+Be careful when creating rules that modify request/response data, as they can affect the behavior of your application testing. Test rules thoroughly before enabling them.
+:::
+
 ### Getting Rules
 
 To retrieve all rules:
@@ -331,8 +335,4 @@ Use collections to organize related match and replace rules, making it easier to
 
 ::: info
 Active rules are processed in priority order. Higher priority rules are applied first. Use `getActiveRules()` to see the processing order.
-:::
-
-::: warning
-Be careful when creating rules that modify request/response data, as they can affect the behavior of your application testing. Test rules thoroughly before enabling them.
 :::

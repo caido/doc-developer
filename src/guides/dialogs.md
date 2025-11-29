@@ -30,6 +30,14 @@ const dialog = sdk.window.showDialog(component, {
 
 The `modal` option controls whether the dialog blocks interaction with the rest of the application (default: `true`). Set `closable` to control whether users can close the dialog (default: `true`), and `closeOnEscape` to allow closing with the Escape key (default: `true`). Use `draggable` to make the dialog draggable (default: `false`), and `position` to set where it appears: `"left"`, `"right"`, `"top"`, `"bottom"`, `"center"`, `"topleft"`, `"topright"`, `"bottomleft"`, or `"bottomright"` (default: `"center"`).
 
+::: tip
+Use modal dialogs for critical actions that require user attention. Non-modal dialogs are useful for displaying information that doesn't block the user's workflow.
+:::
+
+::: warning
+Always provide a way to close dialogs, either through a close button or by enabling `closable` and `closeOnEscape` options.
+:::
+
 ## Close a Dialog Programmatically
 
 Close a dialog programmatically by calling the `close()` method on the `Dialog` object returned from `showDialog()`. This is useful when you need to close the dialog based on user actions or application logic.
@@ -188,11 +196,3 @@ const showFormDialog = (sdk: CaidoSDK): Promise<string | null> => {
   });
 };
 ```
-
-::: tip
-Use modal dialogs for critical actions that require user attention. Non-modal dialogs are useful for displaying information that doesn't block the user's workflow.
-:::
-
-::: warning
-Always provide a way to close dialogs, either through a close button or by enabling `closable` and `closeOnEscape` options.
-:::

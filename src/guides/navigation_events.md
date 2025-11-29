@@ -18,6 +18,10 @@ The callback receives a `PageChangeEvent` object containing:
 - `routeId` - The route ID of the new page
 - `path` - The path of the new page
 
+::: info
+The `onPageChange` callback is called after the page has changed. To perform actions before navigation, you may need to use other mechanisms depending on your use case.
+:::
+
 ## Stopping the Listener
 
 The method returns a `ListenerHandle` object with a `stop()` method to unsubscribe:
@@ -155,8 +159,4 @@ export const init = (sdk: CaidoSDK) => {
 
 ::: tip
 Use page change events to optimize performance by only loading resources when needed for specific pages.
-:::
-
-::: info
-The `onPageChange` callback is called after the page has changed. To perform actions before navigation, you may need to use other mechanisms depending on your use case.
 :::

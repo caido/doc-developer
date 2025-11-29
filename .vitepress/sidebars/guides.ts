@@ -92,7 +92,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         ],
       },
       {
-        text: "Working with Caido Features",
+        text: "Caido Features",
         items: [
           {
             text: "Use HTTPQL Queries",

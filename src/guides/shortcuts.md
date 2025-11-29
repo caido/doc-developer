@@ -12,6 +12,10 @@ sdk.shortcuts.register("my-command", ["Ctrl+Shift+K"]);
 
 The first parameter is the command ID (the same ID used when registering the command), and the second parameter is an array of key combinations.
 
+::: warning
+Avoid registering shortcuts that conflict with Caido's built-in shortcuts. Common shortcuts like `Ctrl+C`, `Ctrl+V`, `Ctrl+Z` are reserved for standard operations.
+:::
+
 ## Key Combination Format
 
 Key combinations are specified as strings using the following format:
@@ -90,8 +94,4 @@ export const init = (sdk: CaidoSDK) => {
 
 ::: tip
 Keyboard shortcuts work globally when the command is available. Use the `when` property on commands to control when shortcuts are active.
-:::
-
-::: warning
-Avoid registering shortcuts that conflict with Caido's built-in shortcuts. Common shortcuts like `Ctrl+C`, `Ctrl+V`, `Ctrl+Z` are reserved for standard operations.
 :::

@@ -12,6 +12,10 @@ const version = sdk.runtime.version;
 
 The version is returned as a string (e.g., `"1.0.0"`).
 
+::: warning
+Always test your plugin on the minimum required version to ensure compatibility. Version checks help prevent runtime errors but don't guarantee feature availability.
+:::
+
 ## Examples
 
 ### Version Check
@@ -170,8 +174,4 @@ Use version checks to ensure your plugin works correctly across different Caido 
 
 ::: info
 Version strings follow semantic versioning (major.minor.patch). Parse the version string to compare versions programmatically.
-:::
-
-::: warning
-Always test your plugin on the minimum required version to ensure compatibility. Version checks help prevent runtime errors but don't guarantee feature availability.
 :::

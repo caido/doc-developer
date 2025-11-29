@@ -14,6 +14,10 @@ sdk.commandPalette.pushView({
 });
 ```
 
+::: warning
+Keep custom views focused and lightweight. Complex views may impact command palette performance and user experience.
+:::
+
 ## Examples
 
 ### Custom Search Interface
@@ -247,8 +251,4 @@ Custom command palette views enable rich, interactive experiences beyond simple 
 
 ::: info
 Pushed views are added to a stack. Users can navigate back through the stack using standard command palette navigation.
-:::
-
-::: warning
-Keep custom views focused and lightweight. Complex views may impact command palette performance and user experience.
 :::

@@ -64,6 +64,10 @@ sdk.httpHistory.setQuery("status:200 method:GET");
 sdk.httpHistory.scrollTo(requestId);
 ```
 
+::: info
+The `scrollTo()` method is useful for highlighting specific requests after applying a filter, making it easier for users to find relevant results.
+:::
+
 ### Search
 
 Similarly, you can manage queries on the Search page:
@@ -322,8 +326,4 @@ sdk.httpHistory.setQuery("preset:success-get");
 
 ::: tip
 Use saved filters to create reusable query presets that can be referenced with the `preset:` prefix in HTTPQL queries.
-:::
-
-::: info
-The `scrollTo()` method is useful for highlighting specific requests after applying a filter, making it easier for users to find relevant results.
 :::

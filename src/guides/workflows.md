@@ -53,6 +53,10 @@ const handler = sdk.workflows.onDeletedWorkflow((workflowId) => {
 handler.stop();
 ```
 
+::: warning
+Be mindful of performance when subscribing to workflow events. Avoid performing expensive operations in event handlers, especially if workflows change frequently.
+:::
+
 ## Examples
 
 ### Workflow Monitor Plugin
@@ -230,8 +234,4 @@ Use workflow events to keep your plugin's state synchronized with workflow chang
 
 ::: info
 Workflow events are fired for all workflow changes, not just those made by your plugin. This allows you to react to user actions and other plugin modifications.
-:::
-
-::: warning
-Be mindful of performance when subscribing to workflow events. Avoid performing expensive operations in event handlers, especially if workflows change frequently.
 :::

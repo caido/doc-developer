@@ -228,7 +228,8 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 - **Examples placement**: All examples must be placed at the end of the guide under a `## Examples` header
 - **Example sub-headers**: Use `###` for individual examples (e.g., `### JSON Formatter View`)
 - **No "Example:" prefix**: Do not prefix example titles with "Example:" since they're already under the Examples section
-- **No content after examples**: Do not include any non-example sections after the Examples section (only tips/info/warning callouts are allowed at the very end)
+- **No content after examples**: Do not include any non-example sections after the Examples section
+- **Tip/info/warning placement**: Place tip/info/warning callouts logically where they make the most sense in the content, not at the very end of the page. Callouts at the end of a page are not visible to readers. For example, place warnings near the relevant section they apply to, tips near the feature they describe, and info blocks where the information is most relevant.
 
 #### Code Examples and Snippets
 
@@ -359,6 +360,7 @@ The documentation uses VitePress components like:
 - ❌ **Don't create mismatched titles**: Guide file H1 titles must exactly match sidebar item text
 - ❌ **Don't show code without descriptions**: Every code snippet, especially examples, must have a description explaining what it does
 - ❌ **Don't use type/category-oriented section headings**: Section headings in how-to guides must describe use cases or questions, not types or categories. Avoid headings like "Extension Types", "Log Levels", "Asset Methods" - instead use "Using Extension Types", "Choosing a Log Level", "Converting Assets to Different Formats"
+- ❌ **Don't put tip/info/warning blocks at the end of pages**: These callouts are not visible when placed at the very end. Place them logically where they make the most sense in the content (e.g., warnings near the relevant section, tips near the feature they describe)
 
 ## Quick Reference: Decision Tree
 

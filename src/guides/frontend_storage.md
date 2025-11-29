@@ -8,6 +8,10 @@ The storage system is defined by the [StorageSDK](/reference/sdks/frontend/#sdk)
 - `get()`: Fetches the current data from storage.
 - `onChange()`: Sets up a listener that runs when the storage changes.
 
+::: info
+Stored data needs to be JSON serializable.
+:::
+
 ## User Preferences
 
 To demonstrate its usage, let's create a frontend interface that offers light and dark theme options.
@@ -213,8 +217,5 @@ A button for both themes are added to the user interface that will call the `upd
 ```
 
 ::: info
-
-- Although frontend storage actually exists in the backend, it is inaccessible by the backend component. To share data with the backend component of a plugin, you will need to [create and call a custom function](/guides/rpc.md).
-
-- Stored data needs to be JSON serializable.
+Although frontend storage actually exists in the backend, it is inaccessible by the backend component. To share data with the backend component of a plugin, you will need to [create and call a custom function](/guides/rpc.md).
 :::

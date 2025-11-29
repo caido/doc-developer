@@ -2,6 +2,10 @@
 
 Add custom view modes to display requests in alternative formats, such as custom parsers, formatted views, or visual editors. Custom view modes appear alongside the default view options in the request viewer.
 
+::: tip
+Custom view modes are great for domain-specific request formats or when you need specialized visualization of request data.
+:::
+
 ## Registering a View Mode
 
 Call `addRequestViewMode()` on the appropriate SDK method for the page where you want the view mode to appear:
@@ -13,6 +17,10 @@ Call `addRequestViewMode()` on the appropriate SDK method for the page where you
 - Automate: `sdk.automate.addRequestViewMode()`
 - Intercept: `sdk.intercept.addRequestViewMode()`
 - Findings: `sdk.findings.addRequestViewMode()`
+
+::: info
+View modes are available on all pages that display requests. Consider adding your view mode to multiple pages if it's useful across different contexts.
+:::
 
 ```ts
 sdk.httpHistory.addRequestViewMode({
@@ -32,6 +40,10 @@ View mode components automatically receive these props—you don't need to pass 
 - `sdk` - The Caido SDK instance
 - `request` - The request object of type `RequestFull`
 - `requestDraft` - A writable request object of type `RequestDraft` (only in Intercept and Replay contexts)
+
+::: warning
+The request object structure may vary between pages. Test your view mode on the pages where you add it to ensure compatibility.
+:::
 
 For read-only contexts (HTTP History, Search, etc.):
 
@@ -278,15 +290,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Custom view modes are great for domain-specific request formats or when you need specialized visualization of request data.
-:::
-
-::: info
-View modes are available on all pages that display requests. Consider adding your view mode to multiple pages if it's useful across different contexts.
-:::
-
-::: warning
-The request object structure may vary between pages. Test your view mode on the pages where you add it to ensure compatibility.
-:::

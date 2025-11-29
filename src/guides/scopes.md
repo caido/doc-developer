@@ -94,6 +94,10 @@ const currentScopeId = sdk.intercept.getScopeId();
 sdk.intercept.setScope(scopeId);
 ```
 
+::: info
+Scope operations on different pages may have different return types. HTTP History and Search return promises, while Intercept returns void.
+:::
+
 ## Using Scope Patterns
 
 Scope allowlists and denylists support wildcard patterns:
@@ -255,8 +259,4 @@ export const init = (sdk: CaidoSDK) => {
 
 ::: tip
 Use scopes to filter requests programmatically across different pages. This is useful for automation and workflow management.
-:::
-
-::: info
-Scope operations on different pages may have different return types. HTTP History and Search return promises, while Intercept returns void.
 :::

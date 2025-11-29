@@ -16,6 +16,10 @@ sdk.backend.onEvent("my-event", (data) => {
 For more details on backend events, see [Sending Events to the Frontend](/guides/events.md).
 :::
 
+::: warning
+Be careful not to create infinite loops when reacting to events. For example, updating workflow state in a workflow update handler could trigger another update event.
+:::
+
 ## Subscribing to Project Events
 
 ### Project Selection Changes
@@ -283,8 +287,4 @@ Application events enable reactive programming patterns. Use them to keep your p
 
 ::: info
 All event subscription methods return a `ListenerHandle` with a `stop()` method. Call `stop()` when your plugin is unloaded to prevent memory leaks.
-:::
-
-::: warning
-Be careful not to create infinite loops when reacting to events. For example, updating workflow state in a workflow update handler could trigger another update event.
 :::

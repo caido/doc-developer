@@ -76,6 +76,10 @@ const deleted = await sdk.replay.deleteCollection(collectionId);
 
 Returns `true` if the collection was successfully deleted.
 
+::: warning
+Deleting a collection does not delete the sessions it contains. Sessions are moved to the default location when their collection is deleted.
+:::
+
 ## Tab Management
 
 ### Getting Tabs
@@ -324,8 +328,4 @@ Use collections to organize related replay sessions, making it easier to manage 
 
 ::: info
 Sessions and collections are persisted across Caido restarts, so programmatically created items will remain available.
-:::
-
-::: warning
-Deleting a collection does not delete the sessions it contains. Sessions are moved to the default location when their collection is deleted.
 :::

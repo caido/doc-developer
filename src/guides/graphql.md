@@ -6,6 +6,10 @@ Caido provides a GraphQL API for advanced data queries and custom operations. Yo
 
 The GraphQL SDK provides utilities for querying Caido's GraphQL API. The exact methods and structure depend on your Caido version and configuration.
 
+::: warning
+GraphQL queries can be powerful but also complex. Ensure you understand the schema and query structure before executing queries, especially mutations that modify data.
+:::
+
 ## Examples
 
 ### Basic GraphQL Query
@@ -182,8 +186,4 @@ GraphQL provides a flexible way to query exactly the data you need. Use it for c
 
 ::: info
 The GraphQL API structure may vary between Caido versions. Refer to your Caido version's GraphQL schema documentation for available queries and mutations.
-:::
-
-::: warning
-GraphQL queries can be powerful but also complex. Ensure you understand the schema and query structure before executing queries, especially mutations that modify data.
 :::

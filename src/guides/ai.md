@@ -12,6 +12,10 @@ const provider = sdk.ai.createProvider();
 
 This returns an `AIProvider` instance that can be used with the `ai` library.
 
+::: warning
+AI operations can be resource-intensive and may have rate limits. Consider implementing error handling and user feedback for long-running AI operations.
+:::
+
 ## Examples
 
 ### Basic AI Integration
@@ -196,8 +200,4 @@ The AI provider is compatible with all features of the `ai` library, including t
 
 ::: info
 The AI provider uses Caido's configured AI settings. Users can configure their AI provider preferences in Caido's settings.
-:::
-
-::: warning
-AI operations can be resource-intensive and may have rate limits. Consider implementing error handling and user feedback for long-running AI operations.
 :::

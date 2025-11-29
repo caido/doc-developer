@@ -120,6 +120,10 @@ import { ReplaySlot } from "@caido/sdk-frontend";
 - Keep slot content concise to maintain a clean interface
 - Consider the visual hierarchy when adding multiple items to the same slot
 
+::: warning
+Be mindful of slot space limitations. Too many items in a slot can clutter the interface. Consider grouping related actions or using custom components to organize multiple controls.
+:::
+
 ## Examples
 
 ### Footer Actions
@@ -245,8 +249,4 @@ Slots are a powerful way to extend Caido's UI without creating custom pages. Use
 
 ::: info
 Slot content is rendered when the relevant page is active. For footer slots, content is always visible. For Replay slots, content is only visible on the Replay page.
-:::
-
-::: warning
-Be mindful of slot space limitations. Too many items in a slot can clutter the interface. Consider grouping related actions or using custom components to organize multiple controls.
 :::
