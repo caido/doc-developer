@@ -73,7 +73,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             link: "/guides/shortcuts",
           },
           {
-            text: "Customize Command Palette",
+            text: "Customize the Command Palette",
             link: "/guides/command_palette_advanced",
           },
         ],
