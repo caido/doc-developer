@@ -14,6 +14,14 @@ const workflows = sdk.workflows.getWorkflows();
 
 You can subscribe to three types of workflow events:
 
+::: tip
+Use workflow events to keep your plugin's state synchronized with workflow changes, enabling reactive behavior and automation.
+:::
+
+::: info
+Workflow events are fired for all workflow changes, not just those made by your plugin. This allows you to react to user actions and other plugin modifications.
+:::
+
 ### Workflow Created
 
 To listen for when a workflow is created:
@@ -126,11 +134,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Use workflow events to keep your plugin's state synchronized with workflow changes, enabling reactive behavior and automation.
-:::
-
-::: info
-Workflow events are fired for all workflow changes, not just those made by your plugin. This allows you to react to user actions and other plugin modifications.
-:::

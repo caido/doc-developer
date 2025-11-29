@@ -50,6 +50,10 @@ To create a new collection:
 const collection = await sdk.replay.createCollection("My Collection");
 ```
 
+::: tip
+Use collections to organize related replay sessions, making it easier to manage and find specific sessions for testing scenarios.
+:::
+
 ### Getting Collections
 
 To retrieve all collections:
@@ -128,6 +132,10 @@ const handler = sdk.replay.onCurrentSessionChange((event) => {
 // Later, stop listening
 handler.stop();
 ```
+
+::: info
+Sessions and collections are persisted across Caido restarts, so programmatically created items will remain available.
+:::
 
 ## Examples
 
@@ -328,11 +336,3 @@ export const init = (sdk: CaidoSDK) => {
   initializeCollection();
 };
 ```
-
-::: tip
-Use collections to organize related replay sessions, making it easier to manage and find specific sessions for testing scenarios.
-:::
-
-::: info
-Sessions and collections are persisted across Caido restarts, so programmatically created items will remain available.
-:::

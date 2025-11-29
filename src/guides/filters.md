@@ -20,6 +20,10 @@ const filter = await sdk.filters.create({
 - `alias` - A short identifier used in HTTPQL queries (e.g., `preset:my-filter`)
 - `query` - The HTTPQL query expression
 
+::: tip
+Use saved filters to create reusable query presets that can be referenced with the `preset:` prefix in HTTPQL queries.
+:::
+
 ### Getting All Filters
 
 To retrieve all saved filters:
@@ -224,7 +228,3 @@ const filter = await sdk.filters.create({
 // Use the filter in a query
 sdk.httpHistory.setQuery("preset:success-get");
 ```
-
-::: tip
-Use saved filters to create reusable query presets that can be referenced with the `preset:` prefix in HTTPQL queries.
-:::

@@ -22,6 +22,10 @@ To retrieve all collections:
 const collections = sdk.matchReplace.getCollections();
 ```
 
+::: tip
+Use collections to organize related match and replace rules, making it easier to enable/disable groups of rules together.
+:::
+
 ### Updating a Collection
 
 To update a collection:
@@ -78,6 +82,10 @@ const activeRules = sdk.matchReplace.getActiveRules();
 ```
 
 Rules are returned in priority order from highest to lowest.
+
+::: info
+Active rules are processed in priority order. Higher priority rules are applied first. Use `getActiveRules()` to see the processing order.
+:::
 
 ### Updating a Rule
 
@@ -176,11 +184,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Use collections to organize related match and replace rules, making it easier to enable/disable groups of rules together.
-:::
-
-::: info
-Active rules are processed in priority order. Higher priority rules are applied first. Use `getActiveRules()` to see the processing order.
-:::

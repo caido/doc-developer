@@ -12,6 +12,14 @@ const provider = sdk.ai.createProvider();
 
 This returns an `AIProvider` instance that can be used with the `ai` library.
 
+::: tip
+The AI provider is compatible with all features of the `ai` library, including text generation, streaming, tool calling, and more. Refer to the [ai SDK documentation](https://ai-sdk.dev/) for advanced usage.
+:::
+
+::: info
+The AI provider uses Caido's configured AI settings. Users can configure their AI provider preferences in Caido's settings.
+:::
+
 ::: warning
 AI operations can be resource-intensive and may have rate limits. Consider implementing error handling and user feedback for long-running AI operations.
 :::
@@ -86,11 +94,3 @@ export const init = (sdk: CaidoSDK) => {
   sdk.commandPalette.register("ai-generate-code");
 };
 ```
-
-::: tip
-The AI provider is compatible with all features of the `ai` library, including text generation, streaming, tool calling, and more. Refer to the [ai SDK documentation](https://ai-sdk.dev/) for advanced usage.
-:::
-
-::: info
-The AI provider uses Caido's configured AI settings. Users can configure their AI provider preferences in Caido's settings.
-:::

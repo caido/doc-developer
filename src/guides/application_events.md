@@ -2,6 +2,10 @@
 
 You can subscribe to various application events to react to state changes in Caido, such as project selection, workflow lifecycle, replay session changes, and backend plugin events.
 
+::: tip
+Application events enable reactive programming patterns. Use them to keep your plugin's state synchronized with Caido's state.
+:::
+
 ## Subscribing to Backend Plugin Events
 
 To listen for events sent from your backend plugin:
@@ -34,6 +38,10 @@ const handler = sdk.projects.onCurrentProjectChange((event) => {
 // Later, stop listening
 handler.stop();
 ```
+
+::: info
+All event subscription methods return a `ListenerHandle` with a `stop()` method. Call `stop()` when your plugin is unloaded to prevent memory leaks.
+:::
 
 ## Subscribing to Workflow Events
 
@@ -163,11 +171,3 @@ export const init = (sdk: CaidoSDK) => {
   });
 };
 ```
-
-::: tip
-Application events enable reactive programming patterns. Use them to keep your plugin's state synchronized with Caido's state.
-:::
-
-::: info
-All event subscription methods return a `ListenerHandle` with a `stop()` method. Call `stop()` when your plugin is unloaded to prevent memory leaks.
-:::

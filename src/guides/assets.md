@@ -40,6 +40,10 @@ const buffer = await asset.asArrayBuffer();
 const stream = asset.asReadableStream();
 ```
 
+::: tip
+Use `asReadableStream()` for large files to process them in chunks and avoid loading the entire file into memory.
+:::
+
 ## Asset Path Configuration
 
 Assets are configured in your `caido.config.ts`:
@@ -51,6 +55,10 @@ export default defineConfig({
   },
 });
 ```
+
+::: info
+Asset paths are relative to your plugin's assets directory. Use glob patterns in your config to include multiple files.
+:::
 
 ::: warning
 Assets are bundled with your plugin, so large files will increase the plugin size. Consider loading external resources at runtime for very large files.
@@ -118,11 +126,3 @@ export const init = async (sdk: CaidoSDK) => {
   }
 };
 ```
-
-::: tip
-Use `asReadableStream()` for large files to process them in chunks and avoid loading the entire file into memory.
-:::
-
-::: info
-Asset paths are relative to your plugin's assets directory. Use glob patterns in your config to include multiple files.
-:::
