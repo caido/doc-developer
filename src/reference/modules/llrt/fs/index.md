@@ -21,18 +21,18 @@
 A representation of a directory entry, which can be a file or a subdirectory
 within the directory. A directory entry is a combination of the file name and file type pairs.
 
-Additionally, when [promises.readdir](fs/promises.md#readdir) or [readdirSync](index.md#readdirsync) is called with
+Additionally, when [promises.readdir](fs/promises.md#readdir) or [readdirSync](#readdirsync) is called with
 the `withFileTypes` option set to `true`, the resulting array is filled with `fs.Dirent` objects, rather than strings.
 
 #### Constructors
 
-##### new Dirent()
+##### Constructor
 
-> **new Dirent**(): [`Dirent`](index.md#dirent)
+> **new Dirent**(): [`Dirent`](#dirent)
 
 ###### Returns
 
-[`Dirent`](index.md#dirent)
+[`Dirent`](#dirent)
 
 #### Properties
 
@@ -154,17 +154,17 @@ Stats {
 
 #### Extends
 
-- [`StatsBase`](index.md#statsbaset)\<`number`\>
+- [`StatsBase`](#statsbase)\<`number`\>
 
 #### Constructors
 
-##### new Stats()
+##### Constructor
 
-> **new Stats**(): [`Stats`](index.md#stats)
+> **new Stats**(): [`Stats`](#stats)
 
 ###### Returns
 
-[`Stats`](index.md#stats)
+[`Stats`](#stats)
 
 ###### Inherited from
 
@@ -178,7 +178,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`atime`](index.md#atime-1)
+[`StatsBase`](#statsbase).[`atime`](#atime-1)
 
 ##### atimeMs
 
@@ -186,7 +186,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`atimeMs`](index.md#atimems-1)
+[`StatsBase`](#statsbase).[`atimeMs`](#atimems-1)
 
 ##### birthtime
 
@@ -194,7 +194,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`birthtime`](index.md#birthtime-1)
+[`StatsBase`](#statsbase).[`birthtime`](#birthtime-1)
 
 ##### birthtimeMs
 
@@ -202,7 +202,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`birthtimeMs`](index.md#birthtimems-1)
+[`StatsBase`](#statsbase).[`birthtimeMs`](#birthtimems-1)
 
 ##### blksize
 
@@ -210,7 +210,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`blksize`](index.md#blksize-1)
+[`StatsBase`](#statsbase).[`blksize`](#blksize-1)
 
 ##### blocks
 
@@ -218,7 +218,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`blocks`](index.md#blocks-1)
+[`StatsBase`](#statsbase).[`blocks`](#blocks-1)
 
 ##### ctime
 
@@ -226,7 +226,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`ctime`](index.md#ctime-1)
+[`StatsBase`](#statsbase).[`ctime`](#ctime-1)
 
 ##### ctimeMs
 
@@ -234,7 +234,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`ctimeMs`](index.md#ctimems-1)
+[`StatsBase`](#statsbase).[`ctimeMs`](#ctimems-1)
 
 ##### dev
 
@@ -242,7 +242,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`dev`](index.md#dev-1)
+[`StatsBase`](#statsbase).[`dev`](#dev-1)
 
 ##### gid
 
@@ -250,7 +250,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`gid`](index.md#gid-1)
+[`StatsBase`](#statsbase).[`gid`](#gid-1)
 
 ##### ino
 
@@ -258,7 +258,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`ino`](index.md#ino-1)
+[`StatsBase`](#statsbase).[`ino`](#ino-1)
 
 ##### mode
 
@@ -266,7 +266,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`mode`](index.md#mode-2)
+[`StatsBase`](#statsbase).[`mode`](#mode-2)
 
 ##### mtime
 
@@ -274,7 +274,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`mtime`](index.md#mtime-1)
+[`StatsBase`](#statsbase).[`mtime`](#mtime-1)
 
 ##### mtimeMs
 
@@ -282,7 +282,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`mtimeMs`](index.md#mtimems-1)
+[`StatsBase`](#statsbase).[`mtimeMs`](#mtimems-1)
 
 ##### nlink
 
@@ -290,7 +290,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`nlink`](index.md#nlink-1)
+[`StatsBase`](#statsbase).[`nlink`](#nlink-1)
 
 ##### rdev
 
@@ -298,7 +298,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`rdev`](index.md#rdev-1)
+[`StatsBase`](#statsbase).[`rdev`](#rdev-1)
 
 ##### size
 
@@ -306,7 +306,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`size`](index.md#size-1)
+[`StatsBase`](#statsbase).[`size`](#size-1)
 
 ##### uid
 
@@ -314,7 +314,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`uid`](index.md#uid-1)
+[`StatsBase`](#statsbase).[`uid`](#uid-1)
 
 #### Methods
 
@@ -328,7 +328,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isBlockDevice`](index.md#isblockdevice-2)
+[`StatsBase`](#statsbase).[`isBlockDevice`](#isblockdevice-4)
 
 ##### isCharacterDevice()
 
@@ -340,7 +340,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isCharacterDevice`](index.md#ischaracterdevice-2)
+[`StatsBase`](#statsbase).[`isCharacterDevice`](#ischaracterdevice-4)
 
 ##### isDirectory()
 
@@ -352,7 +352,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isDirectory`](index.md#isdirectory-2)
+[`StatsBase`](#statsbase).[`isDirectory`](#isdirectory-4)
 
 ##### isFIFO()
 
@@ -364,7 +364,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isFIFO`](index.md#isfifo-2)
+[`StatsBase`](#statsbase).[`isFIFO`](#isfifo-4)
 
 ##### isFile()
 
@@ -376,7 +376,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isFile`](index.md#isfile-2)
+[`StatsBase`](#statsbase).[`isFile`](#isfile-4)
 
 ##### isSocket()
 
@@ -388,7 +388,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isSocket`](index.md#issocket-2)
+[`StatsBase`](#statsbase).[`isSocket`](#issocket-4)
 
 ##### isSymbolicLink()
 
@@ -400,7 +400,7 @@ Stats {
 
 ###### Inherited from
 
-[`StatsBase`](index.md#statsbaset).[`isSymbolicLink`](index.md#issymboliclink-2)
+[`StatsBase`](#statsbase).[`isSymbolicLink`](#issymboliclink-4)
 
 ## Interfaces
 
@@ -489,11 +489,11 @@ false
 
 ***
 
-### StatsBase\<T\>
+### StatsBase
 
 #### Extended by
 
-- [`Stats`](index.md#stats)
+- [`Stats`](#stats)
 
 #### Type Parameters
 
@@ -641,7 +641,7 @@ false
 
 - `Function`
 
-> **StatSyncFn**(`path`: `string`): [`Stats`](index.md#stats)
+> **StatSyncFn**(`path`: `string`): [`Stats`](#stats)
 
 #### Parameters
 
@@ -651,27 +651,39 @@ false
 
 #### Returns
 
-[`Stats`](index.md#stats)
+[`Stats`](#stats)
 
 ## Type Aliases
 
 ### Mode
 
-> **Mode**: `number`
+> **Mode** = `number`
 
 ***
 
 ### PathLike
 
-> **PathLike**: `string`
+> **PathLike** = `string`
 
 Valid types for path values in "fs".
+
+## Variables
+
+### statSync
+
+> `const` **statSync**: [`StatSyncFn`](#statsyncfn)
+
+Synchronous stat - Get file status.
+
+#### Param
+
+A path to a file.
 
 ## Functions
 
 ### accessSync()
 
-> **accessSync**(`path`: `string`, `mode`?: `number`): `void`
+> **accessSync**(`path`: `string`, `mode?`: `number`): `void`
 
 Synchronously tests a user's permissions for the file or directory specified
 by `path`. The `mode` argument is an optional integer that specifies the
@@ -698,7 +710,7 @@ try {
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | - |
-| `mode`? | `number` |  |
+| `mode?` | `number` |  |
 
 #### Returns
 
@@ -730,7 +742,7 @@ See the POSIX [`chmod(2)`](http://man7.org/linux/man-pages/man2/chmod.2.html) do
 
 ### mkdirSync()
 
-> **mkdirSync**(`path`: `string`, `options`?: [`MakeDirectoryOptions`](index.md#makedirectoryoptions)): `string`
+> **mkdirSync**(`path`: `string`, `options?`: [`MakeDirectoryOptions`](#makedirectoryoptions)): `string`
 
 Synchronously creates a directory. Returns the `path`.
 
@@ -741,7 +753,7 @@ See the POSIX [`mkdir(2)`](http://man7.org/linux/man-pages/man2/mkdir.2.html) do
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | [`MakeDirectoryOptions`](index.md#makedirectoryoptions) |
+| `options?` | [`MakeDirectoryOptions`](#makedirectoryoptions) |
 
 #### Returns
 
@@ -774,7 +786,7 @@ this API: [promises.mkdtemp](fs/promises.md#mkdtemp).
 
 #### Call Signature
 
-> **readdirSync**(`path`: `string`, `options`?: `object`): `string`[]
+> **readdirSync**(`path`: `string`, `options?`: `object`): `string`[]
 
 Reads the contents of the directory.
 
@@ -787,9 +799,9 @@ If `options.withFileTypes` is set to `true`, the result will contain `fs.Dirent`
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | \{ `recursive`: `boolean`; `withFileTypes`: `false`; \} |
-| `options.recursive`? | `boolean` |
-| `options.withFileTypes`? | `false` |
+| `options?` | \{ `recursive?`: `boolean`; `withFileTypes?`: `false`; \} |
+| `options.recursive?` | `boolean` |
+| `options.withFileTypes?` | `false` |
 
 ##### Returns
 
@@ -797,7 +809,7 @@ If `options.withFileTypes` is set to `true`, the result will contain `fs.Dirent`
 
 #### Call Signature
 
-> **readdirSync**(`path`: `string`, `options`: `object`): [`Dirent`](index.md#dirent)[]
+> **readdirSync**(`path`: `string`, `options`: `object`): [`Dirent`](#dirent)[]
 
 Synchronous readdir (2) - read a directory.
 
@@ -806,13 +818,13 @@ Synchronous readdir (2) - read a directory.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | A path to a file. If a URL is provided, it must use the `file:` protocol. |
-| `options` | \{ `recursive`: `boolean`; `withFileTypes`: `true`; \} | If called with `withFileTypes: true` the result data will be an array of Dirent. |
-| `options.recursive`? | `boolean` | - |
+| `options` | \{ `recursive?`: `boolean`; `withFileTypes`: `true`; \} | If called with `withFileTypes: true` the result data will be an array of Dirent. |
+| `options.recursive?` | `boolean` | - |
 | `options.withFileTypes` | `true` | - |
 
 ##### Returns
 
-[`Dirent`](index.md#dirent)[]
+[`Dirent`](#dirent)[]
 
 ***
 
@@ -820,12 +832,12 @@ Synchronous readdir (2) - read a directory.
 
 #### Call Signature
 
-> **readFileSync**(`path`: `string`, `options`?: `null` \| \{ `encoding`: `null`; \}): [`Buffer`](../buffer.md#buffer)
+> **readFileSync**(`path`: `string`, `options?`: \{ `encoding?`: `null`; \} \| `null`): [`Buffer`](../buffer.md#buffer)
 
 Returns the contents of the `path`.
 
 For detailed information, see the documentation of the asynchronous version of
-this API: [promises.readFile](fs/promises.md#readfile-1).
+this API: [promises.readFile](fs/promises.md#readfile-3).
 
 If the `encoding` option is specified then this function returns a
 string. Otherwise it returns a buffer.
@@ -835,7 +847,7 @@ string. Otherwise it returns a buffer.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | A path to a file. |
-| `options`? | `null` \| \{ `encoding`: `null`; \} | - |
+| `options?` | \{ `encoding?`: `null`; \} \| `null` | - |
 
 ##### Returns
 
@@ -884,21 +896,21 @@ this API: [promises.rename](fs/promises.md#rename).
 
 ### rmdirSync()
 
-> **rmdirSync**(`path`: `string`, `options`?: [`RmDirOptions`](index.md#rmdiroptions)): `void`
+> **rmdirSync**(`path`: `string`, `options?`: [`RmDirOptions`](#rmdiroptions)): `void`
 
 Synchronous [`rmdir(2)`](http://man7.org/linux/man-pages/man2/rmdir.2.html). Returns `undefined`.
 
 Using `fs.rmdirSync()` on a file (not a directory) results in an `ENOENT` error
 on Windows and an `ENOTDIR` error on POSIX.
 
-To get a behavior similar to the `rm -rf` Unix command, use [rmSync](index.md#rmsync) with options `{ recursive: true, force: true }`.
+To get a behavior similar to the `rm -rf` Unix command, use [rmSync](#rmsync) with options `{ recursive: true, force: true }`.
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | [`RmDirOptions`](index.md#rmdiroptions) |
+| `options?` | [`RmDirOptions`](#rmdiroptions) |
 
 #### Returns
 
@@ -908,7 +920,7 @@ To get a behavior similar to the `rm -rf` Unix command, use [rmSync](index.md#rm
 
 ### rmSync()
 
-> **rmSync**(`path`: `string`, `options`?: [`RmOptions`](index.md#rmoptions)): `void`
+> **rmSync**(`path`: `string`, `options?`: [`RmOptions`](#rmoptions)): `void`
 
 Synchronously removes files and directories (modeled on the standard POSIX `rm` utility). Returns `undefined`.
 
@@ -917,29 +929,11 @@ Synchronously removes files and directories (modeled on the standard POSIX `rm` 
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | [`RmOptions`](index.md#rmoptions) |
+| `options?` | [`RmOptions`](#rmoptions) |
 
 #### Returns
 
 `void`
-
-***
-
-### statSync()
-
-> **statSync**(`path`: `string`): [`Stats`](index.md#stats)
-
-Synchronous stat - Get file status.
-
-#### Parameters
-
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `path` | `string` | A path to a file. |
-
-#### Returns
-
-[`Stats`](index.md#stats)
 
 ***
 
@@ -950,7 +944,7 @@ Synchronous stat - Get file status.
 Returns `undefined`.
 
 For detailed information, see the documentation of the asynchronous version of
-this API: [promises.writeFile](fs/promises.md#writefile-1).
+this API: [promises.writeFile](fs/promises.md#writefile-2).
 
 #### Parameters
 

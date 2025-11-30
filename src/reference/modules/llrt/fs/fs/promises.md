@@ -8,13 +8,13 @@
 
 #### Constructors
 
-##### new FileHandle()
+##### Constructor
 
-> **new FileHandle**(): [`FileHandle`](promises.md#filehandle)
+> **new FileHandle**(): [`FileHandle`](#filehandle)
 
 ###### Returns
 
-[`FileHandle`](promises.md#filehandle)
+[`FileHandle`](#filehandle)
 
 #### Properties
 
@@ -106,7 +106,7 @@ Fulfills with `undefined` upon success.
 
 ###### Call Signature
 
-> **read**\<`T`\>(`buffer`: `T`, `offset`?: `null` \| `number`, `length`?: `null` \| `number`, `position`?: `null` \| `number`): `Promise`\<[`FileReadResult`](promises.md#filereadresultt)\<`T`\>\>
+> **read**\<`T`\>(`buffer`: `T`, `offset?`: `number` \| `null`, `length?`: `number` \| `null`, `position?`: `number` \| `null`): `Promise`\<[`FileReadResult`](#filereadresult)\<`T`\>\>
 
 Reads data from the file and stores that in the given buffer.
 
@@ -124,19 +124,19 @@ number of bytes read is zero.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `buffer` | `T` | A buffer that will be filled with the file data read. |
-| `offset`? | `null` \| `number` | The location in the buffer at which to start filling. |
-| `length`? | `null` \| `number` | The number of bytes to read. |
-| `position`? | `null` \| `number` | The location where to begin reading data from the file. If `null`, data will be read from the current file position, and the position will be updated. If `position` is an integer, the current file position will remain unchanged. |
+| `offset?` | `number` \| `null` | The location in the buffer at which to start filling. |
+| `length?` | `number` \| `null` | The number of bytes to read. |
+| `position?` | `number` \| `null` | The location where to begin reading data from the file. If `null`, data will be read from the current file position, and the position will be updated. If `position` is an integer, the current file position will remain unchanged. |
 
 ###### Returns
 
-`Promise`\<[`FileReadResult`](promises.md#filereadresultt)\<`T`\>\>
+`Promise`\<[`FileReadResult`](#filereadresult)\<`T`\>\>
 
 Fulfills upon success with an object with two properties: bytesRead and buffer
 
 ###### Call Signature
 
-> **read**\<`T`\>(`buffer`: `T`, `options`?: [`FileReadOptions`](promises.md#filereadoptionst)\<`T`\>): `Promise`\<[`FileReadResult`](promises.md#filereadresultt)\<`T`\>\>
+> **read**\<`T`\>(`buffer`: `T`, `options?`: [`FileReadOptions`](#filereadoptions)\<`T`\>): `Promise`\<[`FileReadResult`](#filereadresult)\<`T`\>\>
 
 Reads data from the file and stores that in the given buffer.
 
@@ -154,17 +154,17 @@ number of bytes read is zero.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `buffer` | `T` | A buffer that will be filled with the file data read. |
-| `options`? | [`FileReadOptions`](promises.md#filereadoptionst)\<`T`\> | - |
+| `options?` | [`FileReadOptions`](#filereadoptions)\<`T`\> | - |
 
 ###### Returns
 
-`Promise`\<[`FileReadResult`](promises.md#filereadresultt)\<`T`\>\>
+`Promise`\<[`FileReadResult`](#filereadresult)\<`T`\>\>
 
 Fulfills upon success with an object with two properties: bytesRead and buffer
 
 ###### Call Signature
 
-> **read**\<`T`\>(`options`?: [`FileReadOptions`](promises.md#filereadoptionst)\<`T`\>): `Promise`\<[`FileReadResult`](promises.md#filereadresultt)\<`T`\>\>
+> **read**\<`T`\>(`options?`: [`FileReadOptions`](#filereadoptions)\<`T`\>): `Promise`\<[`FileReadResult`](#filereadresult)\<`T`\>\>
 
 Reads data from the file and stores that in the given buffer.
 
@@ -181,11 +181,11 @@ number of bytes read is zero.
 
 | Parameter | Type |
 | ------ | ------ |
-| `options`? | [`FileReadOptions`](promises.md#filereadoptionst)\<`T`\> |
+| `options?` | [`FileReadOptions`](#filereadoptions)\<`T`\> |
 
 ###### Returns
 
-`Promise`\<[`FileReadResult`](promises.md#filereadresultt)\<`T`\>\>
+`Promise`\<[`FileReadResult`](#filereadresult)\<`T`\>\>
 
 Fulfills upon success with an object with two properties: bytesRead and buffer
 
@@ -193,7 +193,7 @@ Fulfills upon success with an object with two properties: bytesRead and buffer
 
 ###### Call Signature
 
-> **readFile**(`options`?: `null` \| \{ `encoding`: `null`; \}): `Promise`\<[`Buffer`](../../buffer.md#buffer)\>
+> **readFile**(`options?`: \{ `encoding?`: `null`; \} \| `null`): `Promise`\<[`Buffer`](../../buffer.md#buffer)\>
 
 Asynchronously reads the entire contents of a file.
 
@@ -209,7 +209,7 @@ of the file.
 
 | Parameter | Type |
 | ------ | ------ |
-| `options`? | `null` \| \{ `encoding`: `null`; \} |
+| `options?` | \{ `encoding?`: `null`; \} \| `null` |
 
 ###### Returns
 
@@ -273,7 +273,7 @@ Fulfills with `undefined` upon success.
 
 ##### truncate()
 
-> **truncate**(`len`?: `number`): `Promise`\<`void`\>
+> **truncate**(`len?`: `number`): `Promise`\<`void`\>
 
 Truncates the file.
 
@@ -301,7 +301,7 @@ extended part is filled with null bytes (`'\0'`):
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `len`? | `number` |  |
+| `len?` | `number` |  |
 
 ###### Returns
 
@@ -313,7 +313,7 @@ Fulfills with `undefined` upon success.
 
 ###### Call Signature
 
-> **write**\<`TBuffer`\>(`buffer`: `TBuffer`, `offset`?: `null` \| `number`, `length`?: `null` \| `number`, `position`?: `null` \| `number`): `Promise`\<\{ `buffer`: `TBuffer`; `bytesWritten`: `number`; \}\>
+> **write**\<`TBuffer`\>(`buffer`: `TBuffer`, `offset?`: `number` \| `null`, `length?`: `number` \| `null`, `position?`: `number` \| `null`): `Promise`\<\{ `buffer`: `TBuffer`; `bytesWritten`: `number`; \}\>
 
 Write `buffer` to the file.
 
@@ -338,9 +338,9 @@ the end of the file.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `buffer` | `TBuffer` | - |
-| `offset`? | `null` \| `number` | The start position from within `buffer` where the data to write begins. |
-| `length`? | `null` \| `number` | The number of bytes from `buffer` to write. |
-| `position`? | `null` \| `number` | The offset from the beginning of the file where the data from `buffer` should be written. If `position` is not a `number`, the data will be written at the current position. See the POSIX pwrite(2) documentation for more detail. |
+| `offset?` | `number` \| `null` | The start position from within `buffer` where the data to write begins. |
+| `length?` | `number` \| `null` | The number of bytes from `buffer` to write. |
+| `position?` | `number` \| `null` | The offset from the beginning of the file where the data from `buffer` should be written. If `position` is not a `number`, the data will be written at the current position. See the POSIX pwrite(2) documentation for more detail. |
 
 ###### Returns
 
@@ -348,7 +348,7 @@ the end of the file.
 
 ###### Call Signature
 
-> **write**\<`TBuffer`\>(`buffer`: `TBuffer`, `options`?: `null` \| \{ `length`: `null` \| `number`; `offset`: `null` \| `number`; `position`: `null` \| `number`; \}): `Promise`\<\{ `buffer`: `TBuffer`; `bytesWritten`: `number`; \}\>
+> **write**\<`TBuffer`\>(`buffer`: `TBuffer`, `options?`: \{ `length?`: `number` \| `null`; `offset?`: `number` \| `null`; `position?`: `number` \| `null`; \} \| `null`): `Promise`\<\{ `buffer`: `TBuffer`; `bytesWritten`: `number`; \}\>
 
 Write `buffer` to the file.
 
@@ -373,7 +373,7 @@ the end of the file.
 | Parameter | Type |
 | ------ | ------ |
 | `buffer` | `TBuffer` |
-| `options`? | `null` \| \{ `length`: `null` \| `number`; `offset`: `null` \| `number`; `position`: `null` \| `number`; \} |
+| `options?` | \{ `length?`: `number` \| `null`; `offset?`: `number` \| `null`; `position?`: `number` \| `null`; \} \| `null` |
 
 ###### Returns
 
@@ -381,7 +381,7 @@ the end of the file.
 
 ###### Call Signature
 
-> **write**(`data`: `string`, `position`?: `null` \| `number`, `encoding`?: `null` \| [`BufferEncoding`](../../buffer.md#bufferencoding)): `Promise`\<\{ `buffer`: `string`; `bytesWritten`: `number`; \}\>
+> **write**(`data`: `string`, `position?`: `number` \| `null`, `encoding?`: [`BufferEncoding`](../../buffer.md#bufferencoding) \| `null`): `Promise`\<\{ `buffer`: `string`; `bytesWritten`: `number`; \}\>
 
 Write `buffer` to the file.
 
@@ -400,8 +400,8 @@ the end of the file.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `data` | `string` | - |
-| `position`? | `null` \| `number` | The offset from the beginning of the file where the data from `buffer` should be written. If `position` is not a `number`, the data will be written at the current position. See the POSIX pwrite(2) documentation for more detail. |
-| `encoding`? | `null` \| [`BufferEncoding`](../../buffer.md#bufferencoding) | - |
+| `position?` | `number` \| `null` | The offset from the beginning of the file where the data from `buffer` should be written. If `position` is not a `number`, the data will be written at the current position. See the POSIX pwrite(2) documentation for more detail. |
+| `encoding?` | [`BufferEncoding`](../../buffer.md#bufferencoding) \| `null` | - |
 
 ###### Returns
 
@@ -409,7 +409,7 @@ the end of the file.
 
 ##### writeFile()
 
-> **writeFile**(`data`: `string` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview), `options`?: `null` \| [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding`: BufferEncoding \| null \| undefined; \}): `Promise`\<`void`\>
+> **writeFile**(`data`: `string` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview), `options?`: [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding?`: BufferEncoding \| null \| undefined; \} \| `null`): `Promise`\<`void`\>
 
 Asynchronously writes data to a file, replacing the file if it already exists.
 
@@ -428,7 +428,7 @@ current position till the end of the file. It doesn't always write from the begi
 | Parameter | Type |
 | ------ | ------ |
 | `data` | `string` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) |
-| `options`? | `null` \| [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding`: BufferEncoding \| null \| undefined; \} |
+| `options?` | [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding?`: BufferEncoding \| null \| undefined; \} \| `null` |
 
 ###### Returns
 
@@ -436,7 +436,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 ## Interfaces
 
-### FileReadOptions\<T\>
+### FileReadOptions
 
 #### Type Parameters
 
@@ -456,7 +456,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 ##### length?
 
-> `optional` **length**: `null` \| `number`
+> `optional` **length**: `number` \| `null`
 
 ###### Default
 
@@ -464,7 +464,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 ##### offset?
 
-> `optional` **offset**: `null` \| `number`
+> `optional` **offset**: `number` \| `null`
 
 ###### Default
 
@@ -474,11 +474,11 @@ current position till the end of the file. It doesn't always write from the begi
 
 ##### position?
 
-> `optional` **position**: `null` \| `number`
+> `optional` **position**: `number` \| `null`
 
 ***
 
-### FileReadResult\<T\>
+### FileReadResult
 
 #### Type Parameters
 
@@ -500,7 +500,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 ### FileSystemFlags
 
-> **FileSystemFlags**: `"a"` \| `"ax"` \| `"a+"` \| `"r"` \| `"r+"` \| `"w"` \| `"wx"` \| `"w+"` \| `"wx+"`
+> **FileSystemFlags** = `"a"` \| `"ax"` \| `"a+"` \| `"r"` \| `"r+"` \| `"w"` \| `"wx"` \| `"w+"` \| `"wx+"`
 
 ## Variables
 
@@ -512,7 +512,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 ### access()
 
-> **access**(`path`: `string`, `mode`?: `number`): `Promise`\<`void`\>
+> **access**(`path`: `string`, `mode?`: `number`): `Promise`\<`void`\>
 
 Tests a user's permissions for the file or directory specified by `path`.
 The `mode` argument is an optional integer that specifies the accessibility
@@ -547,7 +547,7 @@ the error raised if the file is not accessible.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | - |
-| `mode`? | `number` |  |
+| `mode?` | `number` |  |
 
 #### Returns
 
@@ -580,7 +580,7 @@ Fulfills with `undefined` upon success.
 
 ### mkdir()
 
-> **mkdir**(`path`: `string`, `options`?: [`MakeDirectoryOptions`](../index.md#makedirectoryoptions)): `Promise`\<`string`\>
+> **mkdir**(`path`: `string`, `options?`: [`MakeDirectoryOptions`](../index.md#makedirectoryoptions)): `Promise`\<`string`\>
 
 Asynchronously creates a directory.
 
@@ -605,7 +605,7 @@ try {
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | [`MakeDirectoryOptions`](../index.md#makedirectoryoptions) |
+| `options?` | [`MakeDirectoryOptions`](../index.md#makedirectoryoptions) |
 
 #### Returns
 
@@ -658,7 +658,7 @@ Fulfills with a string containing the file system path of the newly created temp
 
 ### open()
 
-> **open**(`path`: `string`, `flags`?: [`FileSystemFlags`](promises.md#filesystemflags), `mode`?: `number`): `Promise`\<[`FileHandle`](promises.md#filehandle)\>
+> **open**(`path`: `string`, `flags?`: [`FileSystemFlags`](#filesystemflags), `mode?`: `number`): `Promise`\<[`FileHandle`](#filehandle)\>
 
 Opens a `FileHandle`.
 
@@ -672,12 +672,12 @@ by [Naming Files, Paths, and Namespaces](https://docs.microsoft.com/en-us/window
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | - |
-| `flags`? | [`FileSystemFlags`](promises.md#filesystemflags) | See {FileSystemFlags}. |
-| `mode`? | `number` | Sets the file mode if the file is created (UNIX). |
+| `flags?` | [`FileSystemFlags`](#filesystemflags) | See {FileSystemFlags}. |
+| `mode?` | `number` | Sets the file mode if the file is created (UNIX). |
 
 #### Returns
 
-`Promise`\<[`FileHandle`](promises.md#filehandle)\>
+`Promise`\<[`FileHandle`](#filehandle)\>
 
 Fulfills with a {FileHandle} object.
 
@@ -687,7 +687,7 @@ Fulfills with a {FileHandle} object.
 
 #### Call Signature
 
-> **readdir**(`path`: `string`, `options`?: `object`): `Promise`\<`string`[]\>
+> **readdir**(`path`: `string`, `options?`: `object`): `Promise`\<`string`[]\>
 
 Reads the contents of a directory.
 
@@ -710,9 +710,9 @@ try {
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | \{ `recursive`: `boolean`; `withFileTypes`: `false`; \} |
-| `options.recursive`? | `boolean` |
-| `options.withFileTypes`? | `false` |
+| `options?` | \{ `recursive?`: `boolean`; `withFileTypes?`: `false`; \} |
+| `options.recursive?` | `boolean` |
+| `options.withFileTypes?` | `false` |
 
 ##### Returns
 
@@ -731,8 +731,8 @@ Asynchronous readdir(2) - read a directory.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | A path to a file. If a URL is provided, it must use the `file:` protocol. |
-| `options` | \{ `recursive`: `boolean`; `withFileTypes`: `true`; \} | If called with `withFileTypes: true` the result data will be an array of Dirent. |
-| `options.recursive`? | `boolean` | - |
+| `options` | \{ `recursive?`: `boolean`; `withFileTypes`: `true`; \} | If called with `withFileTypes: true` the result data will be an array of Dirent. |
+| `options.recursive?` | `boolean` | - |
 | `options.withFileTypes` | `true` | - |
 
 ##### Returns
@@ -745,7 +745,7 @@ Asynchronous readdir(2) - read a directory.
 
 #### Call Signature
 
-> **readFile**(`path`: `string`, `options`?: `null` \| \{ `encoding`: `null`; \}): `Promise`\<[`Buffer`](../../buffer.md#buffer)\>
+> **readFile**(`path`: `string`, `options?`: \{ `encoding?`: `null`; \} \| `null`): `Promise`\<[`Buffer`](../../buffer.md#buffer)\>
 
 Asynchronously reads the entire contents of a file.
 
@@ -777,7 +777,7 @@ try {
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | filename or `FileHandle` |
-| `options`? | `null` \| \{ `encoding`: `null`; \} | - |
+| `options?` | \{ `encoding?`: `null`; \} \| `null` | - |
 
 ##### Returns
 
@@ -838,7 +838,7 @@ Fulfills with `undefined` upon success.
 
 ### rm()
 
-> **rm**(`path`: `string`, `options`?: [`RmOptions`](../index.md#rmoptions)): `Promise`\<`void`\>
+> **rm**(`path`: `string`, `options?`: [`RmOptions`](../index.md#rmoptions)): `Promise`\<`void`\>
 
 Removes files and directories (modeled on the standard POSIX `rm` utility).
 
@@ -847,7 +847,7 @@ Removes files and directories (modeled on the standard POSIX `rm` utility).
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | [`RmOptions`](../index.md#rmoptions) |
+| `options?` | [`RmOptions`](../index.md#rmoptions) |
 
 #### Returns
 
@@ -859,7 +859,7 @@ Fulfills with `undefined` upon success.
 
 ### rmdir()
 
-> **rmdir**(`path`: `string`, `options`?: [`RmDirOptions`](../index.md#rmdiroptions)): `Promise`\<`void`\>
+> **rmdir**(`path`: `string`, `options?`: [`RmDirOptions`](../index.md#rmdiroptions)): `Promise`\<`void`\>
 
 Removes the directory identified by `path`.
 
@@ -873,7 +873,7 @@ To get a behavior similar to the `rm -rf` Unix command, use `fsPromises.rm()` wi
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options`? | [`RmDirOptions`](../index.md#rmdiroptions) |
+| `options?` | [`RmDirOptions`](../index.md#rmdiroptions) |
 
 #### Returns
 

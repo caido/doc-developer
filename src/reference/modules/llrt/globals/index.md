@@ -10,14 +10,14 @@
 
 ## Classes
 
-### EventEmitter\<T\>
+### EventEmitter
 
 #### Extended by
 
 - [`ChildProcess`](../child_process.md#childprocess)
 - [`Server`](../net.md#server)
-- [`ReadableStreamInner`](../stream.md#readablestreaminner)
-- [`WritableStreamInner`](../stream.md#writablestreaminner)
+- [`ReadableStreamInner`](../stream/stream.md#readablestreaminner)
+- [`WritableStreamInner`](../stream/stream.md#writablestreaminner)
 - [`ReadableStream`](namespaces/QuickJS.md#readablestream)
 - [`WritableStream`](namespaces/QuickJS.md#writablestream)
 
@@ -25,23 +25,23 @@
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `T` *extends* [`EventMap`](index.md#eventmapt)\<`T`\> | [`DefaultEventMap`](index.md#defaulteventmap) |
+| `T` *extends* [`EventMap`](#eventmap)\<`T`\> | [`DefaultEventMap`](#defaulteventmap) |
 
 #### Constructors
 
-##### new EventEmitter()
+##### Constructor
 
-> **new EventEmitter**\<`T`\>(): [`EventEmitter`](index.md#eventemittert)\<`T`\>
+> **new EventEmitter**\<`T`\>(): [`EventEmitter`](#eventemitter)\<`T`\>
 
 ###### Returns
 
-[`EventEmitter`](index.md#eventemittert)\<`T`\>
+[`EventEmitter`](#eventemitter)\<`T`\>
 
 #### Methods
 
 ##### addListener()
 
-> **addListener**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **addListener**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Alias for `emitter.on(eventName, listener)`.
 
@@ -55,8 +55,8 @@ Alias for `emitter.on(eventName, listener)`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> |
 
 ###### Returns
 
@@ -64,7 +64,7 @@ Alias for `emitter.on(eventName, listener)`.
 
 ##### emit()
 
-> **emit**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, ...`args`: [`Args`](index.md#argsk-t)\<`K`, `T`\>): `void`
+> **emit**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, ...`args`: [`Args`](#args)\<`K`, `T`\>): `void`
 
 Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments
 to each.
@@ -105,8 +105,8 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 | Parameter | Type |
 | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> |
-| ...`args` | [`Args`](index.md#argsk-t)\<`K`, `T`\> |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> |
+| ...`args` | [`Args`](#args)\<`K`, `T`\> |
 
 ###### Returns
 
@@ -114,7 +114,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### eventNames()
 
-> **eventNames**(): [`EventKey`](../dom-events.md#eventkey) & [`Key2`](index.md#key2k-t)\<`unknown`, `T`\>[]
+> **eventNames**(): [`EventKey`](../dom-events.md#eventkey) & [`Key2`](#key2)\<`unknown`, `T`\>[]
 
 Returns an array listing the events for which the emitter has registered
 listeners. The values in the array are strings or `Symbol`s.
@@ -135,11 +135,11 @@ console.log(myEE.eventNames());
 
 ###### Returns
 
-[`EventKey`](../dom-events.md#eventkey) & [`Key2`](index.md#key2k-t)\<`unknown`, `T`\>[]
+[`EventKey`](../dom-events.md#eventkey) & [`Key2`](#key2)\<`unknown`, `T`\>[]
 
 ##### off()
 
-> **off**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **off**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Alias for `emitter.removeListener()`.
 
@@ -153,8 +153,8 @@ Alias for `emitter.removeListener()`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> |
 
 ###### Returns
 
@@ -162,7 +162,7 @@ Alias for `emitter.removeListener()`.
 
 ##### on()
 
-> **on**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **on**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Adds the `listener` function to the end of the listeners array for the event
 named `eventName`. No checks are made to see if the `listener` has already
@@ -201,8 +201,8 @@ myEE.emit('foo');
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> | The name of the event. |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> | The callback function |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> | The name of the event. |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> | The callback function |
 
 ###### Returns
 
@@ -210,7 +210,7 @@ myEE.emit('foo');
 
 ##### once()
 
-> **once**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **once**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Adds a **one-time** `listener` function for the event named `eventName`. The
 next time `eventName` is triggered, this listener is removed and then invoked.
@@ -241,8 +241,8 @@ myEE.emit('foo');
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> | The name of the event. |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> | The callback function |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> | The name of the event. |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> | The callback function |
 
 ###### Returns
 
@@ -254,7 +254,7 @@ v0.3.0
 
 ##### prependListener()
 
-> **prependListener**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **prependListener**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Adds the `listener` function to the _beginning_ of the listeners array for the
 event named `eventName`. No checks are made to see if the `listener` has
@@ -273,8 +273,8 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> | The name of the event. |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> | The callback function |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> | The name of the event. |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> | The callback function |
 
 ###### Returns
 
@@ -282,7 +282,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### prependOnceListener()
 
-> **prependOnceListener**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **prependOnceListener**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Adds a **one-time**`listener` function for the event named `eventName` to the _beginning_ of the listeners array.
 The next time `eventName` is triggered, this listener is removed, and then invoked.
@@ -299,8 +299,8 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> | The name of the event. |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> | The callback function |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> | The name of the event. |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> | The callback function |
 
 ###### Returns
 
@@ -308,7 +308,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### removeListener()
 
-> **removeListener**\<`K`\>(`eventName`: [`Key`](index.md#keyk-t)\<`K`, `T`\>, `listener`: [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\>): `this`
+> **removeListener**\<`K`\>(`eventName`: [`Key`](#key)\<`K`, `T`\>, `listener`: [`Listener`](#listener)\<`K`, `T`\>): `this`
 
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
@@ -391,24 +391,50 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 | Parameter | Type |
 | ------ | ------ |
-| `eventName` | [`Key`](index.md#keyk-t)\<`K`, `T`\> |
-| `listener` | [`Listener`](index.md#listenerk-t-f)\<`K`, `T`, (...`args`: `any`[]) => `void`\> |
+| `eventName` | [`Key`](#key)\<`K`, `T`\> |
+| `listener` | [`Listener`](#listener)\<`K`, `T`\> |
 
 ###### Returns
 
 `this`
 
+## Interfaces
+
+### SymbolConstructor()
+
+> **SymbolConstructor**(`description?`: `string` \| `number`): `symbol`
+
+Returns a new unique Symbol value.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `description?` | `string` \| `number` | Description of the new Symbol object. |
+
+#### Returns
+
+`symbol`
+
+#### Properties
+
+##### dispose
+
+> `readonly` **dispose**: *typeof* [`dispose`](#dispose)
+
+A method that is used to release resources held by an object. Called by the semantics of the `using` statement.
+
 ## Type Aliases
 
 ### AnyRest
 
-> **AnyRest**: \[`any`[]\]
+> **AnyRest** = \[`any`[]\]
 
 ***
 
-### Args\<K, T\>
+### Args
 
-> **Args**\<`K`, `T`\>: `T` *extends* [`DefaultEventMap`](index.md#defaulteventmap) ? [`AnyRest`](index.md#anyrest) : `K` *extends* keyof `T` ? `T`\[`K`\] : `never`
+> **Args**\<`K`, `T`\> = `T` *extends* [`DefaultEventMap`](#defaulteventmap) ? [`AnyRest`](#anyrest) : `K` *extends* keyof `T` ? `T`\[`K`\] : `never`
 
 #### Type Parameters
 
@@ -421,13 +447,13 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ### DefaultEventMap
 
-> **DefaultEventMap**: \[`never`\]
+> **DefaultEventMap** = \[`never`\]
 
 ***
 
-### EventMap\<T\>
+### EventMap
 
-> **EventMap**\<`T`\>: `Record`\<keyof `T`, `any`[]\> \| [`DefaultEventMap`](index.md#defaulteventmap)
+> **EventMap**\<`T`\> = `Record`\<keyof `T`, `any`[]\> \| [`DefaultEventMap`](#defaulteventmap)
 
 #### Type Parameters
 
@@ -437,22 +463,9 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ***
 
-### Key\<K, T\>
+### Key
 
-> **Key**\<`K`, `T`\>: `T` *extends* [`DefaultEventMap`](index.md#defaulteventmap) ? [`EventKey`](../dom-events.md#eventkey) : `K` \| keyof `T`
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `K` |
-| `T` |
-
-***
-
-### Key2\<K, T\>
-
-> **Key2**\<`K`, `T`\>: `T` *extends* [`DefaultEventMap`](index.md#defaulteventmap) ? [`EventKey`](../dom-events.md#eventkey) : `K` & keyof `T`
+> **Key**\<`K`, `T`\> = `T` *extends* [`DefaultEventMap`](#defaulteventmap) ? [`EventKey`](../dom-events.md#eventkey) : `K` \| keyof `T`
 
 #### Type Parameters
 
@@ -463,9 +476,22 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ***
 
-### Listener\<K, T, F\>
+### Key2
 
-> **Listener**\<`K`, `T`, `F`\>: `T` *extends* [`DefaultEventMap`](index.md#defaulteventmap) ? `F` : `K` *extends* keyof `T` ? `T`\[`K`\] *extends* `unknown`[] ? (...`args`: `T`\[`K`\]) => `void` : `never` : `never`
+> **Key2**\<`K`, `T`\> = `T` *extends* [`DefaultEventMap`](#defaulteventmap) ? [`EventKey`](../dom-events.md#eventkey) : `K` & keyof `T`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `K` |
+| `T` |
+
+***
+
+### Listener
+
+> **Listener**\<`K`, `T`, `F`\> = `T` *extends* [`DefaultEventMap`](#defaulteventmap) ? `F` : `K` *extends* keyof `T` ? `T`\[`K`\] *extends* `unknown`[] ? (...`args`: `T`\[`K`\]) => `void` : `never` : `never`
 
 #### Type Parameters
 

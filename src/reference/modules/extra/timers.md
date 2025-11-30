@@ -11,19 +11,19 @@ scheduled actions.
 
 #### Constructors
 
-##### new Timeout()
+##### Constructor
 
-> **new Timeout**(): [`Timeout`](timers.md#timeout)
+> **new Timeout**(): [`Timeout`](#timeout)
 
 ###### Returns
 
-[`Timeout`](timers.md#timeout)
+[`Timeout`](#timeout)
 
 ## Functions
 
 ### clearInterval()
 
-> **clearInterval**(`interval`: [`Timeout`](timers.md#timeout)): `void`
+> **clearInterval**(`interval`: [`Timeout`](#timeout)): `void`
 
 Cancels a `Timeout` object created by `setInterval()`.
 
@@ -31,7 +31,7 @@ Cancels a `Timeout` object created by `setInterval()`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `interval` | [`Timeout`](timers.md#timeout) |
+| `interval` | [`Timeout`](#timeout) |
 
 #### Returns
 
@@ -41,7 +41,7 @@ Cancels a `Timeout` object created by `setInterval()`.
 
 ### clearTimeout()
 
-> **clearTimeout**(`timeout`: [`Timeout`](timers.md#timeout)): `void`
+> **clearTimeout**(`timeout`: [`Timeout`](#timeout)): `void`
 
 Cancels a `Timeout` object created by `setTimeout()`.
 
@@ -49,7 +49,7 @@ Cancels a `Timeout` object created by `setTimeout()`.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `timeout` | [`Timeout`](timers.md#timeout) | A `Timeout` object as returned by [setTimeout](timers.md#settimeout). |
+| `timeout` | [`Timeout`](#timeout) | A `Timeout` object as returned by [setTimeout](#settimeout). |
 
 #### Returns
 
@@ -86,7 +86,7 @@ for use with clearImmediate
 
 ### setInterval()
 
-> **setInterval**\<`TArgs`\>(`callback`: (...`args`: `TArgs`) => `void`, `ms`?: `number`): [`Timeout`](timers.md#timeout)
+> **setInterval**\<`TArgs`\>(`callback`: (...`args`: `TArgs`) => `void`, `ms?`: `number`): [`Timeout`](#timeout)
 
 Schedules repeated execution of `callback` every `delay` milliseconds.
 
@@ -103,19 +103,19 @@ When `delay` isless than `4`, the `delay` will be set to `4`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `callback` | (...`args`: `TArgs`) => `void` | The function to call when the timer elapses. |
-| `ms`? | `number` | - |
+| `ms?` | `number` | - |
 
 #### Returns
 
-[`Timeout`](timers.md#timeout)
+[`Timeout`](#timeout)
 
-for use with [clearInterval](timers.md#clearinterval)
+for use with [clearInterval](#clearinterval)
 
 ***
 
 ### setTimeout()
 
-> **setTimeout**\<`TArgs`\>(`callback`: (...`args`: `TArgs`) => `void`, `ms`?: `number`): [`Timeout`](timers.md#timeout)
+> **setTimeout**\<`TArgs`\>(`callback`: (...`args`: `TArgs`) => `void`, `ms?`: `number`): [`Timeout`](#timeout)
 
 Schedules execution of a one-time `callback` after `delay` milliseconds.
 
@@ -137,10 +137,10 @@ When `delay` is less than `4`, the `delay` will be set to `4`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `callback` | (...`args`: `TArgs`) => `void` | The function to call when the timer elapses. |
-| `ms`? | `number` | - |
+| `ms?` | `number` | - |
 
 #### Returns
 
-[`Timeout`](timers.md#timeout)
+[`Timeout`](#timeout)
 
-for use with [clearTimeout](timers.md#cleartimeout)
+for use with [clearTimeout](#cleartimeout)

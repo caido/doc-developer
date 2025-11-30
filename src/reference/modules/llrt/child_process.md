@@ -9,30 +9,30 @@
 Instances of the `ChildProcess` represent spawned child processes.
 
 Instances of `ChildProcess` are not intended to be created directly. Rather,
-use the [spawn](child_process.md#spawn) method to create instances of `ChildProcess`.
+use the [spawn](#spawn) method to create instances of `ChildProcess`.
 
 #### Extends
 
-- [`EventEmitter`](globals/index.md#eventemittert)
+- [`EventEmitter`](globals/index.md#eventemitter)
 
 #### Extended by
 
-- [`ChildProcessWithoutNullStreams`](child_process.md#childprocesswithoutnullstreams)
-- [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)
+- [`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams)
+- [`ChildProcessByStdio`](#childprocessbystdio)
 
 #### Constructors
 
-##### new ChildProcess()
+##### Constructor
 
-> **new ChildProcess**(): [`ChildProcess`](child_process.md#childprocess)
+> **new ChildProcess**(): [`ChildProcess`](#childprocess)
 
 ###### Returns
 
-[`ChildProcess`](child_process.md#childprocess)
+[`ChildProcess`](#childprocess)
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`constructor`](globals/index.md#constructors)
+[`EventEmitter`](globals/index.md#eventemitter).[`constructor`](globals/index.md#constructor)
 
 #### Properties
 
@@ -54,7 +54,7 @@ grep.stdin.end();
 
 ##### stderr
 
-> **stderr**: `null` \| [`DefaultReadableStream`](stream.md#defaultreadablestream)
+> **stderr**: [`DefaultReadableStream`](stream/stream.md#defaultreadablestream) \| `null`
 
 A `Readable Stream` that represents the child process's `stderr`.
 
@@ -68,7 +68,7 @@ The `subprocess.stderr` property can be `null` or `undefined` if the child proce
 
 ##### stdin
 
-> **stdin**: `null` \| [`DefaultWritableStream`](stream.md#defaultwritablestream)
+> **stdin**: [`DefaultWritableStream`](stream/stream.md#defaultwritablestream) \| `null`
 
 A `Writable Stream` that represents the child process's `stdin`.
 
@@ -85,7 +85,7 @@ The `subprocess.stdin` property can be `null` or `undefined` if the child proces
 
 ##### stdout
 
-> **stdout**: `null` \| [`DefaultReadableStream`](stream.md#defaultreadablestream)
+> **stdout**: [`DefaultReadableStream`](stream/stream.md#defaultreadablestream) \| `null`
 
 A `Readable Stream` that represents the child process's `stdout`.
 
@@ -113,7 +113,7 @@ The `subprocess.stdout` property can be `null` or `undefined` if the child proce
 
 > **\[dispose\]**(): `void`
 
-Calls [ChildProcess.kill](child_process.md#kill) with `'SIGTERM'`.
+Calls [ChildProcess.kill](#kill) with `'SIGTERM'`.
 
 ###### Returns
 
@@ -143,11 +143,11 @@ events.EventEmitter
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`addListener`](globals/index.md#addlistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`addListener`](globals/index.md#addlistener)
 
 ###### Call Signature
 
-> **addListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **addListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 events.EventEmitter
 1. close
@@ -159,7 +159,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -195,7 +195,7 @@ events.EventEmitter
 
 ###### Call Signature
 
-> **addListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **addListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 events.EventEmitter
 1. close
@@ -207,7 +207,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -265,19 +265,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`emit`](globals/index.md#emit)
+[`EventEmitter`](globals/index.md#eventemitter).[`emit`](globals/index.md#emit)
 
 ###### Call Signature
 
-> **emit**(`event`: `"close"`, `code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **emit**(`event`: `"close"`, `code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `code` | `null` \| `number` |
-| `signal` | `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `code` | `number` \| `null` |
+| `signal` | [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null` |
 
 ###### Returns
 
@@ -308,15 +308,15 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Call Signature
 
-> **emit**(`event`: `"exit"`, `code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **emit**(`event`: `"exit"`, `code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `code` | `null` \| `number` |
-| `signal` | `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `code` | `number` \| `null` |
+| `signal` | [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null` |
 
 ###### Returns
 
@@ -353,11 +353,11 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`eventNames`](globals/index.md#eventnames)
+[`EventEmitter`](globals/index.md#eventemitter).[`eventNames`](globals/index.md#eventnames)
 
 ##### kill()
 
-> **kill**(`signal`?: `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **kill**(`signal?`: `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
 
 The `subprocess.kill()` method sends a signal to the child process. If no
 argument is given, the process will be sent the `'SIGTERM'` signal. See [`signal(7)`](http://man7.org/linux/man-pages/man7/signal.7.html) for a list of available signals. This function
@@ -420,7 +420,7 @@ setTimeout(() => {
 
 | Parameter | Type |
 | ------ | ------ |
-| `signal`? | `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `signal?` | `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
 
 ###### Returns
 
@@ -451,7 +451,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`off`](globals/index.md#off)
+[`EventEmitter`](globals/index.md#eventemitter).[`off`](globals/index.md#off)
 
 ##### on()
 
@@ -499,18 +499,18 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`on`](globals/index.md#on)
+[`EventEmitter`](globals/index.md#eventemitter).[`on`](globals/index.md#on)
 
 ###### Call Signature
 
-> **on**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **on**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -541,14 +541,14 @@ myEE.emit('foo');
 
 ###### Call Signature
 
-> **on**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **on**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -600,18 +600,18 @@ v0.3.0
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`once`](globals/index.md#once)
+[`EventEmitter`](globals/index.md#eventemitter).[`once`](globals/index.md#once)
 
 ###### Call Signature
 
-> **once**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **once**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -642,14 +642,14 @@ v0.3.0
 
 ###### Call Signature
 
-> **once**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **once**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -685,18 +685,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`prependListener`](globals/index.md#prependlistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`prependListener`](globals/index.md#prependlistener)
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -727,14 +727,14 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -768,18 +768,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`prependOnceListener`](globals/index.md#prependoncelistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`prependOnceListener`](globals/index.md#prependoncelistener)
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependOnceListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -810,14 +810,14 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependOnceListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -921,28 +921,28 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`removeListener`](globals/index.md#removelistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`removeListener`](globals/index.md#removelistener)
 
 ## Interfaces
 
-### ChildProcessByStdio\<I, O, E\>
+### ChildProcessByStdio
 
 Instances of the `ChildProcess` represent spawned child processes.
 
 Instances of `ChildProcess` are not intended to be created directly. Rather,
-use the [spawn](child_process.md#spawn) method to create instances of `ChildProcess`.
+use the [spawn](#spawn) method to create instances of `ChildProcess`.
 
 #### Extends
 
-- [`ChildProcess`](child_process.md#childprocess)
+- [`ChildProcess`](#childprocess)
 
 #### Type Parameters
 
 | Type Parameter |
 | ------ |
-| `I` *extends* `null` \| [`DefaultWritableStream`](stream.md#defaultwritablestream) |
-| `O` *extends* `null` \| [`DefaultReadableStream`](stream.md#defaultreadablestream) |
-| `E` *extends* `null` \| [`DefaultReadableStream`](stream.md#defaultreadablestream) |
+| `I` *extends* `null` \| [`DefaultWritableStream`](stream/stream.md#defaultwritablestream) |
+| `O` *extends* `null` \| [`DefaultReadableStream`](stream/stream.md#defaultreadablestream) |
+| `E` *extends* `null` \| [`DefaultReadableStream`](stream/stream.md#defaultreadablestream) |
 
 #### Properties
 
@@ -964,7 +964,7 @@ grep.stdin.end();
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`pid`](child_process.md#pid)
+[`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams).[`pid`](#pid-2)
 
 ##### stderr
 
@@ -982,7 +982,7 @@ The `subprocess.stderr` property can be `null` or `undefined` if the child proce
 
 ###### Overrides
 
-[`ChildProcess`](child_process.md#childprocess).[`stderr`](child_process.md#stderr)
+[`ChildProcess`](#childprocess).[`stderr`](#stderr)
 
 ##### stdin
 
@@ -1003,7 +1003,7 @@ The `subprocess.stdin` property can be `null` or `undefined` if the child proces
 
 ###### Overrides
 
-[`ChildProcess`](child_process.md#childprocess).[`stdin`](child_process.md#stdin)
+[`ChildProcess`](#childprocess).[`stdin`](#stdin)
 
 ##### stdout
 
@@ -1031,7 +1031,7 @@ The `subprocess.stdout` property can be `null` or `undefined` if the child proce
 
 ###### Overrides
 
-[`ChildProcess`](child_process.md#childprocess).[`stdout`](child_process.md#stdout)
+[`ChildProcess`](#childprocess).[`stdout`](#stdout)
 
 #### Methods
 
@@ -1039,7 +1039,7 @@ The `subprocess.stdout` property can be `null` or `undefined` if the child proce
 
 > **\[dispose\]**(): `void`
 
-Calls [ChildProcess.kill](child_process.md#kill) with `'SIGTERM'`.
+Calls [ChildProcess.kill](#kill) with `'SIGTERM'`.
 
 ###### Returns
 
@@ -1047,7 +1047,7 @@ Calls [ChildProcess.kill](child_process.md#kill) with `'SIGTERM'`.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`[dispose]`](child_process.md#dispose)
+[`ChildProcess`](#childprocess).[`[dispose]`](#dispose)
 
 ##### addListener()
 
@@ -1073,11 +1073,11 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ###### Call Signature
 
-> **addListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **addListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 events.EventEmitter
 1. close
@@ -1089,7 +1089,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1097,7 +1097,7 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ###### Call Signature
 
@@ -1121,11 +1121,11 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ###### Call Signature
 
-> **addListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **addListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 events.EventEmitter
 1. close
@@ -1137,7 +1137,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1145,7 +1145,7 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ##### emit()
 
@@ -1195,19 +1195,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ###### Call Signature
 
-> **emit**(`event`: `"close"`, `code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **emit**(`event`: `"close"`, `code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `code` | `null` \| `number` |
-| `signal` | `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `code` | `number` \| `null` |
+| `signal` | [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null` |
 
 ###### Returns
 
@@ -1215,7 +1215,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ###### Call Signature
 
@@ -1234,19 +1234,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ###### Call Signature
 
-> **emit**(`event`: `"exit"`, `code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **emit**(`event`: `"exit"`, `code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `code` | `null` \| `number` |
-| `signal` | `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `code` | `number` \| `null` |
+| `signal` | [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null` |
 
 ###### Returns
 
@@ -1254,7 +1254,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ##### eventNames()
 
@@ -1283,11 +1283,11 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`eventNames`](child_process.md#eventnames)
+[`ChildProcess`](#childprocess).[`eventNames`](#eventnames)
 
 ##### kill()
 
-> **kill**(`signal`?: `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **kill**(`signal?`: `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
 
 The `subprocess.kill()` method sends a signal to the child process. If no
 argument is given, the process will be sent the `'SIGTERM'` signal. See [`signal(7)`](http://man7.org/linux/man-pages/man7/signal.7.html) for a list of available signals. This function
@@ -1350,7 +1350,7 @@ setTimeout(() => {
 
 | Parameter | Type |
 | ------ | ------ |
-| `signal`? | `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `signal?` | `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
 
 ###### Returns
 
@@ -1358,7 +1358,7 @@ setTimeout(() => {
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`kill`](child_process.md#kill)
+[`ChildProcess`](#childprocess).[`kill`](#kill)
 
 ##### off()
 
@@ -1385,7 +1385,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`off`](child_process.md#off)
+[`ChildProcess`](#childprocess).[`off`](#off)
 
 ##### on()
 
@@ -1433,18 +1433,18 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ###### Call Signature
 
-> **on**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **on**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1452,7 +1452,7 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ###### Call Signature
 
@@ -1471,18 +1471,18 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ###### Call Signature
 
-> **on**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **on**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1490,7 +1490,7 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ##### once()
 
@@ -1534,18 +1534,18 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ###### Call Signature
 
-> **once**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **once**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1553,7 +1553,7 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ###### Call Signature
 
@@ -1572,18 +1572,18 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ###### Call Signature
 
-> **once**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **once**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1591,7 +1591,7 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ##### prependListener()
 
@@ -1619,18 +1619,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1638,7 +1638,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ###### Call Signature
 
@@ -1657,18 +1657,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1676,7 +1676,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ##### prependOnceListener()
 
@@ -1702,18 +1702,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependOnceListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1721,7 +1721,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ###### Call Signature
 
@@ -1740,18 +1740,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependOnceListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -1759,7 +1759,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ##### removeListener()
 
@@ -1855,7 +1855,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`removeListener`](child_process.md#removelistener)
+[`ChildProcess`](#childprocess).[`removeListener`](#removelistener)
 
 ***
 
@@ -1864,11 +1864,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 Instances of the `ChildProcess` represent spawned child processes.
 
 Instances of `ChildProcess` are not intended to be created directly. Rather,
-use the [spawn](child_process.md#spawn) method to create instances of `ChildProcess`.
+use the [spawn](#spawn) method to create instances of `ChildProcess`.
 
 #### Extends
 
-- [`ChildProcess`](child_process.md#childprocess)
+- [`ChildProcess`](#childprocess)
 
 #### Properties
 
@@ -1890,11 +1890,11 @@ grep.stdin.end();
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`pid`](child_process.md#pid)
+[`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams).[`pid`](#pid-2)
 
 ##### stderr
 
-> **stderr**: [`DefaultReadableStream`](stream.md#defaultreadablestream)
+> **stderr**: [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)
 
 A `Readable Stream` that represents the child process's `stderr`.
 
@@ -1908,11 +1908,11 @@ The `subprocess.stderr` property can be `null` or `undefined` if the child proce
 
 ###### Overrides
 
-[`ChildProcess`](child_process.md#childprocess).[`stderr`](child_process.md#stderr)
+[`ChildProcess`](#childprocess).[`stderr`](#stderr)
 
 ##### stdin
 
-> **stdin**: [`DefaultWritableStream`](stream.md#defaultwritablestream)
+> **stdin**: [`DefaultWritableStream`](stream/stream.md#defaultwritablestream)
 
 A `Writable Stream` that represents the child process's `stdin`.
 
@@ -1929,11 +1929,11 @@ The `subprocess.stdin` property can be `null` or `undefined` if the child proces
 
 ###### Overrides
 
-[`ChildProcess`](child_process.md#childprocess).[`stdin`](child_process.md#stdin)
+[`ChildProcess`](#childprocess).[`stdin`](#stdin)
 
 ##### stdout
 
-> **stdout**: [`DefaultReadableStream`](stream.md#defaultreadablestream)
+> **stdout**: [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)
 
 A `Readable Stream` that represents the child process's `stdout`.
 
@@ -1957,7 +1957,7 @@ The `subprocess.stdout` property can be `null` or `undefined` if the child proce
 
 ###### Overrides
 
-[`ChildProcess`](child_process.md#childprocess).[`stdout`](child_process.md#stdout)
+[`ChildProcess`](#childprocess).[`stdout`](#stdout)
 
 #### Methods
 
@@ -1965,7 +1965,7 @@ The `subprocess.stdout` property can be `null` or `undefined` if the child proce
 
 > **\[dispose\]**(): `void`
 
-Calls [ChildProcess.kill](child_process.md#kill) with `'SIGTERM'`.
+Calls [ChildProcess.kill](#kill) with `'SIGTERM'`.
 
 ###### Returns
 
@@ -1973,7 +1973,7 @@ Calls [ChildProcess.kill](child_process.md#kill) with `'SIGTERM'`.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`[dispose]`](child_process.md#dispose)
+[`ChildProcess`](#childprocess).[`[dispose]`](#dispose)
 
 ##### addListener()
 
@@ -1999,11 +1999,11 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ###### Call Signature
 
-> **addListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **addListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 events.EventEmitter
 1. close
@@ -2015,7 +2015,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2023,7 +2023,7 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ###### Call Signature
 
@@ -2047,11 +2047,11 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ###### Call Signature
 
-> **addListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **addListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 events.EventEmitter
 1. close
@@ -2063,7 +2063,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2071,7 +2071,7 @@ events.EventEmitter
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`addListener`](child_process.md#addlistener)
+[`ChildProcess`](#childprocess).[`addListener`](#addlistener)
 
 ##### emit()
 
@@ -2121,19 +2121,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ###### Call Signature
 
-> **emit**(`event`: `"close"`, `code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **emit**(`event`: `"close"`, `code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `code` | `null` \| `number` |
-| `signal` | `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `code` | `number` \| `null` |
+| `signal` | [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null` |
 
 ###### Returns
 
@@ -2141,7 +2141,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ###### Call Signature
 
@@ -2160,19 +2160,19 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ###### Call Signature
 
-> **emit**(`event`: `"exit"`, `code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **emit**(`event`: `"exit"`, `code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `code` | `null` \| `number` |
-| `signal` | `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `code` | `number` \| `null` |
+| `signal` | [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null` |
 
 ###### Returns
 
@@ -2180,7 +2180,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`emit`](child_process.md#emit)
+[`ChildProcess`](#childprocess).[`emit`](#emit)
 
 ##### eventNames()
 
@@ -2209,11 +2209,11 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`eventNames`](child_process.md#eventnames)
+[`ChildProcess`](#childprocess).[`eventNames`](#eventnames)
 
 ##### kill()
 
-> **kill**(`signal`?: `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
+> **kill**(`signal?`: `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals)): `boolean`
 
 The `subprocess.kill()` method sends a signal to the child process. If no
 argument is given, the process will be sent the `'SIGTERM'` signal. See [`signal(7)`](http://man7.org/linux/man-pages/man7/signal.7.html) for a list of available signals. This function
@@ -2276,7 +2276,7 @@ setTimeout(() => {
 
 | Parameter | Type |
 | ------ | ------ |
-| `signal`? | `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
+| `signal?` | `number` \| [`Signals`](globals/namespaces/QuickJS.md#signals) |
 
 ###### Returns
 
@@ -2284,7 +2284,7 @@ setTimeout(() => {
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`kill`](child_process.md#kill)
+[`ChildProcess`](#childprocess).[`kill`](#kill)
 
 ##### off()
 
@@ -2311,7 +2311,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`off`](child_process.md#off)
+[`ChildProcess`](#childprocess).[`off`](#off)
 
 ##### on()
 
@@ -2359,18 +2359,18 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ###### Call Signature
 
-> **on**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **on**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2378,7 +2378,7 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ###### Call Signature
 
@@ -2397,18 +2397,18 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ###### Call Signature
 
-> **on**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **on**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2416,7 +2416,7 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`on`](child_process.md#on)
+[`ChildProcess`](#childprocess).[`on`](#on)
 
 ##### once()
 
@@ -2460,18 +2460,18 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ###### Call Signature
 
-> **once**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **once**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2479,7 +2479,7 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ###### Call Signature
 
@@ -2498,18 +2498,18 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ###### Call Signature
 
-> **once**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **once**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2517,7 +2517,7 @@ v0.3.0
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`once`](child_process.md#once)
+[`ChildProcess`](#childprocess).[`once`](#once)
 
 ##### prependListener()
 
@@ -2545,18 +2545,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2564,7 +2564,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ###### Call Signature
 
@@ -2583,18 +2583,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2602,7 +2602,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependListener`](child_process.md#prependlistener)
+[`ChildProcess`](#childprocess).[`prependListener`](#prependlistener)
 
 ##### prependOnceListener()
 
@@ -2628,18 +2628,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"close"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependOnceListener**(`event`: `"close"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"close"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2647,7 +2647,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ###### Call Signature
 
@@ -2666,18 +2666,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"exit"`, `listener`: (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void`): `this`
+> **prependOnceListener**(`event`: `"exit"`, `listener`: (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"exit"` |
-| `listener` | (`code`: `null` \| `number`, `signal`: `null` \| [`Signals`](globals/namespaces/QuickJS.md#signals)) => `void` |
+| `listener` | (`code`: `number` \| `null`, `signal`: [`Signals`](globals/namespaces/QuickJS.md#signals) \| `null`) => `void` |
 
 ###### Returns
 
@@ -2685,7 +2685,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`prependOnceListener`](child_process.md#prependoncelistener)
+[`ChildProcess`](#childprocess).[`prependOnceListener`](#prependoncelistener)
 
 ##### removeListener()
 
@@ -2781,7 +2781,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ChildProcess`](child_process.md#childprocess).[`removeListener`](child_process.md#removelistener)
+[`ChildProcess`](#childprocess).[`removeListener`](#removelistener)
 
 ***
 
@@ -2789,7 +2789,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Extended by
 
-- [`SpawnOptions`](child_process.md#spawnoptions)
+- [`SpawnOptions`](#spawnoptions)
 
 #### Properties
 
@@ -2811,12 +2811,12 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Extends
 
-- [`ProcessEnvOptions`](child_process.md#processenvoptions)
+- [`ProcessEnvOptions`](#processenvoptions)
 
 #### Extended by
 
-- [`SpawnOptionsWithoutStdio`](child_process.md#spawnoptionswithoutstdio)
-- [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)
+- [`SpawnOptionsWithoutStdio`](#spawnoptionswithoutstdio)
+- [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)
 
 #### Properties
 
@@ -2826,7 +2826,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ProcessEnvOptions`](child_process.md#processenvoptions).[`cwd`](child_process.md#cwd)
+[`ProcessEnvOptions`](#processenvoptions).[`cwd`](#cwd)
 
 ##### gid?
 
@@ -2834,7 +2834,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`ProcessEnvOptions`](child_process.md#processenvoptions).[`gid`](child_process.md#gid)
+[`ProcessEnvOptions`](#processenvoptions).[`gid`](#gid)
 
 ##### shell?
 
@@ -2842,7 +2842,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### stdio?
 
-> `optional` **stdio**: [`StdioOptions`](child_process.md#stdiooptions)
+> `optional` **stdio**: [`StdioOptions`](#stdiooptions)
 
 Can be set to 'pipe', 'inherit', or 'ignore', or an array of these strings.
 If passed as an array, the first element is used for `stdin`, the second for
@@ -2860,7 +2860,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`ProcessEnvOptions`](child_process.md#processenvoptions).[`uid`](child_process.md#uid)
+[`ProcessEnvOptions`](#processenvoptions).[`uid`](#uid)
 
 ##### windowsVerbatimArguments?
 
@@ -2872,7 +2872,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 #### Extends
 
-- [`SpawnOptions`](child_process.md#spawnoptions)
+- [`SpawnOptions`](#spawnoptions)
 
 #### Properties
 
@@ -2882,7 +2882,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`cwd`](child_process.md#cwd-1)
+[`SpawnOptions`](#spawnoptions).[`cwd`](#cwd-1)
 
 ##### gid?
 
@@ -2890,7 +2890,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`gid`](child_process.md#gid-1)
+[`SpawnOptions`](#spawnoptions).[`gid`](#gid-1)
 
 ##### shell?
 
@@ -2898,11 +2898,11 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`shell`](child_process.md#shell)
+[`SpawnOptions`](#spawnoptions).[`shell`](#shell)
 
 ##### stdio?
 
-> `optional` **stdio**: `"pipe"` \| [`StdioPipe`](child_process.md#stdiopipe)[]
+> `optional` **stdio**: `"pipe"` \| [`StdioPipe`](#stdiopipe)[]
 
 Can be set to 'pipe', 'inherit', or 'ignore', or an array of these strings.
 If passed as an array, the first element is used for `stdin`, the second for
@@ -2916,7 +2916,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Overrides
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`stdio`](child_process.md#stdio)
+[`SpawnOptions`](#spawnoptions).[`stdio`](#stdio)
 
 ##### uid?
 
@@ -2924,7 +2924,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`uid`](child_process.md#uid-1)
+[`SpawnOptions`](#spawnoptions).[`uid`](#uid-1)
 
 ##### windowsVerbatimArguments?
 
@@ -2932,23 +2932,23 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`windowsVerbatimArguments`](child_process.md#windowsverbatimarguments)
+[`SpawnOptions`](#spawnoptions).[`windowsVerbatimArguments`](#windowsverbatimarguments)
 
 ***
 
-### SpawnOptionsWithStdioTuple\<Stdin, Stdout, Stderr\>
+### SpawnOptionsWithStdioTuple
 
 #### Extends
 
-- [`SpawnOptions`](child_process.md#spawnoptions)
+- [`SpawnOptions`](#spawnoptions)
 
 #### Type Parameters
 
 | Type Parameter |
 | ------ |
-| `Stdin` *extends* [`StdioNull`](child_process.md#stdionull) \| [`StdioPipe`](child_process.md#stdiopipe) |
-| `Stdout` *extends* [`StdioNull`](child_process.md#stdionull) \| [`StdioPipe`](child_process.md#stdiopipe) |
-| `Stderr` *extends* [`StdioNull`](child_process.md#stdionull) \| [`StdioPipe`](child_process.md#stdiopipe) |
+| `Stdin` *extends* [`StdioNull`](#stdionull) \| [`StdioPipe`](#stdiopipe) |
+| `Stdout` *extends* [`StdioNull`](#stdionull) \| [`StdioPipe`](#stdiopipe) |
+| `Stderr` *extends* [`StdioNull`](#stdionull) \| [`StdioPipe`](#stdiopipe) |
 
 #### Properties
 
@@ -2958,7 +2958,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`cwd`](child_process.md#cwd-1)
+[`SpawnOptions`](#spawnoptions).[`cwd`](#cwd-1)
 
 ##### gid?
 
@@ -2966,7 +2966,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`gid`](child_process.md#gid-1)
+[`SpawnOptions`](#spawnoptions).[`gid`](#gid-1)
 
 ##### shell?
 
@@ -2974,7 +2974,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`shell`](child_process.md#shell)
+[`SpawnOptions`](#spawnoptions).[`shell`](#shell)
 
 ##### stdio
 
@@ -2992,7 +2992,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Overrides
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`stdio`](child_process.md#stdio)
+[`SpawnOptions`](#spawnoptions).[`stdio`](#stdio)
 
 ##### uid?
 
@@ -3000,7 +3000,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`uid`](child_process.md#uid-1)
+[`SpawnOptions`](#spawnoptions).[`uid`](#uid-1)
 
 ##### windowsVerbatimArguments?
 
@@ -3008,37 +3008,37 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 ###### Inherited from
 
-[`SpawnOptions`](child_process.md#spawnoptions).[`windowsVerbatimArguments`](child_process.md#windowsverbatimarguments)
+[`SpawnOptions`](#spawnoptions).[`windowsVerbatimArguments`](#windowsverbatimarguments)
 
 ## Type Aliases
 
 ### IOType
 
-> **IOType**: `"pipe"` \| `"ignore"` \| `"inherit"`
+> **IOType** = `"pipe"` \| `"ignore"` \| `"inherit"`
 
 ***
 
 ### StdioNull
 
-> **StdioNull**: `"inherit"` \| `"ignore"`
+> **StdioNull** = `"inherit"` \| `"ignore"`
 
 ***
 
 ### StdioOptions
 
-> **StdioOptions**: [`IOType`](child_process.md#iotype) \| ([`IOType`](child_process.md#iotype) \| `number` \| `null` \| `undefined`)[]
+> **StdioOptions** = [`IOType`](#iotype) \| ([`IOType`](#iotype) \| `number` \| `null` \| `undefined`)[]
 
 ***
 
 ### StdioPipe
 
-> **StdioPipe**: `undefined` \| `null` \| [`StdioPipeNamed`](child_process.md#stdiopipenamed)
+> **StdioPipe** = `undefined` \| `null` \| [`StdioPipeNamed`](#stdiopipenamed)
 
 ***
 
 ### StdioPipeNamed
 
-> **StdioPipeNamed**: `"pipe"`
+> **StdioPipeNamed** = `"pipe"`
 
 ## Functions
 
@@ -3046,7 +3046,7 @@ If passed as an array, the first element is used for `stdin`, the second for
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`?: [`SpawnOptionsWithoutStdio`](child_process.md#spawnoptionswithoutstdio)): [`ChildProcessWithoutNullStreams`](child_process.md#childprocesswithoutnullstreams)
+> **spawn**(`command`: `string`, `options?`: [`SpawnOptionsWithoutStdio`](#spawnoptionswithoutstdio)): [`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams)
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3139,15 +3139,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options`? | [`SpawnOptionsWithoutStdio`](child_process.md#spawnoptionswithoutstdio) | - |
+| `options?` | [`SpawnOptionsWithoutStdio`](#spawnoptionswithoutstdio) | - |
 
 ##### Returns
 
-[`ChildProcessWithoutNullStreams`](child_process.md#childprocesswithoutnullstreams)
+[`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams)
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3240,15 +3240,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3341,15 +3341,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3442,15 +3442,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3543,15 +3543,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, `null`\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3644,15 +3644,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3745,15 +3745,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3846,15 +3846,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, `null`\>
+> **spawn**(`command`: `string`, `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -3947,15 +3947,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `options`: [`SpawnOptions`](child_process.md#spawnoptions)): [`ChildProcess`](child_process.md#childprocess)
+> **spawn**(`command`: `string`, `options`: [`SpawnOptions`](#spawnoptions)): [`ChildProcess`](#childprocess)
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4048,15 +4048,15 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `options` | [`SpawnOptions`](child_process.md#spawnoptions) | - |
+| `options` | [`SpawnOptions`](#spawnoptions) | - |
 
 ##### Returns
 
-[`ChildProcess`](child_process.md#childprocess)
+[`ChildProcess`](#childprocess)
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`?: readonly `string`[], `options`?: [`SpawnOptionsWithoutStdio`](child_process.md#spawnoptionswithoutstdio)): [`ChildProcessWithoutNullStreams`](child_process.md#childprocesswithoutnullstreams)
+> **spawn**(`command`: `string`, `args?`: readonly `string`[], `options?`: [`SpawnOptionsWithoutStdio`](#spawnoptionswithoutstdio)): [`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams)
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4149,16 +4149,16 @@ title while others (Windows, SunOS) will use `command`.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
-| `args`? | readonly `string`[] | List of string arguments. |
-| `options`? | [`SpawnOptionsWithoutStdio`](child_process.md#spawnoptionswithoutstdio) | - |
+| `args?` | readonly `string`[] | List of string arguments. |
+| `options?` | [`SpawnOptionsWithoutStdio`](#spawnoptionswithoutstdio) | - |
 
 ##### Returns
 
-[`ChildProcessWithoutNullStreams`](child_process.md#childprocesswithoutnullstreams)
+[`ChildProcessWithoutNullStreams`](#childprocesswithoutnullstreams)
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4252,15 +4252,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4354,15 +4354,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4456,15 +4456,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4558,15 +4558,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, `null`\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4660,15 +4660,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<[`DefaultWritableStream`](stream.md#defaultwritablestream), `null`, `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<[`DefaultWritableStream`](stream/stream.md#defaultwritablestream), `null`, `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4762,15 +4762,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, [`DefaultReadableStream`](stream.md#defaultreadablestream), `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream), `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4864,15 +4864,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioPipe`](child_process.md#stdiopipe)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioPipe`](#stdiopipe)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, [`DefaultReadableStream`](stream.md#defaultreadablestream)\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, [`DefaultReadableStream`](stream/stream.md#defaultreadablestream)\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\>): [`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, `null`\>
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\>): [`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, `null`\>
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -4966,15 +4966,15 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptionsWithStdioTuple`](child_process.md#spawnoptionswithstdiotuplestdin-stdout-stderr)\<[`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull), [`StdioNull`](child_process.md#stdionull)\> | - |
+| `options` | [`SpawnOptionsWithStdioTuple`](#spawnoptionswithstdiotuple)\<[`StdioNull`](#stdionull), [`StdioNull`](#stdionull), [`StdioNull`](#stdionull)\> | - |
 
 ##### Returns
 
-[`ChildProcessByStdio`](child_process.md#childprocessbystdioi-o-e)\<`null`, `null`, `null`\>
+[`ChildProcessByStdio`](#childprocessbystdio)\<`null`, `null`, `null`\>
 
 #### Call Signature
 
-> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptions`](child_process.md#spawnoptions)): [`ChildProcess`](child_process.md#childprocess)
+> **spawn**(`command`: `string`, `args`: readonly `string`[], `options`: [`SpawnOptions`](#spawnoptions)): [`ChildProcess`](#childprocess)
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command-line arguments in `args`.
 If omitted, `args` defaults to an empty array.
@@ -5068,8 +5068,8 @@ title while others (Windows, SunOS) will use `command`.
 | ------ | ------ | ------ |
 | `command` | `string` | The command to run. |
 | `args` | readonly `string`[] | List of string arguments. |
-| `options` | [`SpawnOptions`](child_process.md#spawnoptions) | - |
+| `options` | [`SpawnOptions`](#spawnoptions) | - |
 
 ##### Returns
 
-[`ChildProcess`](child_process.md#childprocess)
+[`ChildProcess`](#childprocess)
