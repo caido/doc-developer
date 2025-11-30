@@ -11,7 +11,7 @@ The `Hash` class is a utility for creating hash digests of data.
 Using the `hash.update()` and `hash.digest()` methods to produce the
 computed hash.
 
-The [createHash](crypto.md#createhash) method is used to create `Hash` instances.
+The [createHash](#createhash) method is used to create `Hash` instances.
 `Hash`objects are not to be created directly using the `new` keyword.
 
 Example: Using the `hash.update()` and `hash.digest()` methods:
@@ -48,7 +48,7 @@ called. Multiple calls will cause an error to be thrown.
 
 ###### Call Signature
 
-> **digest**(`encoding`: [`BinaryToTextEncoding`](crypto.md#binarytotextencoding)): `string`
+> **digest**(`encoding`: [`BinaryToTextEncoding`](#binarytotextencoding)): `string`
 
 Calculates the digest of all of the data passed to be hashed (using the `hash.update()` method).
 If `encoding` is provided a string will be returned; otherwise
@@ -61,7 +61,7 @@ called. Multiple calls will cause an error to be thrown.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `encoding` | [`BinaryToTextEncoding`](crypto.md#binarytotextencoding) | The `encoding` of the return value. |
+| `encoding` | [`BinaryToTextEncoding`](#binarytotextencoding) | The `encoding` of the return value. |
 
 ###### Returns
 
@@ -71,7 +71,7 @@ called. Multiple calls will cause an error to be thrown.
 
 ###### Call Signature
 
-> **update**(`data`: [`BinaryLike`](crypto.md#binarylike)): [`Hash`](crypto.md#hash)
+> **update**(`data`: [`BinaryLike`](#binarylike)): [`Hash`](#hash)
 
 Updates the hash content with the given `data`, the encoding of which
 is given in `inputEncoding`.
@@ -85,15 +85,15 @@ This can be called many times with new data as it is streamed.
 
 | Parameter | Type |
 | ------ | ------ |
-| `data` | [`BinaryLike`](crypto.md#binarylike) |
+| `data` | [`BinaryLike`](#binarylike) |
 
 ###### Returns
 
-[`Hash`](crypto.md#hash)
+[`Hash`](#hash)
 
 ###### Call Signature
 
-> **update**(`data`: `string`, `inputEncoding`: [`Encoding`](crypto.md#encoding)): [`Hash`](crypto.md#hash)
+> **update**(`data`: `string`, `inputEncoding`: [`Encoding`](#encoding)): [`Hash`](#hash)
 
 Updates the hash content with the given `data`, the encoding of which
 is given in `inputEncoding`.
@@ -108,11 +108,11 @@ This can be called many times with new data as it is streamed.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `data` | `string` | - |
-| `inputEncoding` | [`Encoding`](crypto.md#encoding) | The `encoding` of the `data` string. |
+| `inputEncoding` | [`Encoding`](#encoding) | The `encoding` of the `data` string. |
 
 ###### Returns
 
-[`Hash`](crypto.md#hash)
+[`Hash`](#hash)
 
 ***
 
@@ -123,7 +123,7 @@ The `Hmac` class is a utility for creating cryptographic HMAC digests.
 Using the `hmac.update()` and `hmac.digest()` methods to produce the
 computed HMAC digest.
 
-The [createHmac](crypto.md#createhmac) method is used to create `Hmac` instances.
+The [createHmac](#createhmac) method is used to create `Hmac` instances.
 `Hmac`objects are not to be created directly using the `new` keyword.
 
 Example: Using the `hmac.update()` and `hmac.digest()` methods:
@@ -160,7 +160,7 @@ called. Multiple calls to `hmac.digest()` will result in an error being thrown.
 
 ###### Call Signature
 
-> **digest**(`encoding`: [`BinaryToTextEncoding`](crypto.md#binarytotextencoding)): `string`
+> **digest**(`encoding`: [`BinaryToTextEncoding`](#binarytotextencoding)): `string`
 
 Calculates the HMAC digest of all of the data passed using `hmac.update()`.
 If `encoding` is
@@ -173,7 +173,7 @@ called. Multiple calls to `hmac.digest()` will result in an error being thrown.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `encoding` | [`BinaryToTextEncoding`](crypto.md#binarytotextencoding) | The `encoding` of the return value. |
+| `encoding` | [`BinaryToTextEncoding`](#binarytotextencoding) | The `encoding` of the return value. |
 
 ###### Returns
 
@@ -183,7 +183,7 @@ called. Multiple calls to `hmac.digest()` will result in an error being thrown.
 
 ###### Call Signature
 
-> **update**(`data`: [`BinaryLike`](crypto.md#binarylike)): [`Hmac`](crypto.md#hmac)
+> **update**(`data`: [`BinaryLike`](#binarylike)): [`Hmac`](#hmac)
 
 Updates the `Hmac` content with the given `data`, the encoding of which
 is given in `inputEncoding`.
@@ -197,15 +197,15 @@ This can be called many times with new data as it is streamed.
 
 | Parameter | Type |
 | ------ | ------ |
-| `data` | [`BinaryLike`](crypto.md#binarylike) |
+| `data` | [`BinaryLike`](#binarylike) |
 
 ###### Returns
 
-[`Hmac`](crypto.md#hmac)
+[`Hmac`](#hmac)
 
 ###### Call Signature
 
-> **update**(`data`: `string`, `inputEncoding`: [`Encoding`](crypto.md#encoding)): [`Hmac`](crypto.md#hmac)
+> **update**(`data`: `string`, `inputEncoding`: [`Encoding`](#encoding)): [`Hmac`](#hmac)
 
 Updates the `Hmac` content with the given `data`, the encoding of which
 is given in `inputEncoding`.
@@ -220,53 +220,53 @@ This can be called many times with new data as it is streamed.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `data` | `string` | - |
-| `inputEncoding` | [`Encoding`](crypto.md#encoding) | The `encoding` of the `data` string. |
+| `inputEncoding` | [`Encoding`](#encoding) | The `encoding` of the `data` string. |
 
 ###### Returns
 
-[`Hmac`](crypto.md#hmac)
+[`Hmac`](#hmac)
 
 ## Type Aliases
 
 ### BinaryLike
 
-> **BinaryLike**: `string` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview)
+> **BinaryLike** = `string` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview)
 
 ***
 
 ### BinaryToTextEncoding
 
-> **BinaryToTextEncoding**: `"base64"` \| `"hex"`
+> **BinaryToTextEncoding** = `"base64"` \| `"hex"`
 
 ***
 
 ### CharacterEncoding
 
-> **CharacterEncoding**: `"utf8"` \| `"utf-8"` \| `"utf16le"` \| `"utf-16le"` \| `"latin1"`
+> **CharacterEncoding** = `"utf8"` \| `"utf-8"` \| `"utf16le"` \| `"utf-16le"` \| `"latin1"`
 
 ***
 
 ### Encoding
 
-> **Encoding**: [`BinaryToTextEncoding`](crypto.md#binarytotextencoding) \| [`CharacterEncoding`](crypto.md#characterencoding) \| [`LegacyCharacterEncoding`](crypto.md#legacycharacterencoding)
+> **Encoding** = [`BinaryToTextEncoding`](#binarytotextencoding) \| [`CharacterEncoding`](#characterencoding) \| [`LegacyCharacterEncoding`](#legacycharacterencoding)
 
 ***
 
 ### LegacyCharacterEncoding
 
-> **LegacyCharacterEncoding**: `"ascii"`
+> **LegacyCharacterEncoding** = `"ascii"`
 
 ***
 
 ### UUID
 
-> **UUID**: `` `${string}-${string}-${string}-${string}-${string}` ``
+> **UUID** = `` `${string}-${string}-${string}-${string}-${string}` ``
 
 ## Functions
 
 ### createHash()
 
-> **createHash**(`algorithm`: `string`): [`Hash`](crypto.md#hash)
+> **createHash**(`algorithm`: `string`): [`Hash`](#hash)
 
 Creates and returns a `Hash` object that can be used to generate hash digests
 using the given `algorithm`.
@@ -281,13 +281,13 @@ The `algorithm` is supported by `'sha1'`, `'sha256'`,`'sha384'` and `'sha512'`.
 
 #### Returns
 
-[`Hash`](crypto.md#hash)
+[`Hash`](#hash)
 
 ***
 
 ### createHmac()
 
-> **createHmac**(`algorithm`: `string`, `key`: [`BinaryLike`](crypto.md#binarylike)): [`Hmac`](crypto.md#hmac)
+> **createHmac**(`algorithm`: `string`, `key`: [`BinaryLike`](#binarylike)): [`Hmac`](#hmac)
 
 Creates and returns an `Hmac` object that uses the given `algorithm` and `key`.
 
@@ -295,7 +295,7 @@ The `algorithm` is supported by `'sha1'`, `'sha256'`,`'sha384'` and `'sha512'`.
 
 The `key` is the HMAC key used to generate the cryptographic HMAC hash.
 If it is a string, please consider `caveats when using strings as inputs to cryptographic APIs`.
-If it was obtained from a cryptographically secure source of entropy, such as [randomBytes](crypto.md#randombytes)
+If it was obtained from a cryptographically secure source of entropy, such as [randomBytes](#randombytes)
 or generateKey, its length should not exceed the block size of `algorithm`
 (e.g., 512 bits for SHA-256).
 
@@ -304,11 +304,11 @@ or generateKey, its length should not exceed the block size of `algorithm`
 | Parameter | Type |
 | ------ | ------ |
 | `algorithm` | `string` |
-| `key` | [`BinaryLike`](crypto.md#binarylike) |
+| `key` | [`BinaryLike`](#binarylike) |
 
 #### Returns
 
-[`Hmac`](crypto.md#hmac)
+[`Hmac`](#hmac)
 
 ***
 
@@ -381,9 +381,9 @@ time is right after boot, when the whole system is still low on entropy.
 
 #### Call Signature
 
-> **randomFill**\<`T`\>(`buffer`: `T`, `callback`: (`err`: `null` \| `Error`, `buf`: `T`) => `void`): `void`
+> **randomFill**\<`T`\>(`buffer`: `T`, `callback`: (`err`: `Error` \| `null`, `buf`: `T`) => `void`): `void`
 
-This function is similar to [randomBytes](crypto.md#randombytes) but requires the first
+This function is similar to [randomBytes](#randombytes) but requires the first
 argument to be a `Buffer` that will be filled. It also
 requires that a callback is passed in.
 
@@ -455,7 +455,7 @@ randomFill(c, (err, buf) => {
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `buffer` | `T` | Must be supplied. The size of the provided `buffer` must not be larger than `2**31 - 1`. |
-| `callback` | (`err`: `null` \| `Error`, `buf`: `T`) => `void` | `function(err, buf) {}`. |
+| `callback` | (`err`: `Error` \| `null`, `buf`: `T`) => `void` | `function(err, buf) {}`. |
 
 ##### Returns
 
@@ -463,9 +463,9 @@ randomFill(c, (err, buf) => {
 
 #### Call Signature
 
-> **randomFill**\<`T`\>(`buffer`: `T`, `offset`: `number`, `callback`: (`err`: `null` \| `Error`, `buf`: `T`) => `void`): `void`
+> **randomFill**\<`T`\>(`buffer`: `T`, `offset`: `number`, `callback`: (`err`: `Error` \| `null`, `buf`: `T`) => `void`): `void`
 
-This function is similar to [randomBytes](crypto.md#randombytes) but requires the first
+This function is similar to [randomBytes](#randombytes) but requires the first
 argument to be a `Buffer` that will be filled. It also
 requires that a callback is passed in.
 
@@ -538,7 +538,7 @@ randomFill(c, (err, buf) => {
 | ------ | ------ | ------ |
 | `buffer` | `T` | Must be supplied. The size of the provided `buffer` must not be larger than `2**31 - 1`. |
 | `offset` | `number` |  |
-| `callback` | (`err`: `null` \| `Error`, `buf`: `T`) => `void` | `function(err, buf) {}`. |
+| `callback` | (`err`: `Error` \| `null`, `buf`: `T`) => `void` | `function(err, buf) {}`. |
 
 ##### Returns
 
@@ -546,9 +546,9 @@ randomFill(c, (err, buf) => {
 
 #### Call Signature
 
-> **randomFill**\<`T`\>(`buffer`: `T`, `offset`: `number`, `size`: `number`, `callback`: (`err`: `null` \| `Error`, `buf`: `T`) => `void`): `void`
+> **randomFill**\<`T`\>(`buffer`: `T`, `offset`: `number`, `size`: `number`, `callback`: (`err`: `Error` \| `null`, `buf`: `T`) => `void`): `void`
 
-This function is similar to [randomBytes](crypto.md#randombytes) but requires the first
+This function is similar to [randomBytes](#randombytes) but requires the first
 argument to be a `Buffer` that will be filled. It also
 requires that a callback is passed in.
 
@@ -622,7 +622,7 @@ randomFill(c, (err, buf) => {
 | `buffer` | `T` | Must be supplied. The size of the provided `buffer` must not be larger than `2**31 - 1`. |
 | `offset` | `number` |  |
 | `size` | `number` |  |
-| `callback` | (`err`: `null` \| `Error`, `buf`: `T`) => `void` | `function(err, buf) {}`. |
+| `callback` | (`err`: `Error` \| `null`, `buf`: `T`) => `void` | `function(err, buf) {}`. |
 
 ##### Returns
 
@@ -632,9 +632,9 @@ randomFill(c, (err, buf) => {
 
 ### randomFillSync()
 
-> **randomFillSync**\<`T`\>(`buffer`: `T`, `offset`?: `number`, `size`?: `number`): `T`
+> **randomFillSync**\<`T`\>(`buffer`: `T`, `offset?`: `number`, `size?`: `number`): `T`
 
-Synchronous version of [randomFill](crypto.md#randomfill).
+Synchronous version of [randomFill](#randomfill).
 
 ```js
 import { Buffer } from 'buffer';
@@ -680,8 +680,8 @@ console.log(Buffer.from(randomFillSync(c)).toString('hex'));
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `buffer` | `T` | Must be supplied. The size of the provided `buffer` must not be larger than `2**31 - 1`. |
-| `offset`? | `number` |  |
-| `size`? | `number` |  |
+| `offset?` | `number` |  |
+| `size?` | `number` |  |
 
 #### Returns
 
@@ -770,11 +770,11 @@ console.log(`The dice rolled: ${n}`);
 
 ### randomUUID()
 
-> **randomUUID**(): [`UUID`](crypto.md#uuid)
+> **randomUUID**(): `` `${string}-${string}-${string}-${string}-${string}` ``
 
 Generates a random [RFC 4122](https://www.rfc-editor.org/rfc/rfc4122.txt) version 4 UUID.
 The UUID is generated using a cryptographic pseudorandom number generator.
 
 #### Returns
 
-[`UUID`](crypto.md#uuid)
+`` `${string}-${string}-${string}-${string}-${string}` ``

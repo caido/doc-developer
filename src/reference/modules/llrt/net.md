@@ -10,42 +10,42 @@ This class is used to create a TCP or `IPC` server.
 
 #### Extends
 
-- [`EventEmitter`](globals/index.md#eventemittert)
+- [`EventEmitter`](globals/index.md#eventemitter)
 
 #### Constructors
 
-##### new Server()
+##### Constructor
 
-> **new Server**(`connectionListener`?: (`socket`: [`Socket`](net.md#socket)) => `void`): [`Server`](net.md#server)
+> **new Server**(`connectionListener?`: (`socket`: [`Socket`](#socket)) => `void`): [`Server`](#server)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `connectionListener`? | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `connectionListener?` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
-[`Server`](net.md#server)
+[`Server`](#server)
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`constructor`](globals/index.md#constructors)
+[`EventEmitter`](globals/index.md#eventemitter).[`constructor`](globals/index.md#constructor)
 
-##### new Server()
+##### Constructor
 
-> **new Server**(`options`?: [`ServerOpts`](net.md#serveropts), `connectionListener`?: (`socket`: [`Socket`](net.md#socket)) => `void`): [`Server`](net.md#server)
+> **new Server**(`options?`: [`ServerOpts`](#serveropts), `connectionListener?`: (`socket`: [`Socket`](#socket)) => `void`): [`Server`](#server)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `options`? | [`ServerOpts`](net.md#serveropts) |
-| `connectionListener`? | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `options?` | [`ServerOpts`](#serveropts) |
+| `connectionListener?` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
-[`Server`](net.md#server)
+[`Server`](#server)
 
 ###### Overrides
 
@@ -78,7 +78,7 @@ events.EventEmitter
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`addListener`](globals/index.md#addlistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`addListener`](globals/index.md#addlistener)
 
 ###### Call Signature
 
@@ -107,7 +107,7 @@ events.EventEmitter
 
 ###### Call Signature
 
-> **addListener**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](net.md#socket)) => `void`): `this`
+> **addListener**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](#socket)) => `void`): `this`
 
 events.EventEmitter
   1. close
@@ -120,7 +120,7 @@ events.EventEmitter
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"connection"` |
-| `listener` | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `listener` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
@@ -182,7 +182,7 @@ events.EventEmitter
 
 ##### address()
 
-> **address**(): `null` \| `string` \| [`AddressInfo`](net.md#addressinfo)
+> **address**(): `string` \| [`AddressInfo`](#addressinfo) \| `null`
 
 Returns the bound `address`, the address `family` name, and `port` of the server
 as reported by the operating system if listening on an IP socket
@@ -210,11 +210,11 @@ emitted or after calling `server.close()`.
 
 ###### Returns
 
-`null` \| `string` \| [`AddressInfo`](net.md#addressinfo)
+`string` \| [`AddressInfo`](#addressinfo) \| `null`
 
 ##### close()
 
-> **close**(`callback`?: (`err`?: `Error`) => `void`): `this`
+> **close**(`callback?`: (`err?`: `Error`) => `void`): `this`
 
 Stops the server from accepting new connections and keeps existing
 connections. This function is asynchronous, the server is finally closed
@@ -227,7 +227,7 @@ was not open when it was closed.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `callback`? | (`err`?: `Error`) => `void` | Called when the server is closed. |
+| `callback?` | (`err?`: `Error`) => `void` | Called when the server is closed. |
 
 ###### Returns
 
@@ -281,7 +281,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`emit`](globals/index.md#emit)
+[`EventEmitter`](globals/index.md#eventemitter).[`emit`](globals/index.md#emit)
 
 ###### Call Signature
 
@@ -303,14 +303,14 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Call Signature
 
-> **emit**(`event`: `"connection"`, `socket`: [`Socket`](net.md#socket)): `boolean`
+> **emit**(`event`: `"connection"`, `socket`: [`Socket`](#socket)): `boolean`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"connection"` |
-| `socket` | [`Socket`](net.md#socket) |
+| `socket` | [`Socket`](#socket) |
 
 ###### Returns
 
@@ -384,13 +384,13 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`eventNames`](globals/index.md#eventnames)
+[`EventEmitter`](globals/index.md#eventemitter).[`eventNames`](globals/index.md#eventnames)
 
 ##### listen()
 
 ###### Call Signature
 
-> **listen**(`listeningListener`?: () => `void`): `void`
+> **listen**(`listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -407,7 +407,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -416,7 +416,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 | Parameter | Type |
 | ------ | ------ |
-| `listeningListener`? | () => `void` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -424,7 +424,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`port`?: `number`, `hostname`?: `string`, `backlog`?: `number`, `listeningListener`?: () => `void`): `void`
+> **listen**(`port?`: `number`, `hostname?`: `string`, `backlog?`: `number`, `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -441,7 +441,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -450,10 +450,10 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 | Parameter | Type |
 | ------ | ------ |
-| `port`? | `number` |
-| `hostname`? | `string` |
-| `backlog`? | `number` |
-| `listeningListener`? | () => `void` |
+| `port?` | `number` |
+| `hostname?` | `string` |
+| `backlog?` | `number` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -461,7 +461,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`port`?: `number`, `hostname`?: `string`, `listeningListener`?: () => `void`): `void`
+> **listen**(`port?`: `number`, `hostname?`: `string`, `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -478,7 +478,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -487,9 +487,9 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 | Parameter | Type |
 | ------ | ------ |
-| `port`? | `number` |
-| `hostname`? | `string` |
-| `listeningListener`? | () => `void` |
+| `port?` | `number` |
+| `hostname?` | `string` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -497,7 +497,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`port`?: `number`, `backlog`?: `number`, `listeningListener`?: () => `void`): `void`
+> **listen**(`port?`: `number`, `backlog?`: `number`, `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -514,7 +514,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -523,9 +523,9 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 | Parameter | Type |
 | ------ | ------ |
-| `port`? | `number` |
-| `backlog`? | `number` |
-| `listeningListener`? | () => `void` |
+| `port?` | `number` |
+| `backlog?` | `number` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -533,7 +533,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`port`?: `number`, `listeningListener`?: () => `void`): `void`
+> **listen**(`port?`: `number`, `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -550,7 +550,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -559,8 +559,8 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 | Parameter | Type |
 | ------ | ------ |
-| `port`? | `number` |
-| `listeningListener`? | () => `void` |
+| `port?` | `number` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -568,7 +568,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`path`: `string`, `backlog`?: `number`, `listeningListener`?: () => `void`): `void`
+> **listen**(`path`: `string`, `backlog?`: `number`, `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -585,7 +585,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -595,8 +595,8 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `backlog`? | `number` |
-| `listeningListener`? | () => `void` |
+| `backlog?` | `number` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -604,7 +604,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`path`: `string`, `listeningListener`?: () => `void`): `void`
+> **listen**(`path`: `string`, `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -621,7 +621,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -631,7 +631,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `listeningListener`? | () => `void` |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -639,7 +639,7 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 ###### Call Signature
 
-> **listen**(`options`: [`ListenOptions`](net.md#listenoptions), `listeningListener`?: () => `void`): `void`
+> **listen**(`options`: [`ListenOptions`](#listenoptions), `listeningListener?`: () => `void`): `void`
 
 Start a server listening for connections. A `net.Server` can be a TCP or
 an `IPC` server depending on what it listens to.
@@ -656,7 +656,7 @@ event.
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections.
 Currently this parameter is IGNORED, support will be added in the future.
 
-All [Socket](net.md#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
+All [Socket](#socket) are set to `SO_REUSEADDR` (see [`socket(7)`](https://man7.org/linux/man-pages/man7/socket.7.html) for details).
 
 The `server.listen()` method can be called again if and only if there was an error during the first `server.listen()`
 call or `server.close()` has been called. Otherwise, an error will be thrown.
@@ -665,8 +665,8 @@ call or `server.close()` has been called. Otherwise, an error will be thrown.
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | [`ListenOptions`](net.md#listenoptions) |
-| `listeningListener`? | () => `void` |
+| `options` | [`ListenOptions`](#listenoptions) |
+| `listeningListener?` | () => `void` |
 
 ###### Returns
 
@@ -697,7 +697,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`off`](globals/index.md#off)
+[`EventEmitter`](globals/index.md#eventemitter).[`off`](globals/index.md#off)
 
 ##### on()
 
@@ -745,7 +745,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`on`](globals/index.md#on)
+[`EventEmitter`](globals/index.md#eventemitter).[`on`](globals/index.md#on)
 
 ###### Call Signature
 
@@ -768,14 +768,14 @@ myEE.emit('foo');
 
 ###### Call Signature
 
-> **on**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](net.md#socket)) => `void`): `this`
+> **on**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](#socket)) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"connection"` |
-| `listener` | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `listener` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
@@ -865,7 +865,7 @@ v0.3.0
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`once`](globals/index.md#once)
+[`EventEmitter`](globals/index.md#eventemitter).[`once`](globals/index.md#once)
 
 ###### Call Signature
 
@@ -888,14 +888,14 @@ v0.3.0
 
 ###### Call Signature
 
-> **once**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](net.md#socket)) => `void`): `this`
+> **once**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](#socket)) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"connection"` |
-| `listener` | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `listener` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
@@ -969,7 +969,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`prependListener`](globals/index.md#prependlistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`prependListener`](globals/index.md#prependlistener)
 
 ###### Call Signature
 
@@ -992,14 +992,14 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Call Signature
 
-> **prependListener**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](net.md#socket)) => `void`): `this`
+> **prependListener**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](#socket)) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"connection"` |
-| `listener` | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `listener` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
@@ -1071,7 +1071,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](globals/index.md#eventemittert).[`prependOnceListener`](globals/index.md#prependoncelistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`prependOnceListener`](globals/index.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -1094,14 +1094,14 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Call Signature
 
-> **prependOnceListener**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](net.md#socket)) => `void`): `this`
+> **prependOnceListener**(`event`: `"connection"`, `listener`: (`socket`: [`Socket`](#socket)) => `void`): `this`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `event` | `"connection"` |
-| `listener` | (`socket`: [`Socket`](net.md#socket)) => `void` |
+| `listener` | (`socket`: [`Socket`](#socket)) => `void` |
 
 ###### Returns
 
@@ -1243,7 +1243,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](globals/index.md#eventemittert).[`removeListener`](globals/index.md#removelistener)
+[`EventEmitter`](globals/index.md#eventemitter).[`removeListener`](globals/index.md#removelistener)
 
 ***
 
@@ -1252,35 +1252,35 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 This class is an abstraction of a TCP socket or a streaming `IPC` endpoint (only available on Unix with domain sockets).
 It is also an `EventEmitter`.
 
-A `net.Socket` can be created by the user and used directly to interact with a server. For example, it is returned by [createConnection](net.md#createconnection),
+A `net.Socket` can be created by the user and used directly to interact with a server. For example, it is returned by [createConnection](#createconnection),
 so the user can use it to talk to the server.
 
 It can also be created by LLRT and passed to the user when a connection is received.
-For example, it is passed to the listeners of a `'connection'` event emitted on a [Server](net.md#server), so the user can use it to interact with the client.
+For example, it is passed to the listeners of a `'connection'` event emitted on a [Server](#server), so the user can use it to interact with the client.
 
 #### Extends
 
-- [`DefaultDuplexStream`](stream.md#defaultduplexstream)
+- [`DefaultDuplexStream`](stream/stream.md#defaultduplexstream)
 
 #### Constructors
 
-##### new Socket()
+##### Constructor
 
-> **new Socket**(`options`?: [`SocketConstructorOpts`](net.md#socketconstructoropts)): [`Socket`](net.md#socket)
+> **new Socket**(`options?`: [`SocketConstructorOpts`](#socketconstructoropts)): [`Socket`](#socket)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `options`? | [`SocketConstructorOpts`](net.md#socketconstructoropts) |
+| `options?` | [`SocketConstructorOpts`](#socketconstructoropts) |
 
 ###### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`constructor`](stream.md#constructors)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`constructor`](stream/stream.md#constructor)
 
 #### Properties
 
@@ -1322,7 +1322,7 @@ This is `true` if the socket is not connected yet, either because `.connect()`ha
 
 ##### readyState
 
-> `readonly` **readyState**: [`SocketReadyState`](net.md#socketreadystate)
+> `readonly` **readyState**: [`SocketReadyState`](#socketreadystate-1)
 
 This property represents the state of the connection as a string.
 
@@ -1366,7 +1366,7 @@ Calls `readable.destroy()`.
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`[dispose]`](stream.md#dispose)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`[dispose]`](stream/stream.md#dispose)
 
 ##### addListener()
 
@@ -1394,7 +1394,7 @@ events.EventEmitter
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`addListener`](stream.md#addlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`addListener`](stream/stream.md#addlistener)
 
 ###### Call Signature
 
@@ -1420,7 +1420,7 @@ events.EventEmitter
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`addListener`](stream.md#addlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`addListener`](stream/stream.md#addlistener)
 
 ###### Call Signature
 
@@ -1446,7 +1446,7 @@ events.EventEmitter
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`addListener`](stream.md#addlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`addListener`](stream/stream.md#addlistener)
 
 ###### Call Signature
 
@@ -1472,7 +1472,7 @@ events.EventEmitter
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`addListener`](stream.md#addlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`addListener`](stream/stream.md#addlistener)
 
 ###### Call Signature
 
@@ -1554,14 +1554,14 @@ events.EventEmitter
 
 ##### address()
 
-> **address**(): \{\} \| [`AddressInfo`](net.md#addressinfo)
+> **address**(): \{ \} \| [`AddressInfo`](#addressinfo)
 
 Returns the bound `address`, the address `family` name and `port` of the
 socket as reported by the operating system:`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ###### Returns
 
-\{\} \| [`AddressInfo`](net.md#addressinfo)
+\{ \} \| [`AddressInfo`](#addressinfo)
 
 ###### Since
 
@@ -1571,7 +1571,7 @@ v0.1.90
 
 ###### Call Signature
 
-> **connect**(`options`: [`SocketConnectOpts`](net.md#socketconnectopts), `connectionListener`?: () => `void`): `this`
+> **connect**(`options`: [`SocketConnectOpts`](#socketconnectopts), `connectionListener?`: () => `void`): `this`
 
 Initiate a connection on a given socket.
 
@@ -1595,8 +1595,8 @@ behavior.
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | [`SocketConnectOpts`](net.md#socketconnectopts) |
-| `connectionListener`? | () => `void` |
+| `options` | [`SocketConnectOpts`](#socketconnectopts) |
+| `connectionListener?` | () => `void` |
 
 ###### Returns
 
@@ -1604,7 +1604,7 @@ behavior.
 
 ###### Call Signature
 
-> **connect**(`port`: `number`, `host`: `string`, `connectionListener`?: () => `void`): `this`
+> **connect**(`port`: `number`, `host`: `string`, `connectionListener?`: () => `void`): `this`
 
 Initiate a connection on a given socket.
 
@@ -1630,7 +1630,7 @@ behavior.
 | ------ | ------ |
 | `port` | `number` |
 | `host` | `string` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ###### Returns
 
@@ -1638,7 +1638,7 @@ behavior.
 
 ###### Call Signature
 
-> **connect**(`port`: `number`, `connectionListener`?: () => `void`): `this`
+> **connect**(`port`: `number`, `connectionListener?`: () => `void`): `this`
 
 Initiate a connection on a given socket.
 
@@ -1663,7 +1663,7 @@ behavior.
 | Parameter | Type |
 | ------ | ------ |
 | `port` | `number` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ###### Returns
 
@@ -1671,7 +1671,7 @@ behavior.
 
 ###### Call Signature
 
-> **connect**(`path`: `string`, `connectionListener`?: () => `void`): `this`
+> **connect**(`path`: `string`, `connectionListener?`: () => `void`): `this`
 
 Initiate a connection on a given socket.
 
@@ -1696,7 +1696,7 @@ behavior.
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ###### Returns
 
@@ -1704,7 +1704,7 @@ behavior.
 
 ##### destroy()
 
-> **destroy**(`error`?: `Error`): `this`
+> **destroy**(`error?`: `Error`): `this`
 
 Destroy the stream. Optionally emit an `'error'` event, and emit a `'close'` event. After this call, the readable
 stream will release any internal resources and subsequent calls to `push()` will be ignored.
@@ -1718,7 +1718,7 @@ Implementors should not override this method, but instead implement `readable._d
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `error`? | `Error` | Error which will be passed as payload in `'error'` event |
+| `error?` | `Error` | Error which will be passed as payload in `'error'` event |
 
 ###### Returns
 
@@ -1726,7 +1726,7 @@ Implementors should not override this method, but instead implement `readable._d
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`destroy`](stream.md#destroy)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`destroy`](stream/stream.md#destroy)
 
 ##### emit()
 
@@ -1776,7 +1776,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`emit`](stream.md#emit)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`emit`](stream/stream.md#emit)
 
 ###### Call Signature
 
@@ -1795,7 +1795,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`emit`](stream.md#emit)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`emit`](stream/stream.md#emit)
 
 ###### Call Signature
 
@@ -1813,7 +1813,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`emit`](stream.md#emit)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`emit`](stream/stream.md#emit)
 
 ###### Call Signature
 
@@ -1832,7 +1832,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`emit`](stream.md#emit)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`emit`](stream/stream.md#emit)
 
 ###### Call Signature
 
@@ -1873,7 +1873,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ##### end()
 
-> **end**(`callback`?: () => `void`): `this`
+> **end**(`callback?`: () => `void`): `this`
 
 Half-closes the socket. i.e., it sends a FIN packet. It is possible the server will still send some data.
 
@@ -1881,7 +1881,7 @@ Half-closes the socket. i.e., it sends a FIN packet. It is possible the server w
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `callback`? | () => `void` | Optional callback for when the socket is finished. |
+| `callback?` | () => `void` | Optional callback for when the socket is finished. |
 
 ###### Returns
 
@@ -1891,7 +1891,7 @@ The socket itself.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`end`](stream.md#end)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`end`](stream/stream.md#end)
 
 ##### eventNames()
 
@@ -1920,7 +1920,7 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`eventNames`](stream.md#eventnames)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`eventNames`](stream/stream.md#eventnames)
 
 ##### off()
 
@@ -1947,7 +1947,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`off`](stream.md#off)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`off`](stream/stream.md#off)
 
 ##### on()
 
@@ -1995,7 +1995,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`on`](stream.md#on)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`on`](stream/stream.md#on)
 
 ###### Call Signature
 
@@ -2014,7 +2014,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`on`](stream.md#on)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`on`](stream/stream.md#on)
 
 ###### Call Signature
 
@@ -2033,7 +2033,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`on`](stream.md#on)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`on`](stream/stream.md#on)
 
 ###### Call Signature
 
@@ -2052,7 +2052,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`on`](stream.md#on)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`on`](stream/stream.md#on)
 
 ###### Call Signature
 
@@ -2134,7 +2134,7 @@ v0.3.0
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`once`](stream.md#once)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`once`](stream/stream.md#once)
 
 ###### Call Signature
 
@@ -2153,7 +2153,7 @@ v0.3.0
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`once`](stream.md#once)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`once`](stream/stream.md#once)
 
 ###### Call Signature
 
@@ -2172,7 +2172,7 @@ v0.3.0
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`once`](stream.md#once)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`once`](stream/stream.md#once)
 
 ###### Call Signature
 
@@ -2191,7 +2191,7 @@ v0.3.0
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`once`](stream.md#once)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`once`](stream/stream.md#once)
 
 ###### Call Signature
 
@@ -2257,7 +2257,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependListener`](stream.md#prependlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependListener`](stream/stream.md#prependlistener)
 
 ###### Call Signature
 
@@ -2276,7 +2276,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependListener`](stream.md#prependlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependListener`](stream/stream.md#prependlistener)
 
 ###### Call Signature
 
@@ -2295,7 +2295,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependListener`](stream.md#prependlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependListener`](stream/stream.md#prependlistener)
 
 ###### Call Signature
 
@@ -2314,7 +2314,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependListener`](stream.md#prependlistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependListener`](stream/stream.md#prependlistener)
 
 ###### Call Signature
 
@@ -2378,7 +2378,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependOnceListener`](stream.md#prependoncelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependOnceListener`](stream/stream.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -2397,7 +2397,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependOnceListener`](stream.md#prependoncelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependOnceListener`](stream/stream.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -2416,7 +2416,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependOnceListener`](stream.md#prependoncelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependOnceListener`](stream/stream.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -2435,7 +2435,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`prependOnceListener`](stream.md#prependoncelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`prependOnceListener`](stream/stream.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -2477,7 +2477,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### read()
 
-> **read**(`size`?: `number`): `null` \| [`Buffer`](buffer.md#buffer)
+> **read**(`size?`: `number`): [`Buffer`](buffer.md#buffer) \| `null`
 
 The `readable.read()` method reads data out of the internal buffer and
 returns it. If no data is available to be read, `null` is returned. By default,
@@ -2550,22 +2550,22 @@ a call to `readable.read(size)`, regardless of the value of the `size` argument.
 If the `readable.read()` method returns a chunk of data, a `'data'` event will
 also be emitted.
 
-Calling [read](stream.md#read-2) after the `'end'` event has
+Calling [read](stream/stream.md#read-4) after the `'end'` event has
 been emitted will return `null`. No runtime error will be raised.
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `size`? | `number` | Optional argument to specify how much data to read. |
+| `size?` | `number` | Optional argument to specify how much data to read. |
 
 ###### Returns
 
-`null` \| [`Buffer`](buffer.md#buffer)
+[`Buffer`](buffer.md#buffer) \| `null`
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`read`](stream.md#read)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`read`](stream/stream.md#read)
 
 ##### removeListener()
 
@@ -2657,7 +2657,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`removeListener`](stream.md#removelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`removeListener`](stream/stream.md#removelistener)
 
 ###### Call Signature
 
@@ -2676,7 +2676,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`removeListener`](stream.md#removelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`removeListener`](stream/stream.md#removelistener)
 
 ###### Call Signature
 
@@ -2695,7 +2695,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`removeListener`](stream.md#removelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`removeListener`](stream/stream.md#removelistener)
 
 ###### Call Signature
 
@@ -2714,11 +2714,11 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`removeListener`](stream.md#removelistener)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`removeListener`](stream/stream.md#removelistener)
 
 ##### write()
 
-> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](buffer.md#buffer), `callback`?: (`error`?: `null` \| `Error`) => `void`): `void`
+> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](buffer.md#buffer), `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
 
 The `writable.write()` method writes some data to the stream, and calls the
 supplied `callback` once the data has been fully handled. If an error
@@ -2748,7 +2748,7 @@ A `Writable` stream in object mode will always ignore the `encoding` argument.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `chunk` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](buffer.md#buffer) | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
-| `callback`? | (`error`?: `null` \| `Error`) => `void` | Callback for when this chunk of data is flushed. |
+| `callback?` | (`error?`: `Error` \| `null`) => `void` | Callback for when this chunk of data is flushed. |
 
 ###### Returns
 
@@ -2762,7 +2762,7 @@ v0.9.4
 
 ###### Inherited from
 
-[`DefaultDuplexStream`](stream.md#defaultduplexstream).[`write`](stream.md#write)
+[`DefaultDuplexStream`](stream/stream.md#defaultduplexstream).[`write`](stream/stream.md#write)
 
 ## Interfaces
 
@@ -2860,19 +2860,19 @@ false
 
 ### NetConnectOpts
 
-> **NetConnectOpts**: [`TcpSocketConnectOpts`](net.md#tcpsocketconnectopts) \| [`IpcSocketConnectOpts`](net.md#ipcsocketconnectopts)
+> **NetConnectOpts** = [`TcpSocketConnectOpts`](#tcpsocketconnectopts) \| [`IpcSocketConnectOpts`](#ipcsocketconnectopts)
 
 ***
 
 ### SocketConnectOpts
 
-> **SocketConnectOpts**: [`TcpSocketConnectOpts`](net.md#tcpsocketconnectopts) \| [`IpcSocketConnectOpts`](net.md#ipcsocketconnectopts)
+> **SocketConnectOpts** = [`TcpSocketConnectOpts`](#tcpsocketconnectopts) \| [`IpcSocketConnectOpts`](#ipcsocketconnectopts)
 
 ***
 
 ### SocketReadyState
 
-> **SocketReadyState**: `"opening"` \| `"open"` \| `"readOnly"` \| `"writeOnly"` \| `"closed"`
+> **SocketReadyState** = `"opening"` \| `"open"` \| `"readOnly"` \| `"writeOnly"` \| `"closed"`
 
 ## Functions
 
@@ -2880,38 +2880,38 @@ false
 
 #### Call Signature
 
-> **connect**(`options`: [`NetConnectOpts`](net.md#netconnectopts), `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **connect**(`options`: [`NetConnectOpts`](#netconnectopts), `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-Aliases to [createConnection](net.md#createconnection).
+Aliases to [createConnection](#createconnection).
 
 Possible signatures:
 
-* [connect](net.md#connect-1)
-* [connect](net.md#connect-1) for `IPC` connections.
-* [connect](net.md#connect-1) for TCP connections.
+* [connect](#connect-5)
+* [connect](#connect-5) for `IPC` connections.
+* [connect](#connect-5) for TCP connections.
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | [`NetConnectOpts`](net.md#netconnectopts) |
-| `connectionListener`? | () => `void` |
+| `options` | [`NetConnectOpts`](#netconnectopts) |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 #### Call Signature
 
-> **connect**(`port`: `number`, `host`: `string`, `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **connect**(`port`: `number`, `host`: `string`, `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-Aliases to [createConnection](net.md#createconnection).
+Aliases to [createConnection](#createconnection).
 
 Possible signatures:
 
-* [connect](net.md#connect-1)
-* [connect](net.md#connect-1) for `IPC` connections.
-* [connect](net.md#connect-1) for TCP connections.
+* [connect](#connect-5)
+* [connect](#connect-5) for `IPC` connections.
+* [connect](#connect-5) for TCP connections.
 
 ##### Parameters
 
@@ -2919,57 +2919,57 @@ Possible signatures:
 | ------ | ------ |
 | `port` | `number` |
 | `host` | `string` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 #### Call Signature
 
-> **connect**(`port`: `number`, `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **connect**(`port`: `number`, `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-Aliases to [createConnection](net.md#createconnection).
+Aliases to [createConnection](#createconnection).
 
 Possible signatures:
 
-* [connect](net.md#connect-1)
-* [connect](net.md#connect-1) for `IPC` connections.
-* [connect](net.md#connect-1) for TCP connections.
+* [connect](#connect-5)
+* [connect](#connect-5) for `IPC` connections.
+* [connect](#connect-5) for TCP connections.
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `port` | `number` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 #### Call Signature
 
-> **connect**(`path`: `string`, `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **connect**(`path`: `string`, `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-Aliases to [createConnection](net.md#createconnection).
+Aliases to [createConnection](#createconnection).
 
 Possible signatures:
 
-* [connect](net.md#connect-1)
-* [connect](net.md#connect-1) for `IPC` connections.
-* [connect](net.md#connect-1) for TCP connections.
+* [connect](#connect-5)
+* [connect](#connect-5) for `IPC` connections.
+* [connect](#connect-5) for TCP connections.
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 ***
 
@@ -2977,9 +2977,9 @@ Possible signatures:
 
 #### Call Signature
 
-> **createConnection**(`options`: [`NetConnectOpts`](net.md#netconnectopts), `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **createConnection**(`options`: [`NetConnectOpts`](#netconnectopts), `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-A factory function, which creates a new [Socket](net.md#socket),
+A factory function, which creates a new [Socket](#socket),
 immediately initiates connection with `socket.connect()`,
 then returns the `net.Socket` that starts the connection.
 
@@ -2989,28 +2989,28 @@ will be added as a listener for the `'connect'` event **once**.
 
 Possible signatures:
 
-* [createConnection](net.md#createconnection)
-* [createConnection](net.md#createconnection) for `IPC` connections.
-* [createConnection](net.md#createconnection) for TCP connections.
+* [createConnection](#createconnection)
+* [createConnection](#createconnection) for `IPC` connections.
+* [createConnection](#createconnection) for TCP connections.
 
-The [connect](net.md#connect-1) function is an alias to this function.
+The [connect](#connect-5) function is an alias to this function.
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | [`NetConnectOpts`](net.md#netconnectopts) |
-| `connectionListener`? | () => `void` |
+| `options` | [`NetConnectOpts`](#netconnectopts) |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 #### Call Signature
 
-> **createConnection**(`port`: `number`, `host`: `string`, `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **createConnection**(`port`: `number`, `host`: `string`, `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-A factory function, which creates a new [Socket](net.md#socket),
+A factory function, which creates a new [Socket](#socket),
 immediately initiates connection with `socket.connect()`,
 then returns the `net.Socket` that starts the connection.
 
@@ -3020,11 +3020,11 @@ will be added as a listener for the `'connect'` event **once**.
 
 Possible signatures:
 
-* [createConnection](net.md#createconnection)
-* [createConnection](net.md#createconnection) for `IPC` connections.
-* [createConnection](net.md#createconnection) for TCP connections.
+* [createConnection](#createconnection)
+* [createConnection](#createconnection) for `IPC` connections.
+* [createConnection](#createconnection) for TCP connections.
 
-The [connect](net.md#connect-1) function is an alias to this function.
+The [connect](#connect-5) function is an alias to this function.
 
 ##### Parameters
 
@@ -3032,17 +3032,17 @@ The [connect](net.md#connect-1) function is an alias to this function.
 | ------ | ------ |
 | `port` | `number` |
 | `host` | `string` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 #### Call Signature
 
-> **createConnection**(`port`: `number`, `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **createConnection**(`port`: `number`, `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-A factory function, which creates a new [Socket](net.md#socket),
+A factory function, which creates a new [Socket](#socket),
 immediately initiates connection with `socket.connect()`,
 then returns the `net.Socket` that starts the connection.
 
@@ -3052,28 +3052,28 @@ will be added as a listener for the `'connect'` event **once**.
 
 Possible signatures:
 
-* [createConnection](net.md#createconnection)
-* [createConnection](net.md#createconnection) for `IPC` connections.
-* [createConnection](net.md#createconnection) for TCP connections.
+* [createConnection](#createconnection)
+* [createConnection](#createconnection) for `IPC` connections.
+* [createConnection](#createconnection) for TCP connections.
 
-The [connect](net.md#connect-1) function is an alias to this function.
+The [connect](#connect-5) function is an alias to this function.
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `port` | `number` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 #### Call Signature
 
-> **createConnection**(`path`: `string`, `connectionListener`?: () => `void`): [`Socket`](net.md#socket)
+> **createConnection**(`path`: `string`, `connectionListener?`: () => `void`): [`Socket`](#socket)
 
-A factory function, which creates a new [Socket](net.md#socket),
+A factory function, which creates a new [Socket](#socket),
 immediately initiates connection with `socket.connect()`,
 then returns the `net.Socket` that starts the connection.
 
@@ -3083,22 +3083,22 @@ will be added as a listener for the `'connect'` event **once**.
 
 Possible signatures:
 
-* [createConnection](net.md#createconnection)
-* [createConnection](net.md#createconnection) for `IPC` connections.
-* [createConnection](net.md#createconnection) for TCP connections.
+* [createConnection](#createconnection)
+* [createConnection](#createconnection) for `IPC` connections.
+* [createConnection](#createconnection) for TCP connections.
 
-The [connect](net.md#connect-1) function is an alias to this function.
+The [connect](#connect-5) function is an alias to this function.
 
 ##### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `connectionListener`? | () => `void` |
+| `connectionListener?` | () => `void` |
 
 ##### Returns
 
-[`Socket`](net.md#socket)
+[`Socket`](#socket)
 
 ***
 
@@ -3106,7 +3106,7 @@ The [connect](net.md#connect-1) function is an alias to this function.
 
 #### Call Signature
 
-> **createServer**(`connectionListener`?: (`socket`: [`Socket`](net.md#socket)) => `void`): [`Server`](net.md#server)
+> **createServer**(`connectionListener?`: (`socket`: [`Socket`](#socket)) => `void`): [`Server`](#server)
 
 Creates a new TCP or `IPC` server.
 
@@ -3170,15 +3170,15 @@ nc -U /tmp/echo.sock
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `connectionListener`? | (`socket`: [`Socket`](net.md#socket)) => `void` | Automatically set as a listener for the 'connection' event. |
+| `connectionListener?` | (`socket`: [`Socket`](#socket)) => `void` | Automatically set as a listener for the 'connection' event. |
 
 ##### Returns
 
-[`Server`](net.md#server)
+[`Server`](#server)
 
 #### Call Signature
 
-> **createServer**(`options`?: [`ServerOpts`](net.md#serveropts), `connectionListener`?: (`socket`: [`Socket`](net.md#socket)) => `void`): [`Server`](net.md#server)
+> **createServer**(`options?`: [`ServerOpts`](#serveropts), `connectionListener?`: (`socket`: [`Socket`](#socket)) => `void`): [`Server`](#server)
 
 Creates a new TCP or `IPC` server.
 
@@ -3242,9 +3242,9 @@ nc -U /tmp/echo.sock
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options`? | [`ServerOpts`](net.md#serveropts) | - |
-| `connectionListener`? | (`socket`: [`Socket`](net.md#socket)) => `void` | Automatically set as a listener for the 'connection' event. |
+| `options?` | [`ServerOpts`](#serveropts) | - |
+| `connectionListener?` | (`socket`: [`Socket`](#socket)) => `void` | Automatically set as a listener for the 'connection' event. |
 
 ##### Returns
 
-[`Server`](net.md#server)
+[`Server`](#server)

@@ -18,7 +18,7 @@
 
 ##### copy()
 
-> **copy**(`target`: `Uint8Array`, `targetStart`?: `number`, `sourceStart`?: `number`, `sourceEnd`?: `number`): `number`
+> **copy**(`target`: `Uint8Array`, `targetStart?`: `number`, `sourceStart?`: `number`, `sourceEnd?`: `number`): `number`
 
 Copies data from a region of `buf` to a region in `target`, even if the `target`memory region overlaps with `buf`.
 
@@ -71,9 +71,9 @@ console.log(buf.toString());
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `target` | `Uint8Array` | A `Buffer` or Uint8Array to copy into. |
-| `targetStart`? | `number` | The offset within `target` at which to begin writing. |
-| `sourceStart`? | `number` | The offset within `buf` from which to begin copying. |
-| `sourceEnd`? | `number` | The offset within `buf` at which to stop copying (not inclusive). |
+| `targetStart?` | `number` | The offset within `target` at which to begin writing. |
+| `sourceStart?` | `number` | The offset within `buf` from which to begin copying. |
+| `sourceEnd?` | `number` | The offset within `buf` at which to stop copying (not inclusive). |
 
 ###### Returns
 
@@ -83,7 +83,7 @@ The number of bytes copied.
 
 ##### subarray()
 
-> **subarray**(`start`?: `number`, `end`?: `number`): [`Buffer`](buffer.md#buffer)
+> **subarray**(`start?`: `number`, `end?`: `number`): [`Buffer`](#buffer)
 
 Returns a new `Buffer` that references the same memory as the original, but
 offset and cropped by the `start` and `end` indices.
@@ -144,12 +144,12 @@ console.log(buf.subarray(-5, -2).toString());
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `start`? | `number` | Where the new `Buffer` will start. |
-| `end`? | `number` | Where the new `Buffer` will end (not inclusive). |
+| `start?` | `number` | Where the new `Buffer` will start. |
+| `end?` | `number` | Where the new `Buffer` will end (not inclusive). |
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ###### Overrides
 
@@ -157,7 +157,7 @@ console.log(buf.subarray(-5, -2).toString());
 
 ##### toString()
 
-> **toString**(`encoding`?: [`BufferEncoding`](buffer.md#bufferencoding)): `string`
+> **toString**(`encoding?`: [`BufferEncoding`](#bufferencoding)): `string`
 
 Decodes `buf` to a string according to the specified character encoding in`encoding`.
 
@@ -187,7 +187,7 @@ console.log(buf2.toString('hex'));
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `encoding`? | [`BufferEncoding`](buffer.md#bufferencoding) | The character encoding to use. |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) | The character encoding to use. |
 
 ###### Returns
 
@@ -199,7 +199,7 @@ console.log(buf2.toString('hex'));
 
 ##### writeDoubleBE()
 
-> **writeDoubleBE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeDoubleBE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as big-endian. The `value` must be a JavaScript number. Behavior is undefined when `value` is anything
 other than a JavaScript number.
@@ -220,7 +220,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`. |
 
 ###### Returns
 
@@ -230,7 +230,7 @@ console.log(buf);
 
 ##### writeDoubleLE()
 
-> **writeDoubleLE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeDoubleLE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as little-endian. The `value` must be a JavaScript number. Behavior is undefined when `value` is anything
 other than a JavaScript number.
@@ -251,7 +251,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`. |
 
 ###### Returns
 
@@ -261,7 +261,7 @@ console.log(buf);
 
 ##### writeFloatBE()
 
-> **writeFloatBE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeFloatBE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as big-endian. Behavior is
 undefined when `value` is anything other than a JavaScript number.
@@ -282,7 +282,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
 
 ###### Returns
 
@@ -292,7 +292,7 @@ console.log(buf);
 
 ##### writeFloatLE()
 
-> **writeFloatLE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeFloatLE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as little-endian. Behavior is
 undefined when `value` is anything other than a JavaScript number.
@@ -313,7 +313,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
 
 ###### Returns
 
@@ -323,7 +323,7 @@ console.log(buf);
 
 ##### writeInt16BE()
 
-> **writeInt16BE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeInt16BE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as big-endian.  The `value` must be a valid signed 16-bit integer. Behavior is undefined when `value` is
 anything other than a signed 16-bit integer.
@@ -346,7 +346,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. |
 
 ###### Returns
 
@@ -356,7 +356,7 @@ console.log(buf);
 
 ##### writeInt16LE()
 
-> **writeInt16LE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeInt16LE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as little-endian.  The `value` must be a valid signed 16-bit integer. Behavior is undefined when `value` is
 anything other than a signed 16-bit integer.
@@ -379,7 +379,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. |
 
 ###### Returns
 
@@ -389,7 +389,7 @@ console.log(buf);
 
 ##### writeInt32BE()
 
-> **writeInt32BE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeInt32BE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as big-endian. The `value` must be a valid signed 32-bit integer. Behavior is undefined when `value` is
 anything other than a signed 32-bit integer.
@@ -412,7 +412,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | - |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
 
 ###### Returns
 
@@ -422,7 +422,7 @@ console.log(buf);
 
 ##### writeInt32LE()
 
-> **writeInt32LE**(`value`: `number`, `offset`?: `number`): `number`
+> **writeInt32LE**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset` as little-endian. The `value` must be a valid signed 32-bit integer. Behavior is undefined when `value` is
 anything other than a signed 32-bit integer.
@@ -445,7 +445,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
 
 ###### Returns
 
@@ -455,7 +455,7 @@ console.log(buf);
 
 ##### writeInt8()
 
-> **writeInt8**(`value`: `number`, `offset`?: `number`): `number`
+> **writeInt8**(`value`: `number`, `offset?`: `number`): `number`
 
 Writes `value` to `buf` at the specified `offset`. `value` must be a valid
 signed 8-bit integer. Behavior is undefined when `value` is anything other than
@@ -480,7 +480,7 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `value` | `number` | Number to be written to `buf`. |
-| `offset`? | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`. |
 
 ###### Returns
 
@@ -496,7 +496,7 @@ console.log(buf);
 
 ##### alloc()
 
-> **alloc**(`size`: `number`, `fill`?: `string` \| `number` \| `Uint8Array`, `encoding`?: [`BufferEncoding`](buffer.md#bufferencoding)): [`Buffer`](buffer.md#buffer)
+> **alloc**(`size`: `number`, `fill?`: `string` \| `number` \| `Uint8Array`, `encoding?`: [`BufferEncoding`](#bufferencoding)): [`Buffer`](#buffer)
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be zero-filled.
 
@@ -537,16 +537,16 @@ console.log(buf);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `size` | `number` | The desired length of the new `Buffer`. |
-| `fill`? | `string` \| `number` \| `Uint8Array` | A value to pre-fill the new `Buffer` with. |
-| `encoding`? | [`BufferEncoding`](buffer.md#bufferencoding) | If `fill` is a string, this is its encoding. |
+| `fill?` | `string` \| `number` \| `Uint8Array` | A value to pre-fill the new `Buffer` with. |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) | If `fill` is a string, this is its encoding. |
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ##### byteLength()
 
-> **byteLength**(`string`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](buffer.md#buffer), `encoding`?: [`BufferEncoding`](buffer.md#bufferencoding)): `number`
+> **byteLength**(`string`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](#buffer), `encoding?`: [`BufferEncoding`](#bufferencoding)): `number`
 
 Returns the byte length of a string when encoded using `encoding`.
 This is not the same as [`String.prototype.length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length), which does not account
@@ -571,8 +571,8 @@ er.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuf
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `string` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](buffer.md#buffer) | A value to calculate the length of. |
-| `encoding`? | [`BufferEncoding`](buffer.md#bufferencoding) | If `string` is a string, this is its encoding. |
+| `string` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](#buffer) | A value to calculate the length of. |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) | If `string` is a string, this is its encoding. |
 
 ###### Returns
 
@@ -582,7 +582,7 @@ The number of bytes contained within `string`.
 
 ##### concat()
 
-> **concat**(`list`: readonly `Uint8Array`[], `totalLength`?: `number`): [`Buffer`](buffer.md#buffer)
+> **concat**(`list`: readonly `Uint8Array`[], `totalLength?`: `number`): [`Buffer`](#buffer)
 
 Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
 
@@ -621,17 +621,17 @@ console.log(bufA.length);
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `list` | readonly `Uint8Array`[] | List of `Buffer` or Uint8Array instances to concatenate. |
-| `totalLength`? | `number` | Total length of the `Buffer` instances in `list` when concatenated. |
+| `totalLength?` | `number` | Total length of the `Buffer` instances in `list` when concatenated. |
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ##### from()
 
 ###### Call Signature
 
-> **from**(`arrayBuffer`: [`WithImplicitCoercion`](buffer.md#withimplicitcoerciont)\<`ArrayBuffer` \| `SharedArrayBuffer`\>, `byteOffset`?: `number`, `length`?: `number`): [`Buffer`](buffer.md#buffer)
+> **from**(`arrayBuffer`: [`WithImplicitCoercion`](#withimplicitcoercion)\<`ArrayBuffer` \| `SharedArrayBuffer`\>, `byteOffset?`: `number`, `length?`: `number`): [`Buffer`](#buffer)
 
 Allocates a new `Buffer` using an `array` of bytes in the range `0` – `255`.
 
@@ -639,17 +639,17 @@ Allocates a new `Buffer` using an `array` of bytes in the range `0` – `255`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `arrayBuffer` | [`WithImplicitCoercion`](buffer.md#withimplicitcoerciont)\<`ArrayBuffer` \| `SharedArrayBuffer`\> |
-| `byteOffset`? | `number` |
-| `length`? | `number` |
+| `arrayBuffer` | [`WithImplicitCoercion`](#withimplicitcoercion)\<`ArrayBuffer` \| `SharedArrayBuffer`\> |
+| `byteOffset?` | `number` |
+| `length?` | `number` |
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ###### Call Signature
 
-> **from**(`data`: `Uint8Array` \| readonly `number`[]): [`Buffer`](buffer.md#buffer)
+> **from**(`data`: `Uint8Array` \| readonly `number`[]): [`Buffer`](#buffer)
 
 Creates a new Buffer using the passed {data}
 
@@ -661,25 +661,25 @@ Creates a new Buffer using the passed {data}
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ###### Call Signature
 
-> **from**(`data`: [`WithImplicitCoercion`](buffer.md#withimplicitcoerciont)\<`string` \| `Uint8Array` \| readonly `number`[]\>): [`Buffer`](buffer.md#buffer)
+> **from**(`data`: [`WithImplicitCoercion`](#withimplicitcoercion)\<`string` \| `Uint8Array` \| readonly `number`[]\>): [`Buffer`](#buffer)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `data` | [`WithImplicitCoercion`](buffer.md#withimplicitcoerciont)\<`string` \| `Uint8Array` \| readonly `number`[]\> |
+| `data` | [`WithImplicitCoercion`](#withimplicitcoercion)\<`string` \| `Uint8Array` \| readonly `number`[]\> |
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ###### Call Signature
 
-> **from**(`str`: [`WithImplicitCoercion`](buffer.md#withimplicitcoerciont)\<`string`\> \| \{ `[toPrimitive]`: `string`; \}, `encoding`?: [`BufferEncoding`](buffer.md#bufferencoding)): [`Buffer`](buffer.md#buffer)
+> **from**(`str`: [`WithImplicitCoercion`](#withimplicitcoercion)\<`string`\> \| \{ `[toPrimitive]`: `string`; \}, `encoding?`: [`BufferEncoding`](#bufferencoding)): [`Buffer`](#buffer)
 
 Creates a new Buffer containing the given JavaScript string {str}.
 If provided, the {encoding} parameter identifies the character encoding.
@@ -689,24 +689,24 @@ If not provided, {encoding} defaults to 'utf8'.
 
 | Parameter | Type |
 | ------ | ------ |
-| `str` | [`WithImplicitCoercion`](buffer.md#withimplicitcoerciont)\<`string`\> \| \{ `[toPrimitive]`: `string`; \} |
-| `encoding`? | [`BufferEncoding`](buffer.md#bufferencoding) |
+| `str` | [`WithImplicitCoercion`](#withimplicitcoercion)\<`string`\> \| \{ `[toPrimitive]`: `string`; \} |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) |
 
 ###### Returns
 
-[`Buffer`](buffer.md#buffer)
+[`Buffer`](#buffer)
 
 ## Type Aliases
 
 ### BufferEncoding
 
-> **BufferEncoding**: `"hex"` \| `"base64"` \| `"utf-8"` \| `"utf8"` \| `"unicode-1-1-utf8"` \| `"utf-16le"` \| `"utf16le"` \| `"utf-16"` \| `"utf16"` \| `"utf-16be"` \| `"utf16be"` \| `"windows-1252"` \| `"ansi_x3.4-1968"` \| `"ascii"` \| `"cp1252"` \| `"cp819"` \| `"csisolatin1"` \| `"ibm819"` \| `"iso-8859-1"` \| `"iso-ir-100"` \| `"iso8859-1"` \| `"iso88591"` \| `"iso_8859-1"` \| `"iso_8859-1:1987"` \| `"l1"` \| `"latin1"` \| `"us-ascii"` \| `"x-cp1252"`
+> **BufferEncoding** = `"hex"` \| `"base64"` \| `"utf-8"` \| `"utf8"` \| `"unicode-1-1-utf8"` \| `"utf-16le"` \| `"utf16le"` \| `"utf-16"` \| `"utf16"` \| `"utf-16be"` \| `"utf16be"` \| `"windows-1252"` \| `"ansi_x3.4-1968"` \| `"ascii"` \| `"cp1252"` \| `"cp819"` \| `"csisolatin1"` \| `"ibm819"` \| `"iso-8859-1"` \| `"iso-ir-100"` \| `"iso8859-1"` \| `"iso88591"` \| `"iso_8859-1"` \| `"iso_8859-1:1987"` \| `"l1"` \| `"latin1"` \| `"us-ascii"` \| `"x-cp1252"`
 
 ***
 
-### WithImplicitCoercion\<T\>
+### WithImplicitCoercion
 
-> **WithImplicitCoercion**\<`T`\>: `T` \| \{ `valueOf`: `T`; \}
+> **WithImplicitCoercion**\<`T`\> = `T` \| \{ `valueOf`: `T`; \}
 
 #### Type Parameters
 
@@ -718,7 +718,7 @@ If not provided, {encoding} defaults to 'utf8'.
 
 ### Buffer
 
-> **Buffer**: [`BufferConstructor`](buffer.md#bufferconstructor)
+> **Buffer**: [`BufferConstructor`](#bufferconstructor)
 
 ***
 
@@ -726,7 +726,7 @@ If not provided, {encoding} defaults to 'utf8'.
 
 > `const` **constants**: `object`
 
-#### Type declaration
+#### Type Declaration
 
 ##### MAX\_LENGTH
 

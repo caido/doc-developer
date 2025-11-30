@@ -10,13 +10,13 @@ A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) encapsulates i
 
 #### Extended by
 
-- [`File`](http.md#file)
+- [`File`](#file)
 
 #### Constructors
 
-##### new Blob()
+##### Constructor
 
-> **new Blob**(`parts`: (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[], `opts`?: [`BlobOpts`](http.md#blobopts)): [`Blob`](http.md#blob)
+> **new Blob**(`parts`: (`string` \| `ArrayBuffer` \| [`Blob`](#blob))[], `opts?`: [`BlobOpts`](#blobopts)): [`Blob`](#blob)
 
 Creates a new `Blob` object containing a concatenation of the given sources.
 
@@ -29,12 +29,12 @@ String sources are also copied into the `Blob`.
 
 | Parameter | Type |
 | ------ | ------ |
-| `parts` | (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[] |
-| `opts`? | [`BlobOpts`](http.md#blobopts) |
+| `parts` | (`string` \| `ArrayBuffer` \| [`Blob`](#blob))[] |
+| `opts?` | [`BlobOpts`](#blobopts) |
 
 ###### Returns
 
-[`Blob`](http.md#blob)
+[`Blob`](#blob)
 
 #### Properties
 
@@ -75,7 +75,7 @@ Returns a promise that resolves with an Uint8Array containing the contents of th
 
 ##### slice()
 
-> **slice**(`start`?: `number`, `end`?: `number`, `type`?: `string`): [`Blob`](http.md#blob)
+> **slice**(`start?`: `number`, `end?`: `number`, `type?`: `string`): [`Blob`](#blob)
 
 Creates and returns a new `Blob` containing a subset of this `Blob` objects
 data. The original `Blob` is not altered.
@@ -84,13 +84,13 @@ data. The original `Blob` is not altered.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `start`? | `number` | The starting index. |
-| `end`? | `number` | The ending index. |
-| `type`? | `string` | The content-type for the new `Blob` |
+| `start?` | `number` | The starting index. |
+| `end?` | `number` | The ending index. |
+| `type?` | `string` | The content-type for the new `Blob` |
 
 ###### Returns
 
-[`Blob`](http.md#blob)
+[`Blob`](#blob)
 
 ##### text()
 
@@ -110,13 +110,13 @@ A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) encapsulates i
 
 #### Extends
 
-- [`Blob`](http.md#blob)
+- [`Blob`](#blob)
 
 #### Constructors
 
-##### new File()
+##### Constructor
 
-> **new File**(`data`: (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[], `fileName`: `string`, `opts`?: [`FileOpts`](http.md#fileopts)): [`File`](http.md#file)
+> **new File**(`data`: (`string` \| `ArrayBuffer` \| [`Blob`](#blob))[], `fileName`: `string`, `opts?`: [`FileOpts`](#fileopts)): [`File`](#file)
 
 Returns a newly constructed File.
 
@@ -124,17 +124,17 @@ Returns a newly constructed File.
 
 | Parameter | Type |
 | ------ | ------ |
-| `data` | (`string` \| `ArrayBuffer` \| [`Blob`](http.md#blob))[] |
+| `data` | (`string` \| `ArrayBuffer` \| [`Blob`](#blob))[] |
 | `fileName` | `string` |
-| `opts`? | [`FileOpts`](http.md#fileopts) |
+| `opts?` | [`FileOpts`](#fileopts) |
 
 ###### Returns
 
-[`File`](http.md#file)
+[`File`](#file)
 
 ###### Overrides
 
-[`Blob`](http.md#blob).[`constructor`](http.md#constructors)
+[`Blob`](#blob).[`constructor`](#constructor)
 
 #### Properties
 
@@ -159,7 +159,7 @@ The total size of the `Blob` in bytes.
 
 ###### Inherited from
 
-[`Blob`](http.md#blob).[`size`](http.md#size)
+[`Blob`](#blob).[`size`](#size)
 
 ##### type
 
@@ -169,7 +169,7 @@ The content-type of the `Blob`.
 
 ###### Inherited from
 
-[`Blob`](http.md#blob).[`type`](http.md#type)
+[`Blob`](#blob).[`type`](#type)
 
 #### Methods
 
@@ -186,7 +186,7 @@ the `Blob` data.
 
 ###### Inherited from
 
-[`Blob`](http.md#blob).[`arrayBuffer`](http.md#arraybuffer)
+[`Blob`](#blob).[`arrayBuffer`](#arraybuffer)
 
 ##### bytes()
 
@@ -200,11 +200,11 @@ Returns a promise that resolves with an Uint8Array containing the contents of th
 
 ###### Inherited from
 
-[`Blob`](http.md#blob).[`bytes`](http.md#bytes)
+[`Blob`](#blob).[`bytes`](#bytes)
 
 ##### slice()
 
-> **slice**(`start`?: `number`, `end`?: `number`, `type`?: `string`): [`Blob`](http.md#blob)
+> **slice**(`start?`: `number`, `end?`: `number`, `type?`: `string`): [`Blob`](#blob)
 
 Creates and returns a new `Blob` containing a subset of this `Blob` objects
 data. The original `Blob` is not altered.
@@ -213,17 +213,17 @@ data. The original `Blob` is not altered.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `start`? | `number` | The starting index. |
-| `end`? | `number` | The ending index. |
-| `type`? | `string` | The content-type for the new `Blob` |
+| `start?` | `number` | The starting index. |
+| `end?` | `number` | The ending index. |
+| `type?` | `string` | The content-type for the new `Blob` |
 
 ###### Returns
 
-[`Blob`](http.md#blob)
+[`Blob`](#blob)
 
 ###### Inherited from
 
-[`Blob`](http.md#blob).[`slice`](http.md#slice)
+[`Blob`](#blob).[`slice`](#slice)
 
 ##### text()
 
@@ -237,7 +237,7 @@ Returns a promise that fulfills with the contents of the `Blob` decoded as a UTF
 
 ###### Inherited from
 
-[`Blob`](http.md#blob).[`text`](http.md#text)
+[`Blob`](#blob).[`text`](#text)
 
 ***
 
@@ -249,9 +249,9 @@ Returns a promise that fulfills with the contents of the `Blob` decoded as a UTF
 
 #### Constructors
 
-##### new Headers()
+##### Constructor
 
-> **new Headers**(`opts`?: [`HeadersOpts`](http.md#headersopts)): [`Headers`](http.md#headers)
+> **new Headers**(`opts?`: [`HeadersOpts`](#headersopts)): [`Headers`](#headers)
 
 Creates a new Headers object.
 
@@ -259,11 +259,11 @@ Creates a new Headers object.
 
 | Parameter | Type |
 | ------ | ------ |
-| `opts`? | [`HeadersOpts`](http.md#headersopts) |
+| `opts?` | [`HeadersOpts`](#headersopts) |
 
 ###### Returns
 
-[`Headers`](http.md#headers)
+[`Headers`](#headers)
 
 #### Properties
 
@@ -340,7 +340,7 @@ Executes a provided function once for each key/value pair in this Headers object
 
 ##### get()
 
-> `readonly` **get**: (`name`: `string`) => `null` \| `string`
+> `readonly` **get**: (`name`: `string`) => `string` \| `null`
 
 A String sequence representing the values of the retrieved header or null if this header is not set.
 
@@ -352,7 +352,7 @@ A String sequence representing the values of the retrieved header or null if thi
 
 ###### Returns
 
-`null` \| `string`
+`string` \| `null`
 
 ##### getSetCookie()
 
@@ -425,9 +425,9 @@ The Request interface of the Fetch API represents a resource request.
 
 #### Constructors
 
-##### new Request()
+##### Constructor
 
-> **new Request**(`input`: `string` \| [`Request`](http.md#request), `init`?: [`RequestOpts`](http.md#requestopts)): [`Request`](http.md#request)
+> **new Request**(`input`: `string` \| [`Request`](#request), `init?`: [`RequestOpts`](#requestopts)): [`Request`](#request)
 
 Creates a new Request object.
 
@@ -435,12 +435,12 @@ Creates a new Request object.
 
 | Parameter | Type |
 | ------ | ------ |
-| `input` | `string` \| [`Request`](http.md#request) |
-| `init`? | [`RequestOpts`](http.md#requestopts) |
+| `input` | `string` \| [`Request`](#request) |
+| `init?` | [`RequestOpts`](#requestopts) |
 
 ###### Returns
 
-[`Request`](http.md#request)
+[`Request`](#request)
 
 #### Properties
 
@@ -456,17 +456,17 @@ Returns a promise that resolves with an ArrayBuffer representation of the reques
 
 ##### blob()
 
-> `readonly` **blob**: () => `Promise`\<[`Blob`](http.md#blob)\>
+> `readonly` **blob**: () => `Promise`\<[`Blob`](#blob)\>
 
-Returns a promise that resolves with a [Blob](http.md#blob) representation of the request body.
+Returns a promise that resolves with a [Blob](#blob) representation of the request body.
 
 ###### Returns
 
-`Promise`\<[`Blob`](http.md#blob)\>
+`Promise`\<[`Blob`](#blob)\>
 
 ##### body
 
-> `readonly` **body**: [`Body`](http.md#body-3)
+> `readonly` **body**: [`Body`](#body-3)
 
 The body content.
 
@@ -494,17 +494,17 @@ Contains the cache mode of the request
 
 ##### clone()
 
-> `readonly` **clone**: () => [`Request`](http.md#request)
+> `readonly` **clone**: () => [`Request`](#request)
 
-Creates a copy of the current [Request](http.md#request) object.
+Creates a copy of the current [Request](#request) object.
 
 ###### Returns
 
-[`Request`](http.md#request)
+[`Request`](#request)
 
 ##### headers
 
-> `readonly` **headers**: [`Headers`](http.md#headers)
+> `readonly` **headers**: [`Headers`](#headers)
 
 Contains the associated Headers object of the request.
 
@@ -567,9 +567,9 @@ The Response interface of the Fetch API represents the response to a request.
 
 #### Constructors
 
-##### new Response()
+##### Constructor
 
-> **new Response**(`body`?: [`Body`](http.md#body-3), `opts`?: [`ResponseOpts`](http.md#responseopts)): [`Response`](http.md#response)
+> **new Response**(`body?`: [`Body`](#body-3), `opts?`: [`ResponseOpts`](#responseopts)): [`Response`](#response)
 
 Creates a new Response object.
 
@@ -577,12 +577,12 @@ Creates a new Response object.
 
 | Parameter | Type |
 | ------ | ------ |
-| `body`? | [`Body`](http.md#body-3) |
-| `opts`? | [`ResponseOpts`](http.md#responseopts) |
+| `body?` | [`Body`](#body-3) |
+| `opts?` | [`ResponseOpts`](#responseopts) |
 
 ###### Returns
 
-[`Response`](http.md#response)
+[`Response`](#response)
 
 #### Properties
 
@@ -598,13 +598,13 @@ Returns a promise that resolves with an ArrayBuffer representation of the respon
 
 ##### blob()
 
-> `readonly` **blob**: () => `Promise`\<[`Blob`](http.md#blob)\>
+> `readonly` **blob**: () => `Promise`\<[`Blob`](#blob)\>
 
-Returns a promise that resolves with a [Blob](http.md#blob) representation of the response body.
+Returns a promise that resolves with a [Blob](#blob) representation of the response body.
 
 ###### Returns
 
-`Promise`\<[`Blob`](http.md#blob)\>
+`Promise`\<[`Blob`](#blob)\>
 
 ##### body
 
@@ -620,19 +620,19 @@ Stores a boolean value that declares whether the body has been used in a respons
 
 ##### clone()
 
-> `readonly` **clone**: () => [`Response`](http.md#response)
+> `readonly` **clone**: () => [`Response`](#response)
 
-Creates a clone of a [Response](http.md#response) object.
+Creates a clone of a [Response](#response) object.
 
 ###### Returns
 
-[`Response`](http.md#response)
+[`Response`](#response)
 
 ##### headers
 
-> `readonly` **headers**: [`Headers`](http.md#headers)
+> `readonly` **headers**: [`Headers`](#headers)
 
-The [Headers](http.md#headers) object associated with the response.
+The [Headers](#headers) object associated with the response.
 
 ##### json()
 
@@ -680,7 +680,7 @@ Returns a promise that resolves with a text representation of the response body.
 
 ##### type
 
-> `readonly` **type**: [`ResponseType`](http.md#responsetype)
+> `readonly` **type**: [`ResponseType`](#responsetype-1)
 
 The type of the response.
 
@@ -692,47 +692,47 @@ The type of the response.
 
 ##### error()
 
-> `static` **error**(): [`Response`](http.md#response)
+> `static` **error**(): [`Response`](#response)
 
-Returns a new [Response](http.md#response) object associated with a network error.
+Returns a new [Response](#response) object associated with a network error.
 
 ###### Returns
 
-[`Response`](http.md#response)
+[`Response`](#response)
 
 ##### json()
 
-> `static` **json**(`data`: `any`, `init`?: [`ResponseInit`](http.md#responseinit)): [`Response`](http.md#response)
+> `static` **json**(`data`: `any`, `init?`: [`ResponseInit`](#responseinit)): [`Response`](#response)
 
-Returns a new [Response](http.md#response) object for returning the provided JSON encoded data.
+Returns a new [Response](#response) object for returning the provided JSON encoded data.
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `data` | `any` |
-| `init`? | [`ResponseInit`](http.md#responseinit) |
+| `init?` | [`ResponseInit`](#responseinit) |
 
 ###### Returns
 
-[`Response`](http.md#response)
+[`Response`](#response)
 
 ##### redirect()
 
-> `static` **redirect**(`url`: `string`, `status`?: `number`): [`Response`](http.md#response)
+> `static` **redirect**(`url`: `string`, `status?`: `number`): [`Response`](#response)
 
-Returns a new [Response](http.md#response) with a different URL.
+Returns a new [Response](#response) with a different URL.
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `url` | `string` |
-| `status`? | `number` |
+| `status?` | `number` |
 
 ###### Returns
 
-[`Response`](http.md#response)
+[`Response`](#response)
 
 ## Interfaces
 
@@ -740,7 +740,7 @@ Returns a new [Response](http.md#response) with a different URL.
 
 #### Extended by
 
-- [`FileOpts`](http.md#fileopts)
+- [`FileOpts`](#fileopts)
 
 #### Properties
 
@@ -764,7 +764,7 @@ however no validation of the type format is performed.
 
 #### Extends
 
-- [`BlobOpts`](http.md#blobopts)
+- [`BlobOpts`](#blobopts)
 
 #### Properties
 
@@ -777,7 +777,7 @@ will be converted to the platform native line-ending as specified by `import { E
 
 ###### Inherited from
 
-[`BlobOpts`](http.md#blobopts).[`endings`](http.md#endings)
+[`BlobOpts`](#blobopts).[`endings`](#endings)
 
 ##### lastModified?
 
@@ -795,7 +795,7 @@ however no validation of the type format is performed.
 
 ###### Inherited from
 
-[`BlobOpts`](http.md#blobopts).[`type`](http.md#type-3)
+[`BlobOpts`](#blobopts).[`type`](#type-3)
 
 ***
 
@@ -805,11 +805,11 @@ however no validation of the type format is performed.
 
 ##### body?
 
-> `optional` **body**: [`Blob`](http.md#blob)
+> `optional` **body**: [`Blob`](#blob)
 
 ##### headers?
 
-> `optional` **headers**: [`HeadersLike`](http.md#headerslike)
+> `optional` **headers**: [`HeadersLike`](#headerslike)
 
 ##### method?
 
@@ -829,13 +829,13 @@ however no validation of the type format is performed.
 
 #### Extended by
 
-- [`ResponseOpts`](http.md#responseopts)
+- [`ResponseOpts`](#responseopts)
 
 #### Properties
 
 ##### headers?
 
-> `readonly` `optional` **headers**: [`HeadersLike`](http.md#headerslike)
+> `readonly` `optional` **headers**: [`HeadersLike`](#headerslike)
 
 ##### status?
 
@@ -851,17 +851,17 @@ however no validation of the type format is performed.
 
 #### Extends
 
-- [`ResponseInit`](http.md#responseinit)
+- [`ResponseInit`](#responseinit)
 
 #### Properties
 
 ##### headers?
 
-> `readonly` `optional` **headers**: [`HeadersLike`](http.md#headerslike)
+> `readonly` `optional` **headers**: [`HeadersLike`](#headerslike)
 
 ###### Inherited from
 
-[`ResponseInit`](http.md#responseinit).[`headers`](http.md#headers-4)
+[`ResponseInit`](#responseinit).[`headers`](#headers-4)
 
 ##### signal?
 
@@ -873,7 +873,7 @@ however no validation of the type format is performed.
 
 ###### Inherited from
 
-[`ResponseInit`](http.md#responseinit).[`status`](http.md#status-1)
+[`ResponseInit`](#responseinit).[`status`](#status-1)
 
 ##### statusText?
 
@@ -881,7 +881,7 @@ however no validation of the type format is performed.
 
 ###### Inherited from
 
-[`ResponseInit`](http.md#responseinit).[`statusText`](http.md#statustext-1)
+[`ResponseInit`](#responseinit).[`statusText`](#statustext-1)
 
 ##### url?
 
@@ -891,54 +891,54 @@ however no validation of the type format is performed.
 
 ### Body
 
-> **Body**: [`ArrayBufferView`](../llrt/globals/namespaces/QuickJS.md#arraybufferview) \| [`Blob`](http.md#blob) \| `null`
+> **Body** = [`ArrayBufferView`](../llrt/globals/namespaces/QuickJS.md#arraybufferview) \| [`Blob`](#blob) \| `null`
 
-The `Body` of a [Response](http.md#response) or [Request](http.md#request).
+The `Body` of a [Response](#response) or [Request](#request).
 Currently NOT a `ReadableStream`.
 
 ***
 
 ### HeadersLike
 
-> **HeadersLike**: `Record`\<`string`, `string`\> \| [`Headers`](http.md#headers)
+> **HeadersLike** = `Record`\<`string`, `string`\> \| [`Headers`](#headers)
 
 ***
 
 ### HeadersOpts
 
-> **HeadersOpts**: `string`[][] \| [`HeadersLike`](http.md#headerslike)
+> **HeadersOpts** = `string`[][] \| [`HeadersLike`](#headerslike)
 
 ***
 
 ### RequestCache
 
-> **RequestCache**: `"no-cache"`
+> **RequestCache** = `"no-cache"`
 
 ***
 
 ### RequestMode
 
-> **RequestMode**: `"navigate"`
+> **RequestMode** = `"navigate"`
 
 ***
 
 ### ResponseType
 
-> **ResponseType**: `"basic"` \| `"error"`
+> **ResponseType** = `"basic"` \| `"error"`
 
 ## Functions
 
 ### fetch()
 
-> **fetch**(`input`: `string` \| [`Request`](http.md#request), `init`?: [`RequestOpts`](http.md#requestopts)): `Promise`\<[`Response`](http.md#response)\>
+> **fetch**(`input`: `string` \| [`Request`](#request), `init?`: [`RequestOpts`](#requestopts)): `Promise`\<[`Response`](#response)\>
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `input` | `string` \| [`Request`](http.md#request) |
-| `init`? | [`RequestOpts`](http.md#requestopts) |
+| `input` | `string` \| [`Request`](#request) |
+| `init?` | [`RequestOpts`](#requestopts) |
 
 #### Returns
 
-`Promise`\<[`Response`](http.md#response)\>
+`Promise`\<[`Response`](#response)\>

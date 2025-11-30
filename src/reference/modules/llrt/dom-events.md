@@ -4,7 +4,7 @@
 
 ## Classes
 
-### CustomEvent\<D\>
+### CustomEvent
 
 An event which takes place in the system.
 
@@ -16,31 +16,31 @@ An event which takes place in the system.
 
 #### Implements
 
-- [`Event`](dom-events.md#event)
+- [`Event`](#event)
 
 #### Constructors
 
-##### new CustomEvent()
+##### Constructor
 
-> **new CustomEvent**\<`D`\>(`type`: `string`, `opts`?: `object`): [`CustomEvent`](dom-events.md#customeventd)\<`D`\>
+> **new CustomEvent**\<`D`\>(`type`: `string`, `opts?`: `object`): [`CustomEvent`](#customevent)\<`D`\>
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
 | `type` | `string` |
-| `opts`? | \{ `details`: `D`; \} |
-| `opts.details`? | `D` |
+| `opts?` | \{ `details?`: `D`; \} |
+| `opts.details?` | `D` |
 
 ###### Returns
 
-[`CustomEvent`](dom-events.md#customeventd)\<`D`\>
+[`CustomEvent`](#customevent)\<`D`\>
 
 #### Properties
 
 ##### details
 
-> `readonly` **details**: `null` \| `D`
+> `readonly` **details**: `D` \| `null`
 
 ##### type
 
@@ -50,7 +50,7 @@ Returns the type of event, e.g. "click", "hashchange", or "submit".
 
 ###### Implementation of
 
-[`Event`](dom-events.md#event).[`type`](dom-events.md#type-1)
+[`Event`](#event).[`type`](#type-1)
 
 ***
 
@@ -65,19 +65,19 @@ receive events and may have listeners for them.
 
 #### Constructors
 
-##### new EventTarget()
+##### Constructor
 
-> **new EventTarget**(): [`EventTarget`](dom-events.md#eventtarget)
+> **new EventTarget**(): [`EventTarget`](#eventtarget)
 
 ###### Returns
 
-[`EventTarget`](dom-events.md#eventtarget)
+[`EventTarget`](#eventtarget)
 
 #### Methods
 
 ##### addEventListener()
 
-> **addEventListener**(`type`: [`EventKey`](dom-events.md#eventkey), `listener`: [`EventListener`](dom-events.md#eventlistener), `options`?: [`AddEventListenerOptions`](dom-events.md#addeventlisteneroptions)): `void`
+> **addEventListener**(`type`: [`EventKey`](#eventkey), `listener`: [`EventListener`](#eventlistener), `options?`: [`AddEventListenerOptions`](#addeventlisteneroptions)): `void`
 
 Adds a new handler for the `type` event. Any given `listener` is added only once per `type`.
 
@@ -87,9 +87,9 @@ If the `once` option is true, the `listener` is removed after the next time a `t
 
 | Parameter | Type |
 | ------ | ------ |
-| `type` | [`EventKey`](dom-events.md#eventkey) |
-| `listener` | [`EventListener`](dom-events.md#eventlistener) |
-| `options`? | [`AddEventListenerOptions`](dom-events.md#addeventlisteneroptions) |
+| `type` | [`EventKey`](#eventkey) |
+| `listener` | [`EventListener`](#eventlistener) |
+| `options?` | [`AddEventListenerOptions`](#addeventlisteneroptions) |
 
 ###### Returns
 
@@ -97,7 +97,7 @@ If the `once` option is true, the `listener` is removed after the next time a `t
 
 ##### dispatchEvent()
 
-> **dispatchEvent**(`event`: [`Event`](dom-events.md#event)): `void`
+> **dispatchEvent**(`event`: [`Event`](#event)): `void`
 
 Dispatches a synthetic event event to target
 
@@ -105,7 +105,7 @@ Dispatches a synthetic event event to target
 
 | Parameter | Type |
 | ------ | ------ |
-| `event` | [`Event`](dom-events.md#event) |
+| `event` | [`Event`](#event) |
 
 ###### Returns
 
@@ -113,7 +113,7 @@ Dispatches a synthetic event event to target
 
 ##### removeEventListener()
 
-> **removeEventListener**(`type`: [`EventKey`](dom-events.md#eventkey), `listener`: [`EventListener`](dom-events.md#eventlistener)): `void`
+> **removeEventListener**(`type`: [`EventKey`](#eventkey), `listener`: [`EventListener`](#eventlistener)): `void`
 
 Removes the event listener in target's event listener list with the same type and callback
 
@@ -121,8 +121,8 @@ Removes the event listener in target's event listener list with the same type an
 
 | Parameter | Type |
 | ------ | ------ |
-| `type` | [`EventKey`](dom-events.md#eventkey) |
-| `listener` | [`EventListener`](dom-events.md#eventlistener) |
+| `type` | [`EventKey`](#eventkey) |
+| `listener` | [`EventListener`](#eventlistener) |
 
 ###### Returns
 
@@ -150,7 +150,7 @@ An event which takes place in the system.
 
 ##### type
 
-> `readonly` **type**: [`EventKey`](dom-events.md#eventkey)
+> `readonly` **type**: [`EventKey`](#eventkey)
 
 Returns the type of event, e.g. "click", "hashchange", or "submit".
 
@@ -158,13 +158,13 @@ Returns the type of event, e.g. "click", "hashchange", or "submit".
 
 ### EventListener()
 
-> **EventListener**(`evt`: [`Event`](dom-events.md#event)): `void`
+> **EventListener**(`evt`: [`Event`](#event)): `void`
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `evt` | [`Event`](dom-events.md#event) |
+| `evt` | [`Event`](#event) |
 
 #### Returns
 
@@ -174,4 +174,4 @@ Returns the type of event, e.g. "click", "hashchange", or "submit".
 
 ### EventKey
 
-> **EventKey**: `string` \| `symbol`
+> **EventKey** = `string` \| `symbol`

@@ -8,7 +8,7 @@
 
 #### Extends
 
-- [`EventEmitter`](../index.md#eventemittert)
+- [`EventEmitter`](../index.md#eventemitter)
 
 #### Methods
 
@@ -37,7 +37,7 @@ Alias for `emitter.on(eventName, listener)`.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`addListener`](../index.md#addlistener)
+[`EventEmitter`](../index.md#eventemitter).[`addListener`](../index.md#addlistener)
 
 ##### emit()
 
@@ -91,7 +91,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`emit`](../index.md#emit)
+[`EventEmitter`](../index.md#eventemitter).[`emit`](../index.md#emit)
 
 ##### eventNames()
 
@@ -120,7 +120,7 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`eventNames`](../index.md#eventnames)
+[`EventEmitter`](../index.md#eventemitter).[`eventNames`](../index.md#eventnames)
 
 ##### off()
 
@@ -147,7 +147,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`off`](../index.md#off)
+[`EventEmitter`](../index.md#eventemitter).[`off`](../index.md#off)
 
 ##### on()
 
@@ -199,7 +199,7 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`on`](../index.md#on)
+[`EventEmitter`](../index.md#eventemitter).[`on`](../index.md#on)
 
 ##### once()
 
@@ -247,7 +247,7 @@ v0.3.0
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`once`](../index.md#once)
+[`EventEmitter`](../index.md#eventemitter).[`once`](../index.md#once)
 
 ##### prependListener()
 
@@ -279,7 +279,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`prependListener`](../index.md#prependlistener)
+[`EventEmitter`](../index.md#eventemitter).[`prependListener`](../index.md#prependlistener)
 
 ##### prependOnceListener()
 
@@ -309,21 +309,21 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`prependOnceListener`](../index.md#prependoncelistener)
+[`EventEmitter`](../index.md#eventemitter).[`prependOnceListener`](../index.md#prependoncelistener)
 
 ##### read()
 
-> **read**(`size`?: `number`): `null` \| [`Buffer`](../../buffer.md#buffer)
+> **read**(`size?`: `number`): [`Buffer`](../../buffer.md#buffer) \| `null`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `size`? | `number` |
+| `size?` | `number` |
 
 ###### Returns
 
-`null` \| [`Buffer`](../../buffer.md#buffer)
+[`Buffer`](../../buffer.md#buffer) \| `null`
 
 ##### removeListener()
 
@@ -419,7 +419,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`removeListener`](../index.md#removelistener)
+[`EventEmitter`](../index.md#eventemitter).[`removeListener`](../index.md#removelistener)
 
 ***
 
@@ -427,7 +427,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Extends
 
-- [`EventEmitter`](../index.md#eventemittert)
+- [`EventEmitter`](../index.md#eventemitter)
 
 #### Methods
 
@@ -456,7 +456,7 @@ Alias for `emitter.on(eventName, listener)`.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`addListener`](../index.md#addlistener)
+[`EventEmitter`](../index.md#eventemitter).[`addListener`](../index.md#addlistener)
 
 ##### emit()
 
@@ -510,7 +510,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`emit`](../index.md#emit)
+[`EventEmitter`](../index.md#eventemitter).[`emit`](../index.md#emit)
 
 ##### end()
 
@@ -547,7 +547,7 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`eventNames`](../index.md#eventnames)
+[`EventEmitter`](../index.md#eventemitter).[`eventNames`](../index.md#eventnames)
 
 ##### off()
 
@@ -574,7 +574,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`off`](../index.md#off)
+[`EventEmitter`](../index.md#eventemitter).[`off`](../index.md#off)
 
 ##### on()
 
@@ -626,7 +626,7 @@ myEE.emit('foo');
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`on`](../index.md#on)
+[`EventEmitter`](../index.md#eventemitter).[`on`](../index.md#on)
 
 ##### once()
 
@@ -674,7 +674,7 @@ v0.3.0
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`once`](../index.md#once)
+[`EventEmitter`](../index.md#eventemitter).[`once`](../index.md#once)
 
 ##### prependListener()
 
@@ -706,7 +706,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`prependListener`](../index.md#prependlistener)
+[`EventEmitter`](../index.md#eventemitter).[`prependListener`](../index.md#prependlistener)
 
 ##### prependOnceListener()
 
@@ -736,7 +736,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`prependOnceListener`](../index.md#prependoncelistener)
+[`EventEmitter`](../index.md#eventemitter).[`prependOnceListener`](../index.md#prependoncelistener)
 
 ##### removeListener()
 
@@ -832,18 +832,18 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../index.md#eventemittert).[`removeListener`](../index.md#removelistener)
+[`EventEmitter`](../index.md#eventemitter).[`removeListener`](../index.md#removelistener)
 
 ##### write()
 
-> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer), `callback`?: (`err`?: `null` \| `Error`) => `void`): `void`
+> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](#arraybufferview) \| [`Buffer`](../../buffer.md#buffer), `callback?`: (`err?`: `Error` \| `null`) => `void`): `void`
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `chunk` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer) |
-| `callback`? | (`err`?: `null` \| `Error`) => `void` |
+| `chunk` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](#arraybufferview) \| [`Buffer`](../../buffer.md#buffer) |
+| `callback?` | (`err?`: `Error` \| `null`) => `void` |
 
 ###### Returns
 
@@ -853,22 +853,22 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ### ArrayBufferView
 
-> **ArrayBufferView**: [`TypedArray`](QuickJS.md#typedarray) \| `DataView`
+> **ArrayBufferView** = [`TypedArray`](#typedarray) \| `DataView`
 
 ***
 
 ### Platform
 
-> **Platform**: `"darwin"` \| `"linux"` \| `"win32"`
+> **Platform** = `"darwin"` \| `"linux"` \| `"win32"`
 
 ***
 
 ### Signals
 
-> **Signals**: `"SIGABRT"` \| `"SIGALRM"` \| `"SIGFPE"` \| `"SIGHUP"` \| `"SIGILL"` \| `"SIGINT"` \| `"SIGKILL"` \| `"SIGPIPE"` \| `"SIGQUIT"` \| `"SIGSEGV"` \| `"SIGTERM"`
+> **Signals** = `"SIGABRT"` \| `"SIGALRM"` \| `"SIGFPE"` \| `"SIGHUP"` \| `"SIGILL"` \| `"SIGINT"` \| `"SIGKILL"` \| `"SIGPIPE"` \| `"SIGQUIT"` \| `"SIGSEGV"` \| `"SIGTERM"`
 
 ***
 
 ### TypedArray
 
-> **TypedArray**: `Uint8Array` \| `Uint8ClampedArray` \| `Uint16Array` \| `Uint32Array` \| `Int8Array` \| `Int16Array` \| `Int32Array` \| `BigUint64Array` \| `BigInt64Array` \| `Float32Array` \| `Float64Array`
+> **TypedArray** = `Uint8Array` \| `Uint8ClampedArray` \| `Uint16Array` \| `Uint32Array` \| `Int8Array` \| `Int16Array` \| `Int32Array` \| `BigUint64Array` \| `BigInt64Array` \| `Float32Array` \| `Float64Array`

@@ -8,21 +8,21 @@
 
 #### Constructors
 
-##### new AbortController()
+##### Constructor
 
-> **new AbortController**(): [`AbortController`](abort.md#abortcontroller)
+> **new AbortController**(): [`AbortController`](#abortcontroller)
 
 Creates a new `AbortController` object instance.
 
 ###### Returns
 
-[`AbortController`](abort.md#abortcontroller)
+[`AbortController`](#abortcontroller)
 
 #### Properties
 
 ##### signal
 
-> `readonly` **signal**: [`AbortSignal`](abort.md#abortsignal)
+> `readonly` **signal**: [`AbortSignal`](#abortsignal)
 
 Returns the AbortSignal object associated with this object.
 
@@ -30,7 +30,7 @@ Returns the AbortSignal object associated with this object.
 
 ##### abort()
 
-> **abort**(`reason`?: `any`): `void`
+> **abort**(`reason?`: `any`): `void`
 
 Invoking this method will set this object's AbortSignal's aborted flag and signal to any observers that the associated activity is to be aborted.
 
@@ -38,7 +38,7 @@ Invoking this method will set this object's AbortSignal's aborted flag and signa
 
 | Parameter | Type |
 | ------ | ------ |
-| `reason`? | `any` |
+| `reason?` | `any` |
 
 ###### Returns
 
@@ -56,19 +56,19 @@ A signal object that allows you to communicate with a DOM request (such as a Fet
 
 #### Constructors
 
-##### new AbortSignal()
+##### Constructor
 
-> **new AbortSignal**(): [`AbortSignal`](abort.md#abortsignal)
+> **new AbortSignal**(): [`AbortSignal`](#abortsignal)
 
 Creates a new `AbortSignal` object instance.
 
 ###### Returns
 
-[`AbortSignal`](abort.md#abortsignal)
+[`AbortSignal`](#abortsignal)
 
 ###### Overrides
 
-[`EventTarget`](dom-events.md#eventtarget).[`constructor`](dom-events.md#constructors-1)
+[`EventTarget`](dom-events.md#eventtarget).[`constructor`](dom-events.md#constructor-1)
 
 #### Properties
 
@@ -80,7 +80,7 @@ Returns true if this AbortSignal's AbortController has signaled to abort, and fa
 
 ##### onabort
 
-> **onabort**: `null` \| (`this`: [`AbortSignal`](abort.md#abortsignal), `event`: [`Event`](dom-events.md#event)) => `any`
+> **onabort**: (`this`: [`AbortSignal`](#abortsignal), `event`: [`Event`](dom-events.md#event)) => `any` \| `null`
 
 Registers an event listener callback to execute when an `abort` event is observed.
 
@@ -94,7 +94,7 @@ A JavaScript value providing the abort reason, once the signal has aborted.
 
 ##### addEventListener()
 
-> **addEventListener**(`type`: [`EventKey`](dom-events.md#eventkey), `listener`: [`EventListener`](dom-events.md#eventlistener), `options`?: [`AddEventListenerOptions`](dom-events.md#addeventlisteneroptions)): `void`
+> **addEventListener**(`type`: [`EventKey`](dom-events.md#eventkey), `listener`: [`EventListener`](dom-events.md#eventlistener), `options?`: [`AddEventListenerOptions`](dom-events.md#addeventlisteneroptions)): `void`
 
 Adds a new handler for the `type` event. Any given `listener` is added only once per `type`.
 
@@ -106,7 +106,7 @@ If the `once` option is true, the `listener` is removed after the next time a `t
 | ------ | ------ |
 | `type` | [`EventKey`](dom-events.md#eventkey) |
 | `listener` | [`EventListener`](dom-events.md#eventlistener) |
-| `options`? | [`AddEventListenerOptions`](dom-events.md#addeventlisteneroptions) |
+| `options?` | [`AddEventListenerOptions`](dom-events.md#addeventlisteneroptions) |
 
 ###### Returns
 
@@ -169,7 +169,7 @@ Throws the signal's abort reason if the signal has been aborted; otherwise it do
 
 ##### abort()
 
-> `static` **abort**(`reason`?: `any`): [`AbortSignal`](abort.md#abortsignal)
+> `static` **abort**(`reason?`: `any`): [`AbortSignal`](#abortsignal)
 
 Returns an `AbortSignal` instance that is already set as aborted.
 
@@ -177,15 +177,15 @@ Returns an `AbortSignal` instance that is already set as aborted.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `reason`? | `any` | The reason for the abort. |
+| `reason?` | `any` | The reason for the abort. |
 
 ###### Returns
 
-[`AbortSignal`](abort.md#abortsignal)
+[`AbortSignal`](#abortsignal)
 
 ##### any()
 
-> `static` **any**(`signals`: [`AbortSignal`](abort.md#abortsignal)[]): [`AbortSignal`](abort.md#abortsignal)
+> `static` **any**(`signals`: [`AbortSignal`](#abortsignal)[]): [`AbortSignal`](#abortsignal)
 
 Returns an `AbortSignal` that aborts when any of the given abort signals abort.
 
@@ -193,15 +193,15 @@ Returns an `AbortSignal` that aborts when any of the given abort signals abort.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `signals` | [`AbortSignal`](abort.md#abortsignal)[] | An array of `AbortSignal` objects to observe. |
+| `signals` | [`AbortSignal`](#abortsignal)[] | An array of `AbortSignal` objects to observe. |
 
 ###### Returns
 
-[`AbortSignal`](abort.md#abortsignal)
+[`AbortSignal`](#abortsignal)
 
 ##### timeout()
 
-> `static` **timeout**(`milliseconds`: `number`): [`AbortSignal`](abort.md#abortsignal)
+> `static` **timeout**(`milliseconds`: `number`): [`AbortSignal`](#abortsignal)
 
 Returns an `AbortSignal` instance that will automatically abort after a specified time.
 
@@ -213,4 +213,4 @@ Returns an `AbortSignal` instance that will automatically abort after a specifie
 
 ###### Returns
 
-[`AbortSignal`](abort.md#abortsignal)
+[`AbortSignal`](#abortsignal)

@@ -21,13 +21,13 @@ await db.exec("INSERT INTO test (name) VALUES ('foo');");
 
 #### Constructors
 
-##### new Database()
+##### Constructor
 
-> **new Database**(): [`Database`](sqlite.md#database)
+> **new Database**(): [`Database`](#database)
 
 ###### Returns
 
-[`Database`](sqlite.md#database)
+[`Database`](#database)
 
 #### Methods
 
@@ -49,7 +49,7 @@ This method allows one or more SQL statements to be executed without returning a
 
 ##### prepare()
 
-> **prepare**(`sql`: `string`): `Promise`\<[`Statement`](sqlite.md#statement)\>
+> **prepare**(`sql`: `string`): `Promise`\<[`Statement`](#statement)\>
 
 Compiles a SQL statement into a [prepared statement](https://www.sqlite.org/c3ref/stmt.html).
 
@@ -61,7 +61,7 @@ Compiles a SQL statement into a [prepared statement](https://www.sqlite.org/c3re
 
 ###### Returns
 
-`Promise`\<[`Statement`](sqlite.md#statement)\>
+`Promise`\<[`Statement`](#statement)\>
 
 ***
 
@@ -72,19 +72,19 @@ Instead, instances are created via the database.prepare() method.
 
 #### Constructors
 
-##### new Statement()
+##### Constructor
 
-> **new Statement**(): [`Statement`](sqlite.md#statement)
+> **new Statement**(): [`Statement`](#statement)
 
 ###### Returns
 
-[`Statement`](sqlite.md#statement)
+[`Statement`](#statement)
 
 #### Methods
 
 ##### all()
 
-> **all**\<`T`\>(...`params`: [`Parameter`](sqlite.md#parameter)[]): `Promise`\<`T`[]\>
+> **all**\<`T`\>(...`params`: [`Parameter`](#parameter)[]): `Promise`\<`T`[]\>
 
 This method executes a prepared statement and returns all results as an array of objects.
 If the prepared statement does not return any results, this method returns an empty array.
@@ -100,7 +100,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](sqlite.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`](#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
@@ -108,7 +108,7 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 ##### get()
 
-> **get**\<`T`\>(...`params`: [`Parameter`](sqlite.md#parameter)[]): `Promise`\<`undefined` \| `T`\>
+> **get**\<`T`\>(...`params`: [`Parameter`](#parameter)[]): `Promise`\<`T` \| `undefined`\>
 
 This method executes a prepared statement and returns the first result as an object.
 If the prepared statement does not return any results, this method returns undefined.
@@ -124,15 +124,15 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](sqlite.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`](#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
-`Promise`\<`undefined` \| `T`\>
+`Promise`\<`T` \| `undefined`\>
 
 ##### run()
 
-> **run**(...`params`: [`Parameter`](sqlite.md#parameter)[]): `Promise`\<[`Result`](sqlite.md#result)\>
+> **run**(...`params`: [`Parameter`](#parameter)[]): `Promise`\<[`Result`](#result)\>
 
 This method executes a prepared statement and returns an object summarizing the resulting changes.
 The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_blob.html) using the values in params.
@@ -141,19 +141,19 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| ...`params` | [`Parameter`](sqlite.md#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
+| ...`params` | [`Parameter`](#parameter)[] | The values to bind to the prepared statement. Named parameters are not supported. |
 
 ###### Returns
 
-`Promise`\<[`Result`](sqlite.md#result)\>
+`Promise`\<[`Result`](#result)\>
 
 ## Type Aliases
 
 ### OpenOptions
 
-> **OpenOptions**: `object`
+> **OpenOptions** = `object`
 
-#### Type declaration
+#### Properties
 
 ##### busyTimeout?
 
@@ -268,15 +268,15 @@ true
 
 ### Parameter
 
-> **Parameter**: `null` \| `number` \| `bigint` \| `string` \| `Uint8Array`
+> **Parameter** = `null` \| `number` \| `bigint` \| `string` \| `Uint8Array`
 
 ***
 
 ### Result
 
-> **Result**: `object`
+> **Result** = `object`
 
-#### Type declaration
+#### Properties
 
 ##### changes
 
@@ -290,7 +290,7 @@ true
 
 ### open()
 
-> **open**(`options`: [`OpenOptions`](sqlite.md#openoptions)): `Promise`\<[`Database`](sqlite.md#database)\>
+> **open**(`options`: [`OpenOptions`](#openoptions)): `Promise`\<[`Database`](#database)\>
 
 Open a SQLite database.
 
@@ -298,8 +298,8 @@ Open a SQLite database.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`OpenOptions`](sqlite.md#openoptions) | The options to open the database. |
+| `options` | [`OpenOptions`](#openoptions) | The options to open the database. |
 
 #### Returns
 
-`Promise`\<[`Database`](sqlite.md#database)\>
+`Promise`\<[`Database`](#database)\>
