@@ -8,6 +8,18 @@ Settings for AI language model.
 
 #### Properties
 
+##### capabilities?
+
+> `optional` **capabilities**: `object`
+
+###### reasoning
+
+> **reasoning**: `boolean`
+
+###### structured\_output
+
+> **structured\_output**: `boolean`
+
 ##### reasoning?
 
 > `optional` **reasoning**: [`AIReasoningSettings`](#aireasoningsettings)

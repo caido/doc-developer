@@ -1,5 +1,21 @@
 # Filters
 
+### CurrentFilterChangeEvent
+
+> **CurrentFilterChangeEvent** = `object`
+
+Event fired when the current filter changes.
+
+#### Properties
+
+##### filterId
+
+> **filterId**: [`ID`](utils.md#id) \| `undefined`
+
+The ID of the newly selected filter, or undefined if no filter is selected.
+
+***
+
 ### Filter
 
 > **Filter** = `object`
@@ -129,6 +145,47 @@ Gets all filters.
 [`Filter`](#filter)[]
 
 The filters.
+
+##### getCurrentFilter()
+
+> **getCurrentFilter**: () => [`Filter`](#filter) \| `undefined`
+
+Get the currently selected filter.
+
+###### Returns
+
+[`Filter`](#filter) \| `undefined`
+
+The currently selected filter, or undefined if no filter is selected.
+
+##### onCurrentFilterChange()
+
+> **onCurrentFilterChange**: (`callback`: (`event`: [`CurrentFilterChangeEvent`](#currentfilterchangeevent)) => `void`) => [`ListenerHandle`](utils.md#listenerhandle)
+
+Subscribe to current filter changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`event`: [`CurrentFilterChangeEvent`](#currentfilterchangeevent)) => `void` | The callback to call when the selected filter changes. |
+
+###### Returns
+
+[`ListenerHandle`](utils.md#listenerhandle)
+
+An object with a `stop` method that can be called to stop listening to filter changes.
+
+###### Example
+
+```ts
+const handler = sdk.filters.onCurrentFilterChange((event) => {
+  console.log(`Filter ${event.filterId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
 
 ##### update()
 

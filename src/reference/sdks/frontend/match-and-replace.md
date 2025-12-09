@@ -1,5 +1,21 @@
 # Match and Replace
 
+### CurrentMatchReplaceRuleChangeEvent
+
+> **CurrentMatchReplaceRuleChangeEvent** = `object`
+
+Event fired when the current match and replace rule changes.
+
+#### Properties
+
+##### ruleId
+
+> **ruleId**: [`ID`](utils.md#id) \| `undefined`
+
+The ID of the newly selected rule, or undefined if no rule is selected.
+
+***
+
 ### MatchReplaceCollection
 
 > **MatchReplaceCollection** = `object`
@@ -712,6 +728,18 @@ Get all collections.
 
 [`MatchReplaceCollection`](#matchreplacecollection)[]
 
+##### getCurrentRule()
+
+> **getCurrentRule**: () => [`MatchReplaceRule`](#matchreplacerule) \| `undefined`
+
+Get the currently selected rule.
+
+###### Returns
+
+[`MatchReplaceRule`](#matchreplacerule) \| `undefined`
+
+The currently selected rule, or undefined if no rule is selected.
+
 ##### getRules()
 
 > **getRules**: () => [`MatchReplaceRule`](#matchreplacerule)[]
@@ -723,6 +751,35 @@ Get all rules.
 [`MatchReplaceRule`](#matchreplacerule)[]
 
 All rules.
+
+##### onCurrentRuleChange()
+
+> **onCurrentRuleChange**: (`callback`: (`event`: [`CurrentMatchReplaceRuleChangeEvent`](#currentmatchreplacerulechangeevent)) => `void`) => [`ListenerHandle`](utils.md#listenerhandle)
+
+Subscribe to current rule changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`event`: [`CurrentMatchReplaceRuleChangeEvent`](#currentmatchreplacerulechangeevent)) => `void` | The callback to call when the selected rule changes. |
+
+###### Returns
+
+[`ListenerHandle`](utils.md#listenerhandle)
+
+An object with a `stop` method that can be called to stop listening to rule changes.
+
+###### Example
+
+```ts
+const handler = sdk.matchReplace.onCurrentRuleChange((event) => {
+  console.log(`Rule ${event.ruleId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
 
 ##### selectRule()
 
