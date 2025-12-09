@@ -1,5 +1,21 @@
 # Scopes
 
+### CurrentScopeChangeEvent
+
+> **CurrentScopeChangeEvent** = `object`
+
+Event fired when the current scope changes.
+
+#### Properties
+
+##### scopeId
+
+> **scopeId**: [`ID`](utils.md#id) \| `undefined`
+
+The ID of the newly selected scope, or undefined if no scope is selected.
+
+***
+
 ### Scope
 
 > **Scope** = `object`
@@ -129,6 +145,18 @@ Delete a scope.
 
 Whether the scope was deleted.
 
+##### getCurrentScope()
+
+> **getCurrentScope**: () => [`Scope`](#scope) \| `undefined`
+
+Get the currently selected scope.
+
+###### Returns
+
+[`Scope`](#scope) \| `undefined`
+
+The currently selected scope, or undefined if no scope is selected.
+
 ##### getScopes()
 
 > **getScopes**: () => [`Scope`](#scope)[]
@@ -140,6 +168,35 @@ Get all scopes.
 [`Scope`](#scope)[]
 
 A list of scopes.
+
+##### onCurrentScopeChange()
+
+> **onCurrentScopeChange**: (`callback`: (`event`: [`CurrentScopeChangeEvent`](#currentscopechangeevent)) => `void`) => [`ListenerHandle`](utils.md#listenerhandle)
+
+Subscribe to current scope changes.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `callback` | (`event`: [`CurrentScopeChangeEvent`](#currentscopechangeevent)) => `void` | The callback to call when the selected scope changes. |
+
+###### Returns
+
+[`ListenerHandle`](utils.md#listenerhandle)
+
+An object with a `stop` method that can be called to stop listening to scope changes.
+
+###### Example
+
+```ts
+const handler = sdk.scopes.onCurrentScopeChange((event) => {
+  console.log(`Scope ${event.scopeId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
 
 ##### updateScope()
 
