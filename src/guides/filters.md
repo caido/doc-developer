@@ -51,6 +51,96 @@ To delete a filter:
 await sdk.filters.delete(filterId);
 ```
 
+### Getting the Current Filter
+
+To get the currently selected filter:
+
+```ts
+const currentFilter = sdk.filters.getCurrentFilter();
+```
+
+Returns the currently selected filter, or `undefined` if no filter is selected.
+
+### Subscribing to Filter Changes
+
+To subscribe to changes in the currently selected filter:
+
+```ts
+const handler = sdk.filters.onCurrentFilterChange((event) => {
+  console.log(`Filter ${event.filterId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
+
+The callback receives an event object with a `filterId` property that contains the ID of the newly selected filter, or `undefined` if no filter is selected.
+
+::: info
+The subscription handler returns an object with a `stop()` method that can be called to unsubscribe from filter changes.
+:::
+
+## Adding Components to Filter Slots
+
+You can add custom components to filter slots to extend the Filters page UI. Available slots are:
+
+- `FilterSlot.CreateHeader` - The header area of the preset form create component
+- `FilterSlot.UpdateHeader` - The header area of the preset form update component
+
+### Adding a Button to a Slot
+
+Add a button with a label, icon, and click handler:
+
+```ts
+import { FilterSlot } from "@caido/sdk-frontend";
+
+sdk.filters.addToSlot(FilterSlot.UpdateHeader, {
+  type: "Button",
+  label: "My Button",
+  icon: "my-icon",
+  onClick: () => {
+    console.log("Button clicked");
+  },
+});
+```
+
+### Adding a Command to a Slot
+
+Add a button that triggers a registered command:
+
+```ts
+import { FilterSlot } from "@caido/sdk-frontend";
+
+// First register the command
+sdk.commands.register("my-command", {
+  name: "My Command",
+  run: () => {
+    sdk.window.showToast("Command executed", { variant: "info" });
+  },
+});
+
+// Then add to slot
+sdk.filters.addToSlot(FilterSlot.UpdateHeader, {
+  type: "Command",
+  commandId: "my-command",
+  icon: "my-icon",
+});
+```
+
+### Adding a Custom Component to a Slot
+
+Add a custom Vue component:
+
+```ts
+import { FilterSlot } from "@caido/sdk-frontend";
+import MyComponent from "./MyComponent.vue";
+
+sdk.filters.addToSlot(FilterSlot.CreateHeader, {
+  type: "Custom",
+  definition: MyComponent,
+});
+```
+
 ## Setting HTTPQL Queries on Pages
 
 ### HTTP History
@@ -205,4 +295,65 @@ const filter = await sdk.filters.create({
 
 // Use the filter in a query
 sdk.httpHistory.setQuery("preset:success-get");
+```
+
+### Tracking Current Filter Changes
+
+This example subscribes to filter selection changes and logs information about the currently selected filter whenever it changes.
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const handler = sdk.filters.onCurrentFilterChange((event) => {
+    if (event.filterId) {
+      const filter = sdk.filters.getCurrentFilter();
+      if (filter) {
+        sdk.log.info(`Filter selected: ${filter.name} (${filter.alias})`);
+        sdk.log.info(`Query: ${filter.query}`);
+      }
+    } else {
+      sdk.log.info("No filter selected");
+    }
+  });
+
+  // Store handler for cleanup if needed
+  // handler.stop();
+};
+```
+
+### Adding Custom Actions to Filter Slots
+
+This example adds a custom button to the filter update header that duplicates the current filter when clicked.
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+import { FilterSlot } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  sdk.filters.addToSlot(FilterSlot.UpdateHeader, {
+    type: "Button",
+    label: "Duplicate Filter",
+    icon: "fas fa-copy",
+    onClick: async () => {
+      const currentFilter = sdk.filters.getCurrentFilter();
+      if (currentFilter) {
+        const duplicated = await sdk.filters.create({
+          name: `${currentFilter.name} (Copy)`,
+          alias: `${currentFilter.alias}-copy`,
+          query: currentFilter.query,
+        });
+        sdk.window.showToast(`Filter "${duplicated.name}" created`, {
+          variant: "success",
+        });
+      } else {
+        sdk.window.showToast("No filter selected", { variant: "warning" });
+      }
+    },
+  });
+};
 ```

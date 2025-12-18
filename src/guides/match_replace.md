@@ -122,6 +122,96 @@ To clear the selection:
 sdk.matchReplace.selectRule(undefined);
 ```
 
+### Getting the Current Rule
+
+To get the currently selected rule:
+
+```ts
+const currentRule = sdk.matchReplace.getCurrentRule();
+```
+
+Returns the currently selected rule, or `undefined` if no rule is selected.
+
+### Subscribing to Rule Changes
+
+To subscribe to changes in the currently selected rule:
+
+```ts
+const handler = sdk.matchReplace.onCurrentRuleChange((event) => {
+  console.log(`Rule ${event.ruleId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
+
+The callback receives an event object with a `ruleId` property that contains the ID of the newly selected rule, or `undefined` if no rule is selected.
+
+::: info
+The subscription handler returns an object with a `stop()` method that can be called to unsubscribe from rule changes.
+:::
+
+## Adding Components to Match and Replace Slots
+
+You can add custom components to match and replace slots to extend the Match and Replace page UI. Available slots are:
+
+- `MatchReplaceSlot.CreateHeader` - The header area of the rule form create component
+- `MatchReplaceSlot.UpdateHeader` - The header area of the rule form update component
+
+### Adding a Button to a Slot
+
+Add a button with a label, icon, and click handler:
+
+```ts
+import { MatchReplaceSlot } from "@caido/sdk-frontend";
+
+sdk.matchReplace.addToSlot(MatchReplaceSlot.UpdateHeader, {
+  type: "Button",
+  label: "My Button",
+  icon: "my-icon",
+  onClick: () => {
+    console.log("Button clicked");
+  },
+});
+```
+
+### Adding a Command to a Slot
+
+Add a button that triggers a registered command:
+
+```ts
+import { MatchReplaceSlot } from "@caido/sdk-frontend";
+
+// First register the command
+sdk.commands.register("my-command", {
+  name: "My Command",
+  run: () => {
+    sdk.window.showToast("Command executed", { variant: "info" });
+  },
+});
+
+// Then add to slot
+sdk.matchReplace.addToSlot(MatchReplaceSlot.UpdateHeader, {
+  type: "Command",
+  commandId: "my-command",
+  icon: "my-icon",
+});
+```
+
+### Adding a Custom Component to a Slot
+
+Add a custom Vue component:
+
+```ts
+import { MatchReplaceSlot } from "@caido/sdk-frontend";
+import MyComponent from "./MyComponent.vue";
+
+sdk.matchReplace.addToSlot(MatchReplaceSlot.CreateHeader, {
+  type: "Custom",
+  definition: MyComponent,
+});
+```
+
 ## Examples
 
 ### Auto-Enable Rules
@@ -173,6 +263,70 @@ export const init = (sdk: CaidoSDK) => {
 
   activeRules.forEach((rule, index) => {
     sdk.log.info(`Rule ${index + 1}: ${rule.name} (Priority: ${rule.priority})`);
+  });
+};
+```
+
+### Tracking Current Rule Changes
+
+This example subscribes to rule selection changes and logs information about the currently selected rule whenever it changes.
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const handler = sdk.matchReplace.onCurrentRuleChange((event) => {
+    if (event.ruleId) {
+      const rule = sdk.matchReplace.getCurrentRule();
+      if (rule) {
+        sdk.log.info(`Rule selected: ${rule.name}`);
+        sdk.log.info(`Query: ${rule.query}`);
+        sdk.log.info(`Enabled: ${rule.isEnabled}`);
+      }
+    } else {
+      sdk.log.info("No rule selected");
+    }
+  });
+
+  // Store handler for cleanup if needed
+  // handler.stop();
+};
+```
+
+### Adding Custom Actions to Match and Replace Slots
+
+This example adds a custom button to the rule update header that duplicates the current rule when clicked.
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+import { MatchReplaceSlot } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  sdk.matchReplace.addToSlot(MatchReplaceSlot.UpdateHeader, {
+    type: "Button",
+    label: "Duplicate Rule",
+    icon: "fas fa-copy",
+    onClick: async () => {
+      const currentRule = sdk.matchReplace.getCurrentRule();
+      if (currentRule) {
+        const duplicated = await sdk.matchReplace.createRule({
+          collectionId: currentRule.collectionId,
+          name: `${currentRule.name} (Copy)`,
+          query: currentRule.query,
+          section: currentRule.section,
+          sources: [],
+        });
+        sdk.window.showToast(`Rule "${duplicated.name}" created`, {
+          variant: "success",
+        });
+      } else {
+        sdk.window.showToast("No rule selected", { variant: "warning" });
+      }
+    },
   });
 };
 ```
