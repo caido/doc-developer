@@ -48,6 +48,96 @@ Delete a scope by its ID. The method returns `true` if the scope was successfull
 const deleted = await sdk.scopes.deleteScope(scopeId);
 ```
 
+### Getting the Current Scope
+
+To get the currently selected scope:
+
+```ts
+const currentScope = sdk.scopes.getCurrentScope();
+```
+
+Returns the currently selected scope, or `undefined` if no scope is selected.
+
+### Subscribing to Scope Changes
+
+To subscribe to changes in the currently selected scope:
+
+```ts
+const handler = sdk.scopes.onCurrentScopeChange((event) => {
+  console.log(`Scope ${event.scopeId} got selected!`);
+});
+
+// Later, stop listening
+handler.stop();
+```
+
+The callback receives an event object with a `scopeId` property that contains the ID of the newly selected scope, or `undefined` if no scope is selected.
+
+::: info
+The subscription handler returns an object with a `stop()` method that can be called to unsubscribe from scope changes.
+:::
+
+## Adding Components to Scope Slots
+
+You can add custom components to scope slots to extend the Scopes page UI. Available slots are:
+
+- `ScopeSlot.CreateHeader` - The header area of the preset form create component, to the left of the ScopeTooltip
+- `ScopeSlot.UpdateHeader` - The header area of the preset form update component, to the left of the ScopeTooltip
+
+### Adding a Button to a Slot
+
+Add a button with a label, icon, and click handler:
+
+```ts
+import { ScopeSlot } from "@caido/sdk-frontend";
+
+sdk.scopes.addToSlot(ScopeSlot.UpdateHeader, {
+  type: "Button",
+  label: "My Button",
+  icon: "my-icon",
+  onClick: () => {
+    console.log("Button clicked");
+  },
+});
+```
+
+### Adding a Command to a Slot
+
+Add a button that triggers a registered command:
+
+```ts
+import { ScopeSlot } from "@caido/sdk-frontend";
+
+// First register the command
+sdk.commands.register("my-command", {
+  name: "My Command",
+  run: () => {
+    sdk.window.showToast("Command executed", { variant: "info" });
+  },
+});
+
+// Then add to slot
+sdk.scopes.addToSlot(ScopeSlot.UpdateHeader, {
+  type: "Command",
+  commandId: "my-command",
+  icon: "my-icon",
+});
+```
+
+### Adding a Custom Component to a Slot
+
+Add a custom Vue component:
+
+```ts
+import { ScopeSlot } from "@caido/sdk-frontend";
+import MyComponent from "./MyComponent.vue";
+
+sdk.scopes.addToSlot(ScopeSlot.CreateHeader, {
+  type: "Custom",
+  definition: MyComponent,
+});
+```
+
 ## Setting Scopes on Different Pages
 
 Different pages in Caido provide scope operations specific to their context. You can get the current scope ID and set a new scope for each page.
@@ -268,5 +358,69 @@ export const init = (sdk: CaidoSDK) => {
   });
 
   initializeScope();
+};
+```
+
+### Tracking Current Scope Changes
+
+This example subscribes to scope selection changes and logs information about the currently selected scope whenever it changes.
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const handler = sdk.scopes.onCurrentScopeChange((event) => {
+    if (event.scopeId) {
+      const scope = sdk.scopes.getCurrentScope();
+      if (scope) {
+        sdk.log.info(`Scope selected: ${scope.name}`);
+        sdk.log.info(`Allowlist: ${scope.allowlist.join(", ")}`);
+        sdk.log.info(`Denylist: ${scope.denylist.join(", ")}`);
+      }
+    } else {
+      sdk.log.info("No scope selected");
+    }
+  });
+
+  // Store handler for cleanup if needed
+  // handler.stop();
+};
+```
+
+### Adding Custom Actions to Scope Slots
+
+This example adds a custom button to the scope update header that duplicates the current scope when clicked.
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+import { ScopeSlot } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  sdk.scopes.addToSlot(ScopeSlot.UpdateHeader, {
+    type: "Button",
+    label: "Duplicate Scope",
+    icon: "fas fa-copy",
+    onClick: async () => {
+      const currentScope = sdk.scopes.getCurrentScope();
+      if (currentScope) {
+        const duplicated = await sdk.scopes.createScope({
+          name: `${currentScope.name} (Copy)`,
+          allowlist: [...currentScope.allowlist],
+          denylist: [...currentScope.denylist],
+        });
+        if (duplicated) {
+          sdk.window.showToast(`Scope "${duplicated.name}" created`, {
+            variant: "success",
+          });
+        }
+      } else {
+        sdk.window.showToast("No scope selected", { variant: "warning" });
+      }
+    },
+  });
 };
 ```
