@@ -44,7 +44,16 @@ The steps above will create a repository under your own account.
 If you would like to host your repository under the [caido-community](https://github.com/caido-community) organization instead, you can request a repository on our [Discord server](https://links.caido.io/www-discord).
 :::
 
-## 3. Generate a Key-Pair
+## 3. Enable Immutable Releases
+
+Before creating your release, you must enable immutable releases in your repository settings. Immutable releases prevent published releases from being modified or deleted, ensuring users always install the exact version that was reviewed and approved.
+
+1. Go to your repository on GitHub
+2. Navigate to **Settings** → **General**
+3. Scroll down to the **Releases** section
+4. Enable **Immutable releases**
+
+## 4. Generate a Key-Pair
 
 Plugin packages **must** be digitally signed to be installable in Caido.
 
@@ -94,13 +103,12 @@ The file `public.pem` will contain the following format:
 -----END PUBLIC KEY-----
 ```
 
-## 4. Create a Release
+## 5. Create a Release
 
 Now that your repository and key-pair are ready, it’s time to create a release!
 
-1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [step 3](#3-generate-a-key-pair).
-1. [Enable release immutability](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/immutable-releases) in the repository General settings.
-1. Go to the `Actions` tab of your repository and trigger the `Release` workflow.
+1. [Create a Github Action Secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository) called `PRIVATE_KEY` with the content of the private key generated in [step 4](#4-generate-a-key-pair).
+2. Go to the `Actions` tab of your repository and trigger the `Release` workflow.
 
 This will create an immutable release with the version specified in your project's [caido.config.ts](/guides/config#version) file.
 
