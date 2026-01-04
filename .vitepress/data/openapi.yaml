@@ -194,6 +194,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user/billing/voucher-claims:
+    post:
+      tags:
+      - api
+      operationId: create_voucher_claim
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherClaimCreate'
+        required: true
+      responses:
+        '204':
+          description: Voucher claimed
+        '400':
+          description: Invalid code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Already subscribed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /api/v1/workspace/{workspace_id}:
     get:
       tags:
@@ -453,6 +485,13 @@ components:
           type: string
         updated_at:
           $ref: '#/components/schemas/Timestamp'
+    VoucherClaimCreate:
+      type: object
+      required:
+      - code
+      properties:
+        code:
+          type: string
     Workspace:
       type: object
       required:
