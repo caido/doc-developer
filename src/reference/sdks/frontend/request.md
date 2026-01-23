@@ -43,3 +43,19 @@ The label of the view mode.
 > **view**: [`ComponentDefinition`](utils.md#componentdefinition)
 
 The component to render when the view mode is selected.
+
+##### when()?
+
+> `optional` **when**: (`request`: [`RequestFull`](#requestfull) \| [`RequestDraft`](#requestdraft)) => `boolean`
+
+A function that determines if the view mode should be shown for a given request.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `request` | [`RequestFull`](#requestfull) \| [`RequestDraft`](#requestdraft) |
+
+###### Returns
+
+`boolean`

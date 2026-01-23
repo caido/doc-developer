@@ -1,5 +1,11 @@
 # Other
 
+### ChildState
+
+> **ChildState** = \{ `kind`: `"Empty"`; \} \| \{ `kind`: `"NotLoaded"`; \} \| \{ `items`: [`ID`](utils.md#id)[]; `kind`: `"Loaded"`; \}
+
+***
+
 ### CommandID
 
 > **CommandID** = `string` & `object`
@@ -168,6 +174,50 @@ A unique command identifier.
 ##### search-toolbar-primary
 
 > **search-toolbar-primary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+
+***
+
+### SettingsSlot
+
+> **SettingsSlot** = *typeof* [`SettingsSlot`](#settingsslot)\[keyof *typeof* [`SettingsSlot`](#settingsslot-1)\]
+
+***
+
+### SettingsSlotContent
+
+> **SettingsSlotContent** = `object`
+
+#### Properties
+
+##### plugins-section
+
+> **plugins-section**: [`SettingsPluginSlotContent`](settings.md#settingspluginslotcontent)
+
+***
+
+### SitemapRootEntry
+
+> **SitemapRootEntry** = `object`
+
+#### Properties
+
+##### childState
+
+> **childState**: [`ChildState`](#childstate)
+
+The child state of the entry.
+
+##### id
+
+> **id**: [`ID`](utils.md#id)
+
+The ID of the entry.
+
+##### label
+
+> **label**: `string`
+
+The label of the entry.
 
 ***
 

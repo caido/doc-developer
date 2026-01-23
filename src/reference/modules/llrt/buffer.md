@@ -81,6 +81,573 @@ console.log(buf.toString());
 
 The number of bytes copied.
 
+##### readBigInt64BE()
+
+> **readBigInt64BE**(`offset?`: `number`): `bigint`
+
+Reads a signed, big-endian 64-bit integer from `buf` at the specified `offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed
+values.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`bigint`
+
+##### readBigInt64LE()
+
+> **readBigInt64LE**(`offset?`: `number`): `bigint`
+
+Reads a signed, little-endian 64-bit integer from `buf` at the specified`offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed
+values.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`bigint`
+
+##### readBigUint64BE()
+
+> **readBigUint64BE**(`offset?`: `number`): `bigint`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `offset?` | `number` |
+
+###### Returns
+
+`bigint`
+
+###### Alias
+
+Buffer.readBigUInt64BE
+
+##### readBigUInt64BE()
+
+> **readBigUInt64BE**(`offset?`: `number`): `bigint`
+
+Reads an unsigned, big-endian 64-bit integer from `buf` at the specified`offset`.
+
+This function is also available under the `readBigUint64BE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff]);
+
+console.log(buf.readBigUInt64BE(0));
+// Prints: 4294967295n
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`bigint`
+
+##### readBigUint64LE()
+
+> **readBigUint64LE**(`offset?`: `number`): `bigint`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `offset?` | `number` |
+
+###### Returns
+
+`bigint`
+
+###### Alias
+
+Buffer.readBigUInt64LE
+
+##### readBigUInt64LE()
+
+> **readBigUInt64LE**(`offset?`: `number`): `bigint`
+
+Reads an unsigned, little-endian 64-bit integer from `buf` at the specified`offset`.
+
+This function is also available under the `readBigUint64LE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff]);
+
+console.log(buf.readBigUInt64LE(0));
+// Prints: 18446744069414584320n
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`bigint`
+
+##### readDoubleBE()
+
+> **readDoubleBE**(`offset?`: `number`): `number`
+
+Reads a 64-bit, big-endian double from `buf` at the specified `offset`.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
+
+console.log(buf.readDoubleBE(0));
+// Prints: 8.20788039913184e-304
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`number`
+
+##### readDoubleLE()
+
+> **readDoubleLE**(`offset?`: `number`): `number`
+
+Reads a 64-bit, little-endian double from `buf` at the specified `offset`.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
+
+console.log(buf.readDoubleLE(0));
+// Prints: 5.447603722011605e-270
+console.log(buf.readDoubleLE(1));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`number`
+
+##### readFloatBE()
+
+> **readFloatBE**(`offset?`: `number`): `number`
+
+Reads a 32-bit, big-endian float from `buf` at the specified `offset`.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([1, 2, 3, 4]);
+
+console.log(buf.readFloatBE(0));
+// Prints: 2.387939260590663e-38
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+##### readFloatLE()
+
+> **readFloatLE**(`offset?`: `number`): `number`
+
+Reads a 32-bit, little-endian float from `buf` at the specified `offset`.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([1, 2, 3, 4]);
+
+console.log(buf.readFloatLE(0));
+// Prints: 1.539989614439558e-36
+console.log(buf.readFloatLE(1));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+##### readInt16BE()
+
+> **readInt16BE**(`offset?`: `number`): `number`
+
+Reads a signed, big-endian 16-bit integer from `buf` at the specified `offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed values.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0, 5]);
+
+console.log(buf.readInt16BE(0));
+// Prints: 5
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`. |
+
+###### Returns
+
+`number`
+
+##### readInt16LE()
+
+> **readInt16LE**(`offset?`: `number`): `number`
+
+Reads a signed, little-endian 16-bit integer from `buf` at the specified`offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed values.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0, 5]);
+
+console.log(buf.readInt16LE(0));
+// Prints: 1280
+console.log(buf.readInt16LE(1));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`. |
+
+###### Returns
+
+`number`
+
+##### readInt32BE()
+
+> **readInt32BE**(`offset?`: `number`): `number`
+
+Reads a signed, big-endian 32-bit integer from `buf` at the specified `offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed values.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0, 0, 0, 5]);
+
+console.log(buf.readInt32BE(0));
+// Prints: 5
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+##### readInt32LE()
+
+> **readInt32LE**(`offset?`: `number`): `number`
+
+Reads a signed, little-endian 32-bit integer from `buf` at the specified`offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed values.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0, 0, 0, 5]);
+
+console.log(buf.readInt32LE(0));
+// Prints: 83886080
+console.log(buf.readInt32LE(1));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+##### readInt8()
+
+> **readInt8**(`offset?`: `number`): `number`
+
+Reads a signed 8-bit integer from `buf` at the specified `offset`.
+
+Integers read from a `Buffer` are interpreted as two's complement signed values.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([-1, 5]);
+
+console.log(buf.readInt8(0));
+// Prints: -1
+console.log(buf.readInt8(1));
+// Prints: 5
+console.log(buf.readInt8(2));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`. |
+
+###### Returns
+
+`number`
+
+##### readUint16BE()
+
+> **readUint16BE**(`offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.readUInt16BE
+
+##### readUInt16BE()
+
+> **readUInt16BE**(`offset?`: `number`): `number`
+
+Reads an unsigned, big-endian 16-bit integer from `buf` at the specified`offset`.
+
+This function is also available under the `readUint16BE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0x12, 0x34, 0x56]);
+
+console.log(buf.readUInt16BE(0).toString(16));
+// Prints: 1234
+console.log(buf.readUInt16BE(1).toString(16));
+// Prints: 3456
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`. |
+
+###### Returns
+
+`number`
+
+##### readUint16LE()
+
+> **readUint16LE**(`offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.readUInt16LE
+
+##### readUInt16LE()
+
+> **readUInt16LE**(`offset?`: `number`): `number`
+
+Reads an unsigned, little-endian 16-bit integer from `buf` at the specified `offset`.
+
+This function is also available under the `readUint16LE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0x12, 0x34, 0x56]);
+
+console.log(buf.readUInt16LE(0).toString(16));
+// Prints: 3412
+console.log(buf.readUInt16LE(1).toString(16));
+// Prints: 5634
+console.log(buf.readUInt16LE(2).toString(16));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`. |
+
+###### Returns
+
+`number`
+
+##### readUint32LE()
+
+> **readUint32LE**(`offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.readUInt32LE
+
+##### readUInt32LE()
+
+> **readUInt32LE**(`offset?`: `number`): `number`
+
+Reads an unsigned, little-endian 32-bit integer from `buf` at the specified`offset`.
+
+This function is also available under the `readUint32LE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
+
+console.log(buf.readUInt32LE(0).toString(16));
+// Prints: 78563412
+console.log(buf.readUInt32LE(1).toString(16));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+##### readUint8()
+
+> **readUint8**(`offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.readUInt8
+
+##### readUInt8()
+
+> **readUInt8**(`offset?`: `number`): `number`
+
+Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
+
+This function is also available under the `readUint8` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.from([1, -2]);
+
+console.log(buf.readUInt8(0));
+// Prints: 1
+console.log(buf.readUInt8(1));
+// Prints: 254
+console.log(buf.readUInt8(2));
+// Throws ERR_OUT_OF_RANGE.
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `offset?` | `number` | Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`. |
+
+###### Returns
+
+`number`
+
 ##### subarray()
 
 > **subarray**(`start?`: `number`, `end?`: `number`): [`Buffer`](#buffer)
@@ -157,17 +724,17 @@ console.log(buf.subarray(-5, -2).toString());
 
 ##### toString()
 
-> **toString**(`encoding?`: [`BufferEncoding`](#bufferencoding)): `string`
+> **toString**(`encoding?`: [`BufferEncoding`](#bufferencoding), `start?`: `number`, `end?`: `number`): `string`
 
-Decodes `buf` to a string according to the specified character encoding in`encoding`.
+Decodes `buf` to a string according to the specified character encoding in`encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
 If `encoding` is `'utf8'` and a byte sequence in the input is not valid UTF-8,
 then each invalid byte is replaced with the replacement character `U+FFFD`.
 
 ```js
-import { Buffer } from 'buffer';
+import { Buffer } from 'node:buffer';
 
-const buf1 = Buffer.alloc(26);
+const buf1 = Buffer.allocUnsafe(26);
 
 for (let i = 0; i < 26; i++) {
   // 97 is the decimal ASCII value for 'a'.
@@ -176,11 +743,17 @@ for (let i = 0; i < 26; i++) {
 
 console.log(buf1.toString('utf8'));
 // Prints: abcdefghijklmnopqrstuvwxyz
+console.log(buf1.toString('utf8', 0, 5));
+// Prints: abcde
 
 const buf2 = Buffer.from('tést');
 
 console.log(buf2.toString('hex'));
 // Prints: 74c3a97374
+console.log(buf2.toString('utf8', 0, 3));
+// Prints: té
+console.log(buf2.toString(undefined, 0, 3));
+// Prints: té
 ```
 
 ###### Parameters
@@ -188,6 +761,8 @@ console.log(buf2.toString('hex'));
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `encoding?` | [`BufferEncoding`](#bufferencoding) | The character encoding to use. |
+| `start?` | `number` | The byte offset to start decoding at. |
+| `end?` | `number` | The byte offset to stop decoding at (not inclusive). |
 
 ###### Returns
 
@@ -196,6 +771,182 @@ console.log(buf2.toString('hex'));
 ###### Overrides
 
 `Uint8Array.toString`
+
+##### write()
+
+###### Call Signature
+
+> **write**(`string`: `string`, `encoding?`: [`BufferEncoding`](#bufferencoding)): `number`
+
+Writes `string` to `buf` at `offset` according to the character encoding in`encoding`. The `length` parameter is the number of bytes to write. If `buf` did
+not contain enough space to fit the entire string, only part of `string` will be
+written. However, partially encoded characters will not be written.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.alloc(256);
+
+const len = buf.write('\u00bd + \u00bc = \u00be', 0);
+
+console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
+// Prints: 12 bytes: ½ + ¼ = ¾
+
+const buffer = Buffer.alloc(10);
+
+const length = buffer.write('abcd', 8);
+
+console.log(`${length} bytes: ${buffer.toString('utf8', 8, 10)}`);
+// Prints: 2 bytes : ab
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `string` | `string` | String to write to `buf`. |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) | The character encoding of `string`. |
+
+###### Returns
+
+`number`
+
+Number of bytes written.
+
+###### Call Signature
+
+> **write**(`string`: `string`, `offset`: `number`, `encoding?`: [`BufferEncoding`](#bufferencoding)): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `string` | `string` |
+| `offset` | `number` |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) |
+
+###### Returns
+
+`number`
+
+###### Call Signature
+
+> **write**(`string`: `string`, `offset`: `number`, `length`: `number`, `encoding?`: [`BufferEncoding`](#bufferencoding)): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `string` | `string` |
+| `offset` | `number` |
+| `length` | `number` |
+| `encoding?` | [`BufferEncoding`](#bufferencoding) |
+
+###### Returns
+
+`number`
+
+##### writeBigInt64BE()
+
+> **writeBigInt64BE**(`value`: `bigint`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset` as big-endian.
+
+`value` is interpreted and written as a two's complement signed integer.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(8);
+
+buf.writeBigInt64BE(0x0102030405060708n, 0);
+
+console.log(buf);
+// Prints: <Buffer 01 02 03 04 05 06 07 08>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `bigint` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
+##### writeBigInt64LE()
+
+> **writeBigInt64LE**(`value`: `bigint`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset` as little-endian.
+
+`value` is interpreted and written as a two's complement signed integer.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(8);
+
+buf.writeBigInt64LE(0x0102030405060708n, 0);
+
+console.log(buf);
+// Prints: <Buffer 08 07 06 05 04 03 02 01>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `bigint` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
+##### writeBigUint64BE()
+
+> **writeBigUint64BE**(`value`: `bigint`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `bigint` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeBigUInt64BE
+
+##### writeBigUint64LE()
+
+> **writeBigUint64LE**(`value`: `bigint`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `bigint` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeBigUInt64LE
 
 ##### writeDoubleBE()
 
@@ -488,6 +1239,272 @@ console.log(buf);
 
 `offset` plus the number of bytes written.
 
+##### writeUint16BE()
+
+> **writeUint16BE**(`value`: `number`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeUInt16BE
+
+##### writeUInt16BE()
+
+> **writeUInt16BE**(`value`: `number`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset` as big-endian. The `value` must be a valid unsigned 16-bit integer. Behavior is undefined when `value`is anything other than an
+unsigned 16-bit integer.
+
+This function is also available under the `writeUint16BE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt16BE(0xdead, 0);
+buf.writeUInt16BE(0xbeef, 2);
+
+console.log(buf);
+// Prints: <Buffer de ad be ef>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
+##### writeUint16LE()
+
+> **writeUint16LE**(`value`: `number`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeUInt16LE
+
+##### writeUInt16LE()
+
+> **writeUInt16LE**(`value`: `number`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset` as little-endian. The `value` must be a valid unsigned 16-bit integer. Behavior is undefined when `value` is
+anything other than an unsigned 16-bit integer.
+
+This function is also available under the `writeUint16LE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt16LE(0xdead, 0);
+buf.writeUInt16LE(0xbeef, 2);
+
+console.log(buf);
+// Prints: <Buffer ad de ef be>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
+##### writeUint32BE()
+
+> **writeUint32BE**(`value`: `number`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeUInt32BE
+
+##### writeUInt32BE()
+
+> **writeUInt32BE**(`value`: `number`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset` as big-endian. The `value` must be a valid unsigned 32-bit integer. Behavior is undefined when `value`is anything other than an
+unsigned 32-bit integer.
+
+This function is also available under the `writeUint32BE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt32BE(0xfeedface, 0);
+
+console.log(buf);
+// Prints: <Buffer fe ed fa ce>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
+##### writeUint32LE()
+
+> **writeUint32LE**(`value`: `number`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeUInt32LE
+
+##### writeUInt32LE()
+
+> **writeUInt32LE**(`value`: `number`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset` as little-endian. The `value` must be a valid unsigned 32-bit integer. Behavior is undefined when `value` is
+anything other than an unsigned 32-bit integer.
+
+This function is also available under the `writeUint32LE` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt32LE(0xfeedface, 0);
+
+console.log(buf);
+// Prints: <Buffer ce fa ed fe>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
+##### writeUint8()
+
+> **writeUint8**(`value`: `number`, `offset?`: `number`): `number`
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `offset?` | `number` |
+
+###### Returns
+
+`number`
+
+###### Alias
+
+Buffer.writeUInt8
+
+##### writeUInt8()
+
+> **writeUInt8**(`value`: `number`, `offset?`: `number`): `number`
+
+Writes `value` to `buf` at the specified `offset`. `value` must be a
+valid unsigned 8-bit integer. Behavior is undefined when `value` is anything
+other than an unsigned 8-bit integer.
+
+This function is also available under the `writeUint8` alias.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt8(0x3, 0);
+buf.writeUInt8(0x4, 1);
+buf.writeUInt8(0x23, 2);
+buf.writeUInt8(0x42, 3);
+
+console.log(buf);
+// Prints: <Buffer 03 04 23 42>
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | Number to be written to `buf`. |
+| `offset?` | `number` | Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`. |
+
+###### Returns
+
+`number`
+
+`offset` plus the number of bytes written.
+
 ***
 
 ### BufferConstructor
@@ -539,6 +1556,83 @@ console.log(buf);
 | `size` | `number` | The desired length of the new `Buffer`. |
 | `fill?` | `string` \| `number` \| `Uint8Array` | A value to pre-fill the new `Buffer` with. |
 | `encoding?` | [`BufferEncoding`](#bufferencoding) | If `fill` is a string, this is its encoding. |
+
+###### Returns
+
+[`Buffer`](#buffer)
+
+##### allocUnsafe()
+
+> **allocUnsafe**(`size`: `number`): [`Buffer`](#buffer)
+
+Allocates a new `Buffer` of `size` bytes.
+
+The underlying memory for `Buffer` instances created in this way is _not_
+_initialized_. The contents of the newly created `Buffer` are unknown and _may contain sensitive data_. Use `Buffer.alloc()` instead to initialize`Buffer` instances with zeroes.
+
+```js
+import { Buffer } from 'buffer';
+
+const buf = Buffer.allocUnsafe(10);
+
+console.log(buf);
+// Prints (contents may vary): <Buffer a0 8b 28 3f 01 00 00 00 50 32>
+
+buf.fill(0);
+
+console.log(buf);
+// Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
+```
+
+A `TypeError` will be thrown if `size` is not a number.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `size` | `number` | The desired length of the new `Buffer`. |
+
+###### Returns
+
+[`Buffer`](#buffer)
+
+##### allocUnsafeSlow()
+
+> **allocUnsafeSlow**(`size`: `number`): [`Buffer`](#buffer)
+
+Allocates a new `Buffer` of `size` bytes.
+
+The underlying memory for `Buffer` instances created in this way is _not_
+_initialized_. The contents of the newly created `Buffer` are unknown and _may contain sensitive data_. Use `buf.fill(0)` to initialize
+such `Buffer` instances with zeroes.
+
+```js
+import { Buffer } from 'buffer';
+
+// Need to keep around a few small chunks of memory.
+const store = [];
+
+socket.on('readable', () => {
+  let data;
+  while (null !== (data = readable.read())) {
+    // Allocate for retained data.
+    const sb = Buffer.allocUnsafeSlow(10);
+
+    // Copy the data into the new allocation.
+    data.copy(sb, 0, 0, 10);
+
+    store.push(sb);
+  }
+});
+```
+
+A `TypeError` will be thrown if `size` is not a number.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `size` | `number` | The desired length of the new `Buffer`. |
 
 ###### Returns
 
@@ -696,11 +1790,70 @@ If not provided, {encoding} defaults to 'utf8'.
 
 [`Buffer`](#buffer)
 
+##### isBuffer()
+
+> **isBuffer**(`obj`: `any`): `obj is Buffer`
+
+Returns `true` if `obj` is a `Buffer`, `false` otherwise.
+
+```js
+import { Buffer } from 'buffer';
+
+Buffer.isBuffer(Buffer.alloc(10)); // true
+Buffer.isBuffer(Buffer.from('foo')); // true
+Buffer.isBuffer('a string'); // false
+Buffer.isBuffer([]); // false
+Buffer.isBuffer(new Uint8Array(1024)); // false
+```
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `any` |
+
+###### Returns
+
+`obj is Buffer`
+
+##### isEncoding()
+
+> **isEncoding**(`encoding`: `string`): `encoding is BufferEncoding`
+
+Returns `true` if `encoding` is the name of a supported character encoding,
+or `false` otherwise.
+
+```js
+import { Buffer } from 'buffer';
+
+console.log(Buffer.isEncoding('utf8'));
+// Prints: true
+
+console.log(Buffer.isEncoding('hex'));
+// Prints: true
+
+console.log(Buffer.isEncoding('utf/8'));
+// Prints: false
+
+console.log(Buffer.isEncoding(''));
+// Prints: false
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `encoding` | `string` | A character encoding name to check. |
+
+###### Returns
+
+`encoding is BufferEncoding`
+
 ## Type Aliases
 
 ### BufferEncoding
 
-> **BufferEncoding** = `"hex"` \| `"base64"` \| `"utf-8"` \| `"utf8"` \| `"unicode-1-1-utf8"` \| `"utf-16le"` \| `"utf16le"` \| `"utf-16"` \| `"utf16"` \| `"utf-16be"` \| `"utf16be"` \| `"windows-1252"` \| `"ansi_x3.4-1968"` \| `"ascii"` \| `"cp1252"` \| `"cp819"` \| `"csisolatin1"` \| `"ibm819"` \| `"iso-8859-1"` \| `"iso-ir-100"` \| `"iso8859-1"` \| `"iso88591"` \| `"iso_8859-1"` \| `"iso_8859-1:1987"` \| `"l1"` \| `"latin1"` \| `"us-ascii"` \| `"x-cp1252"`
+> **BufferEncoding** = `"hex"` \| `"base64"` \| `"utf-8"` \| `"utf8"` \| `"unicode-1-1-utf8"` \| `"ucs2"` \| `"ucs-2"` \| `"utf-16le"` \| `"utf16le"` \| `"utf-16"` \| `"utf16"` \| `"utf-16be"` \| `"utf16be"` \| `"windows-1252"` \| `"ansi_x3.4-1968"` \| `"ascii"` \| `"cp1252"` \| `"cp819"` \| `"csisolatin1"` \| `"ibm819"` \| `"iso-8859-1"` \| `"iso-ir-100"` \| `"iso8859-1"` \| `"iso88591"` \| `"iso_8859-1"` \| `"iso_8859-1:1987"` \| `"l1"` \| `"latin1"` \| `"us-ascii"` \| `"x-cp1252"`
 
 ***
 

@@ -108,37 +108,3 @@ Information on the current page of paginated data.
 ##### startCursor
 
 > **startCursor**: [`Cursor`](shared.md#cursor)
-
-***
-
-### RequestSendOptions
-
-> **RequestSendOptions** = `object`
-
-#### Properties
-
-##### save?
-
-> `optional` **save**: `boolean`
-
-If true, the request and response will be saved to the database
-and the user will see them in the Search tab.
-
-If you do not save, the request and response IDs will be set to 0.
-
-###### Default
-
-```ts
-true
-```
-
-##### timeouts?
-
-> `optional` **timeouts**: [`RequestSendTimeouts`](requests.md#requestsendtimeouts) \| `number`
-
-The timeouts to use for sending a request and receiving a response.
-
-If a number is provided, it will be used as the global timeout and
-the other timeouts will be set to infinity.
-
-See the [RequestSendTimeouts](requests.md#requestsendtimeouts) for the default values.

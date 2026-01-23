@@ -1,5 +1,19 @@
 # Projects
 
+### ProjectsPageContext
+
+> **ProjectsPageContext** = `object`
+
+Projects page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Projects"`
+
+***
+
 ### ProjectsSDK
 
 > **ProjectsSDK** = `object`

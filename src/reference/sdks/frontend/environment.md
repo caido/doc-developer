@@ -1,5 +1,23 @@
 # Environment
 
+### EnvironmentPageContext
+
+> **EnvironmentPageContext** = `object`
+
+Environment page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Environment"`
+
+##### selection
+
+> **selection**: [`Selection`](utils.md#selection)\<[`ID`](utils.md#id)\>
+
+***
+
 ### EnvironmentSDK
 
 > **EnvironmentSDK** = `object`

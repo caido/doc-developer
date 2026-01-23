@@ -42,6 +42,12 @@ The SDK for the GraphQL service.
 
 The SDK for the HostedFile service.
 
+##### net
+
+> **net**: [`NetSDK`](net.md#netsdk)
+
+The SDK for the Net service.
+
 ##### projects
 
 > **projects**: [`ProjectsSDK`](projects.md#projectssdk)
@@ -113,6 +119,7 @@ export function run(input, sdk) {
 - [Environment](environment.md)
 - [GraphQL](graphql.md)
 - [HostedFile](hostedfile.md)
+- [Net](net.md)
 - [Other](other.md)
 - [Runtime](runtime.md)
 - [Scope](scope.md)

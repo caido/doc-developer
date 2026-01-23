@@ -174,6 +174,18 @@ Get the host of the request.
 
 `string`
 
+##### getInfo()
+
+> **getInfo**(): [`ConnectionInfo`](net.md#connectioninfo)
+
+Get the connection information of the request.
+
+###### Returns
+
+[`ConnectionInfo`](net.md#connectioninfo)
+
+The connection information.
+
 ##### getMethod()
 
 ###### Call Signature
@@ -313,6 +325,16 @@ Get if the request uses TLS (HTTPS).
 ###### Returns
 
 `boolean`
+
+##### getUrl()
+
+> **getUrl**(): `string`
+
+The full URL of the request.
+
+###### Returns
+
+`string`
 
 ##### removeHeader()
 
@@ -610,6 +632,18 @@ Get the host of the request.
 
 `string`
 
+##### getInfo()
+
+> **getInfo**(): [`ConnectionInfo`](net.md#connectioninfo)
+
+Get the connection information of the request.
+
+###### Returns
+
+[`ConnectionInfo`](net.md#connectioninfo)
+
+The connection information.
+
 ##### getPort()
 
 > **getPort**(): `number`
@@ -630,7 +664,7 @@ Get the raw bytes of the request.
 
 `Uint8Array`
 
-##### getSpec()
+##### ~~getSpec()~~
 
 > **getSpec**(): [`RequestSpec`](#requestspec)
 
@@ -639,6 +673,10 @@ This methods converts the [RequestSpecRaw](#requestspecraw) to a [RequestSpec](#
 ###### Returns
 
 [`RequestSpec`](#requestspec)
+
+###### Deprecated
+
+Use `toSpec` instead.
 
 ###### Throws
 
@@ -725,6 +763,24 @@ Set if the request uses TLS (HTTPS).
 ###### Returns
 
 `void`
+
+##### toSpec()
+
+> **toSpec**(): [`RequestSpec`](#requestspec)
+
+This methods converts the [RequestSpecRaw](#requestspecraw) to a [RequestSpec](#requestspec).
+
+###### Returns
+
+[`RequestSpec`](#requestspec)
+
+###### Throws
+
+If the bytes are not a valid HTTP request.
+
+###### See
+
+[RequestSpec.parse](#parse)
 
 ***
 
@@ -1063,6 +1119,87 @@ An item in a connection of requests.
 
 ***
 
+### RequestSendOptions
+
+> **RequestSendOptions** = `object`
+
+Options for sending a request.
+
+#### Properties
+
+##### connection?
+
+> `optional` **connection**: [`Connection`](net.md#connection)
+
+The [Connection](net.md#connection) to use for the request.
+
+If provided, the request will be sent through the connection.
+
+If not provided, the engine will open a new connection to the target.
+
+###### Default
+
+```ts
+undefined
+```
+
+##### plugins?
+
+> `optional` **plugins**: `boolean`
+
+If true, the request will be sent through the upstream plugins.
+
+It defaults to to true most of the time except when called from
+a `onUpstream` callback.
+
+###### Default
+
+```ts
+true
+```
+
+##### save?
+
+> `optional` **save**: `boolean`
+
+If true, the request and response will be saved to the database
+and the user will see them in the Search tab.
+
+If you do not save, the request and response IDs will be set to 0.
+
+###### Default
+
+```ts
+true
+```
+
+##### timeouts?
+
+> `optional` **timeouts**: [`RequestSendTimeouts`](#requestsendtimeouts) \| `number`
+
+The timeouts to use for sending a request and receiving a response.
+
+If a number is provided, it will be used as the global timeout and
+the other timeouts will be set to infinity.
+
+See the [RequestSendTimeouts](#requestsendtimeouts) for the default values.
+
+***
+
+### RequestSendPayload
+
+> **RequestSendPayload** = [`RequestResponse`](#requestresponse) & `object`
+
+A saved Request and Response pair with the connection used to send the request.
+
+#### Type Declaration
+
+##### connection
+
+> **connection**: [`Connection`](net.md#connection)
+
+***
+
 ### RequestSendTimeouts
 
 > **RequestSendTimeouts** = `object`
@@ -1391,7 +1528,7 @@ sdk.console.log(`ID: ${page.items[1].request.getId()}`);
 
 ##### send()
 
-> **send**(`request`: [`RequestSpec`](#requestspec) \| [`RequestSpecRaw`](#requestspecraw), `options?`: [`RequestSendOptions`](other.md#requestsendoptions)): `Promise`\<[`RequestResponse`](#requestresponse)\>
+> **send**(`request`: [`RequestSpec`](#requestspec) \| [`RequestSpecRaw`](#requestspecraw), `options?`: [`RequestSendOptions`](#requestsendoptions)): `Promise`\<[`RequestSendPayload`](#requestsendpayload)\>
 
 Sends an HTTP request, either a [RequestSpec](#requestspec) or [RequestSpecRaw](#requestspecraw).
 
@@ -1402,11 +1539,11 @@ This respects the upstream proxy settings.
 | Parameter | Type |
 | ------ | ------ |
 | `request` | [`RequestSpec`](#requestspec) \| [`RequestSpecRaw`](#requestspecraw) |
-| `options?` | [`RequestSendOptions`](other.md#requestsendoptions) |
+| `options?` | [`RequestSendOptions`](#requestsendoptions) |
 
 ###### Returns
 
-`Promise`\<[`RequestResponse`](#requestresponse)\>
+`Promise`\<[`RequestSendPayload`](#requestsendpayload)\>
 
 ###### Throws
 

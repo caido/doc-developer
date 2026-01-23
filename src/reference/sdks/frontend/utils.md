@@ -1,5 +1,24 @@
 # Utils
 
+### AddIndicatorOptions
+
+> **AddIndicatorOptions** = `object`
+
+Visual indicator displayed next to a item label in a tree component.
+Includes an icon and an associated description.
+
+#### Properties
+
+##### description
+
+> **description**: `string`
+
+##### icon
+
+> **icon**: [`Icon`](#icon)
+
+***
+
 ### As
 
 > **As**\<`TType`\> = `object`
@@ -96,6 +115,24 @@ A unique Caido identifier per type.
 
 ***
 
+### Indicator
+
+> **Indicator** = `object`
+
+Providing operations that can be performed on a item indicator.
+
+#### Properties
+
+##### remove()
+
+> **remove**: () => `void`
+
+###### Returns
+
+`void`
+
+***
+
 ### ListenerHandle
 
 > **ListenerHandle** = `object`
@@ -141,3 +178,18 @@ Utility type for converting endpoint return types to promises.
 | Type Parameter |
 | ------ |
 | `T` *extends* (...`args`: `unknown`[]) => `unknown` |
+
+***
+
+### Selection
+
+> **Selection**\<`TId`\> = \{ `kind`: `"Empty"`; \} \| \{ `kind`: `"Selected"`; `main`: `TId`; `secondary`: `TId`[]; \}
+
+Generic selection type with main and secondary items.
+Main represents the primary selected item, secondary represents additional selected items.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TId` |

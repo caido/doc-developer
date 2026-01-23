@@ -12,7 +12,6 @@
 | [llrt/abort](llrt/abort.md) | - |
 | [llrt/buffer](llrt/buffer.md) | - |
 | [llrt/child\_process](llrt/child_process.md) | - |
-| [llrt/crypto](llrt/crypto.md) | - |
 | [llrt/dom-events](llrt/dom-events.md) | - |
 | [llrt/fs](llrt/fs/index.md) | - |
 | [llrt/globals](llrt/globals/index.md) | - |

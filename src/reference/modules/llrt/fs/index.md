@@ -937,9 +937,29 @@ Synchronously removes files and directories (modeled on the standard POSIX `rm` 
 
 ***
 
+### symlinkSync()
+
+> **symlinkSync**(`target`: `string`, `path`: `string`, `type?`: `"dir"` \| `"file"` \| `"junction"` \| `null`): `void`
+
+Synchronous symlink(2) - Create a new symbolic link to an existing file.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `target` | `string` | A path to an existing file. If a URL is provided, it must use the `file:` protocol. |
+| `path` | `string` | A path to the new symlink. If a URL is provided, it must use the `file:` protocol. |
+| `type?` | `"dir"` \| `"file"` \| `"junction"` \| `null` |  |
+
+#### Returns
+
+`void`
+
+***
+
 ### writeFileSync()
 
-> **writeFileSync**(`file`: `string`, `data`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer)): `void`
+> **writeFileSync**(`file`: `string`, `data`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer), `options?`: `object`): `void`
 
 Returns `undefined`.
 
@@ -952,6 +972,8 @@ this API: [promises.writeFile](fs/promises.md#writefile-2).
 | ------ | ------ | ------ |
 | `file` | `string` | A path to a file. |
 | `data` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) | - |
+| `options?` | \{ `mode?`: `number`; \} | - |
+| `options.mode?` | `number` | - |
 
 #### Returns
 
