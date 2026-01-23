@@ -133,6 +133,46 @@ const handler = sdk.replay.onCurrentSessionChange((event) => {
 handler.stop();
 ```
 
+## Adding Indicators to Sessions
+
+Indicators are visual badges displayed next to session names in the collections tree. They're useful for highlighting important sessions or showing status information.
+
+### Adding a Session Indicator
+
+```ts
+const indicator = sdk.replay.addSessionIndicator(sessionId, {
+  icon: "fas fa-exclamation-triangle",
+  description: "Security warning",
+});
+```
+
+The `addSessionIndicator` method returns a handle object with a `remove` method to remove the indicator later:
+
+```ts
+// Later, remove the indicator
+indicator.remove();
+```
+
+### Indicator Options
+
+- `icon` - Font Awesome icon class (e.g., `"fas fa-check"`, `"fas fa-warning"`)
+- `description` - Tooltip text shown on hover
+
+## Adding Response View Modes
+
+You can add custom response view modes to the Replay page:
+
+```ts
+sdk.replay.addResponseViewMode({
+  label: "My Custom Response View",
+  view: {
+    component: MyResponseComponent,
+  },
+});
+```
+
+For more information on creating response view modes, see the [Add View Modes](/guides/view_modes.md) guide.
+
 ::: info
 Sessions and collections are persisted across Caido restarts, so programmatically created items will remain available.
 :::

@@ -8,6 +8,8 @@ Custom view modes are great for domain-specific request formats or when you need
 
 ## Registering a View Mode
 
+### Request View Modes
+
 Call `addRequestViewMode()` on the appropriate SDK method for the page where you want the view mode to appear:
 
 - HTTP History: `sdk.httpHistory.addRequestViewMode()`
@@ -18,8 +20,20 @@ Call `addRequestViewMode()` on the appropriate SDK method for the page where you
 - Intercept: `sdk.intercept.addRequestViewMode()`
 - Findings: `sdk.findings.addRequestViewMode()`
 
+### Response View Modes
+
+Response view modes are also available on pages that display responses. Call `addResponseViewMode()` on the appropriate SDK method:
+
+- HTTP History: `sdk.httpHistory.addResponseViewMode()`
+- Replay: `sdk.replay.addResponseViewMode()`
+- Search: `sdk.search.addResponseViewMode()`
+- Sitemap: `sdk.sitemap.addResponseViewMode()`
+- Automate: `sdk.automate.addResponseViewMode()`
+- Intercept: `sdk.intercept.addResponseViewMode()`
+- Findings: `sdk.findings.addResponseViewMode()`
+
 ::: info
-View modes are available on all pages that display requests. Consider adding your view mode to multiple pages if it's useful across different contexts.
+View modes are available on all pages that display requests and responses. Consider adding your view mode to multiple pages if it's useful across different contexts.
 :::
 
 ```ts
@@ -35,7 +49,9 @@ The `label` is the display name shown in the view mode selector. The `view.compo
 
 ## Using Component Props
 
-View mode components automatically receive these props—you don't need to pass them when registering:
+### Request View Mode Props
+
+Request view mode components automatically receive these props—you don't need to pass them when registering:
 
 - `sdk` - The Caido SDK instance
 - `request` - The request object of type `RequestFull`
@@ -68,6 +84,26 @@ defineProps<{
   sdk: Caido;
   request: RequestFull;
   requestDraft: RequestDraft;
+}>();
+</script>
+```
+
+### Response View Mode Props
+
+Response view mode components automatically receive these props:
+
+- `sdk` - The Caido SDK instance
+- `response` - The response object of type `ResponseFull`
+- `request` - The associated request object of type `RequestMeta` or `RequestFull`
+
+```vue
+<script setup lang="ts">
+import type { Caido, ResponseFull, RequestFull } from "@caido/sdk-frontend";
+
+defineProps<{
+  sdk: Caido;
+  response: ResponseFull;
+  request: RequestFull;
 }>();
 </script>
 ```
@@ -196,6 +232,85 @@ export const init = (sdk: CaidoSDK) => {
     label: "Editable Body",
     view: {
       component: EditableRequestView,
+    },
+  });
+};
+```
+
+### Response Formatter View
+
+A response view mode that formats response bodies as pretty-printed JSON:
+
+```vue
+<script setup lang="ts">
+import { computed } from "vue";
+import type { Caido, ResponseFull, RequestFull } from "@caido/sdk-frontend";
+
+const props = defineProps<{
+  sdk: Caido;
+  response: ResponseFull;
+  request: RequestFull;
+}>();
+
+const formattedJson = computed(() => {
+  try {
+    const body = props.response.body || "{}";
+    const json = JSON.parse(body);
+    return JSON.stringify(json, null, 2);
+  } catch {
+    return "";
+  }
+});
+
+const error = computed(() => {
+  try {
+    const body = props.response.body || "{}";
+    JSON.parse(body);
+    return null;
+  } catch {
+    return "Invalid JSON";
+  }
+});
+</script>
+
+<template>
+  <div v-if="error" class="text-red-500 p-4">
+    {{ error }}
+  </div>
+  <pre v-else class="p-4 bg-gray-100 rounded overflow-auto">
+    {{ formattedJson }}
+  </pre>
+</template>
+```
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+import ResponseJSONFormatterView from "./ResponseJSONFormatterView.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  // Add to HTTP History
+  sdk.httpHistory.addResponseViewMode({
+    label: "JSON Formatter",
+    view: {
+      component: ResponseJSONFormatterView,
+    },
+  });
+
+  // Add to Replay
+  sdk.replay.addResponseViewMode({
+    label: "JSON Formatter",
+    view: {
+      component: ResponseJSONFormatterView,
+    },
+  });
+
+  // Add to other pages as needed
+  sdk.search.addResponseViewMode({
+    label: "JSON Formatter",
+    view: {
+      component: ResponseJSONFormatterView,
     },
   });
 };

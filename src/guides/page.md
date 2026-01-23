@@ -190,6 +190,74 @@ The `init` function creates the Vue app, mounts it to a root element, and regist
 
 <img alt="Add page SKD." src="/_images/add_page_sdk.png" center/>
 
+## Getting and Monitoring Context
+
+The Window SDK provides methods to get and monitor the global application context, including the current page context.
+
+### Getting Current Context
+
+To get the current global context:
+
+```ts
+const context = sdk.window.getContext();
+```
+
+The context includes:
+- `page` - The current page context (if on a specific page), which varies by page type
+
+### Monitoring Context Changes
+
+To listen for changes to the global context:
+
+```ts
+const handle = sdk.window.onContextChange((context) => {
+  if (context.page) {
+    console.log("Current page:", context.page.kind);
+    
+    // Access page-specific context
+    if (context.page.kind === "Replay") {
+      const replayContext = context.page;
+      console.log("Replay selection:", replayContext.selection);
+    }
+  }
+});
+
+// Later, stop listening
+handle.stop();
+```
+
+### Example: Context-Aware Plugin
+
+This example creates a plugin that reacts to context changes:
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  sdk.window.onContextChange((context) => {
+    if (context.page) {
+      switch (context.page.kind) {
+        case "Replay":
+          sdk.log.info("User is on the Replay page");
+          break;
+        case "HTTPHistory":
+          sdk.log.info("User is on the HTTP History page");
+          break;
+        case "Sitemap":
+          sdk.log.info("User is on the Sitemap page");
+          break;
+        default:
+          sdk.log.info(`User is on the ${context.page.kind} page`);
+      }
+    } else {
+      sdk.log.info("User is not on a specific page");
+    }
+  });
+};
+```
+
 ## Interacting with Windows and Editors
 
 Used to interact with text within the application environment, allowing text selection, replacement, read permission designations, focusing and editor related messaging.

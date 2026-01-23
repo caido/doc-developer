@@ -295,6 +295,69 @@ export const init = (sdk: CaidoSDK) => {
 };
 ```
 
+## Adding Indicators to Rules
+
+Indicators are visual badges displayed next to rule names in the collections tree. They're useful for highlighting important rules or showing status information.
+
+### Adding a Rule Indicator
+
+```ts
+const indicator = sdk.matchReplace.addRuleIndicator(ruleId, {
+  icon: "fas fa-exclamation-triangle",
+  description: "Security warning",
+});
+```
+
+The `addRuleIndicator` method returns a handle object with a `remove` method to remove the indicator later:
+
+```ts
+// Later, remove the indicator
+indicator.remove();
+```
+
+### Indicator Options
+
+- `icon` - Font Awesome icon class (e.g., `"fas fa-check"`, `"fas fa-warning"`)
+- `description` - Tooltip text shown on hover
+
+### Example: Rule Status Indicators
+
+This example adds indicators to rules based on their enabled status:
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const updateRuleIndicators = () => {
+    const rules = sdk.matchReplace.getRules();
+    
+    rules.forEach((rule) => {
+      if (rule.isEnabled) {
+        sdk.matchReplace.addRuleIndicator(rule.id, {
+          icon: "fas fa-check-circle",
+          description: "Rule is enabled",
+        });
+      } else {
+        sdk.matchReplace.addRuleIndicator(rule.id, {
+          icon: "fas fa-circle",
+          description: "Rule is disabled",
+        });
+      }
+    });
+  };
+
+  // Update indicators when rules change
+  sdk.matchReplace.onCurrentRuleChange(() => {
+    updateRuleIndicators();
+  });
+
+  // Initial update
+  updateRuleIndicators();
+};
+```
+
 ### Adding Custom Actions to Match and Replace Slots
 
 This example adds a custom button to the rule update header that duplicates the current rule when clicked.

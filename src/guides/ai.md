@@ -12,6 +12,34 @@ const provider = sdk.ai.createProvider();
 
 This returns an `AIProvider` instance that can be used with the `ai` library.
 
+## Getting Upstream Providers
+
+To get information about available AI upstream providers and their configuration status:
+
+```ts
+const providers = sdk.ai.getUpstreamProviders();
+```
+
+This returns an array of `AIUpstreamProvider` objects, each containing:
+
+- `id` - The provider ID (`"openai"`, `"anthropic"`, `"google"`, or `"openrouter"`)
+- `status` - The configuration status (`"Ready"` or `"Missing"`)
+
+This is useful for checking which AI providers are configured before attempting to use them:
+
+```ts
+const providers = sdk.ai.getUpstreamProviders();
+const openaiProvider = providers.find((p) => p.id === "openai");
+
+if (openaiProvider?.status === "Ready") {
+  // OpenAI is configured and ready to use
+  const provider = sdk.ai.createProvider();
+  // Use the provider...
+} else {
+  sdk.window.showToast("OpenAI is not configured", { variant: "warning" });
+}
+```
+
 ::: tip
 The AI provider is compatible with all features of the `ai` library, including text generation, streaming, tool calling, and more. Refer to the [ai SDK documentation](https://ai-sdk.dev/) for advanced usage.
 :::

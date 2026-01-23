@@ -179,3 +179,72 @@ export const init = async (sdk: FrontendSDK) => {
 ## The Result
 
 <img alt="Event output." src="/_images/view_file_frontend.png" center/>
+
+## Listening to File Events
+
+You can listen for events when hosted files are uploaded, updated, or deleted:
+
+### Listening for File Uploads
+
+```ts
+const handle = sdk.files.onUploadedHostedFile((file) => {
+  sdk.log.info(`File uploaded: ${file.name} (${file.size} bytes)`);
+  sdk.window.showToast(`File "${file.name}" uploaded`, { variant: "success" });
+});
+
+// Later, stop listening
+handle.stop();
+```
+
+### Listening for File Updates
+
+```ts
+const handle = sdk.files.onUpdatedHostedFile((file) => {
+  sdk.log.info(`File updated: ${file.name}`);
+  sdk.window.showToast(`File "${file.name}" updated`, { variant: "info" });
+});
+
+// Later, stop listening
+handle.stop();
+```
+
+### Listening for File Deletions
+
+```ts
+const handle = sdk.files.onDeletedHostedFile((fileId) => {
+  sdk.log.info(`File deleted: ${fileId}`);
+  sdk.window.showToast("File deleted", { variant: "info" });
+});
+
+// Later, stop listening
+handle.stop();
+```
+
+## Example: File Monitor Plugin
+
+This example creates a plugin that monitors all file operations and logs them:
+
+```ts
+import type { Caido } from "@caido/sdk-frontend";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  // Monitor file uploads
+  sdk.files.onUploadedHostedFile((file) => {
+    sdk.log.info(`[File Monitor] Uploaded: ${file.name} (${file.path})`);
+  });
+
+  // Monitor file updates
+  sdk.files.onUpdatedHostedFile((file) => {
+    sdk.log.info(`[File Monitor] Updated: ${file.name} (${file.path})`);
+  });
+
+  // Monitor file deletions
+  sdk.files.onDeletedHostedFile((fileId) => {
+    sdk.log.info(`[File Monitor] Deleted: ${fileId}`);
+  });
+
+  sdk.log.info("File monitor plugin initialized");
+};
+```
