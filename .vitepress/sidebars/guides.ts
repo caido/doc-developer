@@ -76,6 +76,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             text: "Customize the Command Palette",
             link: "/guides/command_palette_advanced",
           },
+          {
+            text: "Custom Settings Pages",
+            link: "/guides/settings",
+          },
         ],
       },
       {
@@ -105,6 +109,14 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
           {
             text: "Manage Replay Sessions",
             link: "/guides/replay",
+          },
+          {
+            text: "Manage Automate Sessions",
+            link: "/guides/automate",
+          },
+          {
+            text: "Manage Sitemap",
+            link: "/guides/sitemap",
           },
           {
             text: "Manage Match and Replace",
