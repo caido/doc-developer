@@ -52,6 +52,64 @@ The input for the HTTP Javascript Nodes
 
 ***
 
+### NodeInput
+
+> **NodeInput** = `object`
+
+The input for the JavaScript V2+ Nodes.
+
+#### Properties
+
+##### data?
+
+> `optional` **data**: [`Bytes`](shared.md#bytes)
+
+##### extra?
+
+> `optional` **extra**: `Record`\<`string`, `any`\>
+
+***
+
+### NodeInputHTTP
+
+> **NodeInputHTTP** = `object`
+
+The input for HTTP JavaScript Nodes.
+
+#### Properties
+
+##### extra?
+
+> `optional` **extra**: `Record`\<`string`, `any`\>
+
+##### request?
+
+> `optional` **request**: [`Request`](requests.md#request)
+
+##### response?
+
+> `optional` **response**: [`Response`](requests.md#response)
+
+***
+
+### NodeResult
+
+> **NodeResult** = `object`
+
+The result for the JavaScript V2+ Nodes.
+
+#### Properties
+
+##### data?
+
+> `optional` **data**: [`Bytes`](shared.md#bytes)
+
+##### extra?
+
+> `optional` **extra**: `Record`\<`string`, `any`\>
+
+***
+
 ### ~~PassiveInput~~
 
 > **PassiveInput** = [`HttpInput`](#httpinput)

@@ -155,6 +155,12 @@ Utilities to interact with scopes
 
 Utilities to interact with the Search page.
 
+##### settings
+
+> **settings**: [`SettingsSDK`](settings.md#settingssdk)
+
+Utilities to interact with the settings page.
+
 ##### shortcuts
 
 > **shortcuts**: [`ShortcutsSDK`](shortcuts.md#shortcutssdk)
@@ -216,9 +222,13 @@ Utilities to interact with workflows.
 - [Search](search.md)
 - [Files](files.md)
 - [AI](ai.md)
+- [Assistant](assistant.md)
 - [Automate](automate.md)
+- [Backups](backups.md)
+- [Certificate](certificate.md)
 - [Editor](editor.md)
 - [Environment](environment.md)
+- [Exports](exports.md)
 - [Filter](filter.md)
 - [Filters](filters.md)
 - [Footer](footer.md)
@@ -229,8 +239,11 @@ Utilities to interact with workflows.
 - [Other](other.md)
 - [Projects](projects.md)
 - [Request](request.md)
+- [Response](response.md)
 - [Runtime](runtime.md)
+- [Settings](settings.md)
 - [Sitemap](sitemap.md)
 - [Slots](slots.md)
 - [Utils](utils.md)
+- [Websockets](websockets.md)
 - [Workflows](workflows.md)

@@ -105,6 +105,24 @@ The ID of the session this entry belongs to.
 
 ***
 
+### ReplayPageContext
+
+> **ReplayPageContext** = `object`
+
+Replay page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Replay"`
+
+##### selection
+
+> **selection**: [`Selection`](utils.md#selection)\<[`ReplaySessionId`](#replaysessionid)\>
+
+***
+
 ### ReplaySDK
 
 > **ReplaySDK** = `object`
@@ -144,6 +162,54 @@ Add a custom view mode for requests.
 ###### Returns
 
 `void`
+
+##### addResponseViewMode()
+
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+
+Add a custom response view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
+##### addSessionIndicator()
+
+> **addSessionIndicator**: (`sessionId`: [`ID`](utils.md#id), `indicator`: [`AddIndicatorOptions`](utils.md#addindicatoroptions)) => [`Indicator`](utils.md#indicator)
+
+Add an indicator to a replay session.
+Indicators are displayed next to the session name in the collections tree.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `sessionId` | [`ID`](utils.md#id) | The ID of the session to add the indicator to. |
+| `indicator` | [`AddIndicatorOptions`](utils.md#addindicatoroptions) | The indicator configuration. |
+
+###### Returns
+
+[`Indicator`](utils.md#indicator)
+
+A handle object with a `remove` method to remove the indicator.
+
+###### Example
+
+```ts
+const indicator = sdk.replay.addSessionIndicator(sessionId, {
+  icon: "fas fa-exclamation-triangle",
+  description: "Security warning",
+});
+
+// Later, remove the indicator
+indicator.remove();
+```
 
 ##### addToSlot
 
@@ -620,6 +686,20 @@ Event fired when a replay session is created.
 > **session**: [`ReplaySession`](#replaysession)
 
 The newly created replay session.
+
+***
+
+### ReplaySessionId
+
+> **ReplaySessionId** = `string` & `object`
+
+A unique replay session identifier.
+
+#### Type Declaration
+
+##### \_\_replaySessionId?
+
+> `optional` **\_\_replaySessionId**: `never`
 
 ***
 

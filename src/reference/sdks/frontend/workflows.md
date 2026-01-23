@@ -158,3 +158,17 @@ Register a callback to be called when a workflow is updated.
 ###### Returns
 
 [`ListenerHandle`](utils.md#listenerhandle)
+
+***
+
+### WorkflowsPageContext
+
+> **WorkflowsPageContext** = `object`
+
+Workflows page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Workflows"`

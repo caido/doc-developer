@@ -903,9 +903,38 @@ Fulfills with the {fs.Stats} object for the given `path`.
 
 ***
 
+### symlink()
+
+> **symlink**(`target`: `string`, `path`: `string`, `type?`: `"dir"` \| `"file"` \| `"junction"` \| `null`): `Promise`\<`void`\>
+
+Creates a symbolic link.
+
+The `type` argument is only used on Windows platforms and can be one of `'dir'`, `'file'`, or `'junction'`. If the `type` argument is not a string, LLRT will
+autodetect `target` type and use `'file'` or `'dir'`. If the `target` does not
+exist, `'file'` will be used. Windows junction points require the destination
+path to be absolute. When using `'junction'`, the `target` argument will
+automatically be normalized to absolute path. Junction points on NTFS volumes
+can only point to directories.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `target` | `string` | - |
+| `path` | `string` | - |
+| `type?` | `"dir"` \| `"file"` \| `"junction"` \| `null` |  |
+
+#### Returns
+
+`Promise`\<`void`\>
+
+Fulfills with `undefined` upon success.
+
+***
+
 ### writeFile()
 
-> **writeFile**(`file`: `string`, `data`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer)): `Promise`\<`void`\>
+> **writeFile**(`file`: `string`, `data`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer), `options?`: `object`): `Promise`\<`void`\>
 
 Asynchronously writes data to a file, replacing the file if it already exists.
 
@@ -924,6 +953,8 @@ passed to it.
 | ------ | ------ | ------ |
 | `file` | `string` | filename or `FileHandle` |
 | `data` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer) | - |
+| `options?` | \{ `mode?`: `number`; \} | - |
+| `options.mode?` | `number` | - |
 
 #### Returns
 

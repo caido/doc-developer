@@ -150,7 +150,7 @@ Available route identifiers in Caido.
 
 ##### MatchReplace
 
-> `readonly` **MatchReplace**: `"Tamper"`
+> `readonly` **MatchReplace**: `"MatchReplace"`
 
 ##### Plugins
 

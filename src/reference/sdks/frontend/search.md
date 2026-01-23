@@ -1,5 +1,19 @@
 # Search
 
+### SearchPageContext
+
+> **SearchPageContext** = `object`
+
+Search page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Search"`
+
+***
+
 ### SearchSDK
 
 > **SearchSDK** = `object`
@@ -35,6 +49,22 @@ Add a custom request view mode.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+
+###### Returns
+
+`void`
+
+##### addResponseViewMode()
+
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+
+Add a custom response view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
 
 ###### Returns
 

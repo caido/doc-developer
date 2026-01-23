@@ -1,5 +1,23 @@
 # HTTP History
 
+### HTTPHistoryPageContext
+
+> **HTTPHistoryPageContext** = `object`
+
+HTTP history page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"HTTPHistory"`
+
+##### selection
+
+> **selection**: [`Selection`](utils.md#selection)\<[`ID`](utils.md#id)\>
+
+***
+
 ### HTTPHistorySDK
 
 > **HTTPHistorySDK** = `object`
@@ -51,6 +69,22 @@ Add an extension to the response editor.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `extension` | `Extension` | The extension to add. |
+
+###### Returns
+
+`void`
+
+##### addResponseViewMode()
+
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+
+Add a custom response view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
 
 ###### Returns
 

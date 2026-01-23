@@ -50,6 +50,24 @@ The name of the scope.
 
 ***
 
+### ScopePageContext
+
+> **ScopePageContext** = `object`
+
+Scope page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Scope"`
+
+##### selection
+
+> **selection**: [`Selection`](utils.md#selection)\<[`ID`](utils.md#id)\>
+
+***
+
 ### ScopesSDK
 
 > **ScopesSDK** = `object`

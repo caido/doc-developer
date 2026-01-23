@@ -65,6 +65,12 @@ The SDK for the HostedFile service.
 
 The SDK for metadata information about the plugin.
 
+##### net
+
+> **net**: [`NetSDK`](net.md#netsdk)
+
+The SDK for the Net service.
+
 ##### projects
 
 > **projects**: [`ProjectsSDK`](projects.md#projectssdk)
@@ -108,6 +114,7 @@ The SDK for the Scope service.
 - [Environment](environment.md)
 - [GraphQL](graphql.md)
 - [HostedFile](hostedfile.md)
+- [Net](net.md)
 - [Other](other.md)
 - [Runtime](runtime.md)
 - [Scope](scope.md)

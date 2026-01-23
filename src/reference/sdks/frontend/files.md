@@ -76,6 +76,20 @@ The asset file.
 
 ***
 
+### FilesPageContext
+
+> **FilesPageContext** = `object`
+
+Files page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Files"`
+
+***
+
 ### FilesSDK
 
 > **FilesSDK** = `object`

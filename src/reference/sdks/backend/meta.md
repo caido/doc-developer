@@ -31,6 +31,16 @@ You can use this to store data related to your plugin.
 
 `Promise`\<[`Database`](other.md#database)\>
 
+##### id()
+
+> **id**(): `string`
+
+The id of the plugin.
+
+###### Returns
+
+`string`
+
 ##### path()
 
 > **path**(): `string`

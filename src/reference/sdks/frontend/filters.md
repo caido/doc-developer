@@ -51,6 +51,24 @@ The HTTPQL expression of the filter.
 
 ***
 
+### FilterPageContext
+
+> **FilterPageContext** = `object`
+
+Filter page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"Filter"`
+
+##### selection
+
+> **selection**: [`Selection`](utils.md#selection)\<[`ID`](utils.md#id)\>
+
+***
+
 ### FiltersSDK
 
 > **FiltersSDK** = `object`

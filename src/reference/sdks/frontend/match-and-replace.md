@@ -496,6 +496,24 @@ An operation to update the response status code.
 
 ***
 
+### MatchReplacePageContext
+
+> **MatchReplacePageContext** = `object`
+
+Match and Replace page context.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"MatchReplace"`
+
+##### selection
+
+> **selection**: [`Selection`](utils.md#selection)\<[`ID`](utils.md#id)\>
+
+***
+
 ### MatchReplaceReplacer
 
 > **MatchReplaceReplacer** = [`MatchReplaceReplacerTerm`](#matchreplacereplacerterm) \| [`MatchReplaceReplacerWorkflow`](#matchreplacereplacerworkflow)
@@ -596,6 +614,38 @@ The section of the rule.
 Utilities to interact with the Match and Replace page.
 
 #### Properties
+
+##### addRuleIndicator()
+
+> **addRuleIndicator**: (`ruleId`: [`ID`](utils.md#id), `indicator`: [`AddIndicatorOptions`](utils.md#addindicatoroptions)) => [`Indicator`](utils.md#indicator)
+
+Add an indicator to a rule.
+Indicators are displayed next to the session name in the collections tree.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `ruleId` | [`ID`](utils.md#id) | The ID of the rule to add the indicator to. |
+| `indicator` | [`AddIndicatorOptions`](utils.md#addindicatoroptions) | The indicator configuration. |
+
+###### Returns
+
+[`Indicator`](utils.md#indicator)
+
+A handle object with a `remove` method to remove the indicator.
+
+###### Example
+
+```ts
+const indicator = sdk.matchReplace.addRuleIndicator(ruleId, {
+  icon: "fas fa-exclamation-triangle",
+  description: "Security warning",
+});
+
+// Later, remove the indicator
+indicator.remove();
+```
 
 ##### addToSlot
 
