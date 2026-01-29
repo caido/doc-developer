@@ -230,6 +230,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             text: "Send Events to the Frontend",
             link: "/guides/events",
           },
+          {
+            text: "Intercept Requests and Connections",
+            link: "/guides/plugin_upstream",
+          },
         ],
       },
       {
