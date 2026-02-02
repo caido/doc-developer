@@ -21,6 +21,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/team/invitations:
     get:
       tags:
@@ -41,6 +43,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
     post:
       tags:
       - api
@@ -64,6 +68,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/team/invitations/{invitation_id}:
     delete:
       tags:
@@ -100,6 +106,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/team/subscription:
     get:
       tags:
@@ -120,6 +128,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/team/users:
     get:
       tags:
@@ -140,6 +150,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/team/users/{user_id}:
     delete:
       tags:
@@ -176,6 +188,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/user:
     get:
       tags:
@@ -194,6 +208,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
+      - access_token:
+        - profile:read
   /api/v1/user/billing/voucher-claims:
     post:
       tags:
@@ -226,6 +244,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
+      - access_token:
+        - billing:write
   /api/v1/workspace/{workspace_id}:
     get:
       tags:
@@ -257,8 +279,324 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
+  /oauth2/authorize:
+    get:
+      tags:
+      - api
+      summary: Client starts the OAuth2 code authorization flow
+      operationId: authorize
+      parameters:
+      - name: response_type
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: state
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      responses:
+        '302':
+          description: Redirect to consent page or redirect uri
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2ErrorResponse'
+  /oauth2/device/approve:
+    post:
+      tags:
+      - api
+      summary: Approve a device authorization request
+      operationId: device_approve
+      parameters:
+      - name: user_code
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      responses:
+        '200':
+          description: ''
+      security:
+      - pat: []
+  /oauth2/device/authorize:
+    post:
+      tags:
+      - instance
+      - api
+      summary: Client starts the OAuth2 device authorization flow
+      operationId: device_authorize
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeviceAuthorizeInput'
+        required: true
+      responses:
+        '200':
+          description: Created device authorization request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthorizePayload'
+  /oauth2/device/deny:
+    post:
+      tags:
+      - api
+      summary: Deny a device authorization request
+      operationId: device_deny
+      parameters:
+      - name: user_code
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - pat: []
+  /oauth2/device/information:
+    get:
+      tags:
+      - api
+      summary: Retrieve information about a device authorization request
+      operationId: device_information
+      parameters:
+      - name: user_code
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Device authorization request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceInformationPayload'
+      security:
+      - pat: []
+  /oauth2/introspect:
+    post:
+      tags:
+      - api
+      summary: Retrieve meta information about a token
+      operationId: introspect
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/IntrospectInput'
+        required: true
+      responses:
+        '200':
+          description: Returns the meta information surrounding the token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntrospectPayload'
+  /oauth2/register:
+    post:
+      tags:
+      - instance
+      - api
+      summary: Clients registers itself
+      operationId: register_client
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterClientInput'
+        required: true
+      responses:
+        '201':
+          description: Created client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterClientPayload'
+  /oauth2/register/{id}:
+    put:
+      tags:
+      - instance
+      - api
+      summary: Client updates its OAuth2 client when needed (e.g. to request new scopes)
+      operationId: update_client
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateClientInput'
+        required: true
+      responses:
+        '200':
+          description: Updated client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateClientPayload'
+  /oauth2/token:
+    post:
+      tags:
+      - instance
+      - api
+      summary: Client requests OAuth2 tokens
+      operationId: token
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenInput'
+        required: true
+      responses:
+        '200':
+          description: Created token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenPayload'
 components:
   schemas:
+    DeviceAuthorizeInput:
+      type: object
+      required:
+      - client_id
+      - client_secret
+      - scope
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          type: string
+    DeviceAuthorizePayload:
+      type: object
+      required:
+      - device_code
+      - user_code
+      - verification_uri
+      - verification_uri_complete
+      - expires_in
+      - interval
+      properties:
+        device_code:
+          type: string
+        expires_in:
+          type: integer
+          format: int64
+          minimum: 0
+        interval:
+          type: integer
+          format: int64
+          minimum: 0
+        user_code:
+          type: string
+        verification_uri:
+          type: string
+        verification_uri_complete:
+          type: string
+    DeviceInformationPayload:
+      type: object
+      required:
+      - scope
+      - scopes
+      - client
+      properties:
+        client:
+          type: object
+          required:
+          - id
+          - registered_at
+          properties:
+            id:
+              type: string
+            instance:
+              type: object
+              required:
+              - id
+              - name
+              - registered_at
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                registered_at:
+                  type: integer
+                  format: int64
+            registered_at:
+              type: integer
+              format: int64
+        scope:
+          type: string
+          deprecated: true
+        scopes:
+          type: array
+          items:
+            type: object
+            required:
+            - name
+            - requirement
+            properties:
+              name:
+                type: string
+              requirement:
+                $ref: '#/components/schemas/DeviceInformationScopeRequirement'
+    DeviceInformationScopeRequirement:
+      type: string
+      enum:
+      - forbidden
+      - required
+      - optional
     Email:
       type: string
       format: email
@@ -279,6 +617,58 @@ components:
           type: string
     ID:
       type: string
+    IntrospectInput:
+      type: object
+      required:
+      - token
+      properties:
+        client_id:
+          type:
+          - string
+          - 'null'
+        client_secret:
+          type:
+          - string
+          - 'null'
+        token:
+          type: string
+    IntrospectPayload:
+      type: object
+      required:
+      - active
+      properties:
+        active:
+          type: boolean
+        client_id:
+          type: string
+        meta:
+          oneOf:
+          - type: object
+            required:
+            - instance_id
+            - workspace_id
+            - kind
+            properties:
+              instance_id:
+                type: string
+              kind:
+                type: string
+                enum:
+                - instance
+              workspace_id:
+                type: string
+        sub:
+          type: string
+    OAuth2ErrorResponse:
+      type: object
+      required:
+      - error
+      - error_description
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
     Plan:
       type: object
       required:
@@ -291,6 +681,51 @@ components:
         name:
           type: string
         object:
+          type: string
+    RegisterClientInput:
+      type: object
+      required:
+      - scope
+      - grant_types
+      properties:
+        grant_types:
+          type: array
+          items:
+            type: string
+        instance_registration_key:
+          type:
+          - string
+          - 'null'
+        scope:
+          type: string
+    RegisterClientPayload:
+      type: object
+      required:
+      - client_id
+      - client_secret
+      - client_id_issued_at
+      - client_secret_expires_at
+      - grant_types
+      - scope
+      - token_endpoint_auth_method
+      properties:
+        client_id:
+          type: string
+        client_id_issued_at:
+          type: integer
+          format: int64
+        client_secret:
+          type: string
+        client_secret_expires_at:
+          type: integer
+          format: int64
+        grant_types:
+          type: array
+          items:
+            type: string
+        scope:
+          type: string
+        token_endpoint_auth_method:
           type: string
     Team:
       type: object
@@ -461,6 +896,147 @@ components:
     Timestamp:
       type: integer
       format: unix-timestamp
+    TokenInput:
+      oneOf:
+      - type: object
+        title: TokenInputDeviceCode
+        required:
+        - device_code
+        - client_id
+        - client_secret
+        - grant_type
+        properties:
+          client_id:
+            type: string
+          client_secret:
+            type: string
+          device_code:
+            type: string
+          grant_type:
+            type: string
+            enum:
+            - urn:ietf:params:oauth:grant-type:device_code
+      - type: object
+        title: TokenInputRefreshToken
+        required:
+        - refresh_token
+        - client_id
+        - client_secret
+        - grant_type
+        properties:
+          client_id:
+            type: string
+          client_secret:
+            type: string
+          grant_type:
+            type: string
+            enum:
+            - refresh_token
+          refresh_token:
+            type: string
+      - type: object
+        title: TokenInputClientCredentials
+        required:
+        - client_id
+        - client_secret
+        - grant_type
+        properties:
+          client_id:
+            type: string
+          client_secret:
+            type: string
+          grant_type:
+            type: string
+            enum:
+            - client_credentials
+      - type: object
+        title: TokenInputAuthorizationCode
+        required:
+        - code
+        - client_id
+        - client_secret
+        - redirect_uri
+        - grant_type
+        properties:
+          client_id:
+            type: string
+          client_secret:
+            type: string
+          code:
+            type: string
+          grant_type:
+            type: string
+            enum:
+            - authorization_code
+          redirect_uri:
+            type: string
+    TokenPayload:
+      type: object
+      required:
+      - access_token
+      - token_type
+      - expires_in
+      - scope
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+          format: int64
+          minimum: 0
+        refresh_token:
+          type: string
+        scope:
+          type: string
+        token_type:
+          type: string
+    UpdateClientInput:
+      type: object
+      required:
+      - client_id
+      - client_secret
+      - scope
+      - grant_types
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        grant_types:
+          type: array
+          items:
+            type: string
+        scope:
+          type: string
+    UpdateClientPayload:
+      type: object
+      required:
+      - client_id
+      - client_secret
+      - client_id_issued_at
+      - client_secret_expires_at
+      - grant_types
+      - scope
+      - token_endpoint_auth_method
+      properties:
+        client_id:
+          type: string
+        client_id_issued_at:
+          type: integer
+          format: int64
+        client_secret:
+          type: string
+        client_secret_expires_at:
+          type: integer
+          format: int64
+        grant_types:
+          type: array
+          items:
+            type: string
+        scope:
+          type: string
+        token_endpoint_auth_method:
+          type: string
     User:
       type: object
       required:
@@ -505,3 +1081,11 @@ components:
           type: string
         object:
           type: string
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+    pat:
+      type: http
+      scheme: bearer
+      bearerFormat: caido_<token>
