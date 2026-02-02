@@ -28,7 +28,7 @@
     "eslint": "9.28.0",
     "typescript": "5.6.2",
     "vitepress": "1.2.2",
-    "vitepress-openapi": "0.0.3-alpha.83",
+    "vitepress-openapi": "0.1.13",
     "vitepress-plugin-llms": "1.5.1",
     "vue": "3.5.16"
   }

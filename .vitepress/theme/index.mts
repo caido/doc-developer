@@ -6,6 +6,7 @@ import "./custom.css";
 import { data } from "../data/openapi.data.mjs";
 import ProContainer from "../components/Pro.vue";
 import VideoContainer from "../components/Video.vue";
+import OASpecHeader from "../components/OASpecHeader.vue";
 import type { Theme } from "vitepress";
 
 export default {
@@ -13,6 +14,7 @@ export default {
   enhanceApp(ctx) {
     ctx.app.component("ProContainer", ProContainer);
     ctx.app.component("VideoContainer", VideoContainer);
+    ctx.app.component("OASpecHeader", OASpecHeader);
 
     useOpenapi({
       spec: data,
