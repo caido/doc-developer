@@ -1,5 +1,39 @@
 # Environment
 
+### Environment
+
+> **Environment** = `object`
+
+A saved immutable Environment.
+
+#### Properties
+
+##### id
+
+> `readonly` **id**: [`ID`](shared.md#id)
+
+The ID of the environment.
+
+##### name
+
+> `readonly` **name**: `string`
+
+The name of the environment.
+
+##### variables
+
+> `readonly` **variables**: [`EnvironmentVariable`](#environmentvariable)[]
+
+The variables of the environment.
+
+##### version
+
+> `readonly` **version**: `number`
+
+The version of the environment.
+
+***
+
 ### EnvironmentSDK
 
 > **EnvironmentSDK** = `object`
@@ -7,6 +41,70 @@
 The SDK for the Environment service.
 
 #### Methods
+
+##### createEnvironment()
+
+> **createEnvironment**(`input`: [`CreateEnvironmentInput`](other.md#createenvironmentinput)): `Promise`\<[`Environment`](#environment)\>
+
+Create a new environment.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `input` | [`CreateEnvironmentInput`](other.md#createenvironmentinput) | The input for the creation. |
+
+###### Returns
+
+`Promise`\<[`Environment`](#environment)\>
+
+The created environment.
+
+##### deleteEnvironment()
+
+> **deleteEnvironment**(`id`: [`ID`](shared.md#id)): `Promise`\<`void`\>
+
+Delete an environment by its ID.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](shared.md#id) | The ID of the environment. |
+
+###### Returns
+
+`Promise`\<`void`\>
+
+##### getEnvironment()
+
+> **getEnvironment**(`id`: [`ID`](shared.md#id)): `Promise`\<[`Environment`](#environment) \| `undefined`\>
+
+Get an environment by its ID.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](shared.md#id) | The ID of the environment. |
+
+###### Returns
+
+`Promise`\<[`Environment`](#environment) \| `undefined`\>
+
+The environment or undefined if not found.
+
+##### getEnvironments()
+
+> **getEnvironments**(): `Promise`\<[`Environment`](#environment)[]\>
+
+Get all the environments.
+
+###### Returns
+
+`Promise`\<[`Environment`](#environment)[]\>
+
+An array of [Environment](#environment)
 
 ##### getVar()
 
@@ -75,6 +173,40 @@ await sdk.env.setVar({
   value: "my secret value",
   secret: true,
   global: false
+});
+```
+
+##### updateEnvironment()
+
+> **updateEnvironment**(`id`: [`ID`](shared.md#id), `input`: [`UpdateEnvironmentInput`](other.md#updateenvironmentinput)): `Promise`\<[`Environment`](#environment)\>
+
+Update an environment.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | [`ID`](shared.md#id) | The ID of the environment. |
+| `input` | [`UpdateEnvironmentInput`](other.md#updateenvironmentinput) | The input for the update. |
+
+###### Returns
+
+`Promise`\<[`Environment`](#environment)\>
+
+The updated environment.
+
+###### Throws
+
+If the version passed in is not equal to the current version of the environment.
+
+###### Example
+
+```js
+const environment = await sdk.env.getEnvironment(id);
+await sdk.env.updateEnvironment(id, {
+  version: environment.version,
+  name: "new name",
+  variables: [{ name: "USER_SECRET", value: "new secret value", secret: true }],
 });
 ```
 
@@ -148,7 +280,6 @@ Name of the environment variable
 > **secret**: `boolean`
 
 If the environment variable should be treated as secret.
-Secrets are encrypted on the disk.
 
 ###### Default
 

@@ -230,6 +230,52 @@ Usually used for unexpected behaviors.
 
 ***
 
+### CreateEnvironmentInput
+
+> **CreateEnvironmentInput** = `object`
+
+#### Properties
+
+##### name
+
+> **name**: `string`
+
+The name of the environment.
+
+##### variables
+
+> **variables**: [`EnvironmentVariable`](environment.md#environmentvariable)[]
+
+The variables of the environment.
+
+***
+
+### EnvironmentVariableInput
+
+> **EnvironmentVariableInput** = `object`
+
+#### Properties
+
+##### name
+
+> **name**: `string`
+
+The name of the environment variable.
+
+##### secret
+
+> **secret**: `boolean`
+
+If the environment variable should be treated as secret.
+
+##### value
+
+> **value**: `string`
+
+The value of the environment variable.
+
+***
+
 ### PageInfo
 
 > **PageInfo** = `object`
@@ -275,3 +321,30 @@ Information on the current page of paginated data.
 ##### lastInsertRowid
 
 > **lastInsertRowid**: `number`
+
+***
+
+### UpdateEnvironmentInput
+
+> **UpdateEnvironmentInput** = `object`
+
+#### Properties
+
+##### name?
+
+> `optional` **name**: `string`
+
+The name of the environment.
+
+##### variables?
+
+> `optional` **variables**: [`EnvironmentVariableInput`](#environmentvariableinput)[]
+
+The variables of the environment.
+
+##### version
+
+> **version**: `number`
+
+The version of the environment to update.
+If not equal to the current version, the update will fail.
