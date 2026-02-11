@@ -1,6 +1,6 @@
-[@caido/quickjs-types](../../../index.md) / [llrt/fs](../index.md) / fs/promises
+[@caido/quickjs-types](../../index.md) / llrt/fs/promises
 
-# fs/promises
+# llrt/fs/promises
 
 ## Classes
 
@@ -117,7 +117,7 @@ number of bytes read is zero.
 
 | Type Parameter |
 | ------ |
-| `T` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) |
+| `T` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) |
 
 ###### Parameters
 
@@ -147,7 +147,7 @@ number of bytes read is zero.
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `T` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) | [`Buffer`](../../buffer.md#buffer) |
+| `T` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) | [`Buffer`](../buffer.md#buffer) |
 
 ###### Parameters
 
@@ -175,7 +175,7 @@ number of bytes read is zero.
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `T` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) | [`Buffer`](../../buffer.md#buffer) |
+| `T` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) | [`Buffer`](../buffer.md#buffer) |
 
 ###### Parameters
 
@@ -193,7 +193,7 @@ Fulfills upon success with an object with two properties: bytesRead and buffer
 
 ###### Call Signature
 
-> **readFile**(`options?`: \{ `encoding?`: `null`; \} \| `null`): `Promise`\<[`Buffer`](../../buffer.md#buffer)\>
+> **readFile**(`options?`: \{ `encoding?`: `null`; \} \| `null`): `Promise`\<[`Buffer`](../buffer.md#buffer)\>
 
 Asynchronously reads the entire contents of a file.
 
@@ -213,14 +213,14 @@ of the file.
 
 ###### Returns
 
-`Promise`\<[`Buffer`](../../buffer.md#buffer)\>
+`Promise`\<[`Buffer`](../buffer.md#buffer)\>
 
 Fulfills upon a successful read with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a {Buffer} object. Otherwise, the
 data will be a string.
 
 ###### Call Signature
 
-> **readFile**(`options`: [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding`: [`BufferEncoding`](../../buffer.md#bufferencoding); \}): `Promise`\<`string`\>
+> **readFile**(`options`: [`BufferEncoding`](../buffer.md#bufferencoding) \| \{ `encoding`: [`BufferEncoding`](../buffer.md#bufferencoding); \}): `Promise`\<`string`\>
 
 Asynchronously reads the entire contents of a file.
 
@@ -236,7 +236,7 @@ of the file.
 
 | Parameter | Type |
 | ------ | ------ |
-| `options` | [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding`: [`BufferEncoding`](../../buffer.md#bufferencoding); \} |
+| `options` | [`BufferEncoding`](../buffer.md#bufferencoding) \| \{ `encoding`: [`BufferEncoding`](../buffer.md#bufferencoding); \} |
 
 ###### Returns
 
@@ -247,13 +247,13 @@ data will be a string.
 
 ##### stat()
 
-> **stat**(): `Promise`\<[`Stats`](../index.md#stats)\>
+> **stat**(): `Promise`\<[`Stats`](index.md#stats)\>
 
 Get {FileHandle} status.
 
 ###### Returns
 
-`Promise`\<[`Stats`](../index.md#stats)\>
+`Promise`\<[`Stats`](index.md#stats)\>
 
 Fulfills with the {fs.Stats} object.
 
@@ -331,7 +331,7 @@ the end of the file.
 
 | Type Parameter |
 | ------ |
-| `TBuffer` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) |
+| `TBuffer` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) |
 
 ###### Parameters
 
@@ -366,7 +366,7 @@ the end of the file.
 
 | Type Parameter |
 | ------ |
-| `TBuffer` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) |
+| `TBuffer` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) |
 
 ###### Parameters
 
@@ -381,7 +381,7 @@ the end of the file.
 
 ###### Call Signature
 
-> **write**(`data`: `string`, `position?`: `number` \| `null`, `encoding?`: [`BufferEncoding`](../../buffer.md#bufferencoding) \| `null`): `Promise`\<\{ `buffer`: `string`; `bytesWritten`: `number`; \}\>
+> **write**(`data`: `string`, `position?`: `number` \| `null`, `encoding?`: [`BufferEncoding`](../buffer.md#bufferencoding) \| `null`): `Promise`\<\{ `buffer`: `string`; `bytesWritten`: `number`; \}\>
 
 Write `buffer` to the file.
 
@@ -401,7 +401,7 @@ the end of the file.
 | ------ | ------ | ------ |
 | `data` | `string` | - |
 | `position?` | `number` \| `null` | The offset from the beginning of the file where the data from `buffer` should be written. If `position` is not a `number`, the data will be written at the current position. See the POSIX pwrite(2) documentation for more detail. |
-| `encoding?` | [`BufferEncoding`](../../buffer.md#bufferencoding) \| `null` | - |
+| `encoding?` | [`BufferEncoding`](../buffer.md#bufferencoding) \| `null` | - |
 
 ###### Returns
 
@@ -409,7 +409,7 @@ the end of the file.
 
 ##### writeFile()
 
-> **writeFile**(`data`: `string` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview), `options?`: [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding?`: BufferEncoding \| null \| undefined; \} \| `null`): `Promise`\<`void`\>
+> **writeFile**(`data`: `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview), `options?`: [`BufferEncoding`](../buffer.md#bufferencoding) \| \{ `encoding?`: BufferEncoding \| null \| undefined; \} \| `null`): `Promise`\<`void`\>
 
 Asynchronously writes data to a file, replacing the file if it already exists.
 
@@ -427,8 +427,8 @@ current position till the end of the file. It doesn't always write from the begi
 
 | Parameter | Type |
 | ------ | ------ |
-| `data` | `string` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) |
-| `options?` | [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding?`: BufferEncoding \| null \| undefined; \} \| `null` |
+| `data` | `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) |
+| `options?` | [`BufferEncoding`](../buffer.md#bufferencoding) \| \{ `encoding?`: BufferEncoding \| null \| undefined; \} \| `null` |
 
 ###### Returns
 
@@ -442,7 +442,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `T` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) | [`Buffer`](../../buffer.md#buffer) |
+| `T` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) | [`Buffer`](../buffer.md#buffer) |
 
 #### Properties
 
@@ -484,7 +484,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 | Type Parameter |
 | ------ |
-| `T` *extends* [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) |
+| `T` *extends* [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) |
 
 #### Properties
 
@@ -506,7 +506,7 @@ current position till the end of the file. It doesn't always write from the begi
 
 ### constants
 
-> `const` **constants**: *typeof* [`constants`](../namespaces/constants.md)
+> `const` **constants**: *typeof* [`constants`](namespaces/constants.md)
 
 ## Functions
 
@@ -580,7 +580,7 @@ Fulfills with `undefined` upon success.
 
 ### mkdir()
 
-> **mkdir**(`path`: `string`, `options?`: [`MakeDirectoryOptions`](../index.md#makedirectoryoptions)): `Promise`\<`string`\>
+> **mkdir**(`path`: `string`, `options?`: [`MakeDirectoryOptions`](index.md#makedirectoryoptions)): `Promise`\<`string`\>
 
 Asynchronously creates a directory.
 
@@ -605,7 +605,7 @@ try {
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options?` | [`MakeDirectoryOptions`](../index.md#makedirectoryoptions) |
+| `options?` | [`MakeDirectoryOptions`](index.md#makedirectoryoptions) |
 
 #### Returns
 
@@ -722,7 +722,7 @@ Fulfills with an array of the names of the files in the directory excluding `'.'
 
 #### Call Signature
 
-> **readdir**(`path`: `string`, `options`: `object`): `Promise`\<[`Dirent`](../index.md#dirent)[]\>
+> **readdir**(`path`: `string`, `options`: `object`): `Promise`\<[`Dirent`](index.md#dirent)[]\>
 
 Asynchronous readdir(2) - read a directory.
 
@@ -737,7 +737,7 @@ Asynchronous readdir(2) - read a directory.
 
 ##### Returns
 
-`Promise`\<[`Dirent`](../index.md#dirent)[]\>
+`Promise`\<[`Dirent`](index.md#dirent)[]\>
 
 ***
 
@@ -745,7 +745,7 @@ Asynchronous readdir(2) - read a directory.
 
 #### Call Signature
 
-> **readFile**(`path`: `string`, `options?`: \{ `encoding?`: `null`; \} \| `null`): `Promise`\<[`Buffer`](../../buffer.md#buffer)\>
+> **readFile**(`path`: `string`, `options?`: \{ `encoding?`: `null`; \} \| `null`): `Promise`\<[`Buffer`](../buffer.md#buffer)\>
 
 Asynchronously reads the entire contents of a file.
 
@@ -781,13 +781,13 @@ try {
 
 ##### Returns
 
-`Promise`\<[`Buffer`](../../buffer.md#buffer)\>
+`Promise`\<[`Buffer`](../buffer.md#buffer)\>
 
 Fulfills with the contents of the file.
 
 #### Call Signature
 
-> **readFile**(`path`: `string`, `options`: [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding`: [`BufferEncoding`](../../buffer.md#bufferencoding); \}): `Promise`\<`string`\>
+> **readFile**(`path`: `string`, `options`: \{ `encoding`: [`BufferEncoding`](../buffer.md#bufferencoding); \} \| [`BufferEncoding`](../buffer.md#bufferencoding)): `Promise`\<`string`\>
 
 Asynchronously reads the entire contents of a file.
 
@@ -796,7 +796,7 @@ Asynchronously reads the entire contents of a file.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `path` | `string` | A path to a file. If a URL is provided, it must use the `file:` protocol. If a `FileHandle` is provided, the underlying file will _not_ be closed automatically. |
-| `options` | [`BufferEncoding`](../../buffer.md#bufferencoding) \| \{ `encoding`: [`BufferEncoding`](../../buffer.md#bufferencoding); \} | An object that may contain an optional flag. If a flag is not provided, it defaults to `'r'`. |
+| `options` | \{ `encoding`: [`BufferEncoding`](../buffer.md#bufferencoding); \} \| [`BufferEncoding`](../buffer.md#bufferencoding) | An object that may contain an optional flag. If a flag is not provided, it defaults to `'r'`. |
 
 ##### Returns
 
@@ -838,7 +838,7 @@ Fulfills with `undefined` upon success.
 
 ### rm()
 
-> **rm**(`path`: `string`, `options?`: [`RmOptions`](../index.md#rmoptions)): `Promise`\<`void`\>
+> **rm**(`path`: `string`, `options?`: [`RmOptions`](index.md#rmoptions)): `Promise`\<`void`\>
 
 Removes files and directories (modeled on the standard POSIX `rm` utility).
 
@@ -847,7 +847,7 @@ Removes files and directories (modeled on the standard POSIX `rm` utility).
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options?` | [`RmOptions`](../index.md#rmoptions) |
+| `options?` | [`RmOptions`](index.md#rmoptions) |
 
 #### Returns
 
@@ -859,7 +859,7 @@ Fulfills with `undefined` upon success.
 
 ### rmdir()
 
-> **rmdir**(`path`: `string`, `options?`: [`RmDirOptions`](../index.md#rmdiroptions)): `Promise`\<`void`\>
+> **rmdir**(`path`: `string`, `options?`: [`RmDirOptions`](index.md#rmdiroptions)): `Promise`\<`void`\>
 
 Removes the directory identified by `path`.
 
@@ -873,7 +873,7 @@ To get a behavior similar to the `rm -rf` Unix command, use `fsPromises.rm()` wi
 | Parameter | Type |
 | ------ | ------ |
 | `path` | `string` |
-| `options?` | [`RmDirOptions`](../index.md#rmdiroptions) |
+| `options?` | [`RmDirOptions`](index.md#rmdiroptions) |
 
 #### Returns
 
@@ -885,7 +885,7 @@ Fulfills with `undefined` upon success.
 
 ### stat()
 
-> **stat**(`path`: `string`): `Promise`\<[`Stats`](../index.md#stats)\>
+> **stat**(`path`: `string`): `Promise`\<[`Stats`](index.md#stats)\>
 
 Asynchronous stat - Get file status.
 
@@ -897,7 +897,7 @@ Asynchronous stat - Get file status.
 
 #### Returns
 
-`Promise`\<[`Stats`](../index.md#stats)\>
+`Promise`\<[`Stats`](index.md#stats)\>
 
 Fulfills with the {fs.Stats} object for the given `path`.
 
@@ -934,7 +934,7 @@ Fulfills with `undefined` upon success.
 
 ### writeFile()
 
-> **writeFile**(`file`: `string`, `data`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer), `options?`: `object`): `Promise`\<`void`\>
+> **writeFile**(`file`: `string`, `data`: `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer`, `options?`: `object`): `Promise`\<`void`\>
 
 Asynchronously writes data to a file, replacing the file if it already exists.
 
@@ -952,7 +952,7 @@ passed to it.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `file` | `string` | filename or `FileHandle` |
-| `data` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../../buffer.md#buffer) | - |
+| `data` | `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer` | - |
 | `options?` | \{ `mode?`: `number`; \} | - |
 | `options.mode?` | `number` | - |
 

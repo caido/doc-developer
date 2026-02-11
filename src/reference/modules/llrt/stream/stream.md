@@ -1091,7 +1091,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### write()
 
-> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer), `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
+> **write**(`chunk`: `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer`, `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
 
 The `writable.write()` method writes some data to the stream, and calls the
 supplied `callback` once the data has been fully handled. If an error
@@ -1120,7 +1120,7 @@ A `Writable` stream in object mode will always ignore the `encoding` argument.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `chunk` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
+| `chunk` | `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer` | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
 | `callback?` | (`error?`: `Error` \| `null`) => `void` | Callback for when this chunk of data is flushed. |
 
 ###### Returns
@@ -3201,7 +3201,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### write()
 
-> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer), `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
+> **write**(`chunk`: `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer`, `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
 
 The `writable.write()` method writes some data to the stream, and calls the
 supplied `callback` once the data has been fully handled. If an error
@@ -3230,7 +3230,7 @@ A `Writable` stream in object mode will always ignore the `encoding` argument.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `chunk` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
+| `chunk` | `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer` | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
 | `callback?` | (`error?`: `Error` \| `null`) => `void` | Callback for when this chunk of data is flushed. |
 
 ###### Returns
@@ -3253,7 +3253,7 @@ v0.9.4
 
 #### Extends
 
-- [`EventEmitter`](../globals/index.md#eventemitter)
+- [`EventEmitter`](../events.md#eventemitter)
 
 #### Extended by
 
@@ -3275,7 +3275,7 @@ v0.9.4
 
 ###### Inherited from
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`constructor`](../globals/index.md#constructor)
+[`EventEmitter`](../events.md#eventemitter).[`constructor`](../events.md#constructor)
 
 #### Methods
 
@@ -3320,7 +3320,7 @@ The defined events on documents including:
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`addListener`](../globals/index.md#addlistener)
+[`EventEmitter`](../events.md#eventemitter).[`addListener`](../events.md#addlistener)
 
 ###### Call Signature
 
@@ -3551,7 +3551,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`emit`](../globals/index.md#emit)
+[`EventEmitter`](../events.md#eventemitter).[`emit`](../events.md#emit)
 
 ###### Call Signature
 
@@ -3696,7 +3696,7 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`eventNames`](../globals/index.md#eventnames)
+[`EventEmitter`](../events.md#eventemitter).[`eventNames`](../events.md#eventnames)
 
 ##### off()
 
@@ -3727,7 +3727,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`off`](../globals/index.md#off)
+[`EventEmitter`](../events.md#eventemitter).[`off`](../events.md#off)
 
 ##### on()
 
@@ -3779,7 +3779,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`on`](../globals/index.md#on)
+[`EventEmitter`](../events.md#eventemitter).[`on`](../events.md#on)
 
 ###### Call Signature
 
@@ -3942,7 +3942,7 @@ v0.3.0
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`once`](../globals/index.md#once)
+[`EventEmitter`](../events.md#eventemitter).[`once`](../events.md#once)
 
 ###### Call Signature
 
@@ -4089,7 +4089,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`prependListener`](../globals/index.md#prependlistener)
+[`EventEmitter`](../events.md#eventemitter).[`prependListener`](../events.md#prependlistener)
 
 ###### Call Signature
 
@@ -4234,7 +4234,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`prependOnceListener`](../globals/index.md#prependoncelistener)
+[`EventEmitter`](../events.md#eventemitter).[`prependOnceListener`](../events.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -4537,7 +4537,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`removeListener`](../globals/index.md#removelistener)
+[`EventEmitter`](../events.md#eventemitter).[`removeListener`](../events.md#removelistener)
 
 ###### Call Signature
 
@@ -4660,7 +4660,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 #### Extends
 
-- [`EventEmitter`](../globals/index.md#eventemitter)
+- [`EventEmitter`](../events.md#eventemitter)
 
 #### Extended by
 
@@ -4682,7 +4682,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Inherited from
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`constructor`](../globals/index.md#constructor)
+[`EventEmitter`](../events.md#eventemitter).[`constructor`](../events.md#constructor)
 
 #### Methods
 
@@ -4715,7 +4715,7 @@ The defined events on documents including:
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`addListener`](../globals/index.md#addlistener)
+[`EventEmitter`](../events.md#eventemitter).[`addListener`](../events.md#addlistener)
 
 ###### Call Signature
 
@@ -4856,7 +4856,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`emit`](../globals/index.md#emit)
+[`EventEmitter`](../events.md#eventemitter).[`emit`](../events.md#emit)
 
 ###### Call Signature
 
@@ -4973,7 +4973,7 @@ console.log(myEE.eventNames());
 
 ###### Inherited from
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`eventNames`](../globals/index.md#eventnames)
+[`EventEmitter`](../events.md#eventemitter).[`eventNames`](../events.md#eventnames)
 
 ##### off()
 
@@ -5004,7 +5004,7 @@ Alias for `emitter.removeListener()`.
 
 ###### Inherited from
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`off`](../globals/index.md#off)
+[`EventEmitter`](../events.md#eventemitter).[`off`](../events.md#off)
 
 ##### on()
 
@@ -5056,7 +5056,7 @@ myEE.emit('foo');
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`on`](../globals/index.md#on)
+[`EventEmitter`](../events.md#eventemitter).[`on`](../events.md#on)
 
 ###### Call Signature
 
@@ -5173,7 +5173,7 @@ v0.3.0
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`once`](../globals/index.md#once)
+[`EventEmitter`](../events.md#eventemitter).[`once`](../events.md#once)
 
 ###### Call Signature
 
@@ -5274,7 +5274,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`prependListener`](../globals/index.md#prependlistener)
+[`EventEmitter`](../events.md#eventemitter).[`prependListener`](../events.md#prependlistener)
 
 ###### Call Signature
 
@@ -5373,7 +5373,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`prependOnceListener`](../globals/index.md#prependoncelistener)
+[`EventEmitter`](../events.md#eventemitter).[`prependOnceListener`](../events.md#prependoncelistener)
 
 ###### Call Signature
 
@@ -5538,7 +5538,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ###### Overrides
 
-[`EventEmitter`](../globals/index.md#eventemitter).[`removeListener`](../globals/index.md#removelistener)
+[`EventEmitter`](../events.md#eventemitter).[`removeListener`](../events.md#removelistener)
 
 ###### Call Signature
 
@@ -5611,7 +5611,7 @@ Returns a reference to the `EventEmitter`, so that calls can be chained.
 
 ##### write()
 
-> **write**(`chunk`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer), `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
+> **write**(`chunk`: `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer`, `callback?`: (`error?`: `Error` \| `null`) => `void`): `void`
 
 The `writable.write()` method writes some data to the stream, and calls the
 supplied `callback` once the data has been fully handled. If an error
@@ -5640,7 +5640,7 @@ A `Writable` stream in object mode will always ignore the `encoding` argument.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `chunk` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
+| `chunk` | `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer` | Optional data to write. `chunk` must be a {string}, {Buffer}, {TypedArray} or {DataView}. |
 | `callback?` | (`error?`: `Error` \| `null`) => `void` | Callback for when this chunk of data is flushed. |
 
 ###### Returns

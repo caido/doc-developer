@@ -2,12 +2,6 @@
 
 # llrt/fs
 
-## Modules
-
-| Module | Description |
-| ------ | ------ |
-| [fs/promises](fs/promises.md) | - |
-
 ## Namespaces
 
 | Namespace | Description |
@@ -21,7 +15,7 @@
 A representation of a directory entry, which can be a file or a subdirectory
 within the directory. A directory entry is a combination of the file name and file type pairs.
 
-Additionally, when [promises.readdir](fs/promises.md#readdir) or [readdirSync](#readdirsync) is called with
+Additionally, when [promises.readdir](promises.md#readdir) or [readdirSync](#readdirsync) is called with
 the `withFileTypes` option set to `true`, the resulting array is filled with `fs.Dirent` objects, rather than strings.
 
 #### Constructors
@@ -768,7 +762,7 @@ See the POSIX [`mkdir(2)`](http://man7.org/linux/man-pages/man2/mkdir.2.html) do
 Returns the created directory path.
 
 For detailed information, see the documentation of the asynchronous version of
-this API: [promises.mkdtemp](fs/promises.md#mkdtemp).
+this API: [promises.mkdtemp](promises.md#mkdtemp).
 
 #### Parameters
 
@@ -837,7 +831,7 @@ Synchronous readdir (2) - read a directory.
 Returns the contents of the `path`.
 
 For detailed information, see the documentation of the asynchronous version of
-this API: [promises.readFile](fs/promises.md#readfile-3).
+this API: [promises.readFile](promises.md#readfile-3).
 
 If the `encoding` option is specified then this function returns a
 string. Otherwise it returns a buffer.
@@ -879,7 +873,7 @@ Synchronously reads the entire contents of a file.
 Synchronously renames a file or directory from `oldPath` to `newPath`.
 
 For detailed information, see the documentation of the asynchronous version of
-this API: [promises.rename](fs/promises.md#rename).
+this API: [promises.rename](promises.md#rename).
 
 #### Parameters
 
@@ -959,22 +953,28 @@ Synchronous symlink(2) - Create a new symbolic link to an existing file.
 
 ### writeFileSync()
 
-> **writeFileSync**(`file`: `string`, `data`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer), `options?`: `object`): `void`
+> **writeFileSync**(`file`: `string`, `data`: `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer`, `options?`: `object`): `void`
 
 Returns `undefined`.
 
 For detailed information, see the documentation of the asynchronous version of
-this API: [promises.writeFile](fs/promises.md#writefile-2).
+this API: [promises.writeFile](promises.md#writefile-2).
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `file` | `string` | A path to a file. |
-| `data` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) | - |
+| `data` | `string` \| [`ArrayBufferView`](../globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](../buffer.md#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer` | - |
 | `options?` | \{ `mode?`: `number`; \} | - |
 | `options.mode?` | `number` | - |
 
 #### Returns
 
 `void`
+
+## References
+
+### promises
+
+Renames and re-exports [llrt/fs/promises](promises.md)

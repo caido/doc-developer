@@ -1640,7 +1640,7 @@ A `TypeError` will be thrown if `size` is not a number.
 
 ##### byteLength()
 
-> **byteLength**(`string`: `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](#buffer), `encoding?`: [`BufferEncoding`](#bufferencoding)): `number`
+> **byteLength**(`string`: `string` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer`, `encoding?`: [`BufferEncoding`](#bufferencoding)): `number`
 
 Returns the byte length of a string when encoded using `encoding`.
 This is not the same as [`String.prototype.length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length), which does not account
@@ -1665,7 +1665,7 @@ er.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuf
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `string` | `string` \| `ArrayBuffer` \| `SharedArrayBuffer` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](#buffer) | A value to calculate the length of. |
+| `string` | `string` \| [`ArrayBufferView`](globals/namespaces/QuickJS.md#arraybufferview) \| [`Buffer`](#buffer) \| `ArrayBuffer` \| `SharedArrayBuffer` | A value to calculate the length of. |
 | `encoding?` | [`BufferEncoding`](#bufferencoding) | If `string` is a string, this is its encoding. |
 
 ###### Returns
