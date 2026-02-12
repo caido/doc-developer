@@ -8,6 +8,10 @@ export const referenceSidebar: DefaultTheme.SidebarItem[] = [
         text: "Introduction",
         link: "/reference/",
       },
+      {
+        text: "AI Providers & Capabilities",
+        link: "/reference/ai-providers",
+      },
     ],
   },
   {
