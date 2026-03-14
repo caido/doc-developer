@@ -213,11 +213,11 @@ To listen for changes to the global context:
 const handle = sdk.window.onContextChange((context) => {
   if (context.page) {
     console.log("Current page:", context.page.kind);
-    
+
     // Access page-specific context
-    if (context.page.kind === "Replay") {
-      const replayContext = context.page;
-      console.log("Replay selection:", replayContext.selection);
+    if (context.page.kind === "Intercept") {
+      const interceptContext = context.page;
+      console.log("Request selection:", interceptContext.requestSelection);
     }
   }
 });
@@ -239,8 +239,8 @@ export const init = (sdk: CaidoSDK) => {
   sdk.window.onContextChange((context) => {
     if (context.page) {
       switch (context.page.kind) {
-        case "Replay":
-          sdk.log.info("User is on the Replay page");
+        case "Intercept":
+          sdk.log.info("User is on the Intercept page");
           break;
         case "HTTPHistory":
           sdk.log.info("User is on the HTTP History page");
@@ -256,6 +256,466 @@ export const init = (sdk: CaidoSDK) => {
     }
   });
 };
+```
+
+## Page Context Types
+
+Caido provides different page context types that are available depending on which page the user is viewing. Each context type offers different properties and capabilities. When creating pages for specific sections of Caido, understanding these context types allows you to build context-aware pages that react to user selections and application state.
+
+### Available Page Context Types
+
+The following page context types are available in Caido:
+
+- **Assistant** - Context when viewing the AI Assistant page
+- **Backups** - Context when viewing the Backups page
+- **Certificate** - Context when viewing the Certificate page
+- **Exports** - Context when viewing the Exports page
+- **Intercept** - Context when viewing the Intercept page with access to request and response selections
+- **WebSocket** - Context when viewing the WebSocket page
+
+### Assistant Page Context
+
+The Assistant page context is available when the user is on the AI Assistant page. This context has minimal state, primarily serving as an indicator of the current page.
+
+**What this context provides:**
+- A signal that the user is on the Assistant page
+
+**Accessing Assistant context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Assistant") {
+    sdk.log.info("User navigated to Assistant page");
+  }
+});
+```
+
+**Example: Page for Assistant section:**
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/AssistantApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/ai-assistant-tools", {
+    body: root,
+  });
+
+  // React to Assistant page context
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Assistant") {
+      sdk.log.info("Assistant tools page is now relevant");
+    }
+  });
+};
+```
+
+### Backups Page Context
+
+The Backups page context is available when the user is on the Backups page. This context provides access to backup-related state and operations.
+
+**What this context provides:**
+- A signal that the user is on the Backups page
+
+**Accessing Backups context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Backups") {
+    sdk.log.info("User is on the Backups page");
+  }
+});
+```
+
+**Example: Page for Backups management:**
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/BackupsApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/backup-analytics", {
+    body: root,
+  });
+
+  // Monitor Backups page changes
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Backups") {
+      sdk.log.info("Now on Backups page");
+    }
+  });
+};
+```
+
+### Certificate Page Context
+
+The Certificate page context is available when the user is on the Certificate management page. This context allows your plugin to respond to certificate-related operations.
+
+**What this context provides:**
+- A signal that the user is on the Certificate page
+
+**Accessing Certificate context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Certificate") {
+    sdk.log.info("User is on the Certificate page");
+  }
+});
+```
+
+**Example: Certificate management plugin:**
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/CertificateApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/certificate-tools", {
+    body: root,
+  });
+
+  // React to Certificate page context
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Certificate") {
+      sdk.log.info("Certificate management tools available");
+    }
+  });
+};
+```
+
+### Exports Page Context
+
+The Exports page context is available when the user is on the Exports page. This context allows you to build tools that work with exported data.
+
+**What this context provides:**
+- A signal that the user is on the Exports page
+
+**Accessing Exports context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Exports") {
+    sdk.log.info("User is on the Exports page");
+  }
+});
+```
+
+**Example: Export analytics page:**
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/ExportAnalyticsApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/export-analytics", {
+    body: root,
+  });
+
+  // React to Exports page context
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Exports") {
+      sdk.log.info("Export analytics tools available");
+    }
+  });
+};
+```
+
+### Intercept Page Context
+
+The Intercept page context is the most feature-rich context. It provides access to request, response, and WebSocket message selections, allowing you to build tools that work directly with intercepted traffic.
+
+**What this context provides:**
+- `requestSelection` - A selection object tracking the currently selected intercepted request
+- `responseSelection` - A selection object tracking the currently selected intercepted response
+- `websocketSelection` - A selection object tracking the currently selected WebSocket message
+
+**Accessing Intercept context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Intercept") {
+    const intercept = context.page;
+
+    // Check what is currently selected
+    if (intercept.requestSelection.isSelected) {
+      const selectedId = intercept.requestSelection.value;
+      sdk.log.info(`Selected request: ${selectedId}`);
+    }
+
+    if (intercept.responseSelection.isSelected) {
+      const selectedId = intercept.responseSelection.value;
+      sdk.log.info(`Selected response: ${selectedId}`);
+    }
+
+    if (intercept.websocketSelection.isSelected) {
+      const selectedId = intercept.websocketSelection.value;
+      sdk.log.info(`Selected WebSocket message: ${selectedId}`);
+    }
+  }
+});
+```
+
+**Example: Request analyzer plugin:**
+
+This example creates a page that analyzes the currently selected intercepted request:
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+import { ref } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/InterceptAnalyzerApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const selectedRequest = ref<string | null>(null);
+  const selectedResponse = ref<string | null>(null);
+
+  const app = createApp(App, {
+    selectedRequest,
+    selectedResponse,
+  });
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/intercept-analyzer", {
+    body: root,
+  });
+
+  // Monitor Intercept page selections
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Intercept") {
+      const intercept = context.page;
+
+      // Update selected request
+      if (intercept.requestSelection.isSelected) {
+        selectedRequest.value = intercept.requestSelection.value;
+      } else {
+        selectedRequest.value = null;
+      }
+
+      // Update selected response
+      if (intercept.responseSelection.isSelected) {
+        selectedResponse.value = intercept.responseSelection.value;
+      } else {
+        selectedResponse.value = null;
+      }
+    }
+  });
+};
+```
+
+And in your `InterceptAnalyzerApp.vue` component:
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from "vue";
+
+const props = defineProps<{
+  selectedRequest: string | null;
+  selectedResponse: string | null;
+}>();
+
+const noSelection = computed(() => !props.selectedRequest && !props.selectedResponse);
+</script>
+
+<template>
+  <div class="h-full flex flex-col p-4">
+    <div v-if="noSelection" class="text-gray-400">
+      <p>Select a request or response in the Intercept tab to view analysis</p>
+    </div>
+    <div v-else>
+      <div v-if="selectedRequest" class="mb-4 p-3 bg-blue-900/20 border border-blue-700 rounded">
+        <h3 class="font-bold text-blue-400">Selected Request</h3>
+        <p class="text-sm text-gray-300">{{ selectedRequest }}</p>
+      </div>
+      <div v-if="selectedResponse" class="p-3 bg-green-900/20 border border-green-700 rounded">
+        <h3 class="font-bold text-green-400">Selected Response</h3>
+        <p class="text-sm text-gray-300">{{ selectedResponse }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+### WebSocket Page Context
+
+The WebSocket page context is available when the user is on the WebSocket page. This context allows you to build tools that interact with WebSocket connections.
+
+**What this context provides:**
+- A signal that the user is on the WebSocket page
+
+**Accessing WebSocket context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Websocket") {
+    sdk.log.info("User is on the WebSocket page");
+  }
+});
+```
+
+**Example: WebSocket message analyzer:**
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/WebSocketAnalyzerApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/websocket-analyzer", {
+    body: root,
+  });
+
+  // React to WebSocket page context
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Websocket") {
+      sdk.log.info("WebSocket analyzer tools available");
+    }
+  });
+};
+```
+
+### Working with Page Context and State
+
+When building context-aware pages, consider these best practices:
+
+1. **Check context availability** - Always verify that `context.page` exists before accessing its properties, as the user may be on a plugin page that does not provide page context.
+
+2. **Handle selection changes** - For pages with selections (like Intercept), use the `isSelected` property to determine if a selection is active before accessing the `value` property.
+
+3. **Update UI reactively** - Use Vue's reactivity system (refs, computed properties) to update your UI when context changes.
+
+4. **Provide fallback UI** - When no context is available or no selection is made, display helpful UI that guides the user about how to interact with your page.
+
+5. **Clean up listeners** - When your plugin or page is destroyed, call the `stop()` method on listener handles to prevent memory leaks:
+
+```ts
+const handle = sdk.window.onContextChange((context) => {
+  // Handle context changes
+});
+
+// When the page is destroyed
+handle.stop();
 ```
 
 ## Interacting with Windows and Editors
@@ -369,6 +829,62 @@ export const init = (sdk: CaidoSDK) => {
 
   sdk.sidebar.registerItem("My Plugin", "/my-plugin-page", {
     icon: "fas fa-rocket",
+  });
+};
+```
+
+<img alt="Toast messages SKD." src="/_images/toast_message_sdk.png" center/>
+
+**What this context provides:**
+- A signal that the user is on the WebSocket page
+
+**Accessing WebSocket context:**
+
+```ts
+sdk.window.onContextChange((context) => {
+  if (context.page?.kind === "Websocket") {
+    sdk.log.info("User is on the WebSocket page");
+  }
+});
+```
+
+**Example: WebSocket message analyzer:**
+
+```ts
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
+
+import type { Caido } from "@caido/sdk-frontend";
+import App from "./views/WebSocketAnalyzerApp.vue";
+
+export type CaidoSDK = Caido;
+
+export const init = (sdk: CaidoSDK) => {
+  const app = createApp(App);
+
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
+  });
+
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
+  });
+
+  app.mount(root);
+
+  sdk.navigation.addPage("/websocket-analyzer", {
+    body: root,
+  });
+
+  // React to WebSocket page context
+  sdk.window.onContextChange((context) => {
+    if (context.page?.kind === "Websocket") {
+      sdk.log.info("WebSocket analyzer tools available");
+    }
   });
 };
 ```
