@@ -216,15 +216,24 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         ],
       },
       {
+        text: "Custom Functions",
+        items: [
+          {
+            text: "Define Custom Backend Functions",
+            link: "/guides/backend_functions",
+          },
+          {
+            text: "Call Custom Functions",
+            link: "/guides/rpc",
+          },
+        ],
+      },
+      {
         text: "Events",
         items: [
           {
             text: "Handle Backend Events",
             link: "/guides/backend_events",
-          },
-          {
-            text: "Call Custom Functions",
-            link: "/guides/rpc",
           },
           {
             text: "Send Events to the Frontend",
