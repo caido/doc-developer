@@ -190,6 +190,15 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         ],
       },
       {
+        text: "Workflow Scripts",
+        items: [
+          {
+            text: "Use the Workflow SDK",
+            link: "/guides/workflow_sdk",
+          },
+        ],
+      },
+      {
         text: "Caido Features",
         items: [
           {
