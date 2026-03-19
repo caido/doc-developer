@@ -194,6 +194,12 @@ Utilities to interact with frontend-plugin storage.
 
 Utilities to create UI components.
 
+##### websocket
+
+> **websocket**: [`WebsocketSDK`](websockets.md#websocketsdk)
+
+Utilities to interact with the Websocket page.
+
 ##### window
 
 > **window**: [`WindowSDK`](window.md#windowsdk)
