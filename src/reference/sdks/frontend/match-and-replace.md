@@ -496,6 +496,36 @@ An operation to update the response status code.
 
 ***
 
+### MatchReplaceOperationWebsocket
+
+> **MatchReplaceOperationWebsocket** = [`KeepOperation`](other.md#keepoperation)\<[`MatchReplaceOperationWebsocketRaw`](#matchreplaceoperationwebsocketraw)\>
+
+An operation for the response websocket section.
+
+***
+
+### MatchReplaceOperationWebsocketRaw
+
+> **MatchReplaceOperationWebsocketRaw** = `object`
+
+A raw operation for the response websocket section.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"OperationWebsocketRaw"`
+
+##### matcher
+
+> **matcher**: [`MatchReplaceMatcherRaw`](#matchreplacematcherraw)
+
+##### replacer
+
+> **replacer**: [`MatchReplaceReplacer`](#matchreplacereplacer)
+
+***
+
 ### MatchReplacePageContext
 
 > **MatchReplacePageContext** = `object`
@@ -712,10 +742,10 @@ Create a rule.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | \{ `collectionId`: [`ID`](utils.md#id); `name`: `string`; `query`: [`HTTPQL`](utils.md#httpql); `section`: [`MatchReplaceSection`](#matchreplacesection); `sources`: [`Source`](#source)[]; \} | The options for the rule. |
+| `options` | \{ `collectionId`: [`ID`](utils.md#id); `name`: `string`; `query`: [`QueryInput`](utils.md#queryinput); `section`: [`MatchReplaceSection`](#matchreplacesection); `sources`: [`Source`](#source)[]; \} | The options for the rule. |
 | `options.collectionId` | [`ID`](utils.md#id) | The ID of the collection the rule belongs to. |
 | `options.name` | `string` | The name of the rule. |
-| `options.query` | [`HTTPQL`](utils.md#httpql) | The HTTPQL query to match the rule against. |
+| `options.query` | [`QueryInput`](utils.md#queryinput) | The query to match the rule against. |
 | `options.section` | [`MatchReplaceSection`](#matchreplacesection) | - |
 | `options.sources` | [`Source`](#source)[] | The sources the rule belongs to. |
 
@@ -893,9 +923,9 @@ Update a rule.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `id` | [`ID`](utils.md#id) | The ID of the rule. |
-| `options` | \{ `name`: `string`; `query?`: [`HTTPQL`](utils.md#httpql); `section`: [`MatchReplaceSection`](#matchreplacesection); `sources`: [`Source`](#source)[]; \} | The new values for the rule. |
+| `options` | \{ `name`: `string`; `query?`: [`QueryInput`](utils.md#queryinput); `section`: [`MatchReplaceSection`](#matchreplacesection); `sources`: [`Source`](#source)[]; \} | The new values for the rule. |
 | `options.name` | `string` | The new name of the rule. |
-| `options.query?` | [`HTTPQL`](utils.md#httpql) | The new HTTPQL query of the rule. |
+| `options.query?` | [`QueryInput`](utils.md#queryinput) | The new query of the rule. |
 | `options.section` | [`MatchReplaceSection`](#matchreplacesection) | The new section of the rule. |
 | `options.sources` | [`Source`](#source)[] | The new sources of the rule. |
 
@@ -907,7 +937,7 @@ Update a rule.
 
 ### MatchReplaceSection
 
-> **MatchReplaceSection** = [`MatchReplaceSectionRequestAll`](#matchreplacesectionrequestall) \| [`MatchReplaceSectionRequestBody`](#matchreplacesectionrequestbody) \| [`MatchReplaceSectionRequestFirstLine`](#matchreplacesectionrequestfirstline) \| [`MatchReplaceSectionRequestHeader`](#matchreplacesectionrequestheader) \| [`MatchReplaceSectionRequestMethod`](#matchreplacesectionrequestmethod) \| [`MatchReplaceSectionRequestPath`](#matchreplacesectionrequestpath) \| [`MatchReplaceSectionRequestQuery`](#matchreplacesectionrequestquery) \| [`MatchReplaceSectionRequestSNI`](#matchreplacesectionrequestsni) \| [`MatchReplaceSectionResponseAll`](#matchreplacesectionresponseall) \| [`MatchReplaceSectionResponseBody`](#matchreplacesectionresponsebody) \| [`MatchReplaceSectionResponseFirstLine`](#matchreplacesectionresponsefirstline) \| [`MatchReplaceSectionResponseHeader`](#matchreplacesectionresponseheader) \| [`MatchReplaceSectionResponseStatusCode`](#matchreplacesectionresponsestatuscode)
+> **MatchReplaceSection** = [`MatchReplaceSectionRequestAll`](#matchreplacesectionrequestall) \| [`MatchReplaceSectionRequestBody`](#matchreplacesectionrequestbody) \| [`MatchReplaceSectionRequestFirstLine`](#matchreplacesectionrequestfirstline) \| [`MatchReplaceSectionRequestHeader`](#matchreplacesectionrequestheader) \| [`MatchReplaceSectionRequestMethod`](#matchreplacesectionrequestmethod) \| [`MatchReplaceSectionRequestPath`](#matchreplacesectionrequestpath) \| [`MatchReplaceSectionRequestQuery`](#matchreplacesectionrequestquery) \| [`MatchReplaceSectionRequestSNI`](#matchreplacesectionrequestsni) \| [`MatchReplaceSectionResponseAll`](#matchreplacesectionresponseall) \| [`MatchReplaceSectionResponseBody`](#matchreplacesectionresponsebody) \| [`MatchReplaceSectionResponseFirstLine`](#matchreplacesectionresponsefirstline) \| [`MatchReplaceSectionResponseHeader`](#matchreplacesectionresponseheader) \| [`MatchReplaceSectionResponseStatusCode`](#matchreplacesectionresponsestatuscode) \| [`MatchReplaceSectionResponseWebsocket`](#matchreplacesectionresponsewebsocket) \| [`MatchReplaceSectionRequestWebsocket`](#matchreplacesectionrequestwebsocket)
 
 A discriminated union of all possible match and replace sections.
 
@@ -1057,6 +1087,24 @@ A section for the request SNI.
 
 ***
 
+### MatchReplaceSectionRequestWebsocket
+
+> **MatchReplaceSectionRequestWebsocket** = `object`
+
+A section for the request websocket.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"SectionRequestWebsocket"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationWebsocket`](#matchreplaceoperationwebsocket)
+
+***
+
 ### MatchReplaceSectionResponseAll
 
 > **MatchReplaceSectionResponseAll** = `object`
@@ -1144,6 +1192,24 @@ A section for the response status code.
 ##### operation
 
 > **operation**: [`MatchReplaceOperationStatusCode`](#matchreplaceoperationstatuscode)
+
+***
+
+### MatchReplaceSectionResponseWebsocket
+
+> **MatchReplaceSectionResponseWebsocket** = `object`
+
+A section for the response websocket.
+
+#### Properties
+
+##### kind
+
+> **kind**: `"SectionResponseWebsocket"`
+
+##### operation
+
+> **operation**: [`MatchReplaceOperationWebsocket`](#matchreplaceoperationwebsocket)
 
 ***
 

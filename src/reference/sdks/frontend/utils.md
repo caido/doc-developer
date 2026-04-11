@@ -181,6 +181,24 @@ Utility type for converting endpoint return types to promises.
 
 ***
 
+### QueryInput
+
+> **QueryInput** = [`HTTPQL`](#httpql) \| [`StreamQL`](#streamql)
+
+A query input.
+
+#### Examples
+
+```ts
+`"req.method.eq:'POST'"`
+```
+
+```ts
+`"ws.raw.cont:'hello'"`
+```
+
+***
+
 ### Selection
 
 > **Selection**\<`TId`\> = \{ `kind`: `"Empty"`; \} \| \{ `kind`: `"Selected"`; `main`: `TId`; `secondary`: `TId`[]; \}
@@ -193,3 +211,23 @@ Main represents the primary selected item, secondary represents additional selec
 | Type Parameter |
 | ------ |
 | `TId` |
+
+***
+
+### StreamQL
+
+> **StreamQL** = `string` & `object`
+
+A STREAMQL expression.
+
+#### Type Declaration
+
+##### \_\_streamql?
+
+> `optional` **\_\_streamql**: `never`
+
+#### Example
+
+```ts
+`ws.raw.cont:"hello"`
+```
