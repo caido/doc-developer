@@ -131,6 +131,31 @@ A unique command identifier.
 
 ***
 
+### ResolvedAPI
+
+> **ResolvedAPI**\<`T`\> = `T` *extends* `object` ? `A` : `T`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
+### ResolvedEvents
+
+> **ResolvedEvents**\<`T`, `E`\> = `T` *extends* `object` ? `A` : `E`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+| `E` |
+
+***
+
 ### Routes
 
 > **Routes** = *typeof* [`Routes`](navigation.md#routes)\[keyof *typeof* [`Routes`](#routes-1)\]

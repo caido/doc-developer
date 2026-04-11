@@ -4,7 +4,7 @@
 
 > **Finding** = `object`
 
-Represents a [https://docs.caido.io/reference/features/logging/findings\|Finding](https://docs.caido.io/reference/features/logging/findings|Finding).
+Represents a [https://docs.caido.io/app/quickstart/findings.html\|Finding](https://docs.caido.io/app/quickstart/findings.html|Finding).
 
 #### Properties
 

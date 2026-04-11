@@ -1,5 +1,40 @@
 # Replay
 
+### ConnectionInfo
+
+> **ConnectionInfo** = `object`
+
+The connection information to use for the request.
+
+#### Properties
+
+##### host
+
+> **host**: `string`
+
+The host to use for the request.
+
+##### isTLS
+
+> **isTLS**: `boolean`
+
+Whether the request is TLS.
+
+##### port
+
+> **port**: `number`
+
+The port to use for the request.
+
+##### SNI?
+
+> `optional` **SNI**: `string`
+
+The SNI to use for the request.
+If not provided, the SNI will be inferred from the host.
+
+***
+
 ### CurrentReplaySessionChangeEvent
 
 > **CurrentReplaySessionChangeEvent** = `object`
@@ -611,7 +646,7 @@ sendRequest(sessionId, {
 
 ##### showEntry()
 
-> **showEntry**: (`sessionId`: [`ID`](utils.md#id), `entryId`: [`ID`](utils.md#id), `options?`: `object`) => `Promise`\<`void`\>
+> **showEntry**: (`sessionId`: [`ID`](utils.md#id), `entryId`: [`ID`](utils.md#id)) => `Promise`\<`void`\>
 
 Show a specific entry in a replay session.
 This will open the session tab if not already open, set it as the selected session, and display the specified entry.
@@ -622,8 +657,6 @@ This will open the session tab if not already open, set it as the selected sessi
 | ------ | ------ | ------ |
 | `sessionId` | [`ID`](utils.md#id) | The ID of the session containing the entry. |
 | `entryId` | [`ID`](utils.md#id) | The ID of the entry to show. |
-| `options?` | \{ `overwriteDraft?`: `boolean`; \} | The options for showing the entry. |
-| `options.overwriteDraft?` | `boolean` | Whether to overwrite the request draft. If true, the draft will be removed and the entry's raw request will be shown. If false, the draft will be kept. |
 
 ###### Returns
 
@@ -632,9 +665,7 @@ This will open the session tab if not already open, set it as the selected sessi
 ###### Example
 
 ```ts
-await sdk.replay.showEntry(sessionId, entryId, {
-  overwriteDraft: true,
-});
+await sdk.replay.showEntry(sessionId, entryId);
 ```
 
 ***
@@ -721,7 +752,7 @@ The ID of the session associated with this tab.
 
 ### RequestSource
 
-> **RequestSource** = \{ `connectionInfo`: [`SendRequestOptions`](#sendrequestoptions)\[`"connectionInfo"`\]; `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
+> **RequestSource** = \{ `connectionInfo`: [`ConnectionInfo`](#connectioninfo); `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
 
 #### Remarks
 
@@ -763,66 +794,6 @@ Whether to send the request in the background without updating the UI.
 If true, the request will not update the UI.
 If false, the UI will be updated to display the session and the new request.
 Defaults to false.
-
-##### connectionClose?
-
-> `optional` **connectionClose**: `boolean`
-
-Whether to force close the connection by setting Connection: close header.
-Defaults to true.
-
-##### connectionInfo
-
-> **connectionInfo**: `object`
-
-The connection information to use for the request.
-
-###### host
-
-> **host**: `string`
-
-The host to use for the request.
-
-###### isTLS
-
-> **isTLS**: `boolean`
-
-Whether the request is TLS.
-
-###### port
-
-> **port**: `number`
-
-The port to use for the request.
-
-###### SNI?
-
-> `optional` **SNI**: `string`
-
-The SNI to use for the request.
-If not provided, the SNI will be inferred from the host.
-
-##### overwriteDraft?
-
-> `optional` **overwriteDraft**: `boolean`
-
-Whether to overwrite the editor's draft content.
-If true, draft content will be overwritten with the new request.
-If false, the draft will be kept.
-Defaults to true.
-
-##### raw
-
-> **raw**: `string`
-
-The raw request to send.
-
-##### updateContentLength?
-
-> `optional` **updateContentLength**: `boolean`
-
-Whether to update the content length automatically to match the body.
-Defaults to true.
 
 ***
 

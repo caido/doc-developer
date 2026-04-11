@@ -22,7 +22,7 @@ A cursor for pagination.
 
 ***
 
-### DefineAPI
+### ~~DefineAPI~~
 
 > **DefineAPI**\<`API`\> = `{ [K in keyof API]: DefineAPICallback<API[K]> }`
 
@@ -49,6 +49,10 @@ export function init(sdk: SDK<API>) {
   sdk.api.register("generateNumber", generateNumber);
 }
 ```
+
+#### Deprecated
+
+Use DefinePluginPackageSpec instead.
 
 ***
 
@@ -80,7 +84,7 @@ Parser for Plugin backend events callbacks.
 
 ***
 
-### DefineEvents
+### ~~DefineEvents~~
 
 > **DefineEvents**\<`Events`\> = `{ [K in keyof Events]: DefineEventCallback<Events[K]> }`
 
@@ -106,6 +110,44 @@ export function init(sdk: SDK<{}, BackendEvents>) {
 }
 ```
 
+#### Deprecated
+
+Use DefinePluginPackageSpec instead.
+
+***
+
+### DefinePluginPackageSpec
+
+> **DefinePluginPackageSpec**\<`TSpec`\> = `TSpec`
+
+Define the specification of a Plugin Package. This includes:
+
+- Manifest ID: the unique identifier of the plugin package.
+- API: the backend functions that are callable from the frontend plugin.
+- Events: the events that the frontend can receive from the backend plugin.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TSpec` *extends* [`PluginPackageSpec`](other.md#pluginpackagespec) & [`ExactPluginPackageKeys`](other.md#exactpluginpackagekeys)\<`TSpec`\> |
+
+#### Example
+
+```typescript
+type MyEventData = { id: string; name: string };
+
+export type Spec = DefinePluginPackageSpec<{
+  manifestId: "myplugin",
+  api: {
+    myFunction: (min: number, max: number) => Promise<string>;
+  },
+  events: {
+    "my-event": (data: MyEventData) => void;
+  }
+}>;
+```
+
 ***
 
 ### ID
@@ -119,20 +161,6 @@ A unique identifier.
 ##### \_\_id?
 
 > `optional` **\_\_id**: `never`
-
-***
-
-### MaybePromise
-
-> **MaybePromise**\<`T`\> = `T` \| `Promise`\<`T`\>
-
-Promise or value.
-
-#### Type Parameters
-
-| Type Parameter |
-| ------ |
-| `T` |
 
 ***
 
