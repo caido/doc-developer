@@ -173,7 +173,7 @@ if (viewer.kind === "CloudUser") {
 }
 ```
 
-## Full Example
+## Example
 
 The script below combines everything above using PAT authentication and a file cache.
 
