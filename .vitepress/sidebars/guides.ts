@@ -265,6 +265,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             text: "Install a Plugin",
             link: "/guides/client/install_plugin",
           },
+          {
+            text: "Call a Plugin Function",
+            link: "/guides/client/call_function",
+          },
         ],
       },
     ],
