@@ -250,7 +250,3 @@ Viewer: {
 ```
 
 On subsequent runs, the cached token is reused and the `Starting authentication flow` lines are replaced with `Loaded token from cache`.
-
-## What's next?
-
-Now that your client can authenticate and connect, you can start interacting with your Caido instance through the higher-level SDKs exposed on the `Client` (`client.user`, `client.project`, `client.request`, `client.finding`, `client.workflow`, and more). Browse the [SDK reference](/reference/) for the full API surface.
