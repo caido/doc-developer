@@ -247,4 +247,17 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+  {
+    text: "Client Guides",
+    items: [
+      {
+        text: "Install the SDK",
+        link: "/guides/client/install",
+      },
+      {
+        text: "Base Setup",
+        link: "/guides/client/base_setup",
+      },
+    ],
+  },
 ];
