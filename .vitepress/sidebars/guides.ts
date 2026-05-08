@@ -269,6 +269,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             text: "Call a Plugin Function",
             link: "/guides/client/call_function",
           },
+          {
+            text: "Receive Plugin Events",
+            link: "/guides/client/receive_events",
+          },
         ],
       },
     ],
