@@ -116,7 +116,7 @@ async function main() {
 
   await client.connect();
 
-  const manifestIds = ["scanner", "crawler", "autorize"];
+  const manifestIds = ["scanner", "quickssrf", "autorize"];
 
   for (const manifestId of manifestIds) {
     try {
@@ -146,6 +146,6 @@ A successful run prints:
 ```txt
 [caido] Loaded token from cache
 Installed scanner (2 plugins)
-Installed crawler (2 plugins)
+Installed quickssrf (2 plugins)
 Installed autorize (2 plugins)
 ```
