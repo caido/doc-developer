@@ -258,6 +258,15 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         text: "Base Setup",
         link: "/guides/client/base_setup",
       },
+      {
+        text: "Plugins",
+        items: [
+          {
+            text: "Install a Plugin",
+            link: "/guides/client/install_plugin",
+          },
+        ],
+      },
     ],
   },
 ];
