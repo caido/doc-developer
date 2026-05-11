@@ -8,7 +8,7 @@ A project must be open on the instance for these calls to succeed. If no project
 
 ## List Requests
 
-To list requests, start a chain with `client.request.list()` and await it. The result is a `Connection<RequestResponseOpt>` with `pageInfo` (cursors) and `edges` (the requests):
+To list requests, start a chain with `client.request.list()` and await it. The result is a paginated `Connection` with `pageInfo` (cursors) and `edges` (the requests):
 
 ```ts
 const page = await client.request.list().first(10);
@@ -53,7 +53,7 @@ const latest = await client.request
 
 ## Skip Raw Bodies
 
-By default, every request and response in the list comes back with its full raw bytes attached. To skip the raw bodies when you only need the metadata (faster, less memory), call `.includeRaw(false)`:
+To skip raw request and response bodies when you only need metadata (faster, less memory), call `.includeRaw(false)`. By default, every entry comes back with its full raw bytes attached.
 
 ```ts
 const meta = await client.request.list().includeRaw(false).first(100);
@@ -68,7 +68,7 @@ client.request.list().includeRaw({ request: true, response: false });
 
 ## Scope to a Caido Scope
 
-To restrict the list to a specific Caido scope (the scopes you define under the **Scope** feature), chain `.scope(scopeId)`:
+To restrict the list to a specific Caido scope (the scopes you define under the **Scope** feature), chain `.scope(scopeId)`. You can list and look up scope IDs via `client.scope`:
 
 ```ts
 const inScope = await client.request.list().scope(scopeId).first(50);
@@ -168,14 +168,16 @@ node ./index.ts
 A successful run prints a summary line per request followed by the first 500 bytes of the first response:
 
 ```txt
+[caido] Attempting to load cached token
 [caido] Loaded token from cache
-GET detectportal.firefox.com/canonical.html -> 200
+GET detectportal.firefox.com/success.txt -> 200
 GET detectportal.firefox.com/success.txt -> 200
 GET detectportal.firefox.com/canonical.html -> 200
 ...
 
 --- Raw response of first request ---
 HTTP/1.1 200 OK
-Content-Type: text/html
+Server: nginx
+Content-Length: 8
 ...
 ```

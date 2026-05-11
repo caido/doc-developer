@@ -3,7 +3,7 @@
 The Client SDK exposes Caido's environments and their variables through `client.environment`. Environments hold named values (plain or secret) that you can reference in requests and workflows, which is useful for parameterizing scripts across different targets, API keys, or stages.
 
 ::: info
-Every Caido project starts with a default `Global` environment. You can use it directly or create your own alongside it.
+Environments are project-scoped. A project must be open on the instance for these calls to succeed. Every project also starts with a default `Global` environment that you can use directly or alongside your own.
 :::
 
 ## List Environments
@@ -35,9 +35,9 @@ const env = await client.environment.create({
 console.log("Created environment", env.id);
 ```
 
-`create()` returns an `EnvironmentInstance` that you keep around to manage variables on this environment. The instance tracks the current `version` internally for optimistic concurrency, so successive variable changes do not require you to refetch.
+`create()` returns an `EnvironmentInstance` that you keep around to manage variables on this environment. The instance tracks the environment's version internally, so successive variable changes update the local state automatically without needing to refetch.
 
-## Get an Existing Environment
+## Get a Single Environment
 
 To pick up an existing environment for variable management, look it up by ID with `client.environment.get(id)`. It returns an `EnvironmentInstance` or `undefined` when the environment does not exist:
 
@@ -148,6 +148,7 @@ node ./index.ts
 A successful run prints:
 
 ```txt
+[caido] Attempting to load cached token
 [caido] Loaded token from cache
 Active: staging
   API_URL = https://api.staging.example.com (PLAIN)

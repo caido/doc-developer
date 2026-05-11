@@ -1,6 +1,6 @@
 # Manage Findings
 
-The Client SDK exposes the findings stored in the current Caido project through `client.finding`. Findings are security observations attached to a specific request, with a title, reporter, optional description, and a deduplication key. You can list them, look one up by ID, and create or update them from a script.
+The Client SDK exposes the findings stored in the current Caido project through `client.finding`. Findings are security observations attached to a specific request. You can list them, look one up by ID, and create or update them from a script.
 
 ::: info
 Findings are project-scoped. A project must be open on the instance for any of these calls to succeed.
@@ -108,7 +108,7 @@ await client.finding.update(current.id, {
 
 ## Example
 
-The script below lists every finding reported by `my-scanner`, ordered by creation time:
+The script below lists every finding in the project, ordered by creation time, and paginates through the full list:
 
 ### index.ts
 
@@ -128,7 +128,6 @@ async function main() {
 
   let page = await client.finding
     .list()
-    .filter({ reporter: "my-scanner" })
     .order({ by: "CREATED_AT", ordering: "DESC" })
     .first(50);
 
@@ -161,6 +160,7 @@ node ./index.ts
 A successful run prints one line per finding followed by a total count:
 
 ```txt
+[caido] Attempting to load cached token
 [caido] Loaded token from cache
 [2026-05-11T14:02:04.976Z] SDK test finding (updated) - detectportal.firefox.com/canonical.html
 [2026-05-11T13:53:58.784Z] SDK test finding (updated) - detectportal.firefox.com/canonical.html
