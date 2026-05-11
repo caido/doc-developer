@@ -259,6 +259,27 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
         link: "/guides/client/base_setup",
       },
       {
+        text: "Core Features",
+        items: [
+          {
+            text: "Extract Requests",
+            link: "/guides/client/extract_requests",
+          },
+          {
+            text: "Manage Findings",
+            link: "/guides/client/manage_findings",
+          },
+          {
+            text: "Create Environments and Variables",
+            link: "/guides/client/environments",
+          },
+          {
+            text: "Replay",
+            link: "/guides/client/replay",
+          },
+        ],
+      },
+      {
         text: "Plugins",
         items: [
           {
