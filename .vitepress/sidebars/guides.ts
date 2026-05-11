@@ -270,7 +270,7 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             link: "/guides/client/manage_findings",
           },
           {
-            text: "Create Environments and Variables",
+            text: "Environments and Variables",
             link: "/guides/client/environments",
           },
           {
