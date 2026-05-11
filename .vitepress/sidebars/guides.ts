@@ -300,6 +300,19 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
           },
         ],
       },
+      {
+        text: "Advanced",
+        items: [
+          {
+            text: "Call GraphQL Directly",
+            link: "/guides/client/graphql_direct",
+          },
+          {
+            text: "Custom Cache Implementation",
+            link: "/guides/client/custom_cache",
+          },
+        ],
+      },
     ],
   },
 ];
