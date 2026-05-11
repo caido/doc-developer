@@ -273,6 +273,10 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             text: "Receive Plugin Events",
             link: "/guides/client/receive_events",
           },
+          {
+            text: "Use a Plugin's NPM Spec Package",
+            link: "/guides/client/spec_typing",
+          },
         ],
       },
     ],
