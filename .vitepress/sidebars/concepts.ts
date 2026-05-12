@@ -33,6 +33,24 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Client",
+    items: [
+      {
+        text: "Authentication",
+        items: [
+          {
+            text: "Methods",
+            link: "/concepts/client/auth_methods",
+          },
+          {
+            text: "Caching of Tokens",
+            link: "/concepts/client/auth_caching",
+          },
+        ],
+      },
+    ],
+  },
+  {
     text: "Essentials",
     items: [
       {
