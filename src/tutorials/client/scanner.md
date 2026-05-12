@@ -376,4 +376,3 @@ You can extend this tutorial in several directions:
 - Subscribe to the `session:progress` event instead of polling, as described in [Receive Plugin Events](/guides/client/receive_events.md).
 - Scan multiple requests in one session by passing more IDs to `requestIDs`.
 - Persist findings to Caido as native [findings](/guides/client/manage_findings.md) tied to the original request.
-- Move on to [Using the Authorize API](./autorize.md) for a different style of automated security testing.
