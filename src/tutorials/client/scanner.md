@@ -243,7 +243,7 @@ await pkg.deleteScanSession(sessionId);
 console.log("Scan session deleted");
 ```
 
-## Example
+## Examples
 
 The script below combines every step into a single file. It connects, ensures Scanner is installed, finds the first `caido.local` request, runs an active scan, prints the findings, and cleans up.
 
@@ -343,7 +343,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run against a `caido.local` target prints something like:
