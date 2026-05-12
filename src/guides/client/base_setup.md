@@ -173,7 +173,7 @@ if (viewer.kind === "CloudUser") {
 }
 ```
 
-## Example
+## Examples
 
 The script below combines everything above using PAT authentication and a file cache.
 
@@ -216,7 +216,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run logs the authentication flow followed by the authenticated user, for example:

@@ -78,7 +78,7 @@ for await (const [event] of pkg.subscribeEvent("interaction:received")) {
 
 Internally, the SDK keeps a single upstream connection open while at least one listener is active and tears it down when the last one leaves.
 
-## Example
+## Examples
 
 The script below creates a `quickssrf` session, then listens for `interaction:received` events tied to that session. Once running, trigger the printed SSRF URL externally (for example, `curl <url>`) to see events arrive.
 
@@ -166,7 +166,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 Then trigger the SSRF URL printed at the start, for example with `curl <url>`. The script prints each interaction as it arrives and keeps running until you stop it with Ctrl+C:

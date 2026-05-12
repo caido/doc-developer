@@ -106,7 +106,7 @@ await client.finding.update(current.id, {
 });
 ```
 
-## Example
+## Examples
 
 The script below lists every finding in the project, ordered by creation time, and paginates through the full list:
 
@@ -154,7 +154,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints one line per finding followed by a total count:

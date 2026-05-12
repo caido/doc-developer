@@ -107,7 +107,7 @@ try {
 
 Plugins that use a `Result`-style return value (like `quickssrf`) signal _functional_ failures through the return shape rather than throwing, so the `try/catch` above only covers transport- and runtime-level errors.
 
-## Example
+## Examples
 
 The script below looks up the installed `quickssrf` plugin, fetches its available providers, and creates a session against the first one.
 
@@ -184,7 +184,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints:

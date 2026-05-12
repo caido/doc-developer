@@ -169,7 +169,7 @@ await cache.clear();
 
 On the next `connect()`, `load()` will return `undefined` and the SDK will run a fresh authentication flow.
 
-## Example
+## Examples
 
 A complete script that uses an in-memory cache, connects, fetches the viewer, and clears the cache on exit:
 
@@ -228,7 +228,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints the auth flow followed by the viewer kind and the clear confirmation:

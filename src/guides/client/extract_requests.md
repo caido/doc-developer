@@ -113,7 +113,7 @@ const item = await client.request.get("1", {
 });
 ```
 
-## Example
+## Examples
 
 The script below lists the latest 10 requests ordered by creation time, prints a one-line summary of each, and decodes the raw response of the first one.
 
@@ -162,7 +162,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints a summary line per request followed by the first 500 bytes of the first response:

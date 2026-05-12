@@ -152,7 +152,7 @@ try {
 }
 ```
 
-## Example
+## Examples
 
 The script below uses a raw query to fetch the authenticated user, replicating what `client.user.viewer()` does internally:
 
@@ -200,7 +200,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints:

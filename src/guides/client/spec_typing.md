@@ -96,7 +96,7 @@ Not every plugin publishes a spec package. When one is not available, use the ex
 
 You can still get the function and event names from the plugin's backend source code (look for `sdk.api.register(...)` and `sdk.api.send(...)` calls in its [caido-community](https://github.com/caido-community) repository).
 
-## Example
+## Examples
 
 The script below uses the `@caido-community/quickssrf` spec to call functions and receive events with full type safety.
 
@@ -152,7 +152,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 Then trigger the SSRF URL printed at the start (for example, `curl <url>`) to see typed interactions arrive on the subscription.

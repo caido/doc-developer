@@ -11,7 +11,7 @@ The `client.plugin.install()` method accepts two source shapes:
 Both methods enable the installed plugins automatically. No separate enable step is required.
 :::
 
-## 1. From the Caido Store
+## 1. Installing from the Caido Store
 
 To install a plugin from the store, you need its **manifest ID**. This is the `id` field declared in the plugin's `manifest.json` file, and it is what uniquely identifies the plugin in the store. You can find it in the [store manifest](https://github.com/caido/store/blob/main/plugin_packages.json) or in the plugin's repository under [caido-community](https://github.com/caido-community).
 
@@ -36,7 +36,7 @@ async function main() {
 main();
 ```
 
-## 2. From a Local Package File
+## 2. Installing from a Local Package File
 
 To install a plugin from a local archive, you need its **plugin package**. This is a signed `.zip` file attached to each [plugin release](/guides/repository.md#5-create-a-release) on GitHub. Download the archive, load it into a `File` object, then pass it to `install()`.
 
@@ -79,7 +79,7 @@ const pkg = await client.plugin.install({
 });
 ```
 
-## The Returned Package Handle
+## Reading the Returned Package Handle
 
 When `install()` succeeds, it returns a `PluginPackageHandle` that describes the installed package and every plugin inside it. A single package can ship a backend plugin, a frontend plugin, and a workflow plugin, each with its own ID and `enabled` flag.
 
@@ -96,7 +96,7 @@ When `install()` succeeds, it returns a `PluginPackageHandle` that describes the
 
 The handle also exposes `callFunction()` and `subscribeEvent()` for interacting with a backend plugin's exported functions and events. Those are covered in the next guides.
 
-## Example
+## Examples
 
 The script below bootstraps a Caido instance by installing several plugins from the store. Plugins that are already installed at the same or newer version are skipped, and the failure is reported without aborting the rest of the run.
 
@@ -138,7 +138,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints:

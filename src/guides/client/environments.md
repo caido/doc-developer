@@ -92,7 +92,7 @@ await client.environment.delete(env.id);
 Deletion is permanent and removes all variables on the environment. Any request or workflow that references variables from the deleted environment will fail until you point them at another environment.
 :::
 
-## Example
+## Examples
 
 The script below provisions a `staging` environment with two variables, selects it, and prints the final state:
 
@@ -142,7 +142,7 @@ Run it with:
 
 ```bash
 export CAIDO_PAT=caido_xxxxx
-node ./index.ts
+npx tsx ./index.ts
 ```
 
 A successful run prints:
