@@ -48,6 +48,19 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
           },
         ],
       },
+      {
+        text: "Community implementations",
+        items: [
+          {
+            text: "Golang SDK",
+            link: "/concepts/client/community_golang",
+          },
+          {
+            text: "Python SDK",
+            link: "/concepts/client/community_python",
+          },
+        ],
+      },
     ],
   },
   {
