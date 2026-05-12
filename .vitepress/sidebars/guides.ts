@@ -273,10 +273,6 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
             text: "Environments and Variables",
             link: "/guides/client/environments",
           },
-          {
-            text: "Replay",
-            link: "/guides/client/replay",
-          },
         ],
       },
       {
