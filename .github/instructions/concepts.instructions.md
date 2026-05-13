@@ -12,12 +12,14 @@ Explanation provides **context and background**. It answers “why?” and helps
 
 ## Must do
 
+- **First-sentence orientation**: Immediately after the `#` page title, the very first sentence of body text must say what this article is about and what conceptual ground the reader will cover (what they will understand or how the topic fits in). Place it before any `##` heading, `::: callout`, list, image, table, or fenced code block.
 - Clarify purpose early: what conceptual question this page answers.
 - Link to `src/reference/` for exact fields/APIs and to `src/guides/` for procedures.
 - Use narrative, comparison, or multiple angles where that aids understanding.
 
 ## Must not do (flag these)
 
+- **Deferred orientation**: Starting the page with a heading, callout, list, image, table, or code before any sentence that explains what the article is about, or burying that explanation only later in the page.
 - **Procedures**: Commands or numbered steps the reader is meant to run to accomplish a task — belong in `src/guides/` (or a full `src/tutorials/` if teaching from scratch).
 - **Reference dumps**: Exhaustive parameter tables, full manifest field lists, or API catalogs — belong in `src/reference/`.
 - **Tutorial-style walkthrough**: Building something step-by-step — belongs in `src/tutorials/`.
