@@ -247,4 +247,68 @@ export const guidesSidebar: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+  {
+    text: "Client Guides",
+    items: [
+      {
+        text: "Install the SDK",
+        link: "/guides/client/install",
+      },
+      {
+        text: "Base Setup",
+        link: "/guides/client/base_setup",
+      },
+      {
+        text: "Core Features",
+        items: [
+          {
+            text: "Extract Requests",
+            link: "/guides/client/extract_requests",
+          },
+          {
+            text: "Manage Findings",
+            link: "/guides/client/manage_findings",
+          },
+          {
+            text: "Environments and Variables",
+            link: "/guides/client/environments",
+          },
+        ],
+      },
+      {
+        text: "Plugins",
+        items: [
+          {
+            text: "Install a Plugin",
+            link: "/guides/client/install_plugin",
+          },
+          {
+            text: "Call a Plugin Function",
+            link: "/guides/client/call_function",
+          },
+          {
+            text: "Receive Plugin Events",
+            link: "/guides/client/receive_events",
+          },
+          {
+            text: "Use a Plugin's NPM Spec Package",
+            link: "/guides/client/spec_typing",
+          },
+        ],
+      },
+      {
+        text: "Advanced",
+        items: [
+          {
+            text: "Call GraphQL Directly",
+            link: "/guides/client/graphql_direct",
+          },
+          {
+            text: "Custom Cache Implementation",
+            link: "/guides/client/custom_cache",
+          },
+        ],
+      },
+    ],
+  },
 ];
