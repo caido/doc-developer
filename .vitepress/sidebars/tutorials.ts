@@ -19,4 +19,13 @@ export const tutorialsSidebar: DefaultTheme.SidebarItem[] = [
       },
     ],
   },
+  {
+    text: "Client SDK",
+    items: [
+      {
+        text: "Using the Scanner API",
+        link: "/tutorials/client/scanner",
+      },
+    ],
+  },
 ];
