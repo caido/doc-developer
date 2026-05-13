@@ -33,6 +33,37 @@ export const conceptsSidebar: DefaultTheme.SidebarItem[] = [
     ],
   },
   {
+    text: "Client",
+    items: [
+      {
+        text: "Authentication",
+        items: [
+          {
+            text: "Methods",
+            link: "/concepts/client/auth_methods",
+          },
+          {
+            text: "Caching of Tokens",
+            link: "/concepts/client/auth_caching",
+          },
+        ],
+      },
+      {
+        text: "Community implementations",
+        items: [
+          {
+            text: "Golang SDK",
+            link: "/concepts/client/community_golang",
+          },
+          {
+            text: "Python SDK",
+            link: "/concepts/client/community_python",
+          },
+        ],
+      },
+    ],
+  },
+  {
     text: "Essentials",
     items: [
       {
