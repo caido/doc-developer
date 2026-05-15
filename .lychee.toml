@@ -1,4 +1,4 @@
-exclude_path = ["node_modules", ".vitepress/cache", ".vitepress/dist", "src/reference/sdks/", "src/reference/modules/"]
+exclude_path = ["node_modules", ".vitepress/cache", ".vitepress/dist"]
 
 exclude = [
     "localhost",
@@ -9,7 +9,8 @@ exclude = [
     "plausible\\.io",
     "npmjs\\.com",
     "github\\.com/username/",
-    "^file://"
+    "https://develop/$",
+    "\\|"
 ]
 
 timeout = 30
