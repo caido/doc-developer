@@ -1,6 +1,7 @@
 [tools]
 node = "22"
 pnpm = "10.17"
+lychee = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
