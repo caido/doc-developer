@@ -1,7 +1,7 @@
 [tools]
 node = "22"
 pnpm = "10.17"
-"github:lycheeverse/lychee" = "lychee-v0.24.2"
+lychee = "0.23.0"
 
 [settings]
 idiomatic_version_file_enable_tools = []
