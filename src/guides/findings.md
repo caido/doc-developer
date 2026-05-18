@@ -1,6 +1,6 @@
 # Use Findings
 
-Any requests or responses can be parsed for notable characteristics based on conditional statements using [Findings](https://docs.caido.io/guides/findings.html). As Caido proxies traffic, if it detects what you are looking for, an alert will be generated to draw your attention.
+Any requests or responses can be parsed for notable characteristics based on conditional statements using [Findings](https://docs.caido.io/app/quickstart/findings). As Caido proxies traffic, if it detects what you are looking for, an alert will be generated to draw your attention.
 
 ## Creating Findings
 

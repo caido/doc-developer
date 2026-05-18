@@ -15,7 +15,7 @@ The files related to package management within the starterkit repository are:
 
 ## TypeScript
 
-Externally, [TypeScript](https://docs.caido.io/concepts/essentials/workflows/js_in_caido.html#typing) is used by Caido for the starterkit package.
+Externally, [TypeScript](https://docs.caido.io/app/concepts/workflows_js#typing) is used by Caido for the starterkit package.
 
 The file related to TypeScript within the starterkit repository is:
 

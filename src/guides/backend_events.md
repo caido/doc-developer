@@ -6,7 +6,7 @@ This can be accomplished using the three event handlers provided by the SDK:
 
 ## Listening for Project Changes
 
-An event will be triggered when the active [Project](https://docs.caido.io/quickstart/beginner_guide/first_steps_with_caido/project.html) changes.
+An event will be triggered when the active [Project](https://docs.caido.io/app/quickstart/workspace) changes.
 
 ### /packages/backend/src/index.ts
 

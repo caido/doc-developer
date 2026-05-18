@@ -197,7 +197,7 @@ const addNoteMenu = async (caido: Caido) => {
 
 - The editor panes are accessed using the `caido.window.getActiveEditor()?.getSelectedText();` method.
 - If no selection is made, a prompt window will appear asking the user to supply input.
-- Once the value is received, if the note was taken while within a specific Caido [Project](https://docs.caido.io/reference/features/workspace/projects.html) then the API call to get the current Project name is made via the `caido.graphql.currentProject()` method.
+- Once the value is received, if the note was taken while within a specific Caido [Project](https://docs.caido.io/app/quickstart/workspace) then the API call to get the current Project name is made via the `caido.graphql.currentProject()` method.
 - If you are currently within a Project, then the Project's name will be included in the `datetimeCell` of the table.
 - If you are not currently within a project, "No Project Selected" will be included instead.
 - The note will also be added to storage by calling the `addNoteStorage` function.
@@ -287,7 +287,7 @@ The `addNoteButton` has an async handler function and is responsible for awaitin
 ```
 
 - The function will execute upon the `addNoteButton` being clicked.
-- Once the value is received, if the note was taken while within a specific Caido [Project](https://docs.caido.io/reference/features/workspace/projects.html) then the API call to get the current Project name is made via the `caido.graphql.currentProject()` method.
+- Once the value is received, if the note was taken while within a specific Caido [Project](https://docs.caido.io/app/quickstart/workspace) then the API call to get the current Project name is made via the `caido.graphql.currentProject()` method.
 - If you are currently within a Project, then the Project's name will be included in the `datetimeCell` of the table.
 - If you are not currently within a project, "No Project Selected" will be included instead.
 - The note will also be added to storage by calling the `addNoteStorage` function.

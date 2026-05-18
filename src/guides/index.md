@@ -52,7 +52,7 @@ Instead of uninstalling, rebuilding, and installing your plugin to view the chan
 
 To use the Devtools plugin:
 
-1. First navigate to the [Plugins](https://docs.caido.io/guides/plugins.html) interface, select Community Store, and click `+ Install`.
+1. First navigate to the [Plugins](https://docs.caido.io/app/quickstart/plugins) interface, select Community Store, and click `+ Install`.
 
 2. Next, run the following command from the root directory of the plugin to both build and watch for file changes:
 
