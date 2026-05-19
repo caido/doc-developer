@@ -21,7 +21,7 @@ jobs:
       - name: Install Mise
         uses: caido/action-mise-action@v3.2.0
         with:
-          version: ${{ vars.CI__MISE_VERSION }} 
+          version: ${{ vars.CI__MISE_VERSION }}
 
       - name: Install dependencies
         run: pnpm install
@@ -39,10 +39,25 @@ jobs:
       - name: Install Mise
         uses: caido/action-mise-action@v3.2.0
         with:
-          version: ${{ vars.CI__MISE_VERSION }} 
+          version: ${{ vars.CI__MISE_VERSION }}
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Run build
         run: pnpm build
+
+  check-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install Mise
+        uses: caido/action-mise-action@v3.2.0
+        with:
+          version: ${{ vars.CI__MISE_VERSION }}
+
+      - name: Check links
+        run: mise run check-links

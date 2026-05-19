@@ -31,7 +31,7 @@ To send a request, you will also need to import the `Request` class and the `fet
 import { Request as FetchRequest, fetch } from "caido:http";
 ```
 
-Next, let's define an asynchronous function, specify request elements, and output the details to the [backend logs](https://docs.caido.io/reference/internal_files.html). In this example we define two URL query parameters, the `Accept` header, and the `User-Agent` header.
+Next, let's define an asynchronous function, specify request elements, and output the details to the [backend logs](https://docs.caido.io/app/reference/data_storage). In this example we define two URL query parameters, the `Accept` header, and the `User-Agent` header.
 
 ``` ts
 export async function callApi(sdk: SDK) {

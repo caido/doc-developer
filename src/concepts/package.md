@@ -59,7 +59,7 @@ For more information on the `manifest.json` file, refer to the [manifest.json re
 
 ### Frontend Plugin
 
-A "_page_" in Caido simply refers to a user interface. For example, the [Replay](https://docs.caido.io/reference/features/testing/replay.html) and [Automate](https://docs.caido.io/reference/features/testing/automate.html) side menu tabs each produce their own page.
+A "_page_" in Caido simply refers to a user interface. For example, the [Replay](https://docs.caido.io/app/quickstart/replay) and [Automate](https://docs.caido.io/app/quickstart/automate) side menu tabs each produce their own page.
 
 Within these pages are components and elements specific to the feature, such as option menus and buttons. It is through these components and elements that the appearance is customized or communication with the backend occurs.
 
