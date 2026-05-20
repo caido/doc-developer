@@ -26,6 +26,10 @@ export const tutorialsSidebar: DefaultTheme.SidebarItem[] = [
         text: "Using the Scanner API",
         link: "/tutorials/client/scanner",
       },
+      {
+        text: "Using the Autorize API",
+        link: "/tutorials/client/autorize",
+      },
     ],
   },
 ];
