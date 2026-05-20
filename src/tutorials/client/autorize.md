@@ -180,11 +180,12 @@ The returned `Template` includes the template `id`, a deduplication `key` derive
 
 ## 7. Waiting for results
 
-After creating a template, Autorize processes the replays asynchronously. Poll `pkg.getTemplate(id)` until the `results` array contains all expected entries. With one user profile and `testNoAuth` enabled (the default), there are three results: one baseline, one mutated, and one no-auth:
+After creating a template, Autorize processes the replays asynchronously. Poll `pkg.getTemplate(id)` until the `results` array contains all expected entries. With one enabled user profile and `testNoAuth` enabled (the default), there are three results: one baseline, one mutated, and one no-auth:
 
 ```ts
 let template = created.value;
-const expectedResults = 1 + cfg.value.userProfiles.length + (cfg.value.testNoAuth ? 1 : 0);
+const enabledProfiles = cfg.value.userProfiles.filter((p) => p.enabled);
+const expectedResults = 1 + enabledProfiles.length + (cfg.value.testNoAuth ? 1 : 0);
 
 while (template.results.length < expectedResults) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -240,7 +241,11 @@ for (const result of template.results) {
 
 ## 9. Cleaning up
 
-Templates persist in the project until they are deleted. Remove the template and reset the config at the end of the script to keep the project tidy:
+Templates persist in the project until they are deleted. Remove the template at the end of the script to keep the project tidy:
+
+::: warning
+The `updateConfig` call below resets `userProfiles` to an empty array. If you already have Autorize profiles configured in this project, save them with `getConfig()` before the script runs and restore them here instead.
+:::
 
 ```ts
 await pkg.deleteTemplate(templateId);
@@ -276,7 +281,7 @@ async function main() {
   }
 
   // 2. Configure a low-privilege user profile
-  await pkg.updateConfig({
+  const updated = await pkg.updateConfig({
     userProfiles: [
       {
         id: "low-priv",
@@ -292,6 +297,7 @@ async function main() {
       },
     ],
   });
+  if (updated.kind === "Error") throw new Error(updated.error);
 
   // 3. Read back the config to know how many results to expect
   const cfg = await pkg.getConfig();
@@ -315,7 +321,8 @@ async function main() {
 
   // 6. Wait for all results
   let template = created.value;
-  const expectedResults = 1 + cfg.value.userProfiles.length + (cfg.value.testNoAuth ? 1 : 0);
+  const enabledProfiles = cfg.value.userProfiles.filter((p) => p.enabled);
+  const expectedResults = 1 + enabledProfiles.length + (cfg.value.testNoAuth ? 1 : 0);
   while (template.results.length < expectedResults) {
     await new Promise((resolve) => setTimeout(resolve, 1500));
     const got = await pkg.getTemplate(templateId);
