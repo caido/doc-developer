@@ -1,0 +1,38 @@
+[build]
+command = "make deploy-netlify"
+publish = ".vitepress/dist"
+
+[build.environment]
+MISE_VERSION = "2026.5.7"
+
+[[redirects]]
+from = "/stats/script.js"
+to = "https://plausible.io/js/plausible.js"
+status = 200
+force = true
+
+[[redirects]]
+from = "/stats/event"
+to = "https://plausible.io/api/event"
+status = 200
+force = true
+
+[[redirects]]
+from = "/concepts/essentials/plugins/"
+to = "/guides/"
+status = 301
+
+[[redirects]]
+from = "/concepts/essentials/plugins/frontend.html"
+to = "/guides/"
+status = 301
+
+[[redirects]]
+from = "/concepts/essentials/plugins/backend.html"
+to = "/guides/"
+status = 301
+
+[[redirects]]
+from = "/guides/plugins/notebook.html"
+to = "/tutorials/notebook.html"
+status = 301
