@@ -145,6 +145,50 @@ The prepared statement [parameters are bound](https://www.sqlite.org/c3ref/bind_
 
 ***
 
+### AnyFn()
+
+> **AnyFn** = (...`args`: `any`[]) => [`MaybePromise`](shared.md#maybepromise)\<`any`\>
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | `any`[] |
+
+#### Returns
+
+[`MaybePromise`](shared.md#maybepromise)\<`any`\>
+
+***
+
+### AnyVoidFn()
+
+> **AnyVoidFn** = (...`args`: `any`[]) => [`MaybePromise`](shared.md#maybepromise)\<`void`\>
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | `any`[] |
+
+#### Returns
+
+[`MaybePromise`](shared.md#maybepromise)\<`void`\>
+
+***
+
+### APICallback
+
+> **APICallback**\<`T`\> = `T` *extends* [`AnyFn`](#anyfn) ? (`sdk`: [`SDK`](index.md#sdk), ...`args`: `Parameters`\<`T`\>) => `ReturnType`\<`T`\> : [`InvalidCallbackMessage`](#invalidcallbackmessage)
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
 ### Console
 
 > **Console** = `object`
@@ -276,6 +320,54 @@ The value of the environment variable.
 
 ***
 
+### EventParameters
+
+> **EventParameters**\<`T`\> = `T` *extends* [`AnyVoidFn`](#anyvoidfn) ? `A` : [`InvalidEventParametersMessage`](#invalideventparametersmessage)
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
+### ExactPluginPackageKeys
+
+> **ExactPluginPackageKeys**\<`T`\> = keyof `T` *extends* [`PluginPackageSpecKey`](#pluginpackagespeckey) ? [`PluginPackageSpecKey`](#pluginpackagespeckey) *extends* keyof `T` ? `unknown` : [`PluginPackageSpecKeyError`](#pluginpackagespeckeyerror) : [`PluginPackageSpecKeyError`](#pluginpackagespeckeyerror)
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
+### InvalidCallbackMessage
+
+> **InvalidCallbackMessage** = `"Your callback must respect the format (sdk: SDK, ...args: unknown[]) => MaybePromise<unknown>"`
+
+***
+
+### InvalidEventParametersMessage
+
+> **InvalidEventParametersMessage** = `"Invalid event parameters"`
+
+***
+
+### MaybePromise
+
+> **MaybePromise**\<`T`\> = `T` \| `Promise`\<`T`\>
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
 ### PageInfo
 
 > **PageInfo** = `object`
@@ -305,6 +397,63 @@ Information on the current page of paginated data.
 ### Parameter
 
 > **Parameter** = `null` \| `number` \| `bigint` \| `string` \| `Uint8Array`
+
+***
+
+### PluginPackageSpec
+
+> **PluginPackageSpec** = `object`
+
+#### Properties
+
+##### api
+
+> **api**: `Record`\<`string`, [`AnyFn`](#anyfn)\>
+
+##### events
+
+> **events**: `Record`\<`string`, [`AnyVoidFn`](#anyvoidfn)\>
+
+##### manifestId
+
+> **manifestId**: `string`
+
+***
+
+### PluginPackageSpecKey
+
+> **PluginPackageSpecKey** = keyof [`PluginPackageSpec`](#pluginpackagespec)
+
+***
+
+### PluginPackageSpecKeyError
+
+> **PluginPackageSpecKeyError** = `"Only manifestId, api and events keys are allowed"`
+
+***
+
+### ResolvedAPI
+
+> **ResolvedAPI**\<`T`\> = `T` *extends* `object` ? `A` : `T`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+***
+
+### ResolvedEvents
+
+> **ResolvedEvents**\<`T`, `Events`\> = `T` *extends* `object` ? `A` : `Events`
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+| `Events` |
 
 ***
 

@@ -148,7 +148,7 @@ The files.
 
 ##### onDeletedHostedFile()
 
-> **onDeletedHostedFile**: (`callback`: (`fileId`: `string`) => `void`) => `ListenerHandle`
+> **onDeletedHostedFile**: (`callback`: (`fileId`: `string`) => `void`) => [`ListenerHandle`](utils.md#listenerhandle)
 
 Listen for deleted hosted files.
 
@@ -160,7 +160,7 @@ Listen for deleted hosted files.
 
 ###### Returns
 
-`ListenerHandle`
+[`ListenerHandle`](utils.md#listenerhandle)
 
 A handle object with a `stop` method to stop listening.
 
@@ -177,7 +177,7 @@ handle.stop();
 
 ##### onUpdatedHostedFile()
 
-> **onUpdatedHostedFile**: (`callback`: (`event`: [`HostedFile`](#hostedfile)) => `void`) => `ListenerHandle`
+> **onUpdatedHostedFile**: (`callback`: (`event`: [`HostedFile`](#hostedfile)) => `void`) => [`ListenerHandle`](utils.md#listenerhandle)
 
 Listen for updated hosted files.
 
@@ -189,7 +189,7 @@ Listen for updated hosted files.
 
 ###### Returns
 
-`ListenerHandle`
+[`ListenerHandle`](utils.md#listenerhandle)
 
 A handle object with a `stop` method to stop listening.
 
@@ -206,7 +206,7 @@ handle.stop();
 
 ##### onUploadedHostedFile()
 
-> **onUploadedHostedFile**: (`callback`: (`event`: [`HostedFile`](#hostedfile)) => `void`) => `ListenerHandle`
+> **onUploadedHostedFile**: (`callback`: (`event`: [`HostedFile`](#hostedfile)) => `void`) => [`ListenerHandle`](utils.md#listenerhandle)
 
 Listen for uploaded hosted files.
 
@@ -218,7 +218,7 @@ Listen for uploaded hosted files.
 
 ###### Returns
 
-`ListenerHandle`
+[`ListenerHandle`](utils.md#listenerhandle)
 
 A handle object with a `stop` method to stop listening.
 
