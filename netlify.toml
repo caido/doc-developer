@@ -17,22 +17,90 @@ to = "https://plausible.io/api/event"
 status = 200
 force = true
 
+# Client SDK namespace (more specific paths first)
+[[redirects]]
+from = "/guides/client/*"
+to = "/client-sdk/guides/:splat"
+status = 301
+
+[[redirects]]
+from = "/tutorials/client/*"
+to = "/client-sdk/tutorials/:splat"
+status = 301
+
+[[redirects]]
+from = "/concepts/client/*"
+to = "/client-sdk/concepts/:splat"
+status = 301
+
+[[redirects]]
+from = "/reference/authentication"
+to = "/client-sdk/reference/authentication"
+status = 301
+
+[[redirects]]
+from = "/reference/api"
+to = "/client-sdk/reference/api"
+status = 301
+
+# Plugins namespace
+[[redirects]]
+from = "/guides/*"
+to = "/plugins/guides/:splat"
+status = 301
+
+[[redirects]]
+from = "/guides"
+to = "/plugins/guides/"
+status = 301
+
+[[redirects]]
+from = "/tutorials/*"
+to = "/plugins/tutorials/:splat"
+status = 301
+
+[[redirects]]
+from = "/tutorials"
+to = "/plugins/tutorials/"
+status = 301
+
+[[redirects]]
+from = "/concepts/*"
+to = "/plugins/concepts/:splat"
+status = 301
+
+[[redirects]]
+from = "/concepts"
+to = "/plugins/concepts/"
+status = 301
+
+[[redirects]]
+from = "/reference/*"
+to = "/plugins/reference/:splat"
+status = 301
+
+[[redirects]]
+from = "/reference"
+to = "/plugins/reference/"
+status = 301
+
+# Legacy redirects
 [[redirects]]
 from = "/concepts/essentials/plugins/"
-to = "/guides/"
+to = "/plugins/guides/"
 status = 301
 
 [[redirects]]
 from = "/concepts/essentials/plugins/frontend.html"
-to = "/guides/"
+to = "/plugins/guides/"
 status = 301
 
 [[redirects]]
 from = "/concepts/essentials/plugins/backend.html"
-to = "/guides/"
+to = "/plugins/guides/"
 status = 301
 
 [[redirects]]
 from = "/guides/plugins/notebook.html"
-to = "/tutorials/notebook.html"
+to = "/plugins/tutorials/notebook.html"
 status = 301

@@ -1,4 +1,2 @@
-export * from "./reference";
-export * from "./guides";
-export * from "./concepts";
-export * from "./tutorials";
+export * as pluginsSidebars from "./plugins";
+export * as clientSdkSidebars from "./client-sdk";

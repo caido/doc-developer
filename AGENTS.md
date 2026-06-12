@@ -4,7 +4,18 @@
 
 This repository contains the **Caido Developer Documentation** - a comprehensive documentation site for developers building plugins for Caido, a lightweight web security auditing toolkit.
 
-The documentation is built using [VitePress](https://vitepress.dev/) and is published at [docs.caido.io](https://docs.caido.io). All documentation is written in Markdown format.
+The documentation is built using [VitePress](https://vitepress.dev/) and is published at [developer.caido.io](https://developer.caido.io). All documentation is written in Markdown format.
+
+## Namespace Navigation
+
+The site is organized by **audience**, not documentation type. See [ADR 0001](docs/adr/0001-namespaces.md) for the full design.
+
+| Namespace | URL prefix | Audience |
+|-----------|------------|----------|
+| **Plugins** | `/plugins/` | Plugin authors (frontend, backend, workflow SDKs) |
+| **Client SDK** | `/client-sdk/` | External integrators using `@caido/sdk-client` |
+
+Each namespace has second-level navigation for Diátaxis doc types: Guides, Tutorials, Reference, Concepts.
 
 ## Documentation Framework: Diátaxis
 
@@ -12,7 +23,7 @@ This repository **strictly adheres** to the [Diátaxis documentation framework](
 
 ### The Four Documentation Types
 
-1. **Tutorials** (`src/tutorials/`)
+1. **Tutorials** (`src/{namespace}/tutorials/`)
    - **Purpose**: Learning-oriented, step-by-step lessons
    - **User need**: "I want to learn how to do something"
    - **Characteristics**:
@@ -22,7 +33,7 @@ This repository **strictly adheres** to the [Diátaxis documentation framework](
      - Should result in a working implementation
    - **Example**: The Notebook tutorial walks through building a complete note-taking plugin
 
-2. **How-to Guides** (`src/guides/`)
+2. **How-to Guides** (`src/{namespace}/guides/`)
    - **Purpose**: Task-oriented, problem-solving instructions
    - **User need**: "I want to know how to accomplish a specific task"
    - **Characteristics**:
@@ -32,7 +43,7 @@ This repository **strictly adheres** to the [Diátaxis documentation framework](
      - Answers "how do I...?" questions
    - **Example**: "How to create a command", "How to query requests"
 
-3. **Reference** (`src/reference/`)
+3. **Reference** (`src/{namespace}/reference/`)
    - **Purpose**: Technical documentation, API specifications
    - **User need**: "I need to look up how something works"
    - **Characteristics**:
@@ -42,7 +53,7 @@ This repository **strictly adheres** to the [Diátaxis documentation framework](
      - No explanation of why, just what
    - **Example**: SDK API documentation, manifest.json field definitions, module references
 
-4. **Explanation** (`src/concepts/`)
+4. **Explanation** (`src/{namespace}/concepts/`)
    - **Purpose**: Understanding-oriented, conceptual documentation
    - **User need**: "I want to understand how something works"
    - **Characteristics**:
@@ -62,73 +73,47 @@ This repository **strictly adheres** to the [Diátaxis documentation framework](
 
 ```text
 src/
-├── tutorials/          # Step-by-step learning experiences
-│   ├── index.md
-│   └── notebook.md
-├── guides/             # Task-oriented how-to guides (all files flattened)
-│   ├── index.md
-│   ├── config.md
-│   ├── vibe_coding.md
-│   ├── page.md
-│   ├── command.md
-│   ├── menu.md
-│   ├── styling.md
-│   ├── request.md
-│   ├── fetch.md
-│   ├── querying_requests.md
-│   ├── utf.md
-│   ├── findings.md
-│   ├── env.md
-│   ├── frontend_storage.md
-│   ├── sqlite.md
-│   ├── files.md
-│   ├── rpc.md
-│   ├── backend_events.md
-│   ├── events.md
-│   ├── spawning_process.md
-│   ├── repository.md
-│   ├── store.md
-│   └── documentation.md
-├── reference/          # Technical reference documentation
-│   ├── index.md
-│   ├── sdks/          # Generated SDK documentation
-│   ├── modules/       # Generated module documentation
-│   ├── config.md
-│   ├── manifest.md
-│   ├── plugin_packages.md
-│   ├── api.md
-│   └── authentication.md
-└── concepts/          # Explanatory documentation (all files flattened)
-    ├── index.md
-    ├── package.md
-    ├── tooling.md
-    ├── runtime.md
-    ├── signing.md
-    ├── ui.md
-    ├── binary.md
-    ├── workflow.md
-    └── child_process.md
+├── plugins/                    # Plugin author namespace
+│   ├── guides/
+│   ├── tutorials/
+│   ├── reference/
+│   │   ├── sdks/              # Generated SDK documentation
+│   │   └── modules/           # Generated module documentation
+│   └── concepts/
+├── client-sdk/                 # Client SDK namespace
+│   ├── guides/
+│   ├── tutorials/
+│   ├── reference/
+│   └── concepts/
+├── index.md                    # Home page
+├── policy.md                   # Store policy (root-level)
+└── _images/                    # Shared assets
 ```
 
 ## How to Contribute (For AI Agents)
 
 ### 1. Determine the Correct Documentation Type
 
-Before writing or editing documentation, determine which type it should be:
+Before writing or editing documentation, determine which type it should be and which namespace it belongs in:
 
-- **Tutorial**: Is this teaching someone how to build something from scratch? → `tutorials/`
-- **How-to Guide**: Is this solving a specific problem or task? → `guides/`
-- **Reference**: Is this documenting an API, function, or configuration? → `reference/`
-- **Explanation**: Is this explaining concepts, architecture, or reasoning? → `concepts/`
+- **Tutorial**: Is this teaching someone how to build something from scratch? → `{namespace}/tutorials/`
+- **How-to Guide**: Is this solving a specific problem or task? → `{namespace}/guides/`
+- **Reference**: Is this documenting an API, function, or configuration? → `{namespace}/reference/`
+- **Explanation**: Is this explaining concepts, architecture, or reasoning? → `{namespace}/concepts/`
+
+**Namespace selection:**
+
+- Plugin development (UI, backend, workflow, manifest, tooling) → **Plugins** (`src/plugins/`)
+- External programmatic access to Caido (`@caido/sdk-client`, Cloud API) → **Client SDK** (`src/client-sdk/`)
 
 ### 2. File Organization
 
 - All documentation files are Markdown (`.md`)
-- Files must be linked in the appropriate `index.md` file to appear in navigation
-- Use descriptive, lowercase filenames with hyphens (e.g., `creating-commands.md`)
-- **Guides are now flattened**: All guide files are directly in `src/guides/` (no subdirectories)
-- **Concepts are now flattened**: All concept files are directly in `src/concepts/` (no subdirectories)
-- **Reference non-generated pages are flattened**: Non-generated reference files are directly in `src/reference/` (generated SDK/module docs remain in subdirectories)
+- Files must be linked in the appropriate sidebar config to appear in navigation
+- Use descriptive, lowercase filenames with underscores (e.g., `editor_extensions.md`)
+- **Guides are flattened** within each namespace: all guide files are directly in `src/{namespace}/guides/` (no subdirectories)
+- **Concepts are flattened** within each namespace: all concept files are directly in `src/{namespace}/concepts/`
+- **Reference non-generated pages are flattened**: Non-generated reference files are directly in `src/{namespace}/reference/` (generated SDK/module docs remain in subdirectories)
 
 #### Guides Sidebar Organization
 
@@ -192,12 +177,12 @@ The guides sidebar is organized by **user goals and tasks**, not by technical bo
 3. If it's about interacting with Caido's built-in features (Findings, Scopes, Environment Variables, HTTP History, etc.), use "Working with Caido Features"
 4. If it's about sending/manipulating HTTP requests, use "Working with HTTP"
 5. If it's about storing your plugin's data, use "Storing Data"
-6. Update the sidebar in `.vitepress/sidebars/guides.ts`
+6. Update the sidebar in `.vitepress/sidebars/plugins/guides.ts` or `.vitepress/sidebars/client-sdk/guides.ts`
 
 #### Guide Title Matching
 
 - **Guide titles MUST exactly match their corresponding sidebar item text**
-- The H1 title in each guide file (e.g., `# Title`) must match the `text` property in `.vitepress/sidebars/guides.ts`
+- The H1 title in each guide file (e.g., `# Title`) must match the `text` property in the corresponding namespace sidebar config
 - Titles should be concise and use gerund forms (e.g., "Creating", "Managing", "Interacting") for how-to guides, following Diátaxis principles
 - When updating a guide title, always verify it matches the sidebar entry
 - When updating the sidebar, ensure the corresponding guide file's H1 title is updated to match
@@ -302,7 +287,7 @@ Before submitting changes:
 2. **Type check**: Run `pnpm typecheck` to verify TypeScript types
 3. **Build**: Run `pnpm build` to ensure the site builds successfully
 4. **Preview**: Run `pnpm dev` to preview changes locally
-5. **Title Check**: Verify that all guide file H1 titles exactly match their corresponding sidebar entries in `.vitepress/sidebars/guides.ts`
+5. **Title Check**: Verify that all guide file H1 titles exactly match their corresponding sidebar entries in the namespace sidebar configs
 
 ### 6. Common Patterns
 
@@ -346,7 +331,7 @@ The documentation uses VitePress components like:
 
 #### Linking
 
-- Use relative paths for internal links: `/guides/command.md`
+- Use relative paths for internal links: `/plugins/guides/command.md`
 - Always update `index.md` files when adding new pages
 
 ### 7. Content Guidelines
@@ -392,7 +377,7 @@ When adding new documentation, ask:
 
 - [Diátaxis Framework](https://diataxis.fr/) - The documentation framework this repo follows
 - [VitePress Documentation](https://vitepress.dev/) - The static site generator used
-- [Contribution Guide](./src/guides/documentation.md) - Human-oriented contribution guide
+- [Contribution Guide](/plugins/guides/documentation.md) - Human-oriented contribution guide
 - [Caido Developer Documentation](https://docs.caido.io) - The live documentation site
 
 ## Summary for AI Agents
