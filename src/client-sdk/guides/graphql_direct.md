@@ -128,7 +128,7 @@ for await (const event of client.graphql.subscribe(NewRequests)) {
 
 Caido's GraphQL endpoint lives at `<instanceUrl>/graphql` and supports standard introspection. Point any GraphQL explorer (Apollo Studio, Insomnia, GraphiQL, etc.) at that URL with your access token in the `Authorization` header to browse the full schema, including every type, field, and input.
 
-For TypeScript signatures, the SDK's source repository also ships generated bindings under [`packages/sdk-client/src/graphql/__generated__/`](https://github.com/caido/sdk-js/tree/main/packages/sdk-client/src/graphql/__generated__) that mirror every operation the high-level SDKs use. They are useful as a reference for fragment shapes and required arguments.
+For TypeScript signatures, the SDK's source repository also ships generated bindings under [`packages/sdk-client/src/graphql/__generated__/`](https://github.com/caido/sdk-js/tree/main/packages/sdk-client/src/graphql) that mirror every operation the high-level SDKs use. They are useful as a reference for fragment shapes and required arguments.
 
 ## Errors
 

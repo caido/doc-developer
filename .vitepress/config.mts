@@ -6,7 +6,7 @@ import type { DefaultTheme } from "vitepress";
 import { clientSdkNavbar, pluginsNavbar } from "./navbars";
 import { clientSdkSidebars, pluginsSidebars } from "./sidebars";
 
-// https://vitepress.dev/plugins/reference/site-config
+// https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Caido",
   titleTemplate: "Developer",

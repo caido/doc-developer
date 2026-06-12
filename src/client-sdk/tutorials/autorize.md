@@ -9,7 +9,7 @@ This is useful for automated authorization testing across many endpoints, regres
 ::: info Requirements
 - [Node.js](https://nodejs.org/en/) 18 or higher
 - A running Caido instance with an open project
-- A [Personal Access Token](https://docs.caido.io/dashboard/plugins/concepts/pat.html) (PAT) for your account
+- A [Personal Access Token](https://docs.caido.io/dashboard/concepts/pat.html) (PAT) for your account
 - At least one request in the project's HTTP history. This tutorial uses `caido.local` as the example target, so send any request through your Caido proxy to that host before starting (or substitute your own host throughout).
 :::
 
@@ -140,7 +140,7 @@ Autorize functions return an `APIResult<T>` envelope of the form `{ kind: "Ok"; 
 
 ## 5. Finding a target request
 
-Authorization tests run against existing requests in the project's HTTP history. To get the request ID for a target, use [`client.request.list()`](/client-sdk/guides/extract_requests.md) with an [HTTPQL](https://docs.caido.io/plugins/reference/httpql.html) filter on the host:
+Authorization tests run against existing requests in the project's HTTP history. To get the request ID for a target, use [`client.request.list()`](/client-sdk/guides/extract_requests.md) with an [HTTPQL](https://docs.caido.io/app/reference/httpql.html) filter on the host:
 
 ```ts
 const page = await client.request
@@ -385,7 +385,7 @@ The script performs the following operations:
 1. **Connect**: authenticates against the Caido instance using a PAT and caches the resulting tokens on disk so subsequent runs skip the auth flow. See [Base Setup](/client-sdk/guides/base_setup.md) for details.
 2. **Plugin handle**: looks up Autorize by manifest ID, installing it via the SDK if it is not yet present. See [Install a Plugin](/client-sdk/guides/install_plugin.md).
 3. **User profile**: configures a low-privilege user whose `Authorization` header is replaced with a different token. Autorize will replay every tested request with this profile's mutations applied.
-4. **Target lookup**: queries the HTTP history with an HTTPQL filter to find a request to test. See [Extract Requests](/client-sdk/guides/extract_requests.md) and the [HTTPQL reference](https://docs.caido.io/plugins/reference/httpql.html).
+4. **Target lookup**: queries the HTTP history with an HTTPQL filter to find a request to test. See [Extract Requests](/client-sdk/guides/extract_requests.md) and the [HTTPQL reference](https://docs.caido.io/app/reference/httpql.html).
 5. **Template**: creates an authorization test template from the target request. Autorize replays the request as the baseline, once per enabled profile, and once without auth.
 6. **Results**: polls until all expected results arrive, then prints each result's type, response code, and access state.
 7. **Cleanup**: deletes the template and resets the user profiles so they do not interfere with future tests.

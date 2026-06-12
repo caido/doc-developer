@@ -27,7 +27,7 @@ All of the components and configuration options offered by the PrimeVue package 
 :::
 
 ::: warning
-Caido supports PrimeVue v4.1.0. If a style is not working properly, first try downgrading the `primevue` entry in the frontend `package.json` file. If this does not resolve the issue, please [let us know](https://docs.caido.io/report_bug.html)!
+Caido supports PrimeVue v4.1.0. If a style is not working properly, first try downgrading the `primevue` entry in the frontend `package.json` file. If this does not resolve the issue, please [let us know](https://docs.caido.io/app/troubleshooting/report_bug.html)!
 :::
 
 If you want to add additional components, simply import them. For example, if you wanted to display [Toast](https://primevue.org/toast/) messages:

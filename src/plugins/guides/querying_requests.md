@@ -4,7 +4,7 @@ In this guide, we'll cover how to fetch proxied requests in a backend plugin.
 
 ## Querying Requests
 
-The `query()` method queries proxied requests belonging to the current [Project](https://docs.caido.io/app/plugins/guides/projects_backups).
+The `query()` method queries proxied requests belonging to the current [Project](https://docs.caido.io/app/guides/projects_backups).
 
 ```ts
 let query = sdk.requests.query();
@@ -53,7 +53,7 @@ However, for Projects with a large number of requests, executing such a broad qu
 
 ### Filtering
 
-With the `filter()` method, you can target specific requests using [HTTPQL](https://docs.caido.io/plugins/reference/httpql.html) query statements as a parameter.
+With the `filter()` method, you can target specific requests using [HTTPQL](https://docs.caido.io/app/reference/httpql.html) query statements as a parameter.
 
 ```ts
  let query = sdk.requests.query().filter('req.host.eq:"example.com"');

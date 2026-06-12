@@ -24,7 +24,7 @@ Each `edge.node` is a `{ request, response? }` pair. The response is `undefined`
 
 ## Filter with HTTPQL
 
-To narrow the list, chain `.filter()` with an [HTTPQL](https://docs.caido.io/plugins/reference/httpql.html) query string. The same syntax used in the Caido HTTP History UI works here:
+To narrow the list, chain `.filter()` with an [HTTPQL](https://docs.caido.io/app/reference/httpql.html) query string. The same syntax used in the Caido HTTP History UI works here:
 
 ```ts
 const errors = await client.request

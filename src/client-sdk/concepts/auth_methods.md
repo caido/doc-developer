@@ -2,7 +2,7 @@
 
 The Client SDK supports three methods for authenticating a script against a Caido instance: Personal Access Token, Browser Login, and Direct Token. They all produce the same kind of access token, but they differ in how that token is obtained.
 
-Two of them use the same <a href="https://www.rfc-editor.org/rfc/rfc8628.html" target="_blank">OAuth 2.0 Device Authorization</a> grant that the Caido desktop and web applications use, described in [Instance Authentication](https://docs.caido.io/app/plugins/concepts/instance_authentication.html). The third skips the flow entirely.
+Two of them use the same <a href="https://www.rfc-editor.org/rfc/rfc8628.html" target="_blank">OAuth 2.0 Device Authorization</a> grant that the Caido desktop and web applications use, described in [Instance Authentication](https://docs.caido.io/app/concepts/instance_authentication.html). The third skips the flow entirely.
 
 ## Personal Access Token
 
@@ -12,7 +12,7 @@ This is the natural choice for headless environments: scripts, CI/CD pipelines, 
 
 The PAT itself is not used as the credential for API calls. Once the Cloud approves the device flow, the instance delivers an access token and a refresh token to the script, and those are what subsequent API calls carry as Bearer tokens.
 
-The full mechanics of PATs as a credential, where to create one, and how they relate to accounts and Teams are covered in [Personal Access Token](https://docs.caido.io/app/plugins/concepts/pat.html) in the user docs.
+The full mechanics of PATs as a credential, where to create one, and how they relate to accounts and Teams are covered in [Personal Access Token](https://docs.caido.io/app/concepts/pat.html) in the user docs.
 
 ## Browser Login
 

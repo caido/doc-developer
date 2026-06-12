@@ -14,7 +14,7 @@ The `Client` supports three authentication methods, exposed through the `auth` o
 
 The SDK uses the PAT to automatically approve a device authorization flow against the Caido Cloud, so no human interaction is required.
 
-[Create a PAT](https://docs.caido.io/dashboard/plugins/guides/create_pat.html) from your [Caido Dashboard](https://dashboard.caido.io/developer), then pass the token to the `Client` constructor:
+[Create a PAT](https://docs.caido.io/dashboard/guides/create_pat.html) from your [Caido Dashboard](https://dashboard.caido.io/developer), then pass the token to the `Client` constructor:
 
 ```ts
 const client = new Client({
