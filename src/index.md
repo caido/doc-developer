@@ -1,5 +1,5 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
+# https://vitepress.dev/plugins/reference/default-theme-home-page
 layout: home
 
 hero:
@@ -11,23 +11,34 @@ hero:
 
   tagline: Developer Documentation
   actions:
+    - theme: brand
+      text: Plugins
+      link: /plugins/guides/
     - theme: alt
-      text: Guides
-      link: /guides/
-
-    - theme: alt
-      text: Tutorials
-      link: /tutorials/
-
-    - theme: alt
-      text: Reference
-      link: /reference/
-
-    - theme: alt
-      text: Concepts
-      link: /concepts/
+      text: Client SDK
+      link: /client-sdk/guides/
 
 features:
+  - icon: 📖
+    title: Plugin Guides
+    details: Step-by-step instructions for building Caido plugins.
+    link: /plugins/guides/
+  - icon: 🎓
+    title: Plugin Tutorials
+    details: Hands-on learning experiences for plugin development.
+    link: /plugins/tutorials/
+  - icon: 📚
+    title: Plugin Reference
+    details: SDK and configuration reference for plugin authors.
+    link: /plugins/reference/
+  - icon: 💡
+    title: Plugin Concepts
+    details: Explanations of plugin architecture and runtime behavior.
+    link: /plugins/concepts/
+  - icon: 🔌
+    title: Client SDK Guides
+    details: Programmatic access to a running Caido instance.
+    link: /client-sdk/guides/
   - icon: 👤
     title: Looking for the user documentation? Click here.
     link: https://docs.caido.io

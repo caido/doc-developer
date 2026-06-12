@@ -1,14 +1,12 @@
 import { defineConfig } from "vitepress";
 import llmstxt from "vitepress-plugin-llms";
 
-import {
-  conceptsSidebar,
-  guidesSidebar,
-  referenceSidebar,
-  tutorialsSidebar,
-} from "./sidebars";
+import type { DefaultTheme } from "vitepress";
 
-// https://vitepress.dev/reference/site-config
+import { clientSdkNavbar, pluginsNavbar } from "./navbars";
+import { clientSdkSidebars, pluginsSidebars } from "./sidebars";
+
+// https://vitepress.dev/plugins/reference/site-config
 export default defineConfig({
   title: "Caido",
   titleTemplate: "Developer",
@@ -49,18 +47,43 @@ export default defineConfig({
     },
 
     nav: [
-      { text: "Guides", link: "/guides/" },
-      { text: "Tutorials", link: "/tutorials/" },
-      { text: "Reference", link: "/reference/" },
-      { text: "Concepts", link: "/concepts/" },
-      { text: "Policy", link: "/policy.md" },
-    ],
+      {
+        component: "NavItem",
+        props: {
+          text: "Plugins",
+          link: "/plugins/guides/",
+          activeMatch: "^/plugins(/.*)?$",
+          items: pluginsNavbar,
+        },
+      },
+      {
+        component: "NavItem",
+        props: {
+          text: "Client SDK",
+          link: "/client-sdk/guides/",
+          activeMatch: "^/client-sdk(/|$)",
+          items: clientSdkNavbar,
+        },
+      },
+      {
+        component: "NavItem",
+        props: {
+          text: "Policy",
+          link: "/policy.md",
+          activeMatch: "^/policy",
+        },
+      },
+    ] satisfies DefaultTheme.NavItem[],
 
     sidebar: {
-      "/reference/": referenceSidebar,
-      "/guides/": guidesSidebar,
-      "/concepts/": conceptsSidebar,
-      "/tutorials/": tutorialsSidebar,
+      "/plugins/guides/": pluginsSidebars.guidesSidebar,
+      "/plugins/tutorials/": pluginsSidebars.tutorialsSidebar,
+      "/plugins/reference/": pluginsSidebars.referenceSidebar,
+      "/plugins/concepts/": pluginsSidebars.conceptsSidebar,
+      "/client-sdk/guides/": clientSdkSidebars.guidesSidebar,
+      "/client-sdk/tutorials/": clientSdkSidebars.tutorialsSidebar,
+      "/client-sdk/reference/": clientSdkSidebars.referenceSidebar,
+      "/client-sdk/concepts/": clientSdkSidebars.conceptsSidebar,
     },
 
     outline: {

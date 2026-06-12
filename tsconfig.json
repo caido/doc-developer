@@ -20,6 +20,7 @@
     ".vitepress/**/*.ts",
     ".vitepress/**/*.vue",
     ".vitepress/**/*.mts",
+    ".vitepress/**/*.d.ts",
     "src/**/*.mts"
   ]
 }

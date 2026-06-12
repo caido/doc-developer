@@ -7,9 +7,9 @@ export default [
     ignores: [
       ".vitepress/cache",
       ".vitepress/dist",
-      "./src/reference/sdks",
-      "./src/reference/modules",
-      "src/reference/api.md",
+      "./src/plugins/reference/sdks",
+      "./src/plugins/reference/modules",
+      "src/client-sdk/reference/api.md",
     ],
   },
   ...markdownPlugin.configs.recommended.map((config) => ({
