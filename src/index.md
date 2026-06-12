@@ -11,7 +11,7 @@ hero:
 
   tagline: Developer Documentation
   actions:
-    - theme: brand
+    - theme: alt
       text: Plugins
       link: /plugins/guides/
     - theme: alt
@@ -39,7 +39,4 @@ features:
     title: Client SDK Guides
     details: Programmatic access to a running Caido instance.
     link: /client-sdk/guides/
-  - icon: 👤
-    title: Looking for the user documentation? Click here.
-    link: https://docs.caido.io
 ---
