@@ -190,6 +190,81 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       security:
       - pat: []
+  /api/v1/team/users/{user_id}/seat:
+    put:
+      tags:
+      - api
+      operationId: assign_team_user_seat
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ID'
+      responses:
+        '200':
+          description: Seat assigned to user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamUser'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
+    delete:
+      tags:
+      - api
+      operationId: revoke_team_user_seat
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ID'
+      responses:
+        '200':
+          description: Seat revoked from user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamUser'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - pat: []
   /api/v1/user:
     get:
       tags:
