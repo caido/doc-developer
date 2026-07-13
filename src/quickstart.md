@@ -16,7 +16,7 @@ For both plugins and workflows, a number of [modules](/plugins/reference/modules
 
 ## Client SDK
 
-The [@caido/sdk-client](http://localhost:5173/client-sdk/reference/) kit provides an interface for programmatic access to a running Caido instance from external scripts and tools.
+The [@caido/sdk-client](/client-sdk/reference/) kit provides an interface for programmatic access to a running Caido instance from external scripts and tools.
 
 ::: tip
 View the [Install the SDK](/client-sdk/guides/install.md) guide to get started.
