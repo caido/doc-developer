@@ -11,6 +11,9 @@ hero:
 
   tagline: Developer Documentation
   actions:
+    - theme: brand
+      text: Get Started
+      link: /quickstart.md
     - theme: alt
       text: Plugins
       link: /plugins/guides/
