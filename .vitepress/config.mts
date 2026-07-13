@@ -6,7 +6,7 @@ import type { DefaultTheme } from "vitepress";
 import {
   clientSdkNavbar,
   pluginsNavbar,
-  quickstartNavbar,
+  introductionNavbar,
 } from "./navbars";
 import { clientSdkSidebars, pluginsSidebars } from "./sidebars";
 
@@ -55,9 +55,9 @@ export default defineConfig({
         component: "NavItem",
         props: {
           text: "Get Started",
-          link: "/quickstart/",
-          activeMatch: "^/quickstart(/|$)",
-          items: quickstartNavbar,
+          link: "/introduction/",
+          activeMatch: "^/introduction(/|$)",
+          items: introductionNavbar,
         },
       },
       {
@@ -89,6 +89,7 @@ export default defineConfig({
     ] satisfies DefaultTheme.NavItem[],
 
     sidebar: {
+      "/plugins/quickstart/": pluginsSidebars.quickstartSidebar,
       "/plugins/guides/": pluginsSidebars.guidesSidebar,
       "/plugins/tutorials/": pluginsSidebars.tutorialsSidebar,
       "/plugins/reference/": pluginsSidebars.referenceSidebar,
