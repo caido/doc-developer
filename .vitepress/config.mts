@@ -3,7 +3,11 @@ import llmstxt from "vitepress-plugin-llms";
 
 import type { DefaultTheme } from "vitepress";
 
-import { clientSdkNavbar, pluginsNavbar } from "./navbars";
+import {
+  clientSdkNavbar,
+  pluginsNavbar,
+  quickstartNavbar,
+} from "./navbars";
 import { clientSdkSidebars, pluginsSidebars } from "./sidebars";
 
 // https://vitepress.dev/reference/site-config
@@ -47,6 +51,15 @@ export default defineConfig({
     },
 
     nav: [
+      {
+        component: "NavItem",
+        props: {
+          text: "Get Started",
+          link: "/quickstart/",
+          activeMatch: "^/quickstart(/|$)",
+          items: quickstartNavbar,
+        },
+      },
       {
         component: "NavItem",
         props: {
