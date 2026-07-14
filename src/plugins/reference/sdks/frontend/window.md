@@ -18,6 +18,14 @@ A dialog instance that can be closed programmatically.
 
 ***
 
+### DialogComponent
+
+> **DialogComponent** = [`ComponentDefinition`](utils.md#componentdefinition)\<[`ComponentPropsWithSdk`](utils.md#componentpropswithsdk)\<[`ComponentProps`](utils.md#componentprops)\>\>
+
+The component definition for a dialog.
+
+***
+
 ### DialogOptions
 
 > **DialogOptions** = `object`
@@ -94,6 +102,30 @@ Get the active editor.
 
 The active editor.
 
+##### getActiveRequestEditor()
+
+> **getActiveRequestEditor**: () => [`Editor`](editor.md#editor) \| `undefined`
+
+Get the active request editor.
+
+###### Returns
+
+[`Editor`](editor.md#editor) \| `undefined`
+
+The active request editor.
+
+##### getActiveResponseEditor()
+
+> **getActiveResponseEditor**: () => [`Editor`](editor.md#editor) \| `undefined`
+
+Get the active response editor.
+
+###### Returns
+
+[`Editor`](editor.md#editor) \| `undefined`
+
+The active response editor.
+
 ##### getContext()
 
 > **getContext**: () => [`GlobalContext`](#globalcontext)
@@ -126,7 +158,7 @@ An object with a `stop` method that can be called to stop listening to context c
 
 ##### showDialog()
 
-> **showDialog**: (`component`: [`ComponentDefinition`](utils.md#componentdefinition), `options?`: [`DialogOptions`](#dialogoptions)) => [`Dialog`](#dialog)
+> **showDialog**: (`component`: [`DialogComponent`](#dialogcomponent), `options?`: [`DialogOptions`](#dialogoptions)) => [`Dialog`](#dialog)
 
 Show a dialog component.
 
@@ -134,7 +166,7 @@ Show a dialog component.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `component` | [`ComponentDefinition`](utils.md#componentdefinition) | The custom slot content to display in the dialog. |
+| `component` | [`DialogComponent`](#dialogcomponent) | The custom slot content to display in the dialog. |
 | `options?` | [`DialogOptions`](#dialogoptions) | Options for the dialog. |
 
 ###### Returns

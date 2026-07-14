@@ -57,15 +57,15 @@ A unique command identifier.
 
 ***
 
-### HTTPHistorySlotContent
+### HTTPQLEditorProps
 
-> **HTTPHistorySlotContent** = `object`
+> **HTTPQLEditorProps** = `object`
 
 #### Properties
 
-##### toolbar-primary
+##### isReadOnly?
 
-> **toolbar-primary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+> `optional` **isReadOnly**: `boolean`
 
 ***
 
@@ -111,23 +111,28 @@ A unique command identifier.
 
 ***
 
-### ReplaySlotContent
+### ResolvedAPI
 
-> **ReplaySlotContent** = `object`
+> **ResolvedAPI**\<`T`\> = `T` *extends* `object` ? `A` : `T`
 
-#### Properties
+#### Type Parameters
 
-##### session-toolbar-primary
+| Type Parameter |
+| ------ |
+| `T` |
 
-> **session-toolbar-primary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+***
 
-##### session-toolbar-secondary
+### ResolvedEvents
 
-> **session-toolbar-secondary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+> **ResolvedEvents**\<`T`, `E`\> = `T` *extends* `object` ? `A` : `E`
 
-##### topbar
+#### Type Parameters
 
-> **topbar**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+| Type Parameter |
+| ------ |
+| `T` |
+| `E` |
 
 ***
 
@@ -143,37 +148,9 @@ A unique command identifier.
 
 ***
 
-### ScopeSlotContent
-
-> **ScopeSlotContent** = `object`
-
-#### Properties
-
-##### create-header
-
-> **create-header**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
-
-##### update-header
-
-> **update-header**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
-
-***
-
 ### SearchSlot
 
 > **SearchSlot** = *typeof* [`SearchSlot`](search.md#searchslot)\[keyof *typeof* [`SearchSlot`](#searchslot-1)\]
-
-***
-
-### SearchSlotContent
-
-> **SearchSlotContent** = `object`
-
-#### Properties
-
-##### search-toolbar-primary
-
-> **search-toolbar-primary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
 
 ***
 
@@ -224,6 +201,12 @@ The label of the entry.
 ### Source
 
 > **Source** = *typeof* [`Source`](match-and-replace.md#source)\[keyof *typeof* [`Source`](#source-1)\]
+
+***
+
+### HTTPQLEditor
+
+> `const` **HTTPQLEditor**: `DefineComponent`\<[`HTTPQLEditorProps`](#httpqleditorprops) & `object`\>
 
 ***
 

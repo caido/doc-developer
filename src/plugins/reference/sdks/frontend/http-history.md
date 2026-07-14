@@ -44,7 +44,7 @@ Add an extension to the request editor.
 
 ##### addRequestViewMode()
 
-> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)) => `void`
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestReadableViewModeProps`](request.md#requestreadableviewmodeprops)\>) => `void`
 
 Add a custom request view mode.
 
@@ -52,7 +52,7 @@ Add a custom request view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestReadableViewModeProps`](request.md#requestreadableviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -76,7 +76,7 @@ Add an extension to the response editor.
 
 ##### addResponseViewMode()
 
-> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\>) => `void`
 
 Add a custom response view mode.
 
@@ -84,7 +84,7 @@ Add a custom response view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -92,7 +92,7 @@ Add a custom response view mode.
 
 ##### addToSlot
 
-> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`HTTPHistorySlotContent`](other.md#httphistoryslotcontent)\>
+> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`HTTPHistorySlotContent`](#httphistoryslotcontent)\>
 
 Add a component to a slot.
 
@@ -152,6 +152,30 @@ Get the current scope ID.
 
 The current scope ID.
 
+##### getSelectedRequest()
+
+> **getSelectedRequest**: () => [`RequestFull`](request.md#requestfull) \| `undefined`
+
+Get the currently selected request.
+
+###### Returns
+
+[`RequestFull`](request.md#requestfull) \| `undefined`
+
+The currently selected request.
+
+##### getSelectedResponse()
+
+> **getSelectedResponse**: () => [`ResponseFull`](response.md#responsefull) \| `undefined`
+
+Get the currently selected response.
+
+###### Returns
+
+[`ResponseFull`](response.md#responsefull) \| `undefined`
+
+The currently selected response.
+
 ##### scrollTo()
 
 > **scrollTo**: (`id`: [`ID`](utils.md#id)) => `void`
@@ -199,6 +223,20 @@ Set the current scope.
 ###### Returns
 
 `Promise`\<`void`\>
+
+***
+
+### HTTPHistorySlotContent
+
+> **HTTPHistorySlotContent**\<`TProps`\> = \{ \[K in HTTPHistorySlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
+
+Content that can be added to HTTP history slots.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |
 
 ***
 

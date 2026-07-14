@@ -15,7 +15,7 @@ Utilities for frontend plugins.
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `T` *extends* [`BackendEndpoints`](backend.md#backendendpoints) | `Record`\<`string`, `never`\> |
+| `T` *extends* [`BackendEndpoints`](backend.md#backendendpoints) \| [`BackendSpec`](backend.md#backendspec) | `Record`\<`string`, `never`\> |
 | `E` *extends* [`BackendEvents`](backend.md#backendevents) | `Record`\<`string`, `never`\> |
 
 #### Properties
@@ -91,6 +91,24 @@ Utilities to interact with the footer.
 > **graphql**: `GraphqlSDK`
 
 Utilities to interact with the GraphQL API.
+
+Queries and mutations return a promise; subscriptions return an
+`AsyncIterable`. On success they resolve with the response data or yield
+it. On failure (network error or any GraphQL errors returned by the
+server) the promise rejects, or the iterator throws into the `for await`
+loop, with the underlying error. Failures can be handled with `try`/
+`catch` or `.catch()`.
+
+###### Example
+
+```ts
+try {
+  const result = await sdk.graphql.automateEntry({ id: "1" });
+  // use result
+} catch (err) {
+  // err.message, err.graphQLErrors, err.networkError
+}
+```
 
 ##### httpHistory
 
@@ -193,6 +211,12 @@ Utilities to interact with frontend-plugin storage.
 > **ui**: [`UISDK`](ui.md#uisdk)
 
 Utilities to create UI components.
+
+##### websocket
+
+> **websocket**: [`WebsocketSDK`](websockets.md#websocketsdk)
+
+Utilities to interact with the Websocket page.
 
 ##### window
 

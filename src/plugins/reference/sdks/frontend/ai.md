@@ -72,13 +72,13 @@ A provider instance compatible with the [ai](https://ai-sdk.dev/) library.
 
 > **getUpstreamProviders**: () => [`AIUpstreamProvider`](#aiupstreamprovider)[]
 
-Gets the list of upstream AI providers with their configuration status.
+Gets the list of configured upstream AI providers.
 
 ###### Returns
 
 [`AIUpstreamProvider`](#aiupstreamprovider)[]
 
-An array of AI upstream providers with their configuration status.
+An array of configured AI upstream providers.
 
 ***
 
@@ -87,31 +87,30 @@ An array of AI upstream providers with their configuration status.
 > **AIUpstreamProvider** = `object`
 
 AI upstream provider information.
+Only configured providers are returned.
 
 #### Properties
+
+##### api
+
+> **api**: [`AIUpstreamProviderApi`](#aiupstreamproviderapi)
 
 ##### id
 
 > **id**: [`AIUpstreamProviderId`](#aiupstreamproviderid)
 
-##### status
+***
 
-> **status**: [`AIUpstreamProviderStatus`](#aiupstreamproviderstatus)
+### AIUpstreamProviderApi
+
+> **AIUpstreamProviderApi** = `"ANTHROPIC"` \| `"GEMINI"` \| `"OPENAI_COMPLETION"` \| `"OPENAI_RESPONSE"` \| `"OPENROUTER"`
+
+The response API a provider speaks.
 
 ***
 
 ### AIUpstreamProviderId
 
-> **AIUpstreamProviderId** = `"anthropic"` \| `"google"` \| `"openai"` \| `"openrouter"`
+> **AIUpstreamProviderId** = `string`
 
 AI upstream provider ID.
-
-***
-
-### AIUpstreamProviderStatus
-
-> **AIUpstreamProviderStatus** = `"Ready"` \| `"Missing"`
-
-AI upstream provider status.
-Ready: The upstream provider is ready to use.
-Missing: The upstream provider is not configured.

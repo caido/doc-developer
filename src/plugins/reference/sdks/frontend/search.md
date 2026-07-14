@@ -40,7 +40,7 @@ Add an extension to the request editor.
 
 ##### addRequestViewMode()
 
-> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)) => `void`
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestReadableViewModeProps`](request.md#requestreadableviewmodeprops)\>) => `void`
 
 Add a custom request view mode.
 
@@ -48,7 +48,7 @@ Add a custom request view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestReadableViewModeProps`](request.md#requestreadableviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -56,7 +56,7 @@ Add a custom request view mode.
 
 ##### addResponseViewMode()
 
-> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\>) => `void`
 
 Add a custom response view mode.
 
@@ -64,7 +64,7 @@ Add a custom response view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -72,7 +72,7 @@ Add a custom response view mode.
 
 ##### addToSlot()
 
-> **addToSlot**: \<`T`\>(`slot`: `T`, `content`: [`SearchSlotContent`](other.md#searchslotcontent)\[`T`\]) => `void`
+> **addToSlot**: \<`T`\>(`slot`: `T`, `content`: [`SearchSlotContent`](#searchslotcontent)\[`T`\]) => `void`
 
 Add content to a slot in the Search UI.
 
@@ -87,7 +87,7 @@ Add content to a slot in the Search UI.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `slot` | `T` | The slot to add content to. |
-| `content` | [`SearchSlotContent`](other.md#searchslotcontent)\[`T`\] | The content to add. |
+| `content` | [`SearchSlotContent`](#searchslotcontent)\[`T`\] | The content to add. |
 
 ###### Returns
 
@@ -116,6 +116,30 @@ Get the current scope ID.
 [`ID`](utils.md#id) \| `undefined`
 
 The current scope ID.
+
+##### getSelectedRequest()
+
+> **getSelectedRequest**: () => [`RequestFull`](request.md#requestfull) \| `undefined`
+
+Get the currently selected request.
+
+###### Returns
+
+[`RequestFull`](request.md#requestfull) \| `undefined`
+
+The currently selected request.
+
+##### getSelectedResponse()
+
+> **getSelectedResponse**: () => [`ResponseFull`](response.md#responsefull) \| `undefined`
+
+Get the currently selected response.
+
+###### Returns
+
+[`ResponseFull`](response.md#responsefull) \| `undefined`
+
+The currently selected response.
 
 ##### scrollTo()
 
@@ -164,6 +188,20 @@ Set the current scope.
 ###### Returns
 
 `Promise`\<`void`\>
+
+***
+
+### SearchSlotContent
+
+> **SearchSlotContent**\<`TProps`\> = \{ \[K in SearchSlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
+
+Content that can be added to search slots.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |
 
 ***
 

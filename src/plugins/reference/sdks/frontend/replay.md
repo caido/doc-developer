@@ -1,5 +1,70 @@
 # Replay
 
+### AddCollectionIndicatorOptions
+
+> **AddCollectionIndicatorOptions** = [`AddIndicatorOptions`](utils.md#addindicatoroptions)
+
+Options for adding an indicator to a replay collection.
+
+***
+
+### AddSessionIndicatorOptions
+
+> **AddSessionIndicatorOptions** = [`AddIndicatorOptions`](utils.md#addindicatoroptions) & `object`
+
+Options for adding an indicator to a replay session.
+
+#### Type Declaration
+
+##### showTabIcon?
+
+> `optional` **showTabIcon**: `boolean`
+
+Includes the indicator icon on the session's replay tab.
+
+###### Default
+
+```ts
+false
+```
+
+***
+
+### ConnectionInfo
+
+> **ConnectionInfo** = `object`
+
+The connection information to use for the request.
+
+#### Properties
+
+##### host
+
+> **host**: `string`
+
+The host to use for the request.
+
+##### isTLS
+
+> **isTLS**: `boolean`
+
+Whether the request is TLS.
+
+##### port
+
+> **port**: `number`
+
+The port to use for the request.
+
+##### SNI?
+
+> `optional` **SNI**: `string`
+
+The SNI to use for the request.
+If not provided, the SNI will be inferred from the host.
+
+***
+
 ### CurrentReplaySessionChangeEvent
 
 > **CurrentReplaySessionChangeEvent** = `object`
@@ -131,6 +196,38 @@ Utilities to interact with Replay.
 
 #### Properties
 
+##### addCollectionIndicator()
+
+> **addCollectionIndicator**: (`collectionId`: [`ID`](utils.md#id), `indicator`: [`AddCollectionIndicatorOptions`](#addcollectionindicatoroptions)) => [`Indicator`](utils.md#indicator)
+
+Add an indicator to a replay collection.
+Indicators are displayed next to the collection name in the collections tree.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `collectionId` | [`ID`](utils.md#id) | The ID of the collection to add the indicator to. |
+| `indicator` | [`AddCollectionIndicatorOptions`](#addcollectionindicatoroptions) | The indicator configuration. |
+
+###### Returns
+
+[`Indicator`](utils.md#indicator)
+
+A handle object with a `remove` method to remove the indicator.
+
+###### Example
+
+```ts
+const indicator = sdk.replay.addCollectionIndicator(collectionId, {
+  icon: "fas fa-folder-open",
+  description: "Has unresolved findings",
+});
+
+// Later, remove the indicator
+indicator.remove();
+```
+
 ##### addRequestEditorExtension()
 
 > **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
@@ -149,7 +246,7 @@ Add an extension to the request editor.
 
 ##### addRequestViewMode()
 
-> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)) => `void`
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestWritableViewModeProps`](request.md#requestwritableviewmodeprops)\>) => `void`
 
 Add a custom view mode for requests.
 
@@ -157,7 +254,7 @@ Add a custom view mode for requests.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestWritableViewModeProps`](request.md#requestwritableviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -165,7 +262,7 @@ Add a custom view mode for requests.
 
 ##### addResponseViewMode()
 
-> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\>) => `void`
 
 Add a custom response view mode.
 
@@ -173,7 +270,7 @@ Add a custom response view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -181,7 +278,7 @@ Add a custom response view mode.
 
 ##### addSessionIndicator()
 
-> **addSessionIndicator**: (`sessionId`: [`ID`](utils.md#id), `indicator`: [`AddIndicatorOptions`](utils.md#addindicatoroptions)) => [`Indicator`](utils.md#indicator)
+> **addSessionIndicator**: (`sessionId`: [`ID`](utils.md#id), `indicator`: [`AddSessionIndicatorOptions`](#addsessionindicatoroptions)) => [`Indicator`](utils.md#indicator)
 
 Add an indicator to a replay session.
 Indicators are displayed next to the session name in the collections tree.
@@ -191,7 +288,7 @@ Indicators are displayed next to the session name in the collections tree.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `sessionId` | [`ID`](utils.md#id) | The ID of the session to add the indicator to. |
-| `indicator` | [`AddIndicatorOptions`](utils.md#addindicatoroptions) | The indicator configuration. |
+| `indicator` | [`AddSessionIndicatorOptions`](#addsessionindicatoroptions) | The indicator configuration. |
 
 ###### Returns
 
@@ -205,6 +302,7 @@ A handle object with a `remove` method to remove the indicator.
 const indicator = sdk.replay.addSessionIndicator(sessionId, {
   icon: "fas fa-exclamation-triangle",
   description: "Security warning",
+  showTabIcon: true,
 });
 
 // Later, remove the indicator
@@ -213,7 +311,7 @@ indicator.remove();
 
 ##### addToSlot
 
-> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`ReplaySlotContent`](other.md#replayslotcontent)\>
+> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`ReplaySlotContent`](#replayslotcontent)\>
 
 Add a component to a slot.
 
@@ -249,6 +347,22 @@ addToSlot(ReplaySlot.Topbar, {
 });
 ```
 
+##### addWebsocketMessageViewMode()
+
+> **addWebsocketMessageViewMode**: (`options`: [`MessageViewModeOptions`](websockets.md#messageviewmodeoptions)\<[`MessageViewModeProps`](websockets.md#messageviewmodeprops)\>) => `void`
+
+Add a custom WebSocket message view mode.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | [`MessageViewModeOptions`](websockets.md#messageviewmodeoptions)\<[`MessageViewModeProps`](websockets.md#messageviewmodeprops)\> | The view mode options. |
+
+###### Returns
+
+`void`
+
 ##### closeTab()
 
 > **closeTab**: (`sessionId`: [`ID`](utils.md#id)) => `void`
@@ -283,7 +397,7 @@ Create a new collection.
 
 ##### createSession()
 
-> **createSession**: (`source`: [`RequestSource`](#requestsource), `collectionId?`: [`ID`](utils.md#id)) => `Promise`\<`void`\>
+> **createSession**: (`source`: [`RequestSource`](#requestsource), `collectionId?`: [`ID`](utils.md#id), `sessionKind?`: [`ReplaySessionKind`](#replaysessionkind)) => `Promise`\<[`ReplaySession`](#replaysession)\>
 
 Create a session.
 
@@ -291,12 +405,27 @@ Create a session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `source` | [`RequestSource`](#requestsource) | - |
-| `collectionId?` | [`ID`](utils.md#id) | The ID of the collection to add the request. |
+| `source` | [`RequestSource`](#requestsource) | The source of the session to create. |
+| `collectionId?` | [`ID`](utils.md#id) | The ID of the collection to add the session to. |
+| `sessionKind?` | [`ReplaySessionKind`](#replaysessionkind) | - |
 
 ###### Returns
 
-`Promise`\<`void`\>
+`Promise`\<[`ReplaySession`](#replaysession)\>
+
+###### Example
+
+```ts
+sdk.replay.createSession({
+  type: "Raw",
+  raw: "GET / HTTP/1.1\r\nHost: example.com\r\n\r\n",
+  connectionInfo: {
+    host: "example.com",
+    port: 443,
+    isTLS: true,
+  },
+});
+```
 
 ##### deleteCollection()
 
@@ -343,6 +472,29 @@ Get the list of all replay collections.
 [`ReplayCollection`](#replaycollection)[]
 
 The list of all replay collections.
+
+##### getCurrentEntry()
+
+> **getCurrentEntry**: () => [`ReplayEntry`](#replayentry) \| `undefined`
+
+Get the entry currently displayed in the active replay session.
+
+###### Returns
+
+[`ReplayEntry`](#replayentry) \| `undefined`
+
+The active entry, or undefined if no entry is currently loaded.
+
+###### Example
+
+```ts
+const currentEntry = sdk.replay.getCurrentEntry();
+if (currentEntry) {
+  console.log(`Currently viewing entry ${currentEntry.id}`);
+} else {
+  console.log("No entry is currently displayed");
+}
+```
 
 ##### getCurrentSession()
 
@@ -392,11 +544,54 @@ const entry = await sdk.replay.getEntry(entryId);
 console.log(entry.id, entry.sessionId, entry.requestId);
 ```
 
+##### getSelectedExchange()
+
+> **getSelectedExchange**: () => [`ReplaySelectedExchange`](#replayselectedexchange) \| `undefined`
+
+Get the currently selected Replay exchange.
+
+###### Returns
+
+[`ReplaySelectedExchange`](#replayselectedexchange) \| `undefined`
+
+The currently selected Replay exchange.
+
+##### getSelectedRequest()
+
+> **getSelectedRequest**: () => [`RequestFull`](request.md#requestfull) \| `undefined`
+
+Get the currently selected request.
+
+###### Returns
+
+[`RequestFull`](request.md#requestfull) \| `undefined`
+
+The currently selected request.
+
+##### getSelectedResponse()
+
+> **getSelectedResponse**: () => [`ResponseFull`](response.md#responsefull) \| `undefined`
+
+Get the currently selected response.
+
+###### Returns
+
+[`ResponseFull`](response.md#responsefull) \| `undefined`
+
+The currently selected response.
+
 ##### getSessions()
 
-> **getSessions**: () => [`ReplaySession`](#replaysession)[]
+> **getSessions**: (`options?`: `object`) => [`ReplaySession`](#replaysession)[]
 
 Get the list of all replay sessions.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options?` | \{ `collectionId?`: [`ID`](utils.md#id); \} | The options for getting the sessions. |
+| `options.collectionId?` | [`ID`](utils.md#id) | The ID of the collection to get the sessions for. |
 
 ###### Returns
 
@@ -611,7 +806,7 @@ sendRequest(sessionId, {
 
 ##### showEntry()
 
-> **showEntry**: (`sessionId`: [`ID`](utils.md#id), `entryId`: [`ID`](utils.md#id), `options?`: `object`) => `Promise`\<`void`\>
+> **showEntry**: (`sessionId`: [`ID`](utils.md#id), `entryId`: [`ID`](utils.md#id)) => `Promise`\<`void`\>
 
 Show a specific entry in a replay session.
 This will open the session tab if not already open, set it as the selected session, and display the specified entry.
@@ -622,8 +817,6 @@ This will open the session tab if not already open, set it as the selected sessi
 | ------ | ------ | ------ |
 | `sessionId` | [`ID`](utils.md#id) | The ID of the session containing the entry. |
 | `entryId` | [`ID`](utils.md#id) | The ID of the entry to show. |
-| `options?` | \{ `overwriteDraft?`: `boolean`; \} | The options for showing the entry. |
-| `options.overwriteDraft?` | `boolean` | Whether to overwrite the request draft. If true, the draft will be removed and the entry's raw request will be shown. If false, the draft will be kept. |
 
 ###### Returns
 
@@ -632,10 +825,16 @@ This will open the session tab if not already open, set it as the selected sessi
 ###### Example
 
 ```ts
-await sdk.replay.showEntry(sessionId, entryId, {
-  overwriteDraft: true,
-});
+await sdk.replay.showEntry(sessionId, entryId);
 ```
+
+***
+
+### ReplaySelectedExchange
+
+> **ReplaySelectedExchange** = \{ `entryId`: [`ID`](utils.md#id); `kind`: *typeof* [`Http`](#http); `request`: [`RequestFull`](request.md#requestfull); `response?`: [`ResponseFull`](response.md#responsefull); `sessionId`: [`ID`](utils.md#id); \} \| \{ `activeTab`: `"http-upgrade"` \| `"messages"`; `entryId`: [`ID`](utils.md#id); `kind`: *typeof* [`Ws`](#ws); `message?`: [`ReplayWebSocketMessage`](#replaywebsocketmessage); `sessionId`: [`ID`](utils.md#id); `streamId?`: [`ID`](utils.md#id); `upgradeRequest?`: [`RequestFull`](request.md#requestfull); `upgradeResponse?`: [`ResponseFull`](response.md#responsefull); \}
+
+The currently selected Replay exchange.
 
 ***
 
@@ -703,6 +902,28 @@ A unique replay session identifier.
 
 ***
 
+### ReplaySessionKind
+
+> **ReplaySessionKind** = *typeof* [`ReplaySessionKind`](#replaysessionkind)\[keyof *typeof* [`ReplaySessionKind`](#replaysessionkind-1)\]
+
+The kind of a replay session.
+
+***
+
+### ReplaySlotContent
+
+> **ReplaySlotContent**\<`TProps`\> = \{ \[K in ReplaySlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
+
+Content that can be added to replay slots.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |
+
+***
+
 ### ReplayTab
 
 > **ReplayTab** = `object`
@@ -719,9 +940,31 @@ The ID of the session associated with this tab.
 
 ***
 
+### ReplayWebSocketMessage
+
+> **ReplayWebSocketMessage** = `object`
+
+The currently edited WebSocket message in Replay.
+
+#### Properties
+
+##### direction
+
+> **direction**: `"CLIENT"` \| `"SERVER"`
+
+##### format
+
+> **format**: `"BINARY"` \| `"CLOSE"` \| `"PING"` \| `"PONG"` \| `"TEXT"`
+
+##### raw
+
+> **raw**: `string`
+
+***
+
 ### RequestSource
 
-> **RequestSource** = \{ `connectionInfo`: [`SendRequestOptions`](#sendrequestoptions)\[`"connectionInfo"`\]; `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
+> **RequestSource** = \{ `connectionInfo`: [`ConnectionInfo`](#connectioninfo); `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
 
 #### Remarks
 
@@ -764,65 +1007,23 @@ If true, the request will not update the UI.
 If false, the UI will be updated to display the session and the new request.
 Defaults to false.
 
-##### connectionClose?
+***
 
-> `optional` **connectionClose**: `boolean`
+### ReplaySessionKind
 
-Whether to force close the connection by setting Connection: close header.
-Defaults to true.
+> `const` **ReplaySessionKind**: `object`
 
-##### connectionInfo
+The kind of a replay session.
 
-> **connectionInfo**: `object`
+#### Type Declaration
 
-The connection information to use for the request.
+##### Http
 
-###### host
+> `readonly` **Http**: `"HTTP"`
 
-> **host**: `string`
+##### Ws
 
-The host to use for the request.
-
-###### isTLS
-
-> **isTLS**: `boolean`
-
-Whether the request is TLS.
-
-###### port
-
-> **port**: `number`
-
-The port to use for the request.
-
-###### SNI?
-
-> `optional` **SNI**: `string`
-
-The SNI to use for the request.
-If not provided, the SNI will be inferred from the host.
-
-##### overwriteDraft?
-
-> `optional` **overwriteDraft**: `boolean`
-
-Whether to overwrite the editor's draft content.
-If true, draft content will be overwritten with the new request.
-If false, the draft will be kept.
-Defaults to true.
-
-##### raw
-
-> **raw**: `string`
-
-The raw request to send.
-
-##### updateContentLength?
-
-> `optional` **updateContentLength**: `boolean`
-
-Whether to update the content length automatically to match the body.
-Defaults to true.
+> `readonly` **Ws**: `"WS"`
 
 ***
 
