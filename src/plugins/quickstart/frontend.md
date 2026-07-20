@@ -22,7 +22,9 @@ As you select different interfaces, view the changes to the URL in the browser's
 
 <img alt="Intercept interface in the browser." src="/_images/intercept_page.png" center/>
 
-For plugins, the display name in the side navigation menu and URL page is specified in the `/packages/frontend/src/index.ts` file.
+## /packages/frontend/src/index.ts
+
+Plugin pages are created via the `/packages/frontend/src/index.ts` file.
 
 The `sdk.navigation.addPage()` function takes a page name as a parameter and adds the page to Caido:
 
@@ -49,7 +51,59 @@ Open the `/demo/packages/frontend/src/index.ts` file and change the parameter va
   sdk.sidebar.registerItem("Plugin Demo", "/plugin-demo");
 ```
 
-Then, enter the following terminal command to rebuild the plugin package:
+## /packages/frontend/src/views/App.vue
+
+While the `/packages/frontend/src/index.ts` file creates the plugin page, the `/packages/frontend/src/views/App.vue` file defines the components of the page using:
+
+- [Vue.js](https://vuejs.org/): A JavaScript framework for building user interfaces as reusable components. Each `.vue` file typically defines the page structure in a `<template>` section and the logic in a `<script>` section. When data changes, Vue updates the interface for you.
+
+- [PrimeVue](https://primevue.org/): A component library built for Vue. It provides ready-made UI elements such as buttons, dialogs, and inputs. Caido uses the `@caido/primevue` package so these components match the look of the application.
+
+- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework. You style layout and spacing with classes in the markup (for example, `flex`, `gap-4`, and `p-4`) instead of writing custom CSS. Caido's `@caido/tailwindcss` package and the `tailwindcss-primeui` bridge connect Tailwind to PrimeVue so components pick up Caido's theme.
+
+In short: Vue provides the structure and reactivity, PrimeVue provides the UI controls, and Tailwind provides the layout and visual styling.
+
+::: info
+For more information about using PrimeVue components and styling, see [Using the Component Library](/plugins/guides/styling.md) and [UI Styling](/plugins/concepts/ui.md).
+:::
+
+The plugin template frontend component page features a `Generate random string` button. Each time this button is clicked, a string of random alphanumeric characters is generated and displayed.
+
+<img alt="Plugin template button." src="/_images/plugin_template_button.png" center/>
+
+```ts
+<script setup lang="ts">
+import Button from "primevue/button";
+import InputText from "primevue/inputtext";
+import { ref } from "vue";
+
+import { useSDK } from "@/plugins/sdk";
+
+// Retrieve the SDK instance to interact with the backend
+const sdk = useSDK();
+
+const myVar = ref("Hello World");
+
+// Call the backend to generate a random string
+const onGenerateClick = async () => {
+  const result = await sdk.backend.generateRandomString(10);
+  myVar.value = result;
+};
+</script>
+
+<template>
+  <div class="h-full flex justify-center items-center">
+    <div class="flex flex-col gap-1">
+      <Button label="Generate random string" @click="onGenerateClick" />
+      <InputText :model-value="myVar" readonly />
+    </div>
+  </div>
+</template>
+```
+
+## Rebuilding
+
+Now, enter the following terminal command to rebuild the plugin package:
 
 ```bash
 pnpm build
@@ -80,3 +134,5 @@ Once the plugin is installed, navigate to [http://127.0.0.1:8080/](http://127.0.
 <img alt="Updated plugin display name and page." src="/_images/updated_plugin_page.png" center/>
 
 ## What's next?
+
+To learn how the frontend interacts with the backend component of a plugin, continue with [Backend Component Basics](/plugins/quickstart/backend.md).

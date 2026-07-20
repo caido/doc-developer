@@ -21,6 +21,10 @@ export const quickstartSidebar: DefaultTheme.SidebarItem[] = [
         link: "/plugins/quickstart/frontend",
       },
       {
+        text: "Backend Component Basics",
+        link: "/plugins/quickstart/backend",
+      },
+      {
         text: "Hot Reload",
         link: "/plugins/quickstart/reload",
       },

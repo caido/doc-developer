@@ -34,4 +34,4 @@ The plugin will also appear in the **Plugins** section of the side navigation me
 
 You may have noticed that even though the plugin's display name was set to `Demo Plugin` in the `/demo/caido.config.ts` file, it is displayed as **</> My Plugin** in the side navigation menu.
 
-Continue with [Frontend Component Basics](/plugins/quickstart/frontend.md).
+To learn how to fix this mismatch, continue with [Frontend Component Basics](/plugins/quickstart/frontend.md).
