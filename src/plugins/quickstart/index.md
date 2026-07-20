@@ -17,19 +17,19 @@ To get started, download the plugin template with the following terminal command
 pnpm create @caido-community/plugin
 ```
 
-When prompted, enter a name for your plugin package (_i.e. `demo`_). This will create a new directory containing the template.
+A prompt will ask: "What is the name of your plugin package?" 
+
+Enter `demo` as the name of your plugin package. This will create a new folder containing the plugin's files.
 
 <img alt="Name prompt." src="/_images/name_prompt.png" center/>
 
-Another prompt will ask if the plugin package will "customize the Caido UI". Entering `y` (yes) or `n` (no) will determine if the plugin has a frontend component or not.
+Another prompt will ask: "Will your plugin package customize the Caido UI?"
 
-::: warning NOTE
-Enter `y` to continue with the Getting Started guide.
-:::
+Enter `y`  (yes) to continue.
 
 <img alt="UI prompt." src="/_images/ui_prompt.png" center/>
 
-Next, navigate into the template directory (_i.e. `demo`_):
+Next, navigate into the plugin folder:
 
 ```bash
 cd demo
@@ -41,4 +41,6 @@ Now, install the dependencies:
 pnpm install
 ```
 
-Once the dependencies have been installed, open the template directory in your editor of choice and continue with the [Configuring a Plugin](/plugins/guides/config.md) guide.
+## What's next?
+
+Once the dependencies have been installed, open the `demo` folder in a editor of your choice and continue with the [Configuring a Plugin](/plugins/guides/config.md) guide.
