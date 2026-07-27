@@ -2,35 +2,6 @@ import type { DefaultTheme } from "vitepress";
 
 export const guidesSidebar: DefaultTheme.SidebarItem[] = [
   {
-    text: "Getting Started",
-    items: [
-      {
-        text: "Getting Started",
-        link: "/plugins/guides/",
-      },
-      {
-        text: "Configure Package",
-        link: "/plugins/guides/config",
-      },
-      {
-        text: "AI Assisted Coding",
-        link: "/plugins/guides/vibe_coding",
-      },
-      {
-        text: "Set Up Repository",
-        link: "/plugins/guides/repository",
-      },
-      {
-        text: "Submit to Store",
-        link: "/plugins/guides/store",
-      },
-      {
-        text: "Contributing",
-        link: "/plugins/guides/documentation",
-      },
-    ],
-  },
-  {
     text: "Frontend Guides",
     items: [
       {
