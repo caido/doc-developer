@@ -52,8 +52,52 @@ Command palette view definition for custom UI content.
 
 ##### definition
 
-> **definition**: [`ComponentDefinition`](utils.md#componentdefinition)
+> **definition**: [`ComponentDefinition`](utils.md#componentdefinition)\<[`CommandPaletteViewProps`](#commandpaletteviewprops)\>
 
 ##### type
 
 > **type**: `"Custom"`
+
+***
+
+### CommandPaletteViewProps
+
+> **CommandPaletteViewProps** = [`CommandPaletteViewPropsInternal`](#commandpaletteviewpropsinternal) & `object`
+
+The props for the command palette view.
+
+#### Type Declaration
+
+##### sdk
+
+> **sdk**: [`Caido`](index.md#caido)
+
+***
+
+### CommandPaletteViewPropsInternal
+
+> **CommandPaletteViewPropsInternal** = `object`
+
+The internal props for the command palette view.
+
+#### Properties
+
+##### onBack()
+
+> **onBack**: () => `void`
+
+The function to call when the command palette is backed.
+
+###### Returns
+
+`void`
+
+##### onClose()
+
+> **onClose**: () => `void`
+
+The function to call when the command palette is closed.
+
+###### Returns
+
+`void`

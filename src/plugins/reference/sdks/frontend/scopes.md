@@ -68,6 +68,20 @@ Scope page context.
 
 ***
 
+### ScopeSlotContent
+
+> **ScopeSlotContent**\<`TProps`\> = \{ \[K in ScopeSlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
+
+Content that can be added to scope slots.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |
+
+***
+
 ### ScopesSDK
 
 > **ScopesSDK** = `object`
@@ -78,7 +92,7 @@ Utilities to interact with scopes
 
 ##### addToSlot
 
-> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`ScopeSlotContent`](other.md#scopeslotcontent)\>
+> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`ScopeSlotContent`](#scopeslotcontent)\>
 
 Add a component to a slot.
 
