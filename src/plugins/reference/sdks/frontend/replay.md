@@ -1,5 +1,70 @@
 # Replay
 
+### AddCollectionIndicatorOptions
+
+> **AddCollectionIndicatorOptions** = [`AddIndicatorOptions`](utils.md#addindicatoroptions)
+
+Options for adding an indicator to a replay collection.
+
+***
+
+### AddSessionIndicatorOptions
+
+> **AddSessionIndicatorOptions** = [`AddIndicatorOptions`](utils.md#addindicatoroptions) & `object`
+
+Options for adding an indicator to a replay session.
+
+#### Type Declaration
+
+##### showTabIcon?
+
+> `optional` **showTabIcon**: `boolean`
+
+Includes the indicator icon on the session's replay tab.
+
+###### Default
+
+```ts
+false
+```
+
+***
+
+### ConnectionInfo
+
+> **ConnectionInfo** = `object`
+
+The connection information to use for the request.
+
+#### Properties
+
+##### host
+
+> **host**: `string`
+
+The host to use for the request.
+
+##### isTLS
+
+> **isTLS**: `boolean`
+
+Whether the request is TLS.
+
+##### port
+
+> **port**: `number`
+
+The port to use for the request.
+
+##### SNI?
+
+> `optional` **SNI**: `string`
+
+The SNI to use for the request.
+If not provided, the SNI will be inferred from the host.
+
+***
+
 ### CurrentReplaySessionChangeEvent
 
 > **CurrentReplaySessionChangeEvent** = `object`
@@ -131,6 +196,38 @@ Utilities to interact with Replay.
 
 #### Properties
 
+##### addCollectionIndicator()
+
+> **addCollectionIndicator**: (`collectionId`: [`ID`](utils.md#id), `indicator`: [`AddCollectionIndicatorOptions`](#addcollectionindicatoroptions)) => [`Indicator`](utils.md#indicator)
+
+Add an indicator to a replay collection.
+Indicators are displayed next to the collection name in the collections tree.
+
+###### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `collectionId` | [`ID`](utils.md#id) | The ID of the collection to add the indicator to. |
+| `indicator` | [`AddCollectionIndicatorOptions`](#addcollectionindicatoroptions) | The indicator configuration. |
+
+###### Returns
+
+[`Indicator`](utils.md#indicator)
+
+A handle object with a `remove` method to remove the indicator.
+
+###### Example
+
+```ts
+const indicator = sdk.replay.addCollectionIndicator(collectionId, {
+  icon: "fas fa-folder-open",
+  description: "Has unresolved findings",
+});
+
+// Later, remove the indicator
+indicator.remove();
+```
+
 ##### addRequestEditorExtension()
 
 > **addRequestEditorExtension**: (`extension`: `Extension`) => `void`
@@ -149,7 +246,7 @@ Add an extension to the request editor.
 
 ##### addRequestViewMode()
 
-> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)) => `void`
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestWritableViewModeProps`](request.md#requestwritableviewmodeprops)\>) => `void`
 
 Add a custom view mode for requests.
 
@@ -157,7 +254,7 @@ Add a custom view mode for requests.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestWritableViewModeProps`](request.md#requestwritableviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -165,7 +262,7 @@ Add a custom view mode for requests.
 
 ##### addResponseViewMode()
 
-> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\>) => `void`
 
 Add a custom response view mode.
 
@@ -173,7 +270,7 @@ Add a custom response view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -181,7 +278,7 @@ Add a custom response view mode.
 
 ##### addSessionIndicator()
 
-> **addSessionIndicator**: (`sessionId`: [`ID`](utils.md#id), `indicator`: [`AddIndicatorOptions`](utils.md#addindicatoroptions)) => [`Indicator`](utils.md#indicator)
+> **addSessionIndicator**: (`sessionId`: [`ID`](utils.md#id), `indicator`: [`AddSessionIndicatorOptions`](#addsessionindicatoroptions)) => [`Indicator`](utils.md#indicator)
 
 Add an indicator to a replay session.
 Indicators are displayed next to the session name in the collections tree.
@@ -191,7 +288,7 @@ Indicators are displayed next to the session name in the collections tree.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `sessionId` | [`ID`](utils.md#id) | The ID of the session to add the indicator to. |
-| `indicator` | [`AddIndicatorOptions`](utils.md#addindicatoroptions) | The indicator configuration. |
+| `indicator` | [`AddSessionIndicatorOptions`](#addsessionindicatoroptions) | The indicator configuration. |
 
 ###### Returns
 
@@ -205,6 +302,7 @@ A handle object with a `remove` method to remove the indicator.
 const indicator = sdk.replay.addSessionIndicator(sessionId, {
   icon: "fas fa-exclamation-triangle",
   description: "Security warning",
+  showTabIcon: true,
 });
 
 // Later, remove the indicator
@@ -213,7 +311,7 @@ indicator.remove();
 
 ##### addToSlot
 
-> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`ReplaySlotContent`](other.md#replayslotcontent)\>
+> **addToSlot**: [`DefineAddToSlotFn`](slots.md#defineaddtoslotfn)\<[`ReplaySlotContent`](#replayslotcontent)\>
 
 Add a component to a slot.
 
@@ -343,6 +441,29 @@ Get the list of all replay collections.
 [`ReplayCollection`](#replaycollection)[]
 
 The list of all replay collections.
+
+##### getCurrentEntry()
+
+> **getCurrentEntry**: () => [`ReplayEntry`](#replayentry) \| `undefined`
+
+Get the entry currently displayed in the active replay session.
+
+###### Returns
+
+[`ReplayEntry`](#replayentry) \| `undefined`
+
+The active entry, or undefined if no entry is currently loaded.
+
+###### Example
+
+```ts
+const currentEntry = sdk.replay.getCurrentEntry();
+if (currentEntry) {
+  console.log(`Currently viewing entry ${currentEntry.id}`);
+} else {
+  console.log("No entry is currently displayed");
+}
+```
 
 ##### getCurrentSession()
 
@@ -611,7 +732,7 @@ sendRequest(sessionId, {
 
 ##### showEntry()
 
-> **showEntry**: (`sessionId`: [`ID`](utils.md#id), `entryId`: [`ID`](utils.md#id), `options?`: `object`) => `Promise`\<`void`\>
+> **showEntry**: (`sessionId`: [`ID`](utils.md#id), `entryId`: [`ID`](utils.md#id)) => `Promise`\<`void`\>
 
 Show a specific entry in a replay session.
 This will open the session tab if not already open, set it as the selected session, and display the specified entry.
@@ -622,8 +743,6 @@ This will open the session tab if not already open, set it as the selected sessi
 | ------ | ------ | ------ |
 | `sessionId` | [`ID`](utils.md#id) | The ID of the session containing the entry. |
 | `entryId` | [`ID`](utils.md#id) | The ID of the entry to show. |
-| `options?` | \{ `overwriteDraft?`: `boolean`; \} | The options for showing the entry. |
-| `options.overwriteDraft?` | `boolean` | Whether to overwrite the request draft. If true, the draft will be removed and the entry's raw request will be shown. If false, the draft will be kept. |
 
 ###### Returns
 
@@ -632,9 +751,7 @@ This will open the session tab if not already open, set it as the selected sessi
 ###### Example
 
 ```ts
-await sdk.replay.showEntry(sessionId, entryId, {
-  overwriteDraft: true,
-});
+await sdk.replay.showEntry(sessionId, entryId);
 ```
 
 ***
@@ -703,6 +820,20 @@ A unique replay session identifier.
 
 ***
 
+### ReplaySlotContent
+
+> **ReplaySlotContent**\<`TProps`\> = \{ \[K in ReplaySlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
+
+Content that can be added to replay slots.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |
+
+***
+
 ### ReplayTab
 
 > **ReplayTab** = `object`
@@ -721,7 +852,7 @@ The ID of the session associated with this tab.
 
 ### RequestSource
 
-> **RequestSource** = \{ `connectionInfo`: [`SendRequestOptions`](#sendrequestoptions)\[`"connectionInfo"`\]; `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
+> **RequestSource** = \{ `connectionInfo`: [`ConnectionInfo`](#connectioninfo); `raw`: `string`; `type`: `"Raw"`; \} \| \{ `id`: `string`; `type`: `"ID"`; \}
 
 #### Remarks
 
@@ -763,66 +894,6 @@ Whether to send the request in the background without updating the UI.
 If true, the request will not update the UI.
 If false, the UI will be updated to display the session and the new request.
 Defaults to false.
-
-##### connectionClose?
-
-> `optional` **connectionClose**: `boolean`
-
-Whether to force close the connection by setting Connection: close header.
-Defaults to true.
-
-##### connectionInfo
-
-> **connectionInfo**: `object`
-
-The connection information to use for the request.
-
-###### host
-
-> **host**: `string`
-
-The host to use for the request.
-
-###### isTLS
-
-> **isTLS**: `boolean`
-
-Whether the request is TLS.
-
-###### port
-
-> **port**: `number`
-
-The port to use for the request.
-
-###### SNI?
-
-> `optional` **SNI**: `string`
-
-The SNI to use for the request.
-If not provided, the SNI will be inferred from the host.
-
-##### overwriteDraft?
-
-> `optional` **overwriteDraft**: `boolean`
-
-Whether to overwrite the editor's draft content.
-If true, draft content will be overwritten with the new request.
-If false, the draft will be kept.
-Defaults to true.
-
-##### raw
-
-> **raw**: `string`
-
-The raw request to send.
-
-##### updateContentLength?
-
-> `optional` **updateContentLength**: `boolean`
-
-Whether to update the content length automatically to match the body.
-Defaults to true.
 
 ***
 

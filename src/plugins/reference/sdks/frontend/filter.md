@@ -2,16 +2,12 @@
 
 ### FilterSlotContent
 
-> **FilterSlotContent** = `object`
+> **FilterSlotContent**\<`TProps`\> = \{ \[K in FilterSlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
 
 Content that can be added to filter slots.
 
-#### Properties
+#### Type Parameters
 
-##### create-header
-
-> **create-header**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
-
-##### update-header
-
-> **update-header**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |

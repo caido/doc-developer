@@ -15,7 +15,7 @@ Utilities for frontend plugins.
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `T` *extends* [`BackendEndpoints`](backend.md#backendendpoints) | `Record`\<`string`, `never`\> |
+| `T` *extends* [`BackendEndpoints`](backend.md#backendendpoints) \| [`BackendSpec`](backend.md#backendspec) | `Record`\<`string`, `never`\> |
 | `E` *extends* [`BackendEvents`](backend.md#backendevents) | `Record`\<`string`, `never`\> |
 
 #### Properties
@@ -193,6 +193,12 @@ Utilities to interact with frontend-plugin storage.
 > **ui**: [`UISDK`](ui.md#uisdk)
 
 Utilities to create UI components.
+
+##### websocket
+
+> **websocket**: [`WebsocketSDK`](websockets.md#websocketsdk)
+
+Utilities to interact with the Websocket page.
 
 ##### window
 

@@ -18,9 +18,15 @@ Content for a command slot.
 
 ### CustomSlotContent
 
-> **CustomSlotContent** = [`DefineSlotContent`](other.md#defineslotcontent)\<`"Custom"`, \{ `definition`: [`ComponentDefinition`](utils.md#componentdefinition); \}\>
+> **CustomSlotContent**\<`TProps`\> = [`DefineSlotContent`](other.md#defineslotcontent)\<`"Custom"`, \{ `definition`: [`ComponentDefinition`](utils.md#componentdefinition)\<`TProps`\>; \}\>
 
 Content for a custom component slot.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](#slotcontentpropsgroup) | [`SlotContentProps`](#slotcontentprops) |
 
 ***
 
@@ -57,6 +63,42 @@ A function type for adding content to slots.
 
 ### SlotContent
 
-> **SlotContent** = [`ButtonSlotContent`](#buttonslotcontent) \| [`CustomSlotContent`](#customslotcontent) \| [`CommandSlotContent`](#commandslotcontent)
+> **SlotContent**\<`TProps`\> = [`ButtonSlotContent`](#buttonslotcontent) \| [`CustomSlotContent`](#customslotcontent)\<`TProps`\> \| [`CommandSlotContent`](#commandslotcontent)
 
 Union type of all possible slot content types.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](#slotcontentpropsgroup) | [`SlotContentProps`](#slotcontentprops) |
+
+***
+
+### SlotContentProps
+
+> **SlotContentProps** = [`SlotContentPropsInternal`](#slotcontentpropsinternal) & `object`
+
+The props for a slot content.
+
+#### Type Declaration
+
+##### sdk
+
+> **sdk**: [`Caido`](index.md#caido)
+
+***
+
+### SlotContentPropsGroup
+
+> **SlotContentPropsGroup** = [`SlotContentProps`](#slotcontentprops) \| [`SlotContentPropsInternal`](#slotcontentpropsinternal)
+
+The props group for a slot content.
+
+***
+
+### SlotContentPropsInternal
+
+> **SlotContentPropsInternal** = `object`
+
+The internal props for a slot content.

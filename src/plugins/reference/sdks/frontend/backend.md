@@ -26,7 +26,7 @@ Events emitted by the backend plugin.
 
 ### BackendSDK
 
-> **BackendSDK**\<`T`, `E`\> = `{ [K in keyof T]: (args: Parameters<T[K]>) => PromisifiedReturnType<T[K]> }` & `object`
+> **BackendSDK**\<`T`, `E`\> = `{ [K in keyof ResolvedAPI<T>]: (args: Parameters<ResolvedAPI<T>[K]>) => PromisifiedReturnType<ResolvedAPI<T>[K]> }` & `object`
 
 Utilities to interact with the backend plugin.
 
@@ -34,7 +34,7 @@ Utilities to interact with the backend plugin.
 
 ##### onEvent()
 
-> **onEvent**: \<`K`\>(`event`: `K`, `callback`: `E`\[`K`\]) => `object`
+> **onEvent**: \<`K`\>(`event`: `K`, `callback`: [`ResolvedEvents`](other.md#resolvedevents)\<`T`, `E`\>\[`K`\]) => `object`
 
 Subscribe to a backend event.
 
@@ -42,14 +42,14 @@ Subscribe to a backend event.
 
 | Type Parameter |
 | ------ |
-| `K` *extends* keyof `E` |
+| `K` *extends* keyof [`ResolvedEvents`](other.md#resolvedevents)\<`T`, `E`\> |
 
 ###### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `event` | `K` | The event to subscribe to. |
-| `callback` | `E`\[`K`\] | The callback to call when the event is emitted. |
+| `callback` | [`ResolvedEvents`](other.md#resolvedevents)\<`T`, `E`\>\[`K`\] | The callback to call when the event is emitted. |
 
 ###### Returns
 
@@ -69,5 +69,23 @@ An object with a `stop` method that can be called to stop listening to the event
 
 | Type Parameter |
 | ------ |
-| `T` *extends* [`BackendEndpoints`](#backendendpoints) |
+| `T` *extends* [`BackendEndpoints`](#backendendpoints) \| [`BackendSpec`](#backendspec) |
 | `E` *extends* [`BackendEvents`](#backendevents) |
+
+***
+
+### BackendSpec
+
+> **BackendSpec** = `object`
+
+A specification for the backend plugin.
+
+#### Properties
+
+##### api
+
+> **api**: [`BackendEndpoints`](#backendendpoints)
+
+##### events
+
+> **events**: [`BackendEvents`](#backendevents)

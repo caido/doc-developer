@@ -50,7 +50,7 @@ Utilities to interact with the Intercept page.
 
 ##### addRequestViewMode()
 
-> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)) => `void`
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestWritableViewModeProps`](request.md#requestwritableviewmodeprops)\>) => `void`
 
 Add a custom request view mode.
 
@@ -58,7 +58,7 @@ Add a custom request view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestWritableViewModeProps`](request.md#requestwritableviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -66,7 +66,7 @@ Add a custom request view mode.
 
 ##### addResponseViewMode()
 
-> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\>) => `void`
 
 Add a custom response view mode.
 
@@ -74,7 +74,7 @@ Add a custom response view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
