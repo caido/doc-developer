@@ -41,15 +41,21 @@ Utility type that adds a type discriminator to a type.
 
 ### ComponentDefinition
 
-> **ComponentDefinition** = `object`
+> **ComponentDefinition**\<`TProps`\> = `object`
 
 A custom component that will be rendered in the UI.
+
+#### Type Parameters
+
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` | [`ComponentProps`](#componentprops) |
 
 #### Properties
 
 ##### component
 
-> **component**: `VueComponent`
+> **component**: `VueComponent`\<`TProps`\>
 
 ##### events?
 
@@ -57,7 +63,35 @@ A custom component that will be rendered in the UI.
 
 ##### props?
 
-> `optional` **props**: `Record`\<`string`, `unknown`\>
+> `optional` **props**: [`ComponentProps`](#componentprops)
+
+***
+
+### ComponentProps
+
+> **ComponentProps** = `Record`\<`string`, `unknown`\>
+
+A set of properties that can be passed to a component.
+
+***
+
+### ComponentPropsWithSdk
+
+> **ComponentPropsWithSdk**\<`TProps`\> = `TProps` & `object`
+
+A set of properties that can be passed to a component definition with the SDK.
+
+#### Type Declaration
+
+##### sdk
+
+> **sdk**: [`Caido`](index.md#caido)
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `TProps` *extends* [`ComponentProps`](#componentprops) |
 
 ***
 
@@ -181,6 +215,24 @@ Utility type for converting endpoint return types to promises.
 
 ***
 
+### QueryInput
+
+> **QueryInput** = [`HTTPQL`](#httpql) \| [`StreamQL`](#streamql)
+
+A query input.
+
+#### Examples
+
+```ts
+`"req.method.eq:'POST'"`
+```
+
+```ts
+`"ws.raw.cont:'hello'"`
+```
+
+***
+
 ### Selection
 
 > **Selection**\<`TId`\> = \{ `kind`: `"Empty"`; \} \| \{ `kind`: `"Selected"`; `main`: `TId`; `secondary`: `TId`[]; \}
@@ -193,3 +245,23 @@ Main represents the primary selected item, secondary represents additional selec
 | Type Parameter |
 | ------ |
 | `TId` |
+
+***
+
+### StreamQL
+
+> **StreamQL** = `string` & `object`
+
+A STREAMQL expression.
+
+#### Type Declaration
+
+##### \_\_streamql?
+
+> `optional` **\_\_streamql**: `never`
+
+#### Example
+
+```ts
+`ws.raw.cont:"hello"`
+```

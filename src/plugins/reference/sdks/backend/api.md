@@ -2,7 +2,7 @@
 
 ### APISDK
 
-> **APISDK**\<`API`, `Events`\> = `object`
+> **APISDK**\<`SpecOrAPI`, `Events`\> = `object`
 
 The SDK for the API RPC service.
 
@@ -10,23 +10,29 @@ The SDK for the API RPC service.
 
 | Type Parameter | Default type |
 | ------ | ------ |
-| `API` | `object` |
+| `SpecOrAPI` | `object` |
 | `Events` | `object` |
 
 #### Methods
 
 ##### register()
 
-> **register**(`name`: keyof `API`, `callback`: (`sdk`: [`SDK`](index.md#sdk), ...`args`: `any`[]) => `any`): `void`
+> **register**\<`K`\>(`name`: `K`, `callback`: [`APICallback`](other.md#apicallback)\<[`ResolvedAPI`](other.md#resolvedapi)\<`SpecOrAPI`\>\[`K`\]\>): `void`
 
 Registers a new backend function for the RPC.
+
+###### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `K` *extends* `string` \| `number` \| `symbol` |
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `name` | keyof `API` |
-| `callback` | (`sdk`: [`SDK`](index.md#sdk), ...`args`: `any`[]) => `any` |
+| `name` | `K` |
+| `callback` | [`APICallback`](other.md#apicallback)\<[`ResolvedAPI`](other.md#resolvedapi)\<`SpecOrAPI`\>\[`K`\]\> |
 
 ###### Returns
 
@@ -42,16 +48,22 @@ sdk.api.register("multiply", (sdk: SDK, a: number, b: number) => {
 
 ##### send()
 
-> **send**(`event`: keyof `Events`, ...`args`: `any`[]): `void`
+> **send**\<`K`\>(`event`: `K`, ...`args`: [`EventParameters`](other.md#eventparameters)\<[`ResolvedEvents`](other.md#resolvedevents)\<`SpecOrAPI`, `Events`\>\[`K`\]\>): `void`
 
 Sends an event to the frontend plugin.
+
+###### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `K` *extends* `string` \| `number` \| `symbol` |
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `event` | keyof `Events` |
-| ...`args` | `any`[] |
+| `event` | `K` |
+| ...`args` | [`EventParameters`](other.md#eventparameters)\<[`ResolvedEvents`](other.md#resolvedevents)\<`SpecOrAPI`, `Events`\>\[`K`\]\> |
 
 ###### Returns
 
