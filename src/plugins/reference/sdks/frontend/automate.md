@@ -108,7 +108,7 @@ Add an extension to the request editor.
 
 ##### addRequestViewMode()
 
-> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)) => `void`
+> **addRequestViewMode**: (`options`: [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestReadableViewModeProps`](request.md#requestreadableviewmodeprops)\>) => `void`
 
 Add a custom request view mode.
 
@@ -116,7 +116,7 @@ Add a custom request view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions) | The view mode options. |
+| `options` | [`RequestViewModeOptions`](request.md#requestviewmodeoptions)\<[`RequestReadableViewModeProps`](request.md#requestreadableviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -124,7 +124,7 @@ Add a custom request view mode.
 
 ##### addResponseViewMode()
 
-> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)) => `void`
+> **addResponseViewMode**: (`options`: [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\>) => `void`
 
 Add a custom response view mode.
 
@@ -132,7 +132,7 @@ Add a custom response view mode.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions) | The view mode options. |
+| `options` | [`ResponseViewModeOptions`](response.md#responseviewmodeoptions)\<[`ResponseViewModeProps`](response.md#responseviewmodeprops)\> | The view mode options. |
 
 ###### Returns
 
@@ -155,6 +155,30 @@ Get the list of all automate entries.
 [`AutomateEntry`](#automateentry)[]
 
 The list of all automate entries.
+
+##### getSelectedRequest()
+
+> **getSelectedRequest**: () => [`RequestFull`](request.md#requestfull) \| `undefined`
+
+Get the currently selected request.
+
+###### Returns
+
+[`RequestFull`](request.md#requestfull) \| `undefined`
+
+The currently selected request.
+
+##### getSelectedResponse()
+
+> **getSelectedResponse**: () => [`ResponseFull`](response.md#responsefull) \| `undefined`
+
+Get the currently selected response.
+
+###### Returns
+
+[`ResponseFull`](response.md#responsefull) \| `undefined`
+
+The currently selected response.
 
 ##### getSessions()
 
