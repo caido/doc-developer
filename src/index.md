@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /quickstart
+      link: /introduction
     - theme: alt
       text: Plugins
       link: /plugins/guides/
