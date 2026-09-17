@@ -82,7 +82,7 @@ export default defineConfig({
         component: "NavItem",
         props: {
           text: "Policy",
-          link: "/policy.md",
+          link: "policy/",
           activeMatch: "^/policy",
         },
       },
