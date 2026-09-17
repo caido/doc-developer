@@ -625,6 +625,7 @@ components:
       - scope
       - scopes
       - client
+      - current_ip
       properties:
         client:
           type: object
@@ -648,9 +649,13 @@ components:
                 registered_at:
                   type: integer
                   format: int64
+            ip:
+              type: string
             registered_at:
               type: integer
               format: int64
+        current_ip:
+          type: string
         scope:
           type: string
           deprecated: true
