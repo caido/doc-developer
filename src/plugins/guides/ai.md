@@ -177,7 +177,7 @@ export type CaidoSDK = Caido;
 const summarize = async (sdk: CaidoSDK, raw: string) => {
   const [model] = sdk.ai.getUpstreamModels();
   if (model === undefined) {
-    sdk.window.showToast("Configure an AI provider in Caido's settings first.", {
+    sdk.window.showToast("Configure an AI provider and model in Caido's settings first.", {
       variant: "warning",
     });
     return;
