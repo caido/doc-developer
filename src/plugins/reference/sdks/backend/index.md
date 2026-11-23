@@ -1,7 +1,7 @@
 # @caido/sdk-backend
 
 This is the reference for the backend SDK used by backend plugins.
-[SDK](#events) is the main interface that provides access to various services and functionalities.
+[SDK](other.md#events) is the main interface that provides access to various services and functionalities.
 
 ## SDK
 
@@ -62,6 +62,12 @@ The SDK for the GraphQL service.
 
 The SDK for the HostedFile service.
 
+##### kv
+
+> **kv**: [`KVSDK`](kv.md#kvsdk)
+
+The SDK for the Key-Value store.
+
 ##### meta
 
 > **meta**: [`MetaSDK`](meta.md#metasdk)
@@ -117,6 +123,7 @@ The SDK for the Scope service.
 - [Environment](environment.md)
 - [GraphQL](graphql.md)
 - [HostedFile](hostedfile.md)
+- [KV](kv.md)
 - [Net](net.md)
 - [Other](other.md)
 - [Runtime](runtime.md)

@@ -15,6 +15,32 @@ The SDK for the API RPC service.
 
 #### Methods
 
+##### onFindingCreated()
+
+> **onFindingCreated**(`callback`: (`sdk`: [`SDK`](index.md#sdk)\<`API`, `Events`\>, `finding`: [`Finding`](findings.md#finding)) => [`MaybePromise`](shared.md#maybepromise)\<`void`\>): `void`
+
+Callback called when a finding is created.
+
+This callback is called asynchronously and cannot modify the finding.
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `callback` | (`sdk`: [`SDK`](index.md#sdk)\<`API`, `Events`\>, `finding`: [`Finding`](findings.md#finding)) => [`MaybePromise`](shared.md#maybepromise)\<`void`\> |
+
+###### Returns
+
+`void`
+
+###### Example
+
+```ts
+sdk.events.onFindingCreated((sdk, finding) => {
+   // Do something with the finding
+});
+```
+
 ##### onInterceptRequest()
 
 > **onInterceptRequest**(`callback`: (`sdk`: [`SDK`](index.md#sdk)\<`API`, `Events`\>, `request`: [`Request`](requests.md#request)) => [`MaybePromise`](shared.md#maybepromise)\<`void`\>): `void`
