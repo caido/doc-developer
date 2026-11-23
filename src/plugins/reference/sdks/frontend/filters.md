@@ -91,6 +91,10 @@ The slot to add the component to.
 
 The content to add to the slot.
 
+###### Returns
+
+A handle object with a `remove` method to remove the content from the slot.
+
 ###### Example
 
 ```ts

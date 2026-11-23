@@ -22,6 +22,10 @@ The slot to add the component to.
 
 The content to add to the slot.
 
+###### Returns
+
+A handle object with a `remove` method to remove the content from the slot.
+
 ###### Example
 
 ```ts
@@ -50,19 +54,15 @@ addToSlot(FooterSlot.FooterSlotSecondary, {
 
 ### FooterSlotContent
 
-> **FooterSlotContent** = `object`
+> **FooterSlotContent**\<`TProps`\> = \{ \[K in FooterSlot\]: ButtonSlotContent \| CustomSlotContent\<TProps\> \| CommandSlotContent \}
 
 Content that can be added to footer slots.
 
-#### Properties
+#### Type Parameters
 
-##### footer-primary
-
-> **footer-primary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
-
-##### footer-secondary
-
-> **footer-secondary**: [`ButtonSlotContent`](slots.md#buttonslotcontent) \| [`CustomSlotContent`](slots.md#customslotcontent) \| [`CommandSlotContent`](slots.md#commandslotcontent)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TProps` *extends* [`SlotContentPropsGroup`](slots.md#slotcontentpropsgroup) | [`SlotContentProps`](slots.md#slotcontentprops) |
 
 ***
 
